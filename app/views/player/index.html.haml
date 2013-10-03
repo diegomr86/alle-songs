@@ -1,0 +1,19 @@
+%br
+= javascript_include_tag "player"
+- if @music
+  #player_container{ data: { id: @music.unique_id, code: params[:code] } }
+    #ytplayer{ data: { id: @music.unique_id } }
+      %p You will need Flash 8 or better to view this content.
+  %br
+  .btn-group
+    %a.btn.btn-default#backward
+      %i.icon-backward
+    %a.btn.btn-default#play
+      %i.icon-play
+    %a.btn.btn-default#pause
+      %i.icon-pause
+    %a.btn.btn-default#forward
+      %i.icon-fast-forward
+  %pre
+    %h3= @music_info["mus"][0]["name"]
+    = @music_info["mus"][0]["text"]

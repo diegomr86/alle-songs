@@ -1,0 +1,28 @@
+- if @artist
+  - autoload = true
+  .row-fluid
+    .col-md-4
+      %h2= @artist["desc"]
+      = image_tag @img_url + @artist["pic_small"]
+      - @genres.each do |genre|
+        %a
+          %span.label.label-info= genre
+      %ul
+        - @discography["item"].each do |album|
+          %li
+            %h3= album["desc"]
+            = image_tag @img_url + album["cover"]
+            %ol
+              - album["discs"][0].each do |music|
+                %li.music_link{data: { code: music['id']}}
+                  = link_to music["desc"], player_index_path(artist: @artist["desc"], music: music["desc"], code: music['id']), data: { remote: true, target: "#player", autoload: autoload }
+                  - autoload = false if autoload
+    .col-md-4
+      #player
+
+- else
+  = form_tag
+  - @artists.each do |artist|
+    = link_to artist_index_path(artist: artist['name']), title: artist['name'] do
+      = image_tag artist['pic_medium'], alt: artist['name']
+
