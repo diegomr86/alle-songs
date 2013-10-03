@@ -37,3 +37,4 @@ gem "haml-rails", "~> 0.4"
 gem "nokogiri", "1.5.2"
 gem "youtube_it", "~> 2.3.2"
 gem "httpclient", "~> 2.3.4.1"
+gem 'newrelic_rpm'
