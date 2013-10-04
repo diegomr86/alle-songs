@@ -1,5 +1,6 @@
-%br
+= javascript_include_tag "https://www.youtube.com/iframe_api"
 = javascript_include_tag "player"
+%br
 - if @music
   #player_container{ data: { id: @music.unique_id, code: params[:code] } }
     #ytplayer{ data: { id: @music.unique_id } }
@@ -15,5 +16,5 @@
     %a.btn.btn-default#forward
       %i.icon-fast-forward
   %pre
-    %h3= @music_info["mus"][0]["name"]
+    %h3 #{params[:artist]} - #{params[:music]}
     = @music_info["mus"][0]["text"]
