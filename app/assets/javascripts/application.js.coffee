@@ -12,9 +12,20 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require jquery.layout
 #= require nprogress
+#= require jquery.mousewheel
+#= require jquery.jscrollpane.min
+#= require functions
+
+loadScrollPane = ->
+  $('.scroll-pane').jScrollPane showArrows: true, mouseWheelSpeed: 10 if $('.ui-layout-center')
 
 $ ->
+
+  $("body").layout applyDefaultStyles: false, closable: false, spacing_open: 0, west__size: .25
+
+  loadScrollPane()
 
   NProgress.configure({ showSpinner: false, trickle: true });
 
@@ -25,5 +36,16 @@ $ ->
     $($(this).attr('data-target')).hide()
     $($(this).attr('data-target')).html status.responseText
     $($(this).attr('data-target')).fadeIn 1000
+    loadScrollPane()
 
   $('a[data-remote][data-autoload="true"]').click()
+
+
+  # create video player
+  createPlayer "player_container"
+
+  # autojump func
+  setupAutojump()
+
+  # videos list
+  setupList "video_list"

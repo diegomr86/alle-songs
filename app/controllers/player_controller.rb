@@ -15,7 +15,7 @@ class PlayerController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {render json: @musics}
+      format.json {render json: {info: @music_info, video: @music}}
     end
   end
 end

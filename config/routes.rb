@@ -3,8 +3,9 @@ Music::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'artist#index'
+  root 'home#index'
 
+  resources :home, only: :index
   resources :artist, only: :index
   resources :player, only: :index
 

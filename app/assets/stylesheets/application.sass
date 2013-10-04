@@ -1,0 +1,105 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+
+@import "nprogress.css"
+@import "layout-default.css"
+@import "jquery.jscrollpane"
+
+.ui-layout-north
+  padding: 0
+  header
+    .navbar
+      border: 0
+      border-bottom: 1px solid #ddd
+      .navbar-brand
+        padding: 1px 15px
+        .logo
+          font-size: 23px
+          float: left
+        h1
+          margin: 0 10px
+          font-size: 18px
+          float: left
+          line-height: 47px
+.ui-layout-west
+  padding-right: 10px
+  margin: 0 10px
+  .artist
+    padding-left: 3px
+    margin-bottom: 15px
+    .cover
+      img
+        width: 65px
+      float: left
+    .info
+      float: left
+      margin-left: 10px
+      h2
+        margin-top: 0
+
+  .albuns
+    margin-right: 10px
+    padding-left: 3px
+    .panel.panel-default
+      border: none
+      border-top: 1px solid #e7e7e7
+      border-radius: 0
+      margin: 0
+      > .panel-heading
+        border: none
+        background: none
+    .album
+      .cover
+        img
+          width: 60px
+          height: 100%
+      .info
+        height: 60px
+        overflow: hidden
+        h3
+          line-height: 60px
+      .actions
+        padding: 0
+        a
+          line-height: 60px
+      ol
+        padding-left: 0
+
+        li.music_link
+          line-height: 3
+          font-size: 12px
+          list-style: none
+          border-bottom: 1px solid #ddd
+
+    h3
+      font-size: 100%
+      margin: 0
+
+    .panel-heading
+      padding: 0
+    .panel-group .panel+.panel
+      margin: 0
+
+
+.ui-layout-center
+  #player
+    margin: 0 10px
+
+  #lyrics
+    header
+      h3
+        margin-top: 0
+  #lyric_text
+    white-space: pre
+%footer
+  border-top: 1px solid #ddd

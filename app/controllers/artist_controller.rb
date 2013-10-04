@@ -21,7 +21,7 @@ class ArtistController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {render json: @discography}
+      format.json {render json: @artist}
       format.xml {render :xml => @artist}
     end
   end

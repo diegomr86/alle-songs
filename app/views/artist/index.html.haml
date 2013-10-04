@@ -1,28 +1,54 @@
 - if @artist
   - autoload = true
-  .row-fluid
-    .col-md-4
-      %h2= @artist["desc"]
-      = image_tag @img_url + @artist["pic_small"]
-      - @genres.each do |genre|
-        %a
-          %span.label.label-info= genre
-      %ul
-        - @discography["item"].each do |album|
-          %li
-            %h3= album["desc"]
-            = image_tag @img_url + album["cover"]
-            %ol
-              - album["discs"][0].each do |music|
-                %li.music_link{data: { code: music['id']}}
-                  = link_to music["desc"], player_index_path(artist: @artist["desc"], music: music["desc"], code: music['id']), data: { remote: true, target: "#player", autoload: autoload }
-                  - autoload = false if autoload
-    .col-md-4
-      #player
+  .ui-layout-west.scroll-pane
+    .artist
+      .cover
+        = image_tag @img_url + @artist["pic_medium"]
+      .info
+        %h2
+          = @artist["desc"]
+        - @genres.each do |genre|
+          %a
+            %span.label.label-info= genre
 
-- else
-  = form_tag
-  - @artists.each do |artist|
-    = link_to artist_index_path(artist: artist['name']), title: artist['name'] do
-      = image_tag artist['pic_medium'], alt: artist['name']
+      .clearfix
+    #accordion.panel-group.albuns
+      - @discography["item"].each_with_index do |album, index|
+        .panel.panel-default.album
+          .panel-heading
+            %h4.panel-title
+              .row
+                .col-md-2.cover
+                  %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse_#{index}"}
+                    = image_tag @img_url + album["cover"]
+                .col-md-9.info
+                  %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse_#{index}"}
+                    %h3= album["desc"]
 
+          .panel-collapse.collapse{id: "collapse_#{index}", class: (index == 0 ? 'in' : '')}
+            .panel-body
+              %ol
+                - album["discs"][0].each_with_index do |music, music_index|
+                  %li.music_link{data: { code: music['id']}, class: (index == 0 && music_index == 0 ? 'active' : '')}
+                    = link_to player_index_path(artist: @artist["desc"], music: music["desc"], code: music['id']) do
+                      %i.icon-music
+                      = music["desc"]
+                      %i.play_btn.icon-play.align-right
+
+
+  .ui-layout-center.scroll-pane
+    .col-md-6
+      %section#player
+        #player_container
+    .col-md-6
+      %section#song_info
+        %header
+      %section#lyrics
+        %article
+          %header
+            %h3
+
+        %p#lyric_text
+
+
+  .ui-layout-east.scroll-pane

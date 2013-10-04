@@ -8,7 +8,24 @@
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
+    .ui-layout-north
+      %header
+        %nav.navbar.navbar-default{role: "navigation"}
+          .navbar-header
+            .navbar-brand
+              = link_to root_path do
+                .logo
+                  %i.icon-play-circle.icon-2x
+                %h1
+                  My Music Player
+          %form.navbar-form.navbar-right{role: "search"}
+            .form-group
+              %input.form-control{placeholder: "Buscar artistas", type: "text", name: "artist"}
+            %button.btn.btn-default{type: "submit"}
+              %i.icon-search
     = yield
+    .ui-layout-south
+      Desenvolvido por MTX
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js", "data-turbolinks-track" => true
     = javascript_include_tag "swfobject/swfobject"
