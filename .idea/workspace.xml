@@ -10,7 +10,7 @@
     <file path="$PROJECT_DIR$/../offvideos/app/views/index/index.html.erb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380817475831" ignored="false" />
     <file path="/player_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380833951277" ignored="false" />
     <file path="/routes.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380832294804" ignored="false" />
-    <file path="/index.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380842597995" ignored="false" />
+    <file path="/index.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380847773335" ignored="false" />
     <file path="/application_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380825262587" ignored="false" />
     <file path="$PROJECT_DIR$/../offvideos/app/controllers/index_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380826003831" ignored="false" />
     <file path="/application.html.erb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380828159053" ignored="false" />
@@ -55,10 +55,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="player.js.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="player.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/player.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="57" selection-start="375" selection-end="383" vertical-scroll-proportion="0.2917342">
+            <state line="12" column="57" selection-start="375" selection-end="383" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -73,10 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/player/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="61" selection-start="0" selection-end="61" vertical-scroll-proportion="-0.0">
+            <state line="21" column="6" selection-start="644" selection-end="700" vertical-scroll-proportion="0.5311973">
               <folding />
             </state>
           </provider>
@@ -115,8 +115,8 @@
         <option value="$PROJECT_DIR$/app/controllers/artist_controller.rb" />
         <option value="$PROJECT_DIR$/config/environments/production.rb" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/views/player/index.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/player.js.coffee" />
+        <option value="$PROJECT_DIR$/app/views/player/index.html.haml" />
       </list>
     </option>
   </component>
@@ -817,7 +817,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="274" column="0" selection-start="7264" selection-end="7264" vertical-scroll-proportion="0.94991654">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -878,13 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="20" selection-start="1057" selection-end="1077" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="43" selection-start="481" selection-end="481" vertical-scroll-proportion="-10.0">
@@ -892,9 +885,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/player/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="61" selection-start="0" selection-end="61" vertical-scroll-proportion="-0.0">
+        <state line="28" column="20" selection-start="1057" selection-end="1077" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -908,7 +901,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/player.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="57" selection-start="375" selection-end="383" vertical-scroll-proportion="0.2917342">
+        <state line="12" column="57" selection-start="375" selection-end="383" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/player/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="6" selection-start="644" selection-end="700" vertical-scroll-proportion="0.5311973">
           <folding />
         </state>
       </provider>
