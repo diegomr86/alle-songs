@@ -10,7 +10,7 @@
     <file path="$PROJECT_DIR$/../offvideos/app/views/index/index.html.erb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380817475831" ignored="false" />
     <file path="/player_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380927124934" ignored="false" />
     <file path="/routes.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380911629249" ignored="false" />
-    <file path="/index.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381007632016" ignored="false" />
+    <file path="/index.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381009022007" ignored="false" />
     <file path="/application_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380825262587" ignored="false" />
     <file path="$PROJECT_DIR$/../offvideos/app/controllers/index_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380826003831" ignored="false" />
     <file path="/application.html.erb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380828159053" ignored="false" />
@@ -92,10 +92,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="0" selection-start="1935" selection-end="1935" vertical-scroll-proportion="-18.75">
+            <state line="62" column="29" selection-start="2086" selection-end="2270" vertical-scroll-proportion="0.63414633">
               <folding />
             </state>
           </provider>
@@ -128,10 +128,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="functions.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="24" selection-start="3435" selection-end="3435" vertical-scroll-proportion="0.12541807">
+            <state line="111" column="24" selection-start="3435" selection-end="3435" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -147,7 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/home/index.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/app_v2.js" />
         <option value="$PROJECT_DIR$/app/controllers/player_controller.rb" />
@@ -160,9 +159,10 @@
         <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home.sass" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/nprogress.js" />
+        <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
       </list>
     </option>
   </component>
@@ -907,13 +907,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/jquery.jscrollpane.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="1765" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/jquery.jscrollpane.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="52" column="67" selection-start="749" selection-end="749" vertical-scroll-proportion="-3.0392158">
@@ -964,30 +957,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="0" selection-start="2133" selection-end="2133" vertical-scroll-proportion="-22.916666">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/ajax.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="0" selection-start="1935" selection-end="1935" vertical-scroll-proportion="-18.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/player/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="32" selection-start="94" selection-end="94" vertical-scroll-proportion="-0.625">
           <folding />
         </state>
       </provider>
@@ -1020,9 +992,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/nprogress.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="7264" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="24" selection-start="3435" selection-end="3435" vertical-scroll-proportion="0.12541807">
+        <state line="111" column="24" selection-start="3435" selection-end="3435" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="0" selection-start="2133" selection-end="2133" vertical-scroll-proportion="-22.916666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/player/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="32" selection-start="94" selection-end="94" vertical-scroll-proportion="-0.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="29" selection-start="2086" selection-end="2270" vertical-scroll-proportion="0.63414633">
           <folding />
         </state>
       </provider>

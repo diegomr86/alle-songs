@@ -51,6 +51,16 @@
             %i.icon-play
           %a.btn.btn-default#forward
             %i.icon-fast-forward
+
+      - if Rails.env.production?
+        %section#merchant
+          :javascript
+            bb_bid = "1690293";
+            bb_lang = "en-US";
+            bb_name = "custom";
+            bb_limit = "7";
+            bb_format = "bbc";
+          = javascript_include_tag "http://static.boo-box.com/javascripts/embed.js"
     .col-md-6
       %section#song_info
         %header
@@ -76,13 +86,3 @@
                   .col-md-10
                     %span= artist['name']
 
-
-    - if Rails.env.production?
-      %section#merchant
-        :javascript
-          bb_bid = "1690293";
-            bb_lang = "en-US";
-            bb_name = "custom";
-            bb_limit = "4";
-            bb_format = "bbm";
-        %script{src: "http://static.boo-box.com/javascripts/embed.js", type: "text/javascript"}
