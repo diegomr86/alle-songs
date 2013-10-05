@@ -23,19 +23,22 @@ loadScrollPane = ->
 
 $ ->
 
-  # videos list
+  $("body").layout applyDefaultStyles: false, closable: false, spacing_open: 0, west__size: .25, east__size: .20
+
   setupList()
 
-
-  $("body").layout applyDefaultStyles: false, closable: false, spacing_open: 0, west__size: .25
+  loadScrollPane()
 
   NProgress.configure({ showSpinner: false, trickle: true });
 
-
-  # create video player
   createPlayer "player_container"
 
-  # autojump func
   setupAutojump()
 
-  loadScrollPane()
+  $("#play_pause").click ->
+    player.playVideo()
+  $("#forward").click ->
+    loadNext true
+  $("#backward").click ->
+    loadPrevious true
+

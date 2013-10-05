@@ -9,8 +9,7 @@
           = @artist["desc"]
         -if @genres
           - @genres.each do |genre|
-            %a
-              %span.label.label-info= genre
+            %span.label.label-info= genre
 
       .clearfix
     #accordion.panel-group.albuns
@@ -44,7 +43,15 @@
     .col-md-6
       %section#player
         #player_container
-    .col-md-5
+        %br
+        .btn-group.btn-group-justified
+          %a.btn.btn-default#backward
+            %i.icon-fast-backward
+          %a.btn.btn-default#play_pause
+            %i.icon-play
+          %a.btn.btn-default#forward
+            %i.icon-fast-forward
+    .col-md-6
       %section#song_info
         %header
       %section#lyrics
@@ -56,15 +63,17 @@
 
     - if @artist['related']
       %section#related_artists
-        %h4 Artistas relacionados
+        %h3
+          %i.icon-group
+          Artistas relacionados
         %ul
           - @artist['related'].each do |artist|
             %li
               .row
                 = link_to artist_index_path(artist: artist['name']) do
-                  .col-md-3
+                  .col-md-2
                     = image_tag "http://s2.vagalume.com#{artist['url']}images/profilew40.jpg"
-                  .col-md-9
+                  .col-md-10
                     %span= artist['name']
 
 

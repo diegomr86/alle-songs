@@ -14,8 +14,8 @@ $ ->
 #  ytplayer.addEventListener "onStateChange", onytplayerStateChange = (newState) ->
 #    alert "Player's new state: " + newState
 
-#  setInterval (->
-#    NProgress.set(((ytplayer.getCurrentTime() * 100) / ytplayer.getDuration()) / 100)
-#  ), 1000
+  setInterval (->
+    NProgress.set(((ytplayer.getCurrentTime() * 100) / ytplayer.getDuration()) / 100)
+  ), 1000
 
 

@@ -90,6 +90,9 @@ a, a:visited
           font-size: 12px
           list-style: none
           border-bottom: 1px solid #ddd
+          &.active
+            .icon-play
+              color: #29d
           &:last-child
             border-bottom: 0
           span
@@ -122,25 +125,30 @@ a, a:visited
 
 .ui-layout-east
   #related_artists
-    h4
-      padding-left: 10px
+    h3
+      margin: 0 0 10px 10px
     ul
       padding-left: 10px
       li
         list-style: none
         overflow: hidden
         height: 31px
-        .col-md-3
+        .col-md-2
           margin: 0
-        .col-md-9
+        .col-md-10
           padding-left: 10px
           span
             margin: 0
             line-height: 26px
             font-size: 120%
 
-%footer
+
+.ui-layout-south
   border-top: 1px solid #ddd
+  .developed_by
+    a
+      color: #2299dd
+
 
 .ui-menu
   .ui-menu-item

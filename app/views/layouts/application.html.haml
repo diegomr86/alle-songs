@@ -5,9 +5,12 @@
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", media: "all"
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css", media: "all"
     = stylesheet_link_tag    "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", media: "all"
-
-
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "jquery"
+    = javascript_include_tag "jquery_ujs"
+    = javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
+    = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
+    = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
     .ui-layout-north
@@ -27,9 +30,15 @@
               %i.icon-search
     = yield
     .ui-layout-south
-      Desenvolvido por MTX
-    = javascript_include_tag "jquery"
-    = javascript_include_tag "jquery_ujs"
-    = javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
-    = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+      %footer
+        .copy.pull-left
+          Alle Songs
+          %sup
+            &reg;
+          |
+          Music Player
+        .developed_by.pull-right
+          Desenvolvido por
+          = link_to "http://www.mtxwebart.com", target: "_blank" do
+            %strong MTX
+

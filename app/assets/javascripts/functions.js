@@ -160,10 +160,18 @@ function displayVideoMeta(el, data) {
             $('#lyric_text').text(lyric)
         }
     }
+
+    setInterval(function(){
+        NProgress.set(((player.getCurrentTime() * 100) / player.getDuration()) / 100)
+    }, 1000);
 }
 
 function loadVideo(el) {
+
+    NProgress.start();
+
     $.getJSON(el.find('a').attr('href'), function( data ) {
+        NProgress.done();
         if (data.video) {
             displayVideoMeta(el, data);
             player.loadVideoById(data.video.unique_id);
@@ -176,12 +184,50 @@ function loadVideo(el) {
             el.attr('title', 'Song not found')
             loadVideo(nextItem(el));
         }
+        NProgress.remove();
     });
 }
 
 function nextItem(current) {
     var list = $('.albuns li.music_link');
     return list.eq( list.index(current) + 1 );
+}
+
+function previousItem(current) {
+    var list = $('.albuns li.music_link');
+    if (list.index(current) > 0) {
+        return list.eq( list.index(current) - 1 );
+    }
+}
+
+// load previous video in the list
+function loadPrevious(ignoreAutojump) {
+    ignoreAutojump = typeof ignoreAutojump !== 'undefined' ? ignoreAutojump : false;
+
+    if ($('a#ajlink').hasClass('on') && ignoreAutojump == false) {
+        // jump to related artist
+        var artists = $('ul#related_list li a');
+        var n = Math.floor(Math.random()*artists.length);
+        $(artists[n]).addClass('active');
+        document.location.href = $(artists[n]).attr('href') + "#vid-random";
+    } else {
+        // go to previous video in list
+        if ($('.albuns li.music_link').length > 1) {
+            var current = $('.albuns li.music_link.active');
+            if (current) {
+                previous = previousItem(current)
+                console.log(previous.find('a').attr('href'))
+                if (previous.find('a').attr('href')) {
+                    loadVideo(previous)
+
+                } else {
+                    loadVideo($('.albuns li.music_link:first'));
+                }
+
+            }
+        }
+
+    }
 }
 
 // load next video in the list
