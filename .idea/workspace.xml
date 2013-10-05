@@ -4,18 +4,18 @@
     <list default="true" id="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" name="Default" comment="" />
     <ignored path="music.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/a.dummy" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380998702668" ignored="false" />
+    <file path="/a.dummy" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380999385884" ignored="false" />
     <file path="/Gemfile" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380817438060" ignored="false" />
     <file path="/Dummy.txt" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380915444993" ignored="false" />
     <file path="$PROJECT_DIR$/../offvideos/app/views/index/index.html.erb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380817475831" ignored="false" />
     <file path="/player_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380927124934" ignored="false" />
     <file path="/routes.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380911629249" ignored="false" />
-    <file path="/index.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380999019525" ignored="false" />
+    <file path="/index.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381000633359" ignored="false" />
     <file path="/application_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380825262587" ignored="false" />
     <file path="$PROJECT_DIR$/../offvideos/app/controllers/index_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380826003831" ignored="false" />
     <file path="/application.html.erb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380828159053" ignored="false" />
     <file path="$USER_HOME$/winmoon/Clicou-Pizza/app/assets/javascripts/application.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380831096888" ignored="false" />
-    <file path="/application.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380997907734" ignored="false" />
+    <file path="/application.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380999337620" ignored="false" />
     <file path="/show.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380831608676" ignored="false" />
     <file path="/artist_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380986155146" ignored="false" />
     <file path="/player.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380922021781" ignored="false" />
@@ -23,14 +23,14 @@
     <file path="$USER_HOME$/winmoon/Clicou-Pizza/config/environments/production.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380842265717" ignored="false" />
     <file path="/production.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380842281795" ignored="false" />
     <file path="/application.css" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380895909628" ignored="false" />
-    <file path="/application.sass" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380998572556" ignored="false" />
+    <file path="/application.sass" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381000806333" ignored="false" />
     <file path="/ajax.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380898851392" ignored="false" />
     <file path="/home_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380913155676" ignored="false" />
     <file path="/home.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380985051621" ignored="false" />
     <file path="/home.sass" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380983403123" ignored="false" />
     <file path="/functions.js" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380997784749" ignored="false" />
     <file path="/home.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380984935841" ignored="false" />
-    <file path="$PROJECT_DIR$/log/development.log" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380985519364" ignored="false" />
+    <file path="$PROJECT_DIR$/log/development.log" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380999477663" ignored="false" />
     <file path="/*.regexp" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380985636590" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,43 +59,16 @@
       <file leaf-file-name="application.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="69" selection-start="838" selection-end="838" vertical-scroll-proportion="0.0">
+            <state line="39" column="0" selection-start="1184" selection-end="1184" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="159" column="67" selection-start="5083" selection-end="5083" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="16" selection-start="1059" selection-end="1059" vertical-scroll-proportion="-15.416667">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/home.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="20" selection-start="1056" selection-end="1056" vertical-scroll-proportion="-12.916667">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="13" selection-start="1959" selection-end="1959" vertical-scroll-proportion="0.5714286">
+            <state line="52" column="38" selection-start="1891" selection-end="1891" vertical-scroll-proportion="-7.9166665">
               <folding />
             </state>
           </provider>
@@ -104,25 +77,16 @@
       <file leaf-file-name="application.sass" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="679" selection-end="679" vertical-scroll-proportion="0.0">
+            <state line="132" column="0" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery.jscrollpane.min.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/jquery.jscrollpane.min.js">
+      <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="1765" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery.jscrollpane.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/jquery.jscrollpane.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="67" selection-start="749" selection-end="749" vertical-scroll-proportion="-3.0392158">
+            <state line="149" column="25" selection-start="4659" selection-end="4659" vertical-scroll-proportion="0.3602585">
               <folding />
             </state>
           </provider>
@@ -149,11 +113,11 @@
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/artist_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home.sass" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/jquery.jscrollpane.css" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
       </list>
     </option>
   </component>
@@ -346,6 +310,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="music" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="music" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="concerns" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -904,34 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/home.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="568" selection-end="586" vertical-scroll-proportion="0.2907916">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/suggest.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="4" selection-start="665" selection-end="665" vertical-scroll-proportion="0.6818182">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="679" selection-end="679" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="67" selection-start="5083" selection-end="5083" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/jquery.jscrollpane.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="1765" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0">
@@ -946,30 +904,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/home.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/suggest.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="20" selection-start="1056" selection-end="1056" vertical-scroll-proportion="-12.916667">
+        <state line="27" column="127" selection-start="733" selection-end="788" vertical-scroll-proportion="0.67725754">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="16" selection-start="1059" selection-end="1059" vertical-scroll-proportion="-15.416667">
+        <state line="26" column="16" selection-start="1059" selection-end="1059" vertical-scroll-proportion="0.62184876">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/home.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="69" selection-start="838" selection-end="838" vertical-scroll-proportion="0.0">
+        <state line="29" column="20" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.52100843">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/home.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="568" selection-end="586" vertical-scroll-proportion="0.2907916">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="13" selection-start="1959" selection-end="1959" vertical-scroll-proportion="0.5714286">
+        <state line="52" column="38" selection-start="1891" selection-end="1891" vertical-scroll-proportion="-7.9166665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="0" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="0" selection-start="1184" selection-end="1184" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="149" column="25" selection-start="4659" selection-end="4659" vertical-scroll-proportion="0.3602585">
           <folding />
         </state>
       </provider>

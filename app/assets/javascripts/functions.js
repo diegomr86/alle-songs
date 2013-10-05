@@ -104,7 +104,7 @@ function onPlayerReady(event) {
 
 // The API calls this function when the player's state changes.
 function onPlayerStateChange(event) {
-    console.log('player event happened: ' + event.data);
+
     if (event.data == YT.PlayerState.ENDED) {
         loadNext();
     }
@@ -147,7 +147,6 @@ function displayVideoMeta(el, data) {
             lyric = ''
             title = data.info.art.name;
             subtitle = el.find('span').text();
-            console.log(data.info.mus[0].name)
             if (data.info.mus && data.info.type == "exact") {
                 lyric = data.info.mus[0].text;
             } else {

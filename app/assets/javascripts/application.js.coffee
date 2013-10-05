@@ -19,7 +19,7 @@
 #= require suggest
 
 loadScrollPane = ->
-  $('.scroll-pane').jScrollPane showArrows: true, mouseWheelSpeed: 20 if $('.ui-layout-center')
+  $('.scroll-pane').jScrollPane showArrows: true, mouseWheelSpeed: 20, autoReinitialise: true if $('.ui-layout-center')
 
 $ ->
 
@@ -37,8 +37,5 @@ $ ->
 
   # autojump func
   setupAutojump()
-
-  $("#accordion").on "shown.bs.collapse", ->
-    loadScrollPane
 
   loadScrollPane()
