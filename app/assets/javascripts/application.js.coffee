@@ -19,7 +19,7 @@
 #= require suggest
 
 loadScrollPane = ->
-  $('.scroll-pane').jScrollPane showArrows: true, mouseWheelSpeed: 20, autoReinitialise: true if $('.ui-layout-center')
+  $('.scroll-pane').jScrollPane mouseWheelSpeed: 20, autoReinitialise: true if $('.ui-layout-center')
 
 $ ->
 

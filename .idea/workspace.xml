@@ -56,10 +56,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.js.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application.js.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="1162" selection-end="1162" vertical-scroll-proportion="0.0">
+            <state line="21" column="32" selection-start="801" selection-end="801" vertical-scroll-proportion="0.37625417">
               <folding />
             </state>
           </provider>
@@ -92,10 +92,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="21" selection-start="2086" selection-end="2086" vertical-scroll-proportion="0.24216028">
+            <state line="56" column="21" selection-start="2086" selection-end="2086" vertical-scroll-proportion="-5.7916665">
               <folding />
             </state>
           </provider>
@@ -159,10 +159,10 @@
         <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home.sass" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/nprogress.js" />
         <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.coffee" />
       </list>
     </option>
   </component>
@@ -985,13 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1162" selection-end="1162" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/nprogress.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="7264" vertical-scroll-proportion="0.0">
@@ -1024,7 +1017,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="21" selection-start="2086" selection-end="2086" vertical-scroll-proportion="0.24216028">
+        <state line="56" column="21" selection-start="2086" selection-end="2086" vertical-scroll-proportion="-5.7916665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="32" selection-start="801" selection-end="801" vertical-scroll-proportion="0.37625417">
           <folding />
         </state>
       </provider>
