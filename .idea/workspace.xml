@@ -10,7 +10,7 @@
     <file path="$PROJECT_DIR$/../offvideos/app/views/index/index.html.erb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380817475831" ignored="false" />
     <file path="/player_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380927124934" ignored="false" />
     <file path="/routes.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380911629249" ignored="false" />
-    <file path="/index.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381000633359" ignored="false" />
+    <file path="/index.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381002595118" ignored="false" />
     <file path="/application_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380825262587" ignored="false" />
     <file path="$PROJECT_DIR$/../offvideos/app/controllers/index_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380826003831" ignored="false" />
     <file path="/application.html.erb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380828159053" ignored="false" />
@@ -65,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="38" selection-start="1891" selection-end="1891" vertical-scroll-proportion="-7.9166665">
+            <state line="76" column="25" selection-start="2589" selection-end="2589" vertical-scroll-proportion="0.79831934">
               <folding />
             </state>
           </provider>
@@ -83,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="functions.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="25" selection-start="4659" selection-end="4659" vertical-scroll-proportion="0.3602585">
+            <state line="149" column="25" selection-start="4659" selection-end="4659" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -115,9 +115,9 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home.sass" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/jquery.jscrollpane.css" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.coffee" />
-        <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
+        <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
       </list>
     </option>
   </component>
@@ -932,16 +932,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="38" selection-start="1891" selection-end="1891" vertical-scroll-proportion="-7.9166665">
+        <state line="132" column="0" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="0" selection-start="2755" selection-end="2755" vertical-scroll-proportion="0.0">
+        <state line="149" column="25" selection-start="4659" selection-end="4659" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -953,9 +953,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
+    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="25" selection-start="4659" selection-end="4659" vertical-scroll-proportion="0.3602585">
+        <state line="76" column="25" selection-start="2589" selection-end="2589" vertical-scroll-proportion="0.79831934">
           <folding />
         </state>
       </provider>
