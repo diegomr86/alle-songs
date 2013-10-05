@@ -105,7 +105,21 @@ function onPlayerReady(event) {
 // The API calls this function when the player's state changes.
 function onPlayerStateChange(event) {
 
+    console.log(event.data)
+    if (event.data == YT.PlayerState.PLAYING) {
+        $('#play_pause i').removeClass('icon-play').addClass('icon-pause');
+        $('#play_pause').unbind().click(function(){
+            player.pauseVideo();
+        });
+    } else {
+        $('#play_pause i').removeClass('icon-pause').addClass('icon-play');
+        $('#play_pause').unbind().click(function(){
+            player.playVideo();
+        });
+    }
+
     if (event.data == YT.PlayerState.ENDED) {
+
         loadNext();
     }
 }

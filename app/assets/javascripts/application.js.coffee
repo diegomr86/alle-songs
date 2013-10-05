@@ -35,8 +35,7 @@ $ ->
 
   setupAutojump()
 
-  $("#play_pause").click ->
-    player.playVideo()
+
   $("#forward").click ->
     loadNext true
   $("#backward").click ->
