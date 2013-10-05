@@ -15,6 +15,11 @@
 @import "layout-default.css"
 @import "jquery.jscrollpane"
 
+a, a:visited
+  color: #444
+  &:hover
+    color: #000
+
 .ui-layout-north
   padding: 0
   header
@@ -31,6 +36,8 @@
           font-size: 18px
           float: left
           line-height: 47px
+    #suggest_input
+      width: 300px
 .ui-layout-west
   padding-right: 10px
   margin: 0 10px
@@ -58,11 +65,14 @@
       > .panel-heading
         border: none
         background: none
+      .panel-body
+        padding: 0
+        border-top: 0
     .album
       .cover
         img
           width: 60px
-          height: 100%
+          height: 60px
       .info
         height: 60px
         overflow: hidden
@@ -73,14 +83,22 @@
         a
           line-height: 60px
       ol
-        padding-left: 0
-
+        padding-left: 78px
+        margin-bottom: 0
         li.music_link
           line-height: 3
           font-size: 12px
           list-style: none
           border-bottom: 1px solid #ddd
-
+          &:last-child
+            border-bottom: 0
+          span
+            margin-left: 10px
+          .icon-play-circle.action
+            display: none
+          &:not(.active):hover
+            .icon-play-circle.action
+              display: inline
     h3
       font-size: 100%
       margin: 0
@@ -103,3 +121,11 @@
     white-space: pre
 %footer
   border-top: 1px solid #ddd
+
+.ui-menu
+  .ui-menu-item
+    height: 40px
+    a
+      line-height: 40px
+    strong
+      margin-left: 10px

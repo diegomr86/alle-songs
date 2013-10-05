@@ -4,6 +4,7 @@
     %title Alle Songs | Music Player
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", media: "all"
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css", media: "all"
+    = stylesheet_link_tag    "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", media: "all"
 
     = stylesheet_link_tag    "home", media: "all", "data-turbolinks-track" => true
     = csrf_meta_tags
@@ -19,7 +20,7 @@
         .col-md-4.col-md-offset-4
           %form.form-inline{role: "search", action: artist_index_path}
             .form-group
-              %input.form-control{placeholder: "Buscar artistas", type: "text", name: "artist", required: ''}
+              %input#suggest_input.form-control{placeholder: "Buscar artistas", type: "text", name: "artist", required: ''}
             .form-group
               %button.btn.btn-default{type: "submit"}
                 %i.icon-search
@@ -34,5 +35,8 @@
         |
         Music Player
         Desenvolvido por MTX
-    = javascript_include_tag "home", "data-turbolinks-track" => true
-    = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js", "data-turbolinks-track" => true
+    = javascript_include_tag "jquery"
+    = javascript_include_tag "jquery_ujs"
+    = javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
+    = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
+    = javascript_include_tag "home"

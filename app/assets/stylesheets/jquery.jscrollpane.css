@@ -61,7 +61,7 @@
 
 .jspDrag
 {
-    background: #bbd;
+    background: #555;
     position: relative;
     top: 0;
     left: 0;
@@ -131,7 +131,7 @@
 
 .jspDrag
 {
-    background:  #bbd;
+    background:  #555;
 
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;

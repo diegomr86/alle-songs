@@ -73,25 +73,26 @@ var player;
 function onYouTubeIframeAPIReady() {
 
     $.getJSON( $('.albuns li.music_link.active a').attr('href'), function( data ) {
-        console.log(data)
-        player = new YT.Player('player_container', {
-            height: '350',
-            width: '100%',
-            videoId: data.video.unique_id,
-            playerVars: {
-                'autoplay': 1,
-                'iv_load_policy': 3,
-                'rel': 0,
-                'showinfo': 1
-            },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange,
-                'onError': onPlayerError
-            }
-        });
+        if (data.video) {
+            player = new YT.Player('player_container', {
+                height: '350',
+                width: '100%',
+                videoId: data.video.unique_id,
+                playerVars: {
+                    'autoplay': 1,
+                    'iv_load_policy': 3,
+                    'rel': 0,
+                    'showinfo': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange,
+                    'onError': onPlayerError
+                }
+            });
 
-        displayVideoMeta($('.albuns li.music_link.active'), data);
+            displayVideoMeta($('.albuns li.music_link.active'), data);
+        }
     });
 }
 // The API will call this function when the video player is ready.
@@ -132,42 +133,56 @@ function displayVideoMeta(el, data) {
 
     if (data != 'undefined') {
         $('.albuns li.music_link').removeClass('active');
-        $('.albuns li.music_link a .play_btn').removeClass('icon-play-circle')
-        $('.albuns li.music_link a .play_btn').addClass('icon-play')
-        el.find('a .play_btn').removeClass('icon-play');
-        el.find('a .play_btn').addClass('icon-play-circle');
+        $('.albuns li.music_link a i.status').removeClass('icon-play')
+        $('.albuns li.music_link a i.status:not(.icon-remove)').addClass('icon-music')
+        $('.albuns .panel-collapse').removeClass('in');
+
+        el.find('a i.status').removeClass('icon-music');
+        el.find('a i.status:not(.icon-remove)').addClass('icon-play');
         el.addClass('active');
-
-
+        $(el.data('target')).addClass('in');
 
         if (data.info.art) {
 
+            lyric = ''
             title = data.info.art.name;
-            if (data.info.mus)
-                title += ' | '+ data.info.mus[0].name;
+            subtitle = el.find('span').text();
+            console.log(data.info.mus[0].name)
+            if (data.info.mus && data.info.type == "exact") {
+                lyric = data.info.mus[0].text;
+            } else {
+                lyric = "Lyrics not found";
+            }
 
-            $('title').text(data.info.art.name + ' | '+ data.info.mus[0].name);
+            title += ' | ' + el.find('span').text();
 
-            $('#lyrics header h3').text(title);
-            $('#lyric_text').text(data.info.mus[0].text)
+            $('title').text(title);
+            $('#lyrics header h3').html("<i class='icon-play'></i> "+title);
+            $('#lyric_text').text(lyric)
         }
     }
 }
 
 function loadVideo(el) {
     $.getJSON(el.find('a').attr('href'), function( data ) {
-        displayVideoMeta(el, data);
-        player.loadVideoById(data.video.unique_id);
-        if (is_iPhone) {
-            window.scrollTo(0, 0);
+        if (data.video) {
+            displayVideoMeta(el, data);
+            player.loadVideoById(data.video.unique_id);
+            if (is_iPhone) {
+                window.scrollTo(0, 0);
+            }
+        } else {
+            el.find('a i.status').removeClass('icon-play');
+            el.find('a i.status').addClass('icon-remove');
+            el.attr('title', 'Song not found')
+            loadVideo(nextItem(el));
         }
     });
 }
 
 function nextItem(current) {
     var list = $('.albuns li.music_link');
-    console.log(current.index($('.albuns li.music_link')))
-    return list.eq( current.index(list) + 1 );
+    return list.eq( list.index(current) + 1 );
 }
 
 // load next video in the list
@@ -211,7 +226,7 @@ function getRandomVideoId() {
 
 
 /* create events on video list elements */
-function setupList(container) {
+function setupList() {
     $('.albuns li.music_link a').on("click", function(e) {
         e.preventDefault();
         loadVideo($(this).parent());

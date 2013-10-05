@@ -14,14 +14,24 @@ class ArtistController < ApplicationController
       @url = s["art"]["url"]
       @artist = JSON.parse(open("#{@url}/index.js").read)["artist"]
       @discography = JSON.parse(open("#{@url}/discografia/index.js").read)["discography"]
-      @genres = @artist['genre'].collect{|g| g['name']}
+      if @discography['item'].blank?
+        @discography['item'] = [{
+                                    'desc' => @artist['desc'],
+                                    'cover' => @artist['pic_medium'],
+                                    'discs' => [
+                                        @artist['lyrics']['item']
+                                    ]
+                                }]
+      end
+      @genres = @artist['genre'].collect{|g| g['name']} if @artist['genre']
     else
-      @artists = JSON.parse(open("http://www.vagalume.com.br/api/rank.php?type=art&period=month&scope=translations&limit=200").read)['art']['month']['all']
+      redirect_to root_path, notice: 'Nenhuma musica encontrada para este artista'
     end
+
 
     respond_to do |format|
       format.html
-      format.json {render json: @artist}
+      format.json {render json: [@discography, @artist]}
       format.xml {render :xml => @artist}
     end
   end

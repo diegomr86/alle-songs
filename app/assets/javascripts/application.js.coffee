@@ -10,35 +10,26 @@
 # WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 # GO AFTER THE REQUIRES BELOW.
 #
-#= require jquery
-#= require jquery_ujs
+#= require swfobject/swfobject
 #= require jquery.layout
 #= require nprogress
 #= require jquery.mousewheel
 #= require jquery.jscrollpane.min
 #= require functions
+#= require suggest
 
 loadScrollPane = ->
-  $('.scroll-pane').jScrollPane showArrows: true, mouseWheelSpeed: 10 if $('.ui-layout-center')
+  $('.scroll-pane').jScrollPane showArrows: true, mouseWheelSpeed: 20 if $('.ui-layout-center')
 
 $ ->
 
+  # videos list
+  setupList()
+
+
   $("body").layout applyDefaultStyles: false, closable: false, spacing_open: 0, west__size: .25
 
-  loadScrollPane()
-
   NProgress.configure({ showSpinner: false, trickle: true });
-
-  $('a[data-remote]').on( 'ajax:before', () ->
-    $($(this).attr('data-target')).html "<i class='icon-spinner icon-spin icon-large icon-5'></i>"
-
-  ).on 'ajax:complete', (xhr, status) ->
-    $($(this).attr('data-target')).hide()
-    $($(this).attr('data-target')).html status.responseText
-    $($(this).attr('data-target')).fadeIn 1000
-    loadScrollPane()
-
-  $('a[data-remote][data-autoload="true"]').click()
 
 
   # create video player
@@ -47,5 +38,7 @@ $ ->
   # autojump func
   setupAutojump()
 
-  # videos list
-  setupList "video_list"
+  $("#accordion").on "shown.bs.collapse", ->
+    loadScrollPane
+
+  loadScrollPane()

@@ -7,9 +7,10 @@
       .info
         %h2
           = @artist["desc"]
-        - @genres.each do |genre|
-          %a
-            %span.label.label-info= genre
+        -if @genres
+          - @genres.each do |genre|
+            %a
+              %span.label.label-info= genre
 
       .clearfix
     #accordion.panel-group.albuns
@@ -29,33 +30,40 @@
             .panel-body
               %ol
                 - album["discs"][0].each_with_index do |music, music_index|
-                  %li.music_link{data: { code: music['id']}, class: (index == 0 && music_index == 0 ? 'active' : '')}
+                  %li.music_link{ data: { target: "#collapse_#{index}" }, class: (index == 0 && music_index == 0 ? 'active' : '') }
                     = link_to player_index_path(artist: @artist["desc"], music: music["desc"], code: music['id']) do
-                      %i.icon-music
-                      = music["desc"]
-                      %i.play_btn.icon-play.align-right
+                      .row
+                        .col-md-10
+                          %i.status.icon-music
+                          %span= music["desc"]
+                        .col-md-2.text-right
+                          %i.action.icon-play-circle.align-right
 
 
   .ui-layout-center.scroll-pane
-    .col-md-6
-      %section#player
-        #player_container
-    .col-md-6
-      %section#song_info
-        %header
-      %section#lyrics
-        %article
+    .row
+      .col-md-6
+        %section#player
+          #player_container
+      .col-md-6
+        %section#song_info
           %header
-            %h3
+        %section#lyrics
+          %article
+            %header
+              %h3
 
-        %p#lyric_text
-
+          %p#lyric_text
+    .clearfix
 
   .ui-layout-east.scroll-pane
-    :javascript
-      bb_bid = "1690293";
-      	bb_lang = "en-US";
-      	bb_name = "custom";
-      	bb_limit = "5";
-      	bb_format = "bbh";
-    %script{src: "http://static.boo-box.com/javascripts/embed.js", type: "text/javascript"}
+
+    - if Rails.env.production?
+      #merchant
+        :javascript
+          bb_bid = "1690293";
+            bb_lang = "en-US";
+            bb_name = "custom";
+            bb_limit = "5";
+            bb_format = "bbh";
+        %script{src: "http://static.boo-box.com/javascripts/embed.js", type: "text/javascript"}
