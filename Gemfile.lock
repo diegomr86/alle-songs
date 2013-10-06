@@ -38,6 +38,7 @@ GEM
     coffee-script-source (1.6.3)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
+    dynamic_sitemaps (2.0.0)
     erubis (2.7.0)
     excon (0.26.0)
     execjs (2.0.2)
@@ -153,6 +154,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  dynamic_sitemaps
   haml (~> 4.0.3)
   haml-rails (~> 0.4)
   httpclient (~> 2.3.4.1)
