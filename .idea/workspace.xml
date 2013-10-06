@@ -83,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.sass" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application.sass" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="23" selection-start="1527" selection-end="1527" vertical-scroll-proportion="0.0">
+            <state line="37" column="21" selection-start="658" selection-end="658" vertical-scroll-proportion="0.45967743">
               <folding />
             </state>
           </provider>
@@ -101,10 +101,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="2" selection-start="312" selection-end="312" vertical-scroll-proportion="0.32718122">
+            <state line="13" column="2" selection-start="312" selection-end="312" vertical-scroll-proportion="-8.125">
               <folding />
             </state>
           </provider>
@@ -138,8 +138,8 @@
         <option value="$PROJECT_DIR$/app/views/layouts/_analytics.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
         <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
       </list>
     </option>
   </component>
@@ -959,16 +959,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
+    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="23" selection-start="1527" selection-end="1527" vertical-scroll-proportion="0.0">
+        <state line="13" column="2" selection-start="312" selection-end="312" vertical-scroll-proportion="-8.125">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="2" selection-start="312" selection-end="312" vertical-scroll-proportion="0.32718122">
+        <state line="37" column="21" selection-start="658" selection-end="658" vertical-scroll-proportion="0.45967743">
           <folding />
         </state>
       </provider>
