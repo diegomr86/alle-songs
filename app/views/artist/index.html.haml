@@ -52,6 +52,16 @@
           %a.btn.btn-default#forward
             %i.icon-fast-forward
 
+      %section#social
+        %h3
+          %i.icon-share
+          Compartilhe o seu player
+        %br
+        .row
+          .twitter.col-md-3
+            %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "#{@artist['desc']} - discografia completa. Ouça essa e outras discografias completas no Alle Songs!", data: { lang: "en", size: "large", count: "none"}} Tweet
+          .facebook.col-md-9
+            .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_index_url(artist: @artist['desc']), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
       - if Rails.env.production?
         %section#merchant
           %br
@@ -89,12 +99,3 @@
                   .col-md-9
                     %span= artist['name']
 
-      %section#social
-        %h3
-          %i.icon-share
-          Compartilhe o seu player
-        %br
-        .twitter
-          %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "#{@artist['desc']} - discografia completa. Ouça essa e outras discografias completas no Alle Songs!", data: { lang: "en", size: "large", count: "none"}} Tweet
-        .facebook
-          .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_index_url(artist: @artist['desc']), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}

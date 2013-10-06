@@ -10,7 +10,7 @@
     <file path="$PROJECT_DIR$/../offvideos/app/views/index/index.html.erb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380817475831" ignored="false" />
     <file path="/player_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380927124934" ignored="false" />
     <file path="/routes.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380911629249" ignored="false" />
-    <file path="/index.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381076242647" ignored="false" />
+    <file path="/index.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381076672715" ignored="false" />
     <file path="/application_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381075478664" ignored="false" />
     <file path="$PROJECT_DIR$/../offvideos/app/controllers/index_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380826003831" ignored="false" />
     <file path="/application.html.erb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380828159053" ignored="false" />
@@ -59,19 +59,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="178" selection-start="3581" selection-end="3622" vertical-scroll-proportion="-20.541666">
+            <state line="62" column="28" selection-start="2446" selection-end="2446" vertical-scroll-proportion="0.45969126">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_head.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_head.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="58" selection-start="614" selection-end="614" vertical-scroll-proportion="0.22651006">
+            <state line="9" column="58" selection-start="614" selection-end="614" vertical-scroll-proportion="-5.625">
               <folding />
             </state>
           </provider>
@@ -105,8 +105,8 @@
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/_twitter.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/_head.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
       </list>
     </option>
   </component>
@@ -933,16 +933,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="178" selection-start="3581" selection-end="3622" vertical-scroll-proportion="-20.541666">
+        <state line="9" column="58" selection-start="614" selection-end="614" vertical-scroll-proportion="-5.625">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="58" selection-start="614" selection-end="614" vertical-scroll-proportion="0.22651006">
+        <state line="62" column="28" selection-start="2446" selection-end="2446" vertical-scroll-proportion="0.45969126">
           <folding />
         </state>
       </provider>
