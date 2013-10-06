@@ -2,14 +2,15 @@
   - autoload = true
   .ui-layout-west.scroll-pane
     .artist
-      .cover
-        = image_tag @img_url + @artist["pic_medium"]
-      .info
-        %h2
-          = @artist["desc"]
-        -if @genres
-          - @genres.each do |genre|
-            %span.label.label-info= genre
+      .row
+        .col-md-3.cover
+          = image_tag @img_url + @artist["pic_medium"]
+        .col-md-9.info
+          %h2
+            = @artist["desc"]
+          -if @genres
+            - @genres.each do |genre|
+              %span.label.label-info= genre
 
       .clearfix
     #accordion.panel-group.albuns
@@ -21,7 +22,7 @@
                 .col-md-2.cover
                   %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse_#{index}"}
                     = image_tag @img_url + album["cover"]
-                .col-md-9.info
+                .col-md-10.info
                   %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse_#{index}"}
                     %h3= album["desc"]
 
@@ -32,11 +33,11 @@
                   %li.music_link{ data: { target: "#collapse_#{index}" }, class: (index == 0 && music_index == 0 ? 'active' : '') }
                     = link_to player_index_path(artist: @artist["desc"], music: music["desc"], code: music['id']) do
                       .row
+                        .col-md-2
+                          &nbsp;
                         .col-md-10
                           %i.status.icon-music
                           %span= music["desc"]
-                        .col-md-2.text-right
-                          %i.action.icon-play-circle.align-right
 
 
   .ui-layout-center.scroll-pane
@@ -80,10 +81,10 @@
         %ul
           - @artist['related'].each do |artist|
             %li
-              .row
-                = link_to artist_index_path(artist: artist['name']) do
+              = link_to artist_index_path(artist: artist['name']) do
+                .row
                   .col-md-2
                     = image_tag "http://s2.vagalume.com#{artist['url']}images/profilew40.jpg"
-                  .col-md-10
+                  .col-md-9
                     %span= artist['name']
 
