@@ -1,11 +1,10 @@
 !!!
 %html
   %head
-    %title Alle Songs | Online Music Player
+    = render 'layouts/head'
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", media: "all"
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css", media: "all"
     = stylesheet_link_tag    "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", media: "all"
-
     = stylesheet_link_tag    "home", media: "all", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
