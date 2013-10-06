@@ -91,4 +91,4 @@
         .twitter
           %a{href: "https://twitter.com/share", class: "twitter-share-button", data: { lang: "en", size: "large", count: "none", text: @page_description}} Tweet
         .facebook
-          .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_index_path(artist: @artist['name']), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
+          .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_index_url(artist: @artist['name']), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
