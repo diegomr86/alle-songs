@@ -2,15 +2,14 @@
   - autoload = true
   .ui-layout-west.scroll-pane
     .artist
-      .row
-        .col-md-3.cover
-          = image_tag @img_url + @artist["pic_medium"]
-        .col-md-9.info
-          %h2
-            = @artist["desc"]
-          -if @genres
-            - @genres.each do |genre|
-              %span.label.label-info= genre
+      .col-md-3.cover
+        = image_tag @img_url + @artist["pic_medium"]
+      .col-md-9.info
+        %h2
+          = @artist["desc"]
+        -if @genres
+          - @genres.each do |genre|
+            %span.label.label-info= genre
 
       .clearfix
     #accordion.panel-group.albuns
@@ -32,13 +31,13 @@
                 - album["discs"][0].each_with_index do |music, music_index|
                   %li.music_link{ data: { target: "#collapse_#{index}" }, class: (index == 0 && music_index == 0 ? 'active' : '') }
                     = link_to player_index_path(artist: @artist["desc"], music: music["desc"], code: music['id']) do
-                      .row
+                      .song
                         .col-md-2
                           &nbsp;
                         .col-md-10
                           %i.status.icon-music
                           %span= music["desc"]
-
+                        .clearfix
 
   .ui-layout-center.scroll-pane
     .col-md-6
