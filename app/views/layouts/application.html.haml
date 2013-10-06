@@ -2,7 +2,6 @@
 %html
   %head        
     = render 'layouts/head'
-
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", media: "all"
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css", media: "all"
     = stylesheet_link_tag    "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", media: "all"
@@ -12,10 +11,9 @@
     = javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
     = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
     = javascript_include_tag "application", "data-turbolinks-track" => true    
-    
-
     = csrf_meta_tags
   %body
+    = render 'layouts/facebook'
     .ui-layout-north
       %header
         %nav.navbar.navbar-default{role: "navigation"}
@@ -31,6 +29,7 @@
               %input#suggest_input.form-control{placeholder: "Buscar artistas", type: "text", name: "artist"}
             %button.btn.btn-default{type: "submit"}
               %i.icon-search
+
     = yield
     .ui-layout-south
       %footer

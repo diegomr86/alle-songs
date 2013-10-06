@@ -87,3 +87,5 @@
                   .col-md-9
                     %span= artist['name']
 
+      %section
+        .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "30px", "data-width" => "200px", "data-href" => artist_index_path(artist: @artist['name']), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
