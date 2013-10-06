@@ -1,10 +1,10 @@
-- title = @artist.present? ? "#{@artist['desc']} | Online Music Player" : "Alle Songs | Online Music Player"
-- description = "#{title} | Ouça agora as discografias completas dos seus artistas preferidos online gratis!"
-%title= title
-%meta{content: description, name: "description"}
+- @page_title = @artist.present? ? "#{@artist['desc']} | Online Music Player" : "Alle Songs | Online Music Player"
+- @page_description = "#{@page_title} | Ouça agora as discografias completas dos seus artistas preferidos online gratis!"
+%title= @page_title
+%meta{content: @page_description, name: "description"}
 %meta{content: "letra, player online, discografia", name: "keywords"}
 %meta{content: "website", property: "og:type"}
 %meta{content: "Alle Songs", property: "og:site_name"}
-%meta{content: title, property: "og:title"}
+%meta{content: @page_title, property: "og:title"}
 %meta{content: "http://www.allesongs.com", property: "og:url"}
-%meta{content: description, property: "og:description"}
+%meta{content: @page_description, property: "og:description"}
