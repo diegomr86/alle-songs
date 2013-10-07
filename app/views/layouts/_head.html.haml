@@ -8,6 +8,7 @@
 %meta{content: @page_title, property: "og:title"}
 - if @artist.present?
   %meta{content: artist_index_url(artist: @artist['desc']), property: "og:url"}
+  %meta{content: "http://s2.vagalume.com#{@artist["pic_medium"]}" , property: "og:image"}
 - else
   %meta{content: root_url, property: "og:url"}
 
