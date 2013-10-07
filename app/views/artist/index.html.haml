@@ -62,10 +62,6 @@
             %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "#{@artist['desc']} - discografia completa. Ouça essa e outras discografias completas no Alle Songs!", data: { lang: "en", size: "large", count: "none"}} Tweet
           .facebook.col-md-9
             .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_index_url(artist: @artist['desc']), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
-      - if Rails.env.production?
-        %section#merchant
-          %br
-          = render 'layouts/adsense'
     .col-md-6
       %section#song_info
         %header
@@ -91,3 +87,7 @@
                   .col-md-9
                     %span= artist['name']
 
+    - if Rails.env.production?
+      %section#merchant
+        %br
+        = render 'layouts/adsense'
