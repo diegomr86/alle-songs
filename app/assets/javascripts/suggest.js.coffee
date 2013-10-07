@@ -1,5 +1,9 @@
 $ ->
 
+  $("#suggest_form").submit ->
+    location.href = "/"+$(this).find('#suggest_input').val()
+    false
+
   $("#suggest_input").autocomplete(
     minLength: 0
     source: (request, response) ->
@@ -22,7 +26,7 @@ $ ->
       false
 
     select: (event, ui) ->
-      location.href = '/artist?artist='+ui.item.label
+      location.href = '/'+ui.item.label
       false
   ).data("ui-autocomplete")._renderItem = (ul, item) ->
-    $("<li>").append("<a href='/artist?artist="+item.label+"'><img src='http://s2.vagalume.com"+item.url+"images/profilew40.jpg' /><strong>" + item.label + "<strong></a>").appendTo ul
+    $("<li>").append("<a href='/"+item.label+"'><img src='http://s2.vagalume.com"+item.url+"images/profilew40.jpg' /><strong>" + item.label + "<strong></a>").appendTo ul

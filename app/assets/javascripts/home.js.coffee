@@ -11,3 +11,5 @@
 # GO AFTER THE REQUIRES BELOW.
 #
 #= require suggest
+
+$ ->

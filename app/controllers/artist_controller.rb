@@ -24,15 +24,16 @@ class ArtistController < ApplicationController
                                 }]
       end
       @genres = @artist['genre'].collect{|g| g['name']} if @artist['genre']
+      respond_to do |format|
+        format.html
+        format.json {render json: [@discography, @artist]}
+        format.xml {render :xml => @artist}
+      end
+
     else
       redirect_to root_path, notice: 'Nenhuma musica encontrada para este artista'
     end
 
 
-    respond_to do |format|
-      format.html
-      format.json {render json: [@discography, @artist]}
-      format.xml {render :xml => @artist}
-    end
   end
 end
