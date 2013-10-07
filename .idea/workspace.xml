@@ -34,7 +34,7 @@
     <file path="/sitemap.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381065239986" ignored="false" />
     <file path="/_facebook.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381073332345" ignored="false" />
     <file path="/_twitter.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381073951896" ignored="false" />
-    <file path="/_head.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381106136696" ignored="false" />
+    <file path="/_head.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381163483341" ignored="false" />
     <file path="/_adroll.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381161054133" ignored="false" />
     <file path="$PROJECT_DIR$/log/development.log" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381163091397" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,10 +61,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="0" selection-start="3376" selection-end="3478" vertical-scroll-proportion="0.84562606">
+            <state line="89" column="0" selection-start="3376" selection-end="3478" vertical-scroll-proportion="-55.625">
               <folding />
             </state>
           </provider>
@@ -79,10 +79,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_head.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_head.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="636" selection-end="636" vertical-scroll-proportion="-6.25">
+            <state line="15" column="20" selection-start="863" selection-end="863" vertical-scroll-proportion="0.37751678">
               <folding />
             </state>
           </provider>
@@ -139,12 +139,12 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_twitter.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_head.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/_adroll.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
         <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/_head.html.haml" />
       </list>
     </option>
   </component>
@@ -877,18 +877,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="1134" selection-end="1134" vertical-scroll-proportion="1.0403225">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/ajax.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/nprogress.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -924,23 +912,9 @@
         <state line="5" column="0" selection-start="201" selection-end="201" vertical-scroll-proportion="0.08029979" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/artist_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="38" selection-start="98" selection-end="120" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_adsense.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="91" selection-start="269" selection-end="269" vertical-scroll-proportion="-5.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="636" selection-end="636" vertical-scroll-proportion="-6.25">
           <folding />
         </state>
       </provider>
@@ -966,9 +940,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/images/favicon.ico">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/images/logo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="0" selection-start="3376" selection-end="3478" vertical-scroll-proportion="0.84562606">
+        <state line="89" column="0" selection-start="3376" selection-end="3478" vertical-scroll-proportion="-55.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/artist_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="38" selection-start="98" selection-end="120" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="20" selection-start="863" selection-end="863" vertical-scroll-proportion="0.37751678">
           <folding />
         </state>
       </provider>
