@@ -74,26 +74,24 @@ var player;
 function onYouTubeIframeAPIReady() {
 
     $.getJSON( $('.albuns li.music_link.active a').attr('href'), function( data ) {
-        if (data.video) {
-            player = new YT.Player('player_container', {
-                height: '350',
-                width: '100%',
-                videoId: data.video.unique_id,
-                playerVars: {
-                    'autoplay': 1,
-                    'iv_load_policy': 3,
-                    'rel': 0,
-                    'showinfo': 1
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange,
-                    'onError': onPlayerError
-                }
-            });
+        player = new YT.Player('player_container', {
+            height: '350',
+            width: '100%',
+            videoId: data.video.unique_id,
+            playerVars: {
+                'autoplay': 1,
+                'iv_load_policy': 3,
+                'rel': 0,
+                'showinfo': 1
+            },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange,
+                'onError': onPlayerError
+            }
+        });
 
-            displayVideoMeta($('.albuns li.music_link.active'), data);
-        }
+        displayVideoMeta($('.albuns li.music_link.active'), data);
     });
 }
 // The API will call this function when the video player is ready.
