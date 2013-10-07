@@ -65,7 +65,7 @@
       <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="289" selection-end="842" vertical-scroll-proportion="0.28350514">
+            <state line="49" column="0" selection-start="1822" selection-end="2387" vertical-scroll-proportion="0.25773194">
               <folding />
             </state>
           </provider>
@@ -149,7 +149,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/views/layouts/_adroll.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
         <option value="$PROJECT_DIR$/log/development.log" />
@@ -163,6 +162,7 @@
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/suggest.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
       </list>
     </option>
@@ -892,13 +892,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="112" selection-start="990" selection-end="990" vertical-scroll-proportion="0.53311795">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="113" column="19" selection-start="2148" selection-end="2148" vertical-scroll-proportion="0.3473344">
@@ -997,9 +990,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="18" selection-start="1024" selection-end="1025" vertical-scroll-proportion="0.51534736">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="289" selection-end="842" vertical-scroll-proportion="0.28350514">
+        <state line="49" column="0" selection-start="1822" selection-end="2387" vertical-scroll-proportion="0.25773194">
           <folding />
         </state>
       </provider>
