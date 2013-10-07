@@ -1,3 +1,4 @@
+var refreshIntervalId;
 var ytplayer;
 var firstVidId;
 var playId;
@@ -111,11 +112,15 @@ function onPlayerStateChange(event) {
         $('#play_pause').unbind().click(function(){
             player.pauseVideo();
         });
+        refreshIntervalId = setInterval(function(){
+            NProgress.set(((player.getCurrentTime() * 100) / player.getDuration()) / 100)
+        }, 1000);
     } else {
         $('#play_pause i').removeClass('icon-pause').addClass('icon-play');
         $('#play_pause').unbind().click(function(){
             player.playVideo();
         });
+        clearInterval(refreshIntervalId);
     }
 
     if (event.data == YT.PlayerState.ENDED) {
@@ -174,10 +179,6 @@ function displayVideoMeta(el, data) {
             $('#lyric_text').text(lyric)
         }
     }
-
-    setInterval(function(){
-        NProgress.set(((player.getCurrentTime() * 100) / player.getDuration()) / 100)
-    }, 1000);
 }
 
 function loadVideo(el) {
