@@ -74,10 +74,14 @@ var player;
 function onYouTubeIframeAPIReady() {
 
     $.getJSON( $('.albuns li.music_link.active a').attr('href'), function( data ) {
+        var vid = ''
+        if  (data.video)
+            vid = data.video.unique_id
+
         player = new YT.Player('player_container', {
             height: '350',
             width: '100%',
-            videoId: data.video.unique_id,
+            videoId: vid,
             playerVars: {
                 'autoplay': 1,
                 'iv_load_policy': 3,

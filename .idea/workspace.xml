@@ -28,7 +28,7 @@
     <file path="/home_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380913155676" ignored="false" />
     <file path="/home.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381171803181" ignored="false" />
     <file path="/home.sass" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381066049462" ignored="false" />
-    <file path="/functions.js" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381166144398" ignored="false" />
+    <file path="/functions.js" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381182474763" ignored="false" />
     <file path="/home.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381171454820" ignored="false" />
     <file path="/*.regexp" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381173830539" ignored="false" />
     <file path="/sitemap.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381065239986" ignored="false" />
@@ -146,7 +146,7 @@
       <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="0" selection-start="2849" selection-end="2849" vertical-scroll-proportion="0.83444816">
+            <state line="83" column="24" selection-start="2498" selection-end="2498" vertical-scroll-proportion="0.5585284">
               <folding />
             </state>
           </provider>
@@ -1011,7 +1011,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="0" selection-start="2849" selection-end="2849" vertical-scroll-proportion="0.83444816">
+        <state line="83" column="24" selection-start="2498" selection-end="2498" vertical-scroll-proportion="0.5585284">
           <folding />
         </state>
       </provider>
