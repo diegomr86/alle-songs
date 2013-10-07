@@ -68,9 +68,9 @@
     - if Rails.env.production?
       %section#merchant
         = render 'layouts/adsense'
+      %br
 
     - if @artist['related']
-      %br
       %section#related_artists
         %h3
           %i.icon-group
