@@ -7,7 +7,7 @@
 %meta{content: "Alle Songs", property: "og:site_name"}
 %meta{content: @page_title, property: "og:title"}
 - if @artist.present?
-  %meta{content: artist_root_url(@artist['desc'].sub("&", "e").sub(' ', '+')), property: "og:url"}
+  %meta{content: artist_root_url(@artist['desc'].gsub("&", "e").gsub(' ', '+')), property: "og:url"}
   %meta{content: "http://s2.vagalume.com#{@artist["pic_medium"]}" , property: "og:image"}
 - else
   %meta{content: root_url, property: "og:url"}
