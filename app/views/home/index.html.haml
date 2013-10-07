@@ -3,5 +3,5 @@
     .row
       - g.each do |artist|
         .artist.col-md-1
-          = link_to artist_root_path(artist['name']), title: artist['name'] do
+          = link_to artist_root_path(artist['name'].sub(' ', '+')), title: artist['name'] do
             = image_tag artist['pic_medium'], alt: artist['name']
