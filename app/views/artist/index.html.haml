@@ -62,6 +62,12 @@
               %i.icon-play
             %a.btn.btn-default#forward
               %i.icon-fast-forward
+          %section#social
+            %br
+            .facebook
+              .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_root_url(@artist['desc'].sub(' ', '+')), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
+            .twitter
+              %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "Ouvindo #{@artist['desc']} online pelo Alle Songs.", data: { lang: "en", size: "large", count: "none"}} Tweet
 
   .ui-layout-east.scroll-pane
 
@@ -85,10 +91,4 @@
                   .col-md-9
                     %span= artist['name']
 
-    %section#social
-      %br
-      .facebook
-        .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_root_url(@artist['desc'].sub(' ', '+')), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
-      .twitter
-        %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "Ouvindo #{@artist['desc']} online pelo Alle Songs.", data: { lang: "en", size: "large", count: "none"}} Tweet
 
