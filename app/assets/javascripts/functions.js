@@ -172,10 +172,11 @@ function displayVideoMeta(el, data) {
                 lyric = "Lyrics not found";
             }
 
-            title += ' | ' + el.find('span').text();
+            title += ' - ' + el.find('span').text();
 
             $('title').text(title);
-            $('#lyrics header h3').html("<i class='icon-play'></i> "+title);
+            $('#song_info header h3').html("<i class='icon-play'></i> "+title);
+            $('#lyrics header h3').html("<i class='icon-file-text'></i> Letra - "+subtitle);
             $('#lyric_text').text(lyric)
         }
     }

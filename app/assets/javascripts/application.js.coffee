@@ -23,7 +23,7 @@ loadScrollPane = ->
 
 $ ->
 
-  $("body").layout applyDefaultStyles: false, closable: false, spacing_open: 0, west__size: .25, east__size: .20
+  $("body").layout applyDefaultStyles: false, closable: false, spacing_open: 0, west__size: .25, east__size: .25
 
   setupList()
 

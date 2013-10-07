@@ -1,5 +1,4 @@
 - if @artist
-  - autoload = true
   .ui-layout-west.scroll-pane
     .artist
       .col-md-3.cover
@@ -40,36 +39,30 @@
                         .clearfix
 
   .ui-layout-center.scroll-pane
-    .col-md-6
-      %section#player
-        #player_container
-        %br
-        .btn-group.btn-group-justified
-          %a.btn.btn-default#backward
-            %i.icon-fast-backward
-          %a.btn.btn-default#play_pause
-            %i.icon-play
-          %a.btn.btn-default#forward
-            %i.icon-fast-forward
-
-      %section#social
-        %h3
-          %i.icon-share
-          Compartilhe o seu player
-        %br
-        .row
-          .twitter.col-md-3
-            %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "#{@artist['desc']} - discografia completa. Ouça essa e outras discografias completas no Alle Songs!", data: { lang: "en", size: "large", count: "none"}} Tweet
-          .facebook.col-md-9
-            .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_index_url(artist: @artist['desc']), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
-    .col-md-6
+    .col-md-12
       %section#song_info
         %header
-      %section#lyrics
-        %article
-          %header
-            %h3
-        #lyric_text
+          %h3
+      %section#player
+        #player_container
+      .row
+        .col-md-8
+          %section#lyrics
+            %br
+            %article
+              %header
+                %h3
+            #lyric_text
+        .col-md-4
+          %br
+          .btn-group.btn-group-justified
+            %a.btn.btn-default#backward
+              %i.icon-fast-backward
+            %a.btn.btn-default#play_pause
+              %i.icon-play
+            %a.btn.btn-default#forward
+              %i.icon-fast-forward
+
   .ui-layout-east.scroll-pane
 
     - if Rails.env.production?
@@ -90,4 +83,12 @@
                     = image_tag "http://s2.vagalume.com#{artist['url']}images/profilew40.jpg"
                   .col-md-9
                     %span= artist['name']
+
+    %section#social
+      %br
+      .row
+        .twitter.col-md-3
+          %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "#{@artist['desc']} - discografia completa. Ouça essa e outras discografias completas no Alle Songs!", data: { lang: "en", size: "large", count: "none"}} Tweet
+        .facebook.col-md-9
+          .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_index_url(artist: @artist['desc']), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
 
