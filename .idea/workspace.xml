@@ -27,7 +27,7 @@
     <file path="/ajax.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380898851392" ignored="false" />
     <file path="/home_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380913155676" ignored="false" />
     <file path="/home.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381272872898" ignored="false" />
-    <file path="/home.sass" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381272846860" ignored="false" />
+    <file path="/home.sass" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381273382789" ignored="false" />
     <file path="/functions.js" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381273189857" ignored="false" />
     <file path="/home.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381256002281" ignored="false" />
     <file path="/*.regexp" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381173830539" ignored="false" />
@@ -108,6 +108,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="home.sass" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/home.sass">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="0" selection-start="268" selection-end="268" vertical-scroll-proportion="0.32148626">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="home.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/home.html.haml">
           <provider selected="true" editor-type-id="text-editor">
@@ -124,10 +133,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="functions.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="67" selection-start="4386" selection-end="4386" vertical-scroll-proportion="0.35973597">
+            <state line="127" column="67" selection-start="4386" selection-end="4386" vertical-scroll-proportion="0.0">
               <folding>
                 <marker date="1381273193339" expanded="true" signature="3930:3993" placeholder="..." />
               </folding>
@@ -161,10 +170,10 @@
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/home.sass" />
         <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/_head.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/home.sass" />
       </list>
     </option>
   </component>
@@ -985,23 +994,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/home.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="516" selection-end="516" vertical-scroll-proportion="0.7576737">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/artist_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="38" selection-end="39" vertical-scroll-proportion="0.09693053">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/home.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="77" selection-start="1088" selection-end="1088" vertical-scroll-proportion="-17.5">
           <folding />
         </state>
       </provider>
@@ -1013,6 +1008,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="67" selection-start="4386" selection-end="4386" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1381273193339" expanded="true" signature="3930:3993" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/home.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="77" selection-start="1088" selection-end="1088" vertical-scroll-proportion="-17.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="34" selection-start="463" selection-end="463" vertical-scroll-proportion="-3.75">
@@ -1020,12 +1031,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/home.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="67" selection-start="4386" selection-end="4386" vertical-scroll-proportion="0.35973597">
-          <folding>
-            <marker date="1381273193339" expanded="true" signature="3930:3993" placeholder="..." />
-          </folding>
+        <state line="14" column="0" selection-start="268" selection-end="268" vertical-scroll-proportion="0.32148626">
+          <folding />
         </state>
       </provider>
     </entry>
