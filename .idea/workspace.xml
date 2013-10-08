@@ -17,7 +17,7 @@
     <file path="$USER_HOME$/winmoon/Clicou-Pizza/app/assets/javascripts/application.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380831096888" ignored="false" />
     <file path="/application.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381005755444" ignored="false" />
     <file path="/show.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380831608676" ignored="false" />
-    <file path="/artist_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380986155146" ignored="false" />
+    <file path="/artist_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381256690249" ignored="false" />
     <file path="/player.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380922021781" ignored="false" />
     <file path="/application.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381172108960" ignored="false" />
     <file path="$USER_HOME$/winmoon/Clicou-Pizza/config/environments/production.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380842265717" ignored="false" />
@@ -108,10 +108,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.sass" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.sass" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="27" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.726979">
+            <state line="84" column="27" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -120,7 +120,16 @@
       <file leaf-file-name="player_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/player_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="38" selection-start="753" selection-end="753" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="17" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="artist_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/artist_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="0" selection-start="38" selection-end="39" vertical-scroll-proportion="0.10033445">
               <folding />
             </state>
           </provider>
@@ -162,7 +171,6 @@
       <list>
         <option value="$PROJECT_DIR$/public/sitemaps/artists.xml" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/artist_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/_head.html.haml" />
         <option value="$PROJECT_DIR$/config/sitemap.rb" />
@@ -176,6 +184,7 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/suggest.js.coffee" />
         <option value="$PROJECT_DIR$/app/controllers/player_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
+        <option value="$PROJECT_DIR$/app/controllers/artist_controller.rb" />
       </list>
     </option>
   </component>
@@ -938,13 +947,6 @@
         <state line="27" column="95" selection-start="1285" selection-end="1312" vertical-scroll-proportion="0.295302" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/artist_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="400" selection-end="400" vertical-scroll-proportion="0.32096773">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/sitemap.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="54" selection-start="372" selection-end="378" vertical-scroll-proportion="0.21774194" />
@@ -1018,16 +1020,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/player_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="38" selection-start="753" selection-end="753" vertical-scroll-proportion="0.0">
+        <state line="84" column="27" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
+    <entry file="file://$PROJECT_DIR$/app/controllers/player_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="27" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.726979">
+        <state line="0" column="0" selection-start="0" selection-end="17" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/artist_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="38" selection-end="39" vertical-scroll-proportion="0.10033445">
           <folding />
         </state>
       </provider>

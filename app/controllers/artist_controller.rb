@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'open-uri'
 
 class ArtistController < ApplicationController
@@ -31,7 +33,7 @@ class ArtistController < ApplicationController
       end
 
     else
-      redirect_to root_path, notice: 'Nenhuma musica encontrada para este artista'
+      redirect_to root_path, notice: 'Nenhuma música encontrada para este artista'
     end
 
 
