@@ -29,7 +29,7 @@
               %ol
                 - album["discs"][0].each_with_index do |music, music_index|
                   %li.music_link{ data: { target: "#collapse_#{index}" }, class: (index == 0 && music_index == 0 ? 'active' : '') }
-                    = link_to player_index_path(artist: @artist["desc"], music: music["desc"], code: music['id']) do
+                    %a{data: { href: player_index_path(artist: @artist["desc"], music: music["desc"])} }
                       .song
                         .col-md-2
                           &nbsp;
@@ -51,11 +51,11 @@
         .col-md-8
           %section#social
             %br
-            .row
-              .facebook.col-md-8
-                .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_root_url(@artist['desc'].gsub("&", "e").gsub(' ', '+')), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
-              .twitter.col-md-4
-                %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "Ouvindo #{@artist['desc']} online pelo Alle Songs.", data: { lang: "en", size: "large", count: "none"}} Tweet
+            .facebook.pull-left
+              .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_root_url(@artist['desc'].gsub("&", "e").gsub(' ', '+')), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
+            .twitter.pull-left
+              %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "Ouvindo #{@artist['desc']} online pelo Alle Songs.", data: { lang: "en", size: "large", count: "none"}} Tweet
+            .clearfix
           %section#lyrics
             %br
             %article

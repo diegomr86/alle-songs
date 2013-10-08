@@ -4,7 +4,7 @@ $ ->
     location.href = "/"+$(this).find('#suggest_input').val()
     false
 
-  $("#suggest_input").autocomplete(
+  $("#suggest_input").focus().autocomplete(
     minLength: 0
     source: (request, response) ->
       $.ajax

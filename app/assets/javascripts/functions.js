@@ -103,11 +103,11 @@ function displayVideoMeta(el, data) {
     if (data != 'undefined') {
         $('.albuns li.music_link').removeClass('active');
         $('.albuns li.music_link a i.status').removeClass('icon-play')
-        $('.albuns li.music_link a i.status:not(.icon-remove)').addClass('icon-music')
+        $('.albuns li.music_link a i.status:not(.icon-exclamation)').addClass('icon-music')
         $('.albuns .panel-collapse').removeClass('in');
 
-        el.find('a i.status').removeClass('icon-music');
-        el.find('a i.status:not(.icon-remove)').addClass('icon-play');
+        el.find('a i.status').removeClass('icon-music').removeClass('icon-spinner').removeClass('icon-spin');
+        el.find('a i.status:not(.icon-exclamation)').addClass('icon-play');
         el.addClass('active');
         $(el.data('target')).addClass('in');
 
@@ -118,6 +118,7 @@ function displayVideoMeta(el, data) {
             subtitle = el.find('span').text();
             if (data.info.mus && data.info.type == "exact") {
                 lyric = data.info.mus[0].text;
+                lyric += '<br/><br/><p><a style="font-size:10px;color:#000;text-decoration:none;font-weight:bold" target=_blank href="'+data.info.mus[0].url+'"><img src="http://www.vagalume.com.br/images/logo_small2.jpg" alt="Vagalume"><br/>Letras de Músicas</a></p>'
             } else {
                 lyric = "Lyrics not found";
             }
@@ -127,7 +128,7 @@ function displayVideoMeta(el, data) {
             $('title').text(title);
             $('#song_info header h3').html("<i class='icon-play'></i> "+title);
             $('#lyrics header h3').html("<i class='icon-file-text'></i> Letra - "+subtitle);
-            $('#lyric_text').text(lyric)
+            $('#lyric_text').html(lyric)
         }
     }
 }
@@ -136,19 +137,20 @@ function loadVideo(el) {
 
     NProgress.start();
 
-    $.getJSON(el.find('a').attr('href'), function( data ) {
+    $.getJSON(el.find('a').data('href'), function( data ) {
         NProgress.done();
         if (data.video) {
             if (typeof player == "undefined")
                 player = renderPlayer(data.video.unique_id);
+            else
+                player.loadVideoById(data.video.unique_id);
             displayVideoMeta(el, data);
             if (is_iPhone) {
                 window.scrollTo(0, 0);
             }
-            player.loadVideoById(data.video.unique_id);
         } else {
-            el.find('a i.status').removeClass('icon-play');
-            el.find('a i.status').addClass('icon-remove');
+            el.find('a i.status').removeClass('icon-play').removeClass('icon-spinner').removeClass('icon-spin');
+            el.find('a i.status').addClass('icon-exclamation');
             el.attr('title', 'Song not found')
             loadVideo(nextItem(el));
         }
@@ -177,17 +179,15 @@ function loadPrevious(ignoreAutojump) {
         var artists = $('ul#related_list li a');
         var n = Math.floor(Math.random()*artists.length);
         $(artists[n]).addClass('active');
-        document.location.href = $(artists[n]).attr('href') + "#vid-random";
+        document.location.href = $(artists[n]).data('href') + "#vid-random";
     } else {
         // go to previous video in list
         if ($('.albuns li.music_link').length > 1) {
             var current = $('.albuns li.music_link.active');
             if (current) {
                 previous = previousItem(current)
-                console.log(previous.find('a').attr('href'))
-                if (previous.find('a').attr('href')) {
+                if (previous.find('a').data('href')) {
                     loadVideo(previous)
-
                 } else {
                     loadVideo($('.albuns li.music_link:first'));
                 }
@@ -207,15 +207,15 @@ function loadNext(ignoreAutojump) {
         var artists = $('ul#related_list li a');
         var n = Math.floor(Math.random()*artists.length);
         $(artists[n]).addClass('active');
-        document.location.href = $(artists[n]).attr('href') + "#vid-random";
+        document.location.href = $(artists[n]).data('href') + "#vid-random";
     } else {
         // go to next video in list
         if ($('.albuns li.music_link').length > 1) {
             var current = $('.albuns li.music_link.active');
             if (current) {
                 next = nextItem(current)
-                console.log(next.find('a').attr('href'))
-                if (next.find('a').attr('href')) {
+                console.log(next.find('a').data('href'))
+                if (next.find('a').data('href')) {
                     loadVideo(next)
 
                 } else {
@@ -232,6 +232,9 @@ function loadNext(ignoreAutojump) {
 function setupList() {
     $('.albuns li.music_link a').on("click", function(e) {
         e.preventDefault();
+        $(this).find('.status').removeClass('icon-play').removeClass('icon-music').removeClass('icon-exclamation')
+        $(this).find('.status').addClass('icon-spinner').addClass('icon-spin')
+
         loadVideo($(this).parent());
     });
 }

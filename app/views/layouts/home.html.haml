@@ -20,8 +20,11 @@
       .row
         .col-md-4.col-md-offset-4
           %form.form-inline#suggest_form{role: "search", action: artist_index_path}
+            %h4
+            - flash.each do |name, msg|
+              .alert.alert-danger= msg
             .form-group
-              %input#suggest_input.form-control{placeholder: "Buscar artistas", type: "text", name: "artist", required: ''}
+              %input#suggest_input.form-control{placeholder: "Digite o seu artista preferido", type: "text", name: "artist", required: ''}
               %button.btn.btn-default{type: "submit"}
                 %i.icon-search
 

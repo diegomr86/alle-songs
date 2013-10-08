@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'open-uri'
 class PlayerController < ApplicationController
 
@@ -14,7 +16,9 @@ class PlayerController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
+      format.html do
+        redirect_to root_path, notice: 'Página não encontrada'
+      end
       format.json {render json: {info: @music_info, video: @music}}
     end
   end
