@@ -125,7 +125,7 @@ function displayVideoMeta(el, data) {
             title += ' - ' + el.find('span').text();
 
             $('title').text(title);
-            $('#song_info header h3').html("<i class='icon-play'></i> "+title);
+            $('#song_info header h3').html("<i class='icon-youtube-play'></i> "+title);
             $('#lyrics header h3').html("<i class='icon-file-text'></i> Letra - "+subtitle);
             $('#lyric_text').html(lyric)
         }

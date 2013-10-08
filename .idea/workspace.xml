@@ -28,7 +28,7 @@
     <file path="/home_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380913155676" ignored="false" />
     <file path="/home.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381272872898" ignored="false" />
     <file path="/home.sass" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381272846860" ignored="false" />
-    <file path="/functions.js" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381258641681" ignored="false" />
+    <file path="/functions.js" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381273189857" ignored="false" />
     <file path="/home.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381256002281" ignored="false" />
     <file path="/*.regexp" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381173830539" ignored="false" />
     <file path="/sitemap.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381065239986" ignored="false" />
@@ -99,10 +99,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_head.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_head.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="43" selection-start="844" selection-end="844" vertical-scroll-proportion="0.3277311">
+            <state line="6" column="34" selection-start="463" selection-end="463" vertical-scroll-proportion="-3.75">
               <folding />
             </state>
           </provider>
@@ -124,12 +124,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="142" column="0" selection-start="4754" selection-end="4754" vertical-scroll-proportion="0.0">
+            <state line="127" column="67" selection-start="4386" selection-end="4386" vertical-scroll-proportion="0.35973597">
               <folding>
-                <marker date="1381258907095" expanded="true" signature="3930:3993" placeholder="..." />
+                <marker date="1381273193339" expanded="true" signature="3930:3993" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -158,13 +158,13 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/suggest.js.coffee" />
         <option value="$PROJECT_DIR$/app/controllers/player_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/artist_controller.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home.sass" />
         <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/_head.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
       </list>
     </option>
   </component>
@@ -966,15 +966,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="0" selection-start="4754" selection-end="4754" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1381258907095" expanded="true" signature="3930:3993" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/images/megaphone.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1024,8 +1015,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="43" selection-start="844" selection-end="844" vertical-scroll-proportion="0.3277311">
+        <state line="6" column="34" selection-start="463" selection-end="463" vertical-scroll-proportion="-3.75">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="67" selection-start="4386" selection-end="4386" vertical-scroll-proportion="0.35973597">
+          <folding>
+            <marker date="1381273193339" expanded="true" signature="3930:3993" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
