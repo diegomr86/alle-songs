@@ -34,7 +34,7 @@
     <file path="/sitemap.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381065239986" ignored="false" />
     <file path="/_facebook.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381073332345" ignored="false" />
     <file path="/_twitter.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381073951896" ignored="false" />
-    <file path="/_head.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381273688397" ignored="false" />
+    <file path="/_head.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381273862254" ignored="false" />
     <file path="/_adroll.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381161054133" ignored="false" />
     <file path="$USER_HOME$/winmoon/Clicou-Pizza/config/routes.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381170320235" ignored="false" />
     <file path="/suggest.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381171634388" ignored="false" />
@@ -102,7 +102,7 @@
       <file leaf-file-name="_head.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="26" selection-start="827" selection-end="827" vertical-scroll-proportion="0.3277311">
+            <state line="13" column="41" selection-start="842" selection-end="842" vertical-scroll-proportion="0.3277311">
               <folding />
             </state>
           </provider>
@@ -1033,7 +1033,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="26" selection-start="827" selection-end="827" vertical-scroll-proportion="0.3277311">
+        <state line="13" column="41" selection-start="842" selection-end="842" vertical-scroll-proportion="0.3277311">
           <folding />
         </state>
       </provider>
