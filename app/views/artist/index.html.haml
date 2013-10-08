@@ -54,7 +54,7 @@
             .twitter.pull-left
               %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "Ouvindo #{@artist['desc']} online pelo Alle Songs.", data: { lang: "en", size: "large", count: "none"}} Tweet
             .facebook.pull-left
-              .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "300", "data-href" => artist_root_url(@artist['desc'].gsub("&", "e").gsub(' ', '+')), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
+              .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "300", "data-href" => artist_root_url(@artist['desc'].gsub("&", "e").gsub("/", "+").gsub(' ', '+')), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
             .clearfix
           %section#lyrics
             %br
@@ -87,7 +87,7 @@
         %ul
           - @artist['related'].each do |artist|
             %li
-              = link_to artist_root_path(artist['name'].gsub("&", "e").gsub(' ', '+')) do
+              = link_to artist_root_path(artist['name'].gsub("&", "e").gsub("/", "+").gsub(' ', '+')) do
                 = image_tag "http://s2.vagalume.com#{artist['url']}images/profilew60.jpg"
                 %span= artist['name']
 
