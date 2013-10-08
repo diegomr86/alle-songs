@@ -1,59 +1,16 @@
 var refreshIntervalId;
-var ytplayer;
-var firstVidId;
-var playId;
-var theScrollPane;
-var videosScrollbar;
-var relatedScrollbar;
+var player;
 
 /* --- HELPERS --------------------------------------------------- */
 // detect iOS
 var user_agent = navigator.userAgent.toLowerCase();
 var is_iPhone = (user_agent.indexOf('iphone') != -1);
-var is_iOS = ((user_agent.indexOf('iphone') != -1) || (user_agent.indexOf('ipad') != -1));
-
-// timer helper
-var waitForFinalEvent = (function () {
-    var timers = {};
-    return function (callback, ms, uniqueId) {
-        if (timers[uniqueId]) {
-            clearTimeout (timers[uniqueId]);
-        }
-        timers[uniqueId] = setTimeout(callback, ms);
-    };
-})();
 
 // console.log override
 if (typeof console == "undefined") {
     window.console = {
         log: function () {}
     };
-}
-
-// fetches url params
-function getUrlParams() {
-    data = new Array();
-    data['video'] = false;
-    data['search'] = false;
-    // get data from url
-    hash = window.location.hash;
-
-    var parts = hash.split('&');
-    for (var i=0;i<parts.length;i++) {
-        var p = parts[i];
-        if (p.indexOf('#vid-random') > -1)  {
-            data['video'] = getRandomVideoId();
-        } else if (p.indexOf('#v=') > -1) {
-            var id = p.replace('#v=', '');
-            data['video'] = p.replace('#v=', '');
-        } else if (p.indexOf('#vid-') > -1) {
-            var id = p.replace('#vid-', '');
-            data['video'] = p.replace('#vid-', '');
-        } else if (p.indexOf('search=') > -1) {
-            data['search'] = p.replace('search=', '');
-        }
-    }
-    return data;
 }
 
 /* --- PLAYER --------------------------------------------------- */
@@ -65,38 +22,31 @@ function createPlayer(container_id) {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 }
 
-function videoInfo(url) {
-}
-
 /* ----- NEW API ---------- */
 // This function creates an <iframe> (and YouTube player) after the API code downloads.
-var player;
+
+function renderPlayer(vid) {
+    return new YT.Player('player_container', {
+        height: '350',
+        width: '100%',
+        videoId: vid,
+        playerVars: {
+            'autoplay': 1,
+            'iv_load_policy': 3,
+            'rel': 0,
+            'showinfo': 1
+        },
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange,
+            'onError': onPlayerError
+        }
+    });
+}
 function onYouTubeIframeAPIReady() {
 
-    $.getJSON( $('.albuns li.music_link.active a').attr('href'), function( data ) {
-        var vid = ''
-        if  (data.video)
-            vid = data.video.unique_id
+    loadVideo($('.albuns li.music_link.active'));
 
-        player = new YT.Player('player_container', {
-            height: '350',
-            width: '100%',
-            videoId: vid,
-            playerVars: {
-                'autoplay': 1,
-                'iv_load_policy': 3,
-                'rel': 0,
-                'showinfo': 1
-            },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange,
-                'onError': onPlayerError
-            }
-        });
-
-        displayVideoMeta($('.albuns li.music_link.active'), data);
-    });
 }
 // The API will call this function when the video player is ready.
 function onPlayerReady(event) {
@@ -109,6 +59,7 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
 
     console.log(event.data)
+
     if (event.data == YT.PlayerState.PLAYING) {
         $('#play_pause i').removeClass('icon-play').addClass('icon-pause');
         $('#play_pause').unbind().click(function(){
@@ -126,12 +77,13 @@ function onPlayerStateChange(event) {
     }
 
     if (event.data == YT.PlayerState.ENDED) {
-
         loadNext();
     }
 }
 // Used for detecting
 function onPlayerError(event) {
+    console.log('asdfasdfasdf');
+    console.log(event.data);
     if (event.data == 150 || event.data == 101) {
         // can't play this video, skip to next.
         $('.albuns li.music_link.active').css('opacity','.5');
@@ -142,10 +94,6 @@ function onPlayerError(event) {
             $('#errormsg').remove();
         });
     }
-}
-
-function scrollToVideo(id) {
-    // scroll to element
 }
 
 function displayVideoMeta(el, data) {
@@ -191,8 +139,11 @@ function loadVideo(el) {
     $.getJSON(el.find('a').attr('href'), function( data ) {
         NProgress.done();
         if (data.video) {
-            displayVideoMeta(el, data);
+            if (typeof player == "undefined")
+                player = renderPlayer(data.video.unique_id);
+
             player.loadVideoById(data.video.unique_id);
+            displayVideoMeta(el, data);
             if (is_iPhone) {
                 window.scrollTo(0, 0);
             }
@@ -277,16 +228,6 @@ function loadNext(ignoreAutojump) {
 
     }
 }
-// get a random video id
-function getRandomVideoId() {
-    var videos = $('.albuns li.music_link a');
-    var maxResult = (videos.length > 10) ? 10 : videos.length;
-    var n = Math.floor(Math.random()*maxResult);
-    var id = $(videos[n]).attr('href');
-
-    return id;
-}
-
 
 /* create events on video list elements */
 function setupList() {
