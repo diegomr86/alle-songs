@@ -63,10 +63,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="32" selection-start="916" selection-end="916" vertical-scroll-proportion="-3.1632652">
+            <state line="56" column="123" selection-start="2311" selection-end="2311" vertical-scroll-proportion="0.24440299">
               <folding />
             </state>
           </provider>
@@ -126,10 +126,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="artist_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="artist_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/artist_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="38" selection-end="39" vertical-scroll-proportion="0.10033445">
+            <state line="4" column="0" selection-start="38" selection-end="39" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -177,7 +177,6 @@
         <option value="$PROJECT_DIR$/app/views/home/index.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
-        <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home.sass" />
         <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/home.js.coffee" />
@@ -185,6 +184,7 @@
         <option value="$PROJECT_DIR$/app/controllers/player_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
         <option value="$PROJECT_DIR$/app/controllers/artist_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
       </list>
     </option>
   </component>
@@ -985,13 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="32" selection-start="916" selection-end="916" vertical-scroll-proportion="-3.1632652">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/home.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="0" selection-start="328" selection-end="328" vertical-scroll-proportion="0.0">
@@ -1036,7 +1029,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/artist_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="38" selection-end="39" vertical-scroll-proportion="0.10033445">
+        <state line="4" column="0" selection-start="38" selection-end="39" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="123" selection-start="2311" selection-end="2311" vertical-scroll-proportion="0.24440299">
           <folding />
         </state>
       </provider>
