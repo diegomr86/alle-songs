@@ -27,7 +27,6 @@ function createPlayer() {
 
 function renderPlayer(vid) {
     return new YT.Player('player_container', {
-        height: '350',
         width: '100%',
         videoId: vid,
         playerVars: {
