@@ -14,7 +14,7 @@ if (typeof console == "undefined") {
 }
 
 /* --- PLAYER --------------------------------------------------- */
-function createPlayer(container_id) {
+function createPlayer() {
     // Load the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
     tag.src = "//www.youtube.com/iframe_api";
@@ -141,12 +141,11 @@ function loadVideo(el) {
         if (data.video) {
             if (typeof player == "undefined")
                 player = renderPlayer(data.video.unique_id);
-
-            player.loadVideoById(data.video.unique_id);
             displayVideoMeta(el, data);
             if (is_iPhone) {
                 window.scrollTo(0, 0);
             }
+            player.loadVideoById(data.video.unique_id);
         } else {
             el.find('a i.status').removeClass('icon-play');
             el.find('a i.status').addClass('icon-remove');

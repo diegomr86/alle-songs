@@ -51,10 +51,11 @@
         .col-md-8
           %section#social
             %br
-            .facebook
-              .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_root_url(@artist['desc'].gsub("&", "e").gsub(' ', '+')), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
-            .twitter
-              %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "Ouvindo #{@artist['desc']} online pelo Alle Songs.", data: { lang: "en", size: "large", count: "none"}} Tweet
+            .row
+              .facebook.col-md-8
+                .fb-like{"data-action" => "like", "data-colorscheme" => "light", "data-height" => "100", "data-width" => "250", "data-href" => artist_root_url(@artist['desc'].gsub("&", "e").gsub(' ', '+')), "data-layout" => "standard", "data-send" => "false", "data-show-faces" => "true"}
+              .twitter.col-md-4
+                %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "Ouvindo #{@artist['desc']} online pelo Alle Songs.", data: { lang: "en", size: "large", count: "none"}} Tweet
           %section#lyrics
             %br
             %article
@@ -87,10 +88,7 @@
           - @artist['related'].each do |artist|
             %li
               = link_to artist_root_path(artist['name'].gsub("&", "e").gsub(' ', '+')) do
-                .row
-                  .col-md-2
-                    = image_tag "http://s2.vagalume.com#{artist['url']}images/profilew40.jpg"
-                  .col-md-9
-                    %span= artist['name']
+                = image_tag "http://s2.vagalume.com#{artist['url']}images/profilew60.jpg"
+                %span= artist['name']
 
 

@@ -31,7 +31,7 @@ $ ->
 
   NProgress.configure({ showSpinner: false, trickle: true });
 
-  createPlayer "player_container"
+  createPlayer()
 
   setupAutojump()
 
