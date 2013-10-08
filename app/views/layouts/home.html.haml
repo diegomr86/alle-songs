@@ -5,6 +5,8 @@
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", media: "all"
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css", media: "all"
     = stylesheet_link_tag    "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", media: "all"
+    = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Molle:400italic", media: "all"
+
     = stylesheet_link_tag    "home", media: "all", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
@@ -12,19 +14,19 @@
     = render 'layouts/twitter'
     %section#home
       .logo
-        %i.icon-play-circle.icon-2x
+
       %h1
         Alle Songs
-        %sup beta
+        %sup
+          %i.icon-play-circle
     %section#search
       .row
         .col-md-4.col-md-offset-4
           %form.form-inline#suggest_form{role: "search", action: artist_index_path}
-            %h4
             - flash.each do |name, msg|
               .alert.alert-danger= msg
             .form-group
-              %input#suggest_input.form-control{placeholder: "Digite o seu artista preferido", type: "text", name: "artist", required: ''}
+              %input#suggest_input.form-control{placeholder: "Nome do artista", type: "text", name: "artist", required: ''}
               %button.btn.btn-default{type: "submit"}
                 %i.icon-search
 

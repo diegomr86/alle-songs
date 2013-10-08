@@ -11,6 +11,7 @@
   %meta{content: "http://s2.vagalume.com#{@artist["pic_medium"]}" , property: "og:image"}
 - else
   %meta{content: root_url, property: "og:url"}
+  %meta{content: image_url('megaphone.png') , property: "og:image"}
 
 %meta{content: @page_description, property: "og:description"}
 = favicon_link_tag "favicon.ico"

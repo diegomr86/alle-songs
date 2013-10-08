@@ -5,6 +5,7 @@
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", media: "all"
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css", media: "all"
     = stylesheet_link_tag    "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", media: "all"
+    = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Molle:400italic", media: "all"
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "jquery"
     = javascript_include_tag "jquery_ujs"
@@ -21,10 +22,10 @@
           .navbar-header
             .navbar-brand
               = link_to root_path do
-                .logo
-                  %i.icon-play-circle.icon-2x
                 %h1
-                  Alle Songs | Online Music Player
+                  Alle Songs
+                  %sup
+                    %i.icon-play-circle
           %form.navbar-form.navbar-right#suggest_form{role: "search", action: artist_index_path}
             .form-group
               %input#suggest_input.form-control{placeholder: "Buscar artistas", type: "text", name: "artist"}
