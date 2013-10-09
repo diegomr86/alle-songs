@@ -139,11 +139,12 @@ function loadVideo(el) {
     $.getJSON(el.find('a').data('href'), function( data ) {
         NProgress.done();
         if (data.video) {
-            displayVideoMeta(el, data);
             if (typeof player == "undefined")
                 player = renderPlayer(data.video.unique_id);
             else
                 player.loadVideoById(data.video.unique_id);
+            displayVideoMeta(el, data);
+
             if (is_iPhone) {
                 window.scrollTo(0, 0);
             }

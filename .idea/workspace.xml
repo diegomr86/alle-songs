@@ -4,7 +4,7 @@
     <list default="true" id="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" name="Default" comment="" />
     <ignored path="music.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/a.dummy" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381274469301" ignored="false" />
+    <file path="/a.dummy" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381275666357" ignored="false" />
     <file path="/Gemfile" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380817438060" ignored="false" />
     <file path="/Dummy.txt" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381170159468" ignored="false" />
     <file path="$PROJECT_DIR$/../offvideos/app/views/index/index.html.erb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380817475831" ignored="false" />
@@ -19,7 +19,7 @@
     <file path="/show.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380831608676" ignored="false" />
     <file path="/artist_controller.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381256690249" ignored="false" />
     <file path="/player.js.coffee" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380922021781" ignored="false" />
-    <file path="/application.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381271617701" ignored="false" />
+    <file path="/application.html.haml" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1381275558086" ignored="false" />
     <file path="$USER_HOME$/winmoon/Clicou-Pizza/config/environments/production.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380842265717" ignored="false" />
     <file path="/production.rb" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380842281795" ignored="false" />
     <file path="/application.css" changelist="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" time="1380895909628" ignored="false" />
@@ -68,16 +68,16 @@
       <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="172" selection-start="2360" selection-end="2360" vertical-scroll-proportion="-3.7755103">
+            <state line="56" column="172" selection-start="2360" selection-end="2360" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.sass" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.sass" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="19" selection-start="431" selection-end="431" vertical-scroll-proportion="0.5815832">
+            <state line="24" column="19" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -86,7 +86,7 @@
       <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="24" selection-start="50" selection-end="50" vertical-scroll-proportion="-1.875">
+            <state line="28" column="0" selection-start="1250" selection-end="1291" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -95,7 +95,7 @@
       <file leaf-file-name="_head.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="41" selection-start="857" selection-end="857" vertical-scroll-proportion="-8.125">
+            <state line="13" column="41" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -113,7 +113,7 @@
       <file leaf-file-name="home.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/home.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="77" selection-start="1089" selection-end="1089" vertical-scroll-proportion="-17.5">
+            <state line="21" column="74" selection-start="779" selection-end="779" vertical-scroll-proportion="-13.125">
               <folding />
             </state>
           </provider>
@@ -126,12 +126,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="67" selection-start="4386" selection-end="4386" vertical-scroll-proportion="0.0">
+            <state line="146" column="0" selection-start="4946" selection-end="4946" vertical-scroll-proportion="0.34201956">
               <folding>
-                <marker date="1381273193339" expanded="true" signature="3930:3993" placeholder="..." />
+                <marker date="1381322370894" expanded="false" signature="3930:3993" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -160,13 +160,13 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/suggest.js.coffee" />
         <option value="$PROJECT_DIR$/app/controllers/player_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/artist_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home.sass" />
         <option value="$PROJECT_DIR$/app/views/layouts/_head.html.haml" />
         <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
       </list>
     </option>
   </component>
@@ -209,6 +209,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -443,8 +445,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -453,9 +453,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
-    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
-    <property name="dynamic.classpath" value="false" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -792,13 +792,13 @@
       <method />
     </configuration>
     <list size="7">
-      <item index="0" class="java.lang.String" itemvalue="Rake.test" />
-      <item index="1" class="java.lang.String" itemvalue="Rake.spec" />
-      <item index="2" class="java.lang.String" itemvalue="Rails.Production: music" />
-      <item index="3" class="java.lang.String" itemvalue="Rails.Development: music" />
-      <item index="4" class="java.lang.String" itemvalue="Rake.db:create" />
-      <item index="5" class="java.lang.String" itemvalue="Rake.db:migrate" />
-      <item index="6" class="java.lang.String" itemvalue="Rake.sitemap:generate" />
+      <item index="0" class="java.lang.String" itemvalue="Rake.db:create" />
+      <item index="1" class="java.lang.String" itemvalue="Rake.db:migrate" />
+      <item index="2" class="java.lang.String" itemvalue="Rake.sitemap:generate" />
+      <item index="3" class="java.lang.String" itemvalue="Rake.test" />
+      <item index="4" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="5" class="java.lang.String" itemvalue="Rails.Production: music" />
+      <item index="6" class="java.lang.String" itemvalue="Rails.Development: music" />
     </list>
     <recent_temporary>
       <list size="3">
@@ -843,10 +843,9 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33020833" sideWeight="0.49972603" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.328125" sideWeight="0.49972603" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329863" sideWeight="0.66979164" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24986301" sideWeight="0.671875" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26575342" sideWeight="0.671875" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2690411" sideWeight="0.671875" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328125" sideWeight="0.50027394" order="9" side_tool="true" content_ui="tabs" />
@@ -855,6 +854,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.328125" sideWeight="0.49972603" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24986301" sideWeight="0.671875" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -935,9 +935,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/player/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="123" selection-start="313" selection-end="313" vertical-scroll-proportion="0.20168068">
-          <folding />
-        </state>
+        <state line="8" column="123" selection-start="313" selection-end="313" vertical-scroll-proportion="0.20168068" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
@@ -949,16 +947,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/suggest.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="29" selection-start="138" selection-end="138" vertical-scroll-proportion="0.1453958">
-          <folding />
-        </state>
+        <state line="6" column="29" selection-start="138" selection-end="138" vertical-scroll-proportion="0.1453958" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/home.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="15" selection-start="583" selection-end="583" vertical-scroll-proportion="0.2907916">
-          <folding />
-        </state>
+        <state line="12" column="15" selection-start="583" selection-end="583" vertical-scroll-proportion="0.2907916" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/images/megaphone.jpg">
@@ -973,22 +967,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="67" selection-start="4386" selection-end="4386" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1381273193339" expanded="true" signature="3930:3993" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/home.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="77" selection-start="1089" selection-end="1089" vertical-scroll-proportion="-17.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/home.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="65" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
@@ -998,36 +976,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_head.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="41" selection-start="857" selection-end="857" vertical-scroll-proportion="-8.125">
+        <state line="13" column="41" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/player_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="17" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="17" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="172" selection-start="2360" selection-end="2360" vertical-scroll-proportion="-3.7755103">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="24" selection-start="50" selection-end="50" vertical-scroll-proportion="-1.875">
+        <state line="56" column="172" selection-start="2360" selection-end="2360" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="19" selection-start="431" selection-end="431" vertical-scroll-proportion="0.5815832">
+        <state line="24" column="19" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="1250" selection-end="1291" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/home.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="74" selection-start="779" selection-end="779" vertical-scroll-proportion="-13.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="146" column="0" selection-start="4946" selection-end="4946" vertical-scroll-proportion="0.34201956">
+          <folding>
+            <marker date="1381322370894" expanded="false" signature="3930:3993" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
