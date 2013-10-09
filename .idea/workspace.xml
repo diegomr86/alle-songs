@@ -129,9 +129,9 @@
       <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="33" selection-start="3704" selection-end="3704" vertical-scroll-proportion="0.57894737">
+            <state line="112" column="29" selection-start="3700" selection-end="3700" vertical-scroll-proportion="0.57894737">
               <folding>
-                <marker date="1381323413702" expanded="false" signature="4005:4068" placeholder="..." />
+                <marker date="1381325358598" expanded="false" signature="4001:4064" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -1016,9 +1016,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="33" selection-start="3704" selection-end="3704" vertical-scroll-proportion="0.57894737">
+        <state line="112" column="29" selection-start="3700" selection-end="3700" vertical-scroll-proportion="0.57894737">
           <folding>
-            <marker date="1381323413702" expanded="false" signature="4005:4068" placeholder="..." />
+            <marker date="1381325358598" expanded="false" signature="4001:4064" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -110,7 +110,7 @@ function displayVideoMeta(el, data) {
         el.addClass('active');
         $(el.data('target')).addClass('in');
 
-        console.log(data.info.art);
+        console.log(data.info);
         if (data.info.art) {
 
             lyric = ''
