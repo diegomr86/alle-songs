@@ -2,7 +2,7 @@
   .ui-layout-west.scroll-pane
     .artist
       .col-md-3.cover
-        = image_tag @img_url + @artist["pic_medium"]
+        = image_tag "#{@img_url}#{@artist["pic_medium"]}"
       .col-md-9.info
         %h2
           = @artist["desc"]
@@ -19,7 +19,7 @@
               .row
                 .col-md-2.cover
                   %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse_#{index}"}
-                    = image_tag @img_url + album["cover"]
+                    = image_tag "#{@img_url}#{album["cover"]}"
                 .col-md-10.info
                   %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse_#{index}"}
                     %h3= album["desc"]
