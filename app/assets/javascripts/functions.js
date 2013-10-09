@@ -97,8 +97,7 @@ function onPlayerError(event) {
 
 function displayVideoMeta(el, data) {
 
-    console.log(data)
-
+    console.log('aaa')
     if (data != 'undefined') {
         $('.albuns li.music_link').removeClass('active');
         $('.albuns li.music_link a i.status').removeClass('icon-play')
