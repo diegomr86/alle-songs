@@ -110,26 +110,25 @@ function displayVideoMeta(el, data) {
         el.addClass('active');
         $(el.data('target')).addClass('in');
 
-        console.log(data.info);
-        if (data.info.art) {
+        title = $('.artist .info h2').text();
+        subtitle = el.find('.title').text();
+        title += ' - ' + subtitle;
 
-            lyric = ''
-            title = data.info.art.name;
-            subtitle = el.find('span').text();
-            if (data.info.mus && data.info.type == "exact") {
-                lyric = data.info.mus[0].text;
-                lyric += '<br/><br/><p><a style="font-size:10px;color:#000;text-decoration:none;font-weight:bold" target=_blank href="'+data.info.mus[0].url+'"><img src="http://www.vagalume.com.br/images/logo_small2.jpg" alt="Vagalume"><br/>Letras de Músicas</a></p>'
-            } else {
-                lyric = "Lyrics not found";
-            }
+        $('title').text(title);
 
-            title += ' - ' + el.find('span').text();
+        lyric = ''
 
-            $('title').text(title);
-            $('#song_info header h3').html("<i class='icon-youtube-play'></i> "+title);
-            $('#lyrics header h3').html("<i class='icon-file-text'></i> Letra - "+subtitle);
-            $('#lyric_text').html(lyric)
+        if (data.info.mus && data.info.type == "exact") {
+            lyric = data.info.mus[0].text;
+            lyric += '<br/><br/><p><a style="font-size:10px;color:#000;text-decoration:none;font-weight:bold" target=_blank href="'+data.info.mus[0].url+'"><img src="http://www.vagalume.com.br/images/logo_small2.jpg" alt="Vagalume"><br/>Letras de Músicas</a></p>'
+        } else {
+            lyric = "Lyrics not found";
         }
+
+        $('#song_info header h3').html("<i class='icon-youtube-play'></i> "+title);
+        $('#lyrics header h3').html("<i class='icon-file-text'></i> Letra - "+subtitle);
+        $('#lyric_text').html(lyric)
+
     }
 }
 
