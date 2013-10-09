@@ -97,7 +97,8 @@ function onPlayerError(event) {
 
 function displayVideoMeta(el, data) {
 
-    console.log('aaa')
+    console.log('aaa');
+    console.log(data != 'undefined');
     if (data != 'undefined') {
         $('.albuns li.music_link').removeClass('active');
         $('.albuns li.music_link a i.status').removeClass('icon-play')
@@ -109,6 +110,7 @@ function displayVideoMeta(el, data) {
         el.addClass('active');
         $(el.data('target')).addClass('in');
 
+        console.log(data.info.art);
         if (data.info.art) {
 
             lyric = ''
