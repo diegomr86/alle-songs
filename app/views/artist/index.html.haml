@@ -51,12 +51,12 @@
         .col-md-8
           %section#social
             %br
+            .facebook.pull-left
+              .fb-like{"data-action" => "recommend", "data-colorscheme" => "light", "data-height" => "24", "data-width" => "200", "data-href" => artist_root_url(@artist['desc'].gsub("&", "e").gsub("/", "+").gsub(' ', '+')), "data-layout" => "button_count", "data-send" => "true", "data-show-faces" => "true"}
             .twitter.pull-left
               %a{href: "https://twitter.com/share", class: "twitter-share-button", 'data-text' => "Ouvindo #{@artist['desc']} online pelo Alle Songs.", data: { lang: "en", size: "medium", count: "horizontal"}} Tweet
             .plusone.pull-left
               .g-plusone{ data: { size: "medium" } }
-            .facebook.pull-left
-              .fb-like{"data-action" => "recommend", "data-colorscheme" => "light", "data-height" => "24", "data-width" => "200", "data-href" => artist_root_url(@artist['desc'].gsub("&", "e").gsub("/", "+").gsub(' ', '+')), "data-layout" => "button_count", "data-send" => "true", "data-show-faces" => "true"}
             .clearfix
           %section#lyrics
             %br

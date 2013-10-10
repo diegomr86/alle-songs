@@ -75,19 +75,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="49" selection-start="2259" selection-end="2259" vertical-scroll-proportion="-10.916667">
+            <state line="55" column="0" selection-start="2273" selection-end="2273" vertical-scroll-proportion="0.47594503">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_plusone.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_plusone.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/_plusone.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="123" selection-start="273" selection-end="273" vertical-scroll-proportion="0.15126051">
+            <state line="6" column="123" selection-start="273" selection-end="273" vertical-scroll-proportion="-3.75">
               <folding />
             </state>
           </provider>
@@ -989,13 +989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_facebook.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="32" selection-start="328" selection-end="328" vertical-scroll-proportion="-5.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="26" selection-start="1949" selection-end="1949" vertical-scroll-proportion="0.79094076">
@@ -1003,16 +996,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_plusone.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="49" selection-start="2259" selection-end="2259" vertical-scroll-proportion="-10.916667">
+        <state line="6" column="123" selection-start="273" selection-end="273" vertical-scroll-proportion="-3.75">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_plusone.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_facebook.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="123" selection-start="273" selection-end="273" vertical-scroll-proportion="0.15126051">
+        <state line="8" column="32" selection-start="328" selection-end="328" vertical-scroll-proportion="-5.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="0" selection-start="2273" selection-end="2273" vertical-scroll-proportion="0.47594503">
           <folding />
         </state>
       </provider>
