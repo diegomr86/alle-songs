@@ -35,7 +35,6 @@ $ ->
 
   setupAutojump()
 
-
   $("#forward").click ->
     loadNext true
   $("#backward").click ->

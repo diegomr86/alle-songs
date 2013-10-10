@@ -6,10 +6,12 @@ Music::Application.routes.draw do
   root 'home#index'
 
   resources :home, only: :index
-  resources :artist, only: :index
+  resources :artist, only: [:index,:show]
   resources :player, only: :index
 
   scope ":artist", as: "artist" do
     root to: 'artist#index'
   end
+
+
 end

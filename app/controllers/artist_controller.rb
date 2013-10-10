@@ -38,4 +38,8 @@ class ArtistController < ApplicationController
 
 
   end
+
+  def show
+
+  end
 end

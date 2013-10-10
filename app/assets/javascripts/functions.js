@@ -140,9 +140,9 @@ function loadVideo(el) {
         NProgress.done();
         if (data.video) {
             if (typeof player == "undefined")
-                player = renderPlayer(data.video.unique_id);
+                player = renderPlayer(data.video);
             else
-                player.loadVideoById(data.video.unique_id);
+                player.loadVideoById(data.video);
             displayVideoMeta(el, data);
 
             if (is_iPhone) {
