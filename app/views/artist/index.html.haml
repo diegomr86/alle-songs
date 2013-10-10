@@ -11,7 +11,7 @@
             %span.label.label-info= genre
 
       .clearfix
-    #accordion.panel-group.albuns
+    #accordion.panel-group.albums
       - @discography["item"].each_with_index do |album, index|
         .panel.panel-default.album
           .panel-heading
@@ -93,4 +93,4 @@
                 = image_tag "http://s2.vagalume.com#{artist['url']}images/profilew60.jpg"
                 %span= artist['name']
 
-
+    -#.fb-like-box{"data-colorscheme" => "light", "data-header" => "true", "data-height" => "271", "data-href" => "http://www.facebook.com/FacebookDevelopers", "data-show-border" => "true", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "The pixel width of the plugin"}

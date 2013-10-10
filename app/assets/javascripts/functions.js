@@ -44,7 +44,7 @@ function renderPlayer(vid) {
 }
 function onYouTubeIframeAPIReady() {
 
-    loadVideo($('.albuns li.music_link.active'));
+    loadVideo($('.albums li.music_link.active'));
 
 }
 // The API will call this function when the video player is ready.
@@ -67,6 +67,12 @@ function onPlayerStateChange(event) {
         refreshIntervalId = setInterval(function(){
             NProgress.set(((player.getCurrentTime() * 100) / player.getDuration()) / 100)
         }, 1000);
+
+        checkVideoStatusInterval = setInterval(function(){
+            if (player.getCurrentTime() == 0)
+                loadNext();
+        }, 5000);
+
     } else {
         $('#play_pause i').removeClass('icon-pause').addClass('icon-play');
         $('#play_pause').unbind().click(function(){
@@ -85,7 +91,7 @@ function onPlayerError(event) {
     console.log(event.data);
     if (event.data == 150 || event.data == 101) {
         // can't play this video, skip to next.
-        $('.albuns li.music_link.active').css('opacity','.5');
+        $('.albums li.music_link.active').css('opacity','.5');
         $('#player_container').after('<div id="errormsg">You cannot play that video, its probably restricted in your country. Skipping to the next video in the list...</div>');
         loadNext(true); // true means we ignore autojump in this case
 
@@ -100,10 +106,10 @@ function displayVideoMeta(el, data) {
     console.log('aaa');
     console.log(data != 'undefined');
     if (data != 'undefined') {
-        $('.albuns li.music_link').removeClass('active');
-        $('.albuns li.music_link a i.status').removeClass('icon-play')
-        $('.albuns li.music_link a i.status:not(.icon-exclamation)').addClass('icon-music')
-        $('.albuns .panel-collapse').removeClass('in');
+        $('.albums li.music_link').removeClass('active');
+        $('.albums li.music_link a i.status').removeClass('icon-play')
+        $('.albums li.music_link a i.status:not(.icon-exclamation)').addClass('icon-music')
+        $('.albums .panel-collapse').removeClass('in');
 
         el.find('a i.status').removeClass('icon-music').removeClass('icon-spinner').removeClass('icon-spin');
         el.find('a i.status:not(.icon-exclamation)').addClass('icon-play');
@@ -159,12 +165,12 @@ function loadVideo(el) {
 }
 
 function nextItem(current) {
-    var list = $('.albuns li.music_link');
+    var list = $('.albums li.music_link');
     return list.eq( list.index(current) + 1 );
 }
 
 function previousItem(current) {
-    var list = $('.albuns li.music_link');
+    var list = $('.albums li.music_link');
     if (list.index(current) > 0) {
         return list.eq( list.index(current) - 1 );
     }
@@ -182,14 +188,14 @@ function loadPrevious(ignoreAutojump) {
         document.location.href = $(artists[n]).data('href') + "#vid-random";
     } else {
         // go to previous video in list
-        if ($('.albuns li.music_link').length > 1) {
-            var current = $('.albuns li.music_link.active');
+        if ($('.albums li.music_link').length > 1) {
+            var current = $('.albums li.music_link.active');
             if (current) {
                 previous = previousItem(current)
                 if (previous.find('a').data('href')) {
                     loadVideo(previous)
                 } else {
-                    loadVideo($('.albuns li.music_link:first'));
+                    loadVideo($('.albums li.music_link:first'));
                 }
 
             }
@@ -210,8 +216,8 @@ function loadNext(ignoreAutojump) {
         document.location.href = $(artists[n]).data('href') + "#vid-random";
     } else {
         // go to next video in list
-        if ($('.albuns li.music_link').length > 1) {
-            var current = $('.albuns li.music_link.active');
+        if ($('.albums li.music_link').length > 1) {
+            var current = $('.albums li.music_link.active');
             if (current) {
                 next = nextItem(current)
                 console.log(next.find('a').data('href'))
@@ -219,7 +225,7 @@ function loadNext(ignoreAutojump) {
                     loadVideo(next)
 
                 } else {
-                    loadVideo($('.albuns li.music_link:first'));
+                    loadVideo($('.albums li.music_link:first'));
                 }
 
             }
@@ -230,7 +236,7 @@ function loadNext(ignoreAutojump) {
 
 /* create events on video list elements */
 function setupList() {
-    $('.albuns li.music_link a').on("click", function(e) {
+    $('.albums li.music_link a').on("click", function(e) {
         e.preventDefault();
         $(this).find('.status').removeClass('icon-play').removeClass('icon-music').removeClass('icon-exclamation')
         $(this).find('.status').addClass('icon-spinner').addClass('icon-spin')

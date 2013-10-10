@@ -41,3 +41,6 @@ gem 'newrelic_rpm'
 gem "dynamic_sitemaps"
 
 gem 'rails_12factor', group: :production
+
+gem "rockstar", "~> 0.7.1"
+
