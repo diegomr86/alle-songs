@@ -68,10 +68,11 @@ function onPlayerStateChange(event) {
             NProgress.set(((player.getCurrentTime() * 100) / player.getDuration()) / 100)
         }, 1000);
 
-        checkVideoStatusInterval = setInterval(function(){
-            if (player.getCurrentTime() == 0)
-                setError($('.albums li.music_link.active'));
-        }, 8000);
+//        checkVideoStatusInterval = setInterval(function(){
+//            if (player.getCurrentTime() == 0)
+//                setError($('.albums li.music_link.active'));
+//        }, 8000);
+
 
     } else {
         $('#play_pause i').removeClass('icon-pause').addClass('icon-play');
@@ -116,9 +117,9 @@ function displayVideoMeta(el, data) {
         el.addClass('active');
         $(el.data('target')).addClass('in');
 
-        title = $('.artist .info h2').text();
+        artist = $('.artist .info h2').text();
         subtitle = el.find('.title').text();
-        title += ' - ' + subtitle;
+        title = artist + ' - ' + subtitle;
 
         $('title').text(title);
 
@@ -135,6 +136,12 @@ function displayVideoMeta(el, data) {
         $('#lyrics header h3').html("<i class='icon-file-text'></i> Letra - "+subtitle);
         $('#lyric_text').html(lyric)
 
+        ga('send', {
+            'hitType': 'event',          // Required.
+            'eventCategory': artist,   // Required.
+            'eventAction': 'play',      // Required.
+            'eventLabel': subtitle
+        });
     }
 }
 
@@ -244,7 +251,6 @@ function setupList() {
         e.preventDefault();
         $(this).find('.status').removeClass('icon-play').removeClass('icon-music').removeClass('icon-exclamation')
         $(this).find('.status').addClass('icon-spinner').addClass('icon-spin')
-
         loadVideo($(this).parent());
     });
 }
