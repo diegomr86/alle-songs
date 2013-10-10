@@ -78,7 +78,7 @@
       <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="0" selection-start="2016" selection-end="2016" vertical-scroll-proportion="0.6305842">
+            <state line="60" column="0" selection-start="2626" selection-end="2626" vertical-scroll-proportion="0.78522336">
               <folding />
             </state>
           </provider>
@@ -1012,7 +1012,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="2016" selection-end="2016" vertical-scroll-proportion="0.6305842">
+        <state line="60" column="0" selection-start="2626" selection-end="2626" vertical-scroll-proportion="0.78522336">
           <folding />
         </state>
       </provider>
