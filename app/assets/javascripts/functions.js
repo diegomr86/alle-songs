@@ -70,8 +70,8 @@ function onPlayerStateChange(event) {
 
         checkVideoStatusInterval = setInterval(function(){
             if (player.getCurrentTime() == 0)
-                loadNext();
-        }, 5000);
+                setError($('.albums li.music_link.active'));
+        }, 8000);
 
     } else {
         $('#play_pause i').removeClass('icon-pause').addClass('icon-play');
@@ -138,6 +138,13 @@ function displayVideoMeta(el, data) {
     }
 }
 
+function setError(el) {
+    el.find('a i.status').removeClass('icon-play').removeClass('icon-spinner').removeClass('icon-spin');
+    el.find('a i.status').addClass('icon-exclamation');
+    el.attr('title', 'Song not found')
+    loadVideo(nextItem(el));
+}
+
 function loadVideo(el) {
 
     NProgress.start();
@@ -155,10 +162,7 @@ function loadVideo(el) {
                 window.scrollTo(0, 0);
             }
         } else {
-            el.find('a i.status').removeClass('icon-play').removeClass('icon-spinner').removeClass('icon-spin');
-            el.find('a i.status').addClass('icon-exclamation');
-            el.attr('title', 'Song not found')
-            loadVideo(nextItem(el));
+            setError(el);
         }
         NProgress.remove();
     });
