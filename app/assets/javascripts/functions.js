@@ -138,8 +138,8 @@ function displayVideoMeta(el, data) {
 
         ga('send', {
             'hitType': 'event',          // Required.
-            'eventCategory': artist,   // Required.
-            'eventAction': 'play',      // Required.
+            'eventCategory': 'play',   // Required.
+            'eventAction': artist,      // Required.
             'eventLabel': subtitle
         });
     }
