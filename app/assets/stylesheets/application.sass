@@ -1,33 +1,51 @@
 @import "nprogress"
 @import "layout-default"
 @import "jquery.jscrollpane"
+@import "http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700"
+$color1: #F05023
+$color2: #1E2213
+$color3: #5D3018
+$color4: #903B1C
+$color5: #B8441F
 
+body
+  color: $color2
 *:focus
   outline: none
 
 a, a:visited
   color: #444
   &:hover
-    color: #000
+    color: $color2
     text-decoration: none
 
+.label-info
+  background: $color1
 .ui-layout-north
   padding: 0
   header
     .navbar
       border: 0
       border-bottom: 1px solid #e7e7e7
+      background: #222
+      color: #fff
+      -webkit-border-radius: 0
+      -moz-border-radius: 0
+      border-radius: 0
       .navbar-brand
         padding: 1px 10px
         h1
-          font-family: 'Molle', cursive
+          font-family: 'Cabin Sketch', cursive
           font-style: italic
           margin: 0
           font-size: 30px
           float: left
           line-height: 47px
+          color: #fff
+          font-weight: bold
           i
             font-size: 14px
+            color: $color1
     #suggest_input
       width: 300px
 
@@ -47,7 +65,7 @@ a, a:visited
         margin-top: 0
 
   .albums
-    margin-right: 10px
+    padding-right: 10px
     padding-left: 10px
     .panel.panel-default
       border: none
@@ -72,6 +90,8 @@ a, a:visited
         padding-left: 10px
         h3
           line-height: 35px
+          font-size: 80%
+          font-weight: bold
       .actions
         padding: 0
         a
@@ -94,7 +114,7 @@ a, a:visited
             overflow: hidden
           &.active
             .icon-play
-              color: #29d
+              color: $color1
           &:last-child .col-md-10
             border-bottom: 0
             margin-bottom: 10px
@@ -133,6 +153,7 @@ a, a:visited
   #merchant
     margin-left: 10px
   #related_artists
+    padding-right: 10px
     h3
       margin: 0 0 10px 10px
     ul
@@ -141,11 +162,11 @@ a, a:visited
         list-style: none
         overflow: hidden
         height: 39px
-        margin-bottom: 1px
+        border-bottom: 1px solid #e7e7e7
         span
           margin: 0
           line-height: 26px
-          font-size: 120%
+          font-size: 130%
           padding-left: 10px
 #social
   .twitter
@@ -155,8 +176,9 @@ a, a:visited
   border-top: 1px solid #e7e7e7
   .developed_by
     a
-      color: #2299dd
-
+      color: $color1
+  sup
+    color: $color1
 
 .ui-menu
   .ui-menu-item

@@ -1,0 +1,17 @@
+{
+    "name": "Alle Songs",
+    "description": "Online Music Player",
+    "version": "0.0.0.1",
+    "manifest_version": 2,
+    "icons": {
+        "128": "megaphone.png"
+    },
+    "app": {
+        "urls": [
+            "http://www.allesongs.com/"
+        ],
+        "launch": {
+            "web_url": "http://www.allesongs.com/"
+        }
+    }
+}

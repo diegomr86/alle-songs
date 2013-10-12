@@ -1,3 +1,10 @@
+@import "http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700"
+$color1: #F05023
+$color2: #1E2213
+
+body
+  background-color: $color2
+  color: #fff
 .form-control:focus
   border: 1px solid #ccc
   -webkit-box-shadow: none
@@ -9,16 +16,16 @@
   text-align: center
   margin: 80px 0 40px 0
   h1
-    font-family: 'Molle', cursive
+    font-family: 'Cabin Sketch', cursive
     font-style: italic
+    font-weight: bold
     padding: 0
     font-size: 50px
-    color: #333
     sup
       position: relative
-      left: -15px
       font-size: 30%
       top: -24px
+      color: $color1
   .logo
     font-size: 100px
 
@@ -33,23 +40,31 @@
     input
       width: 320px
       height: 40px
-      border: 1px solid #333
+      border: 1px solid $color2
     button
       width: 40px
       height: 40px
-      border: 1px solid #333
+      border: 1px solid $color2
 
+.row
+  margin-left: 0
+  margin-right: 0
 .artists
+
   .artist
     padding: 0
     img
       width: 100%
 
-%footer
-  border-top: 1px solid #ddd
+footer
+  font-size: 80%
+  line-height: 26px
+  padding: 0 10px
   .developed_by
     a
-      color: #2299dd
+      color: $color1
+  sup
+    color: $color1
 
 .ui-menu
   .ui-menu-item
