@@ -9,26 +9,27 @@ class PlayerController < ApplicationController
   def index
     if params[:music]
 
+      client = SoundCloud.new(:client_id => "b12b167ce33979cf93296ffcfb63713e")
+
+      @tracks = client.get('/tracks', :q => "\"#{params[:artist]} - #{params[:music]}\"", :limit => 10, :order => 'hotness')
+
+
       @music_info = JSON.parse(open("http://www.vagalume.com.br/api/search.php?art=#{URI::escape(params[:artist])}&mus=#{URI::escape(params[:music])}&extra=alb,ytid").read)
-      if @music_info['mus'].present? && @music_info['mus'][0].present? && @music_info['mus'][0]['ytid'].present?
-        video_id = @music_info['mus'][0]['ytid']
-      else
-        query =  "#{params[:artist]} - #{params[:music]}"
-        videos = YOUTUBE_CLIENT.videos_by(:query => '"'+query+ '"', :categories => [:music], page: params[:page], :per_page => 4).videos
-        videos.each do |video|
-          puts video.title
-          video_id = video.unique_id if video.title == query
-          break
-        end
-        video_id = videos.first.unique_id if video_id.blank? && videos.first
+      query =  "#{params[:artist]} - #{params[:music]}"
+      videos = YOUTUBE_CLIENT.videos_by(:query => '"'+query+ '"', :categories => [:music], page: params[:page], :per_page => 4).videos
+      videos.each do |video|
+        puts video.title
+        video_id = video.unique_id if video.title == query
+        break
       end
+      video_id = videos.first.unique_id if video_id.blank? && videos.first
     end
 
     respond_to do |format|
       format.html do
         redirect_to root_path, notice: 'Página não encontrada'
       end
-      format.json {render json: {info: @music_info, video: video_id}}
+      format.json {render json: { tracks: @tracks, info: @music_info, video: video_id}}
     end
   end
 end

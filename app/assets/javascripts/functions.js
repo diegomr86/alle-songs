@@ -68,23 +68,20 @@ function onPlayerStateChange(event) {
             NProgress.set(((player.getCurrentTime() * 100) / player.getDuration()) / 100)
         }, 1000);
 
-//        checkVideoStatusInterval = setInterval(function(){
-//            if (player.getCurrentTime() == 0)
-//                setError($('.albums li.music_link.active'));
-//        }, 8000);
-
-
     } else {
+        clearInterval(refreshIntervalId);
+
         $('#play_pause i').removeClass('icon-pause').addClass('icon-play');
         $('#play_pause').unbind().click(function(){
             player.playVideo();
         });
-        clearInterval(refreshIntervalId);
     }
 
     if (event.data == YT.PlayerState.ENDED) {
         loadNext();
     }
+
+
 }
 // Used for detecting
 function onPlayerError(event) {
@@ -158,12 +155,12 @@ function loadVideo(el) {
 
     $.getJSON(el.find('a').data('href'), function( data ) {
         NProgress.done();
+        displayVideoMeta(el, data);
         if (data.video) {
             if (typeof player == "undefined")
                 player = renderPlayer(data.video);
             else
                 player.loadVideoById(data.video);
-            displayVideoMeta(el, data);
 
             if (is_iPhone) {
                 window.scrollTo(0, 0);
