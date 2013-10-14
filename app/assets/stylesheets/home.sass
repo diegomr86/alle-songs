@@ -1,6 +1,18 @@
 @import "http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700"
 $color1: #F05023
 $color2: #1E2213
+$color3: #5D3018
+$color4: #903B1C
+$color5: #B8441F
+
+html, body
+  height: 100%
+#wrap
+  min-height: 100%
+  height: auto !important
+  height: 100%
+  margin: 0 auto -26px
+  padding: 0 0 26px
 
 body
   background-color: $color2
@@ -14,7 +26,7 @@ body
 #home
   text-decoration: none
   text-align: center
-  margin: 80px 0 40px 0
+  padding: 80px 0 40px 0
   h1
     font-family: 'Cabin Sketch', cursive
     font-style: italic
@@ -59,10 +71,11 @@ body
     img
       width: 100%
 
-footer
-  font-size: 80%
+#footer
+  clear: both
   line-height: 26px
   padding: 0 10px
+  font-size: 80%
   .developed_by
     a
       color: $color1

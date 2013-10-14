@@ -129,8 +129,8 @@ function displayVideoMeta(el, data) {
             lyric = "Lyrics not found";
         }
 
-        $('#song_info header h3').html("<i class='icon-youtube-play'></i> "+title);
-        $('#lyrics header h3').html("<i class='icon-file-text'></i> Letra - "+subtitle);
+        $('#song_info header h4').html("<i class='icon-youtube-play'></i> "+title);
+        $('#lyrics header h4').html("<i class='icon-file-text'></i> Letra - "+subtitle);
         $('#lyric_text').html(lyric)
 
         ga('send', {

@@ -8,6 +8,17 @@ $color3: #5D3018
 $color4: #903B1C
 $color5: #B8441F
 
+
+
+html, body
+  height: 100%
+#wrap
+  min-height: 100%
+  height: auto !important
+  height: 100%
+  margin: 0 auto -26px
+  padding: 0 0 26px
+
 body
   color: $color2
 *:focus
@@ -19,42 +30,45 @@ a, a:visited
     color: $color2
     text-decoration: none
 
+h4
+  margin-top: 0
+
+
 .label-info
   background: $color1
-.ui-layout-north
-  padding: 0
-  header
-    .navbar
-      border: 0
-      border-bottom: 1px solid #e7e7e7
-      background: #222
-      color: #fff
-      -webkit-border-radius: 0
-      -moz-border-radius: 0
-      border-radius: 0
-      .navbar-brand
-        padding: 1px 10px
-        h1
-          font-family: 'Cabin Sketch', cursive
-          font-style: italic
-          margin: 0
-          font-size: 30px
-          float: left
-          line-height: 47px
-          color: #fff
-          font-weight: bold
-          i
-            font-size: 14px
-            color: $color1
-    #suggest_input
-      width: 300px
+#header
+  .navbar
+    border: 0
+    border-bottom: 1px solid #e7e7e7
+    background: $color2
+    color: #fff
+    -webkit-border-radius: 0
+    -moz-border-radius: 0
+    border-radius: 0
+    .navbar-brand
+      padding: 1px 10px
+      h1
+        font-family: 'Cabin Sketch', cursive
+        font-style: italic
+        margin: 0
+        font-size: 30px
+        float: left
+        line-height: 47px
+        color: #fff
+        font-weight: bold
+        i
+          font-size: 14px
+          color: $color1
+    #suggest_form
+      input
+        border: 1px solid $color2
+        width: 300px
+      button
+        border: 1px solid $color2
 
-.ui-layout-west
-  padding-right: 10px
-  margin: 0 10px
+#artist
   .artist
-    padding-left: 10px
-    margin-bottom: 15px
+    margin-bottom: 10px
     .cover
       padding-left: 0
       img
@@ -65,8 +79,6 @@ a, a:visited
         margin-top: 0
 
   .albums
-    padding-right: 10px
-    padding-left: 10px
     .panel.panel-default
       border: none
       border-top: 1px solid #e7e7e7
@@ -81,15 +93,14 @@ a, a:visited
     .album
       .cover
         padding-right: 0
-        height: 35px
+        height: 40px
         img
           width: 100%
       .info
-        height: 35px
         overflow: hidden
-        padding-left: 10px
         h3
-          line-height: 35px
+          line-height: 40px
+          height: 40px
           font-size: 80%
           font-weight: bold
       .actions
@@ -100,24 +111,25 @@ a, a:visited
         padding-left: 0
         margin-bottom: 0
         li.music_link
-          line-height: 24px
+          line-height: 30px
           font-size: 12px
           list-style: none
           a
             cursor: pointer
           .song
             clear: both
-          .col-md-10
-            border-bottom: 1px solid #e7e7e7
-            padding: 0
-            height: 24px
-            overflow: hidden
+            .col-xs-2
+              padding-right: 0
+            .col-xs-10
+              border-bottom: 1px solid #e7e7e7
+              line-height: 30px
+              height: 30px
+              overflow: hidden
           &.active
             .icon-play
               color: $color1
-          &:last-child .col-md-10
+          &:last-child .col-xs-10
             border-bottom: 0
-            margin-bottom: 10px
           span
             margin-left: 10px
           .icon-youtube-play.action
@@ -135,29 +147,20 @@ a, a:visited
       margin: 0
 
 
-.ui-layout-center
-  #song_info
-    h3
-      margin-top: 0
+#now-playing
   #player
     margin: 0
 
-  #lyrics
-    header
-      h3
-        margin-top: 0
   #lyric_text
     white-space: pre-line
 
-.ui-layout-east
+#extra-info
   #merchant
     margin-left: 10px
   #related_artists
     padding-right: 10px
-    h3
-      margin: 0 0 10px 10px
     ul
-      padding-left: 10px
+      padding-left: 0
       li
         list-style: none
         overflow: hidden
@@ -172,7 +175,10 @@ a, a:visited
   .twitter
     margin-right: 10px
 
-.ui-layout-south
+#footer
+  clear: both
+  line-height: 25px
+  padding: 0 10px
   border-top: 1px solid #e7e7e7
   .developed_by
     a
@@ -187,3 +193,12 @@ a, a:visited
       line-height: 40px
     strong
       margin-left: 10px
+
+
+
+@media (max-width: 768px)
+  .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12
+    padding-right: 10px
+    padding-left: 10px
+
+

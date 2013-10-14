@@ -19,11 +19,11 @@
 #= require suggest
 
 loadScrollPane = ->
-  $('.scroll-pane').jScrollPane mouseWheelSpeed: 20, autoReinitialise: true if $('.ui-layout-center')
+#  $('.scroll-pane').jScrollPane mouseWheelSpeed: 20, autoReinitialise: true if $('.ui-layout-center')
 
 $ ->
 
-  $("body").layout applyDefaultStyles: false, closable: false, spacing_open: 0, west__size: .25, east__size: .25
+#  $("body").layout applyDefaultStyles: false, closable: false, spacing_open: 0, west__size: .25, east__size: .25
 
   setupList()
 

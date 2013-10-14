@@ -18,8 +18,8 @@
     = render 'layouts/analytics'
     = render 'layouts/facebook'
     = render 'layouts/twitter'
-    .ui-layout-north
-      %header
+    #wrap
+      %header#header
         %nav.navbar.navbar-default{role: "navigation"}
           .navbar-header
             .navbar-brand
@@ -34,19 +34,18 @@
             %button.btn.btn-default{type: "submit"}
               %i.icon-search
 
-    = yield
-    .ui-layout-south
-      %footer
-        .copy.pull-left
-          Alle Songs
-          %sup
-            %i.icon-youtube-play
-          |
-          Online Music Player
-        .developed_by.pull-right
-          Desenvolvido por
-          = link_to "http://www.mtxwebart.com", target: "_blank" do
-            %strong MTX
+      = yield
+    %footer#footer
+      .copy.pull-left
+        Alle Songs
+        %sup
+          %i.icon-youtube-play
+        |
+        Online Music Player
+      .developed_by.pull-right
+        Desenvolvido por
+        = link_to "http://www.mtxwebart.com", target: "_blank" do
+          %strong MTX
 
     = render 'layouts/plusone'
 
