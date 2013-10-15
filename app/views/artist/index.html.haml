@@ -2,7 +2,7 @@
   %section#artist.col-xs-3{itemscope: '', itemtype: "http://schema.org/MusicGroup"}
     .artist
       .col-xs-3.cover
-        = image_tag "#{@img_url}#{@artist["pic_medium"]}"
+        = image_tag "#{@img_url}#{@artist["pic_medium"]}", title: @artist["desc"], alt: @artist["desc"]
       .col-xs-9.info
         %h2{itemprop: "name"}
           = @artist["desc"]
@@ -19,7 +19,7 @@
               .row
                 .col-xs-2.cover
                   %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse_#{index}"}
-                    = image_tag "#{@img_url}#{album["cover"]}"
+                    = image_tag "#{@img_url}#{album["cover"]}", title: album["desc"], alt: album["desc"]
                 .col-xs-10.info
                   %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", href: "#collapse_#{index}"}
                     %h3= album["desc"]
@@ -93,9 +93,12 @@
           Ouça também
         %ul
           - @artist['related'].each do |artist|
-            %li
-              = link_to artist_root_path(artist['name'].gsub("&", "e").gsub("/", "+").gsub(' ', '+')) do
-                = image_tag "http://s2.vagalume.com#{artist['url']}images/profilew60.jpg"
+            %li{itemscope: '', itemtype: "http://schema.org/MusicGroup"}
+              %meta{ itemprop: "name", content: artist['name'] }
+              %meta{ itemprop: "image", content: "http://s2.vagalume.com#{artist['url']}images/profilew60.jpg" }
+              %meta{ itemprop: "url", content: artist_custom_url(artist['name']) }
+              = link_to artist_custom_path(artist['name']) do
+                = image_tag "http://s2.vagalume.com#{artist['url']}images/profilew60.jpg", title: artist['name'], alt: artist['name']
                 %span= artist['name']
 
-    -#.fb-like-box{"data-colorscheme" => "light", "data-header" => "true", "data-height" => "271", "data-href" => "http://www.facebook.com/FacebookDevelopers", "data-show-border" => "true", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "The pixel width of the plugin"}
+    .fb-like-box{"data-colorscheme" => "light", "data-header" => "true", "data-height" => "271", "data-href" => "http://www.facebook.com/FacebookDevelopers", "data-show-border" => "true", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "The pixel width of the plugin"}
