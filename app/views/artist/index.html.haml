@@ -1,10 +1,10 @@
 %section#content
-  %section#artist.col-xs-3
+  %section#artist.col-xs-3{itemscope: '', itemtype: "http://schema.org/MusicGroup"}
     .artist
       .col-xs-3.cover
         = image_tag "#{@img_url}#{@artist["pic_medium"]}"
       .col-xs-9.info
-        %h2
+        %h2{itemprop: "name"}
           = @artist["desc"]
         -if @genres
           - @genres.each do |genre|
@@ -28,7 +28,7 @@
             .panel-body
               %ol
                 - album["discs"][0].each_with_index do |music, music_index|
-                  %li.music_link{ data: { target: "#collapse_#{index}" }, class: (index == 0 && music_index == 0 ? 'active' : '') }
+                  %li.music_link{ data: { target: "#collapse_#{index}" }, class: (index == 0 && music_index == 0 ? 'active' : ''), itemprop: "track", itemscope: '', itemtype: "http://schema.org/MusicRecording" }
                     %a{data: { href: player_index_path(artist: @artist["desc"], music: music["desc"])} }
                       .song
                         .row
@@ -36,7 +36,10 @@
                             &nbsp;
                           .col-xs-10
                             %i.status.icon-music
-                            %span.title= music["desc"]
+                            %span.title{ itemprop: "name" }= music["desc"]
+                            %meta{ itemprop: "url", content: artist_custom_url(@artist["desc"]) }
+                            %meta{ itemprop: "audio", content: artist_custom_url(@artist["desc"]) }
+                            %meta{ itemprop: "inAlbum", content: album["desc"] }
                           .clearfix
 
   %section#now-playing.col-xs-6
@@ -87,7 +90,7 @@
       %section#related_artists
         %h4
           %i.icon-group
-          Artistas relacionados
+          Ouça também
         %ul
           - @artist['related'].each do |artist|
             %li

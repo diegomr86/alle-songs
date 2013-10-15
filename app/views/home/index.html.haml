@@ -2,6 +2,9 @@
   - @artists.in_groups_of(4, false) do |g|
     .row
       - g.each do |artist|
-        .artist.col-md-3
-          = link_to artist_root_path(artist['name'].gsub("&", "e").gsub("/", "+").gsub(' ', '+')) do
+        .artist.col-md-3{itemscope: '', itemtype: "http://schema.org/MusicGroup"}
+          %meta{ itemprop: "name", content: artist['name'] }
+          %meta{ itemprop: "image", content: artist['pic_medium'] }
+          %meta{ itemprop: "url", content: artist_custom_url(artist['name']) }
+          = link_to artist_custom_path(artist['name']) do
             = image_tag artist['pic_medium'], alt: artist['name'], title: artist['name']

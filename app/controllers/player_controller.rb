@@ -9,11 +9,6 @@ class PlayerController < ApplicationController
   def index
     if params[:music]
 
-      client = SoundCloud.new(:client_id => "b12b167ce33979cf93296ffcfb63713e")
-
-      @tracks = client.get('/tracks', :q => "\"#{params[:artist]} - #{params[:music]}\"", :limit => 10, :order => 'hotness')
-
-
       @music_info = JSON.parse(open("http://www.vagalume.com.br/api/search.php?art=#{URI::escape(params[:artist])}&mus=#{URI::escape(params[:music])}&extra=alb,ytid").read)
       query =  "#{params[:artist]} - #{params[:music]}"
       videos = YOUTUBE_CLIENT.videos_by(:query => '"'+query+ '"', :categories => [:music], page: params[:page], :per_page => 4).videos
@@ -29,7 +24,7 @@ class PlayerController < ApplicationController
       format.html do
         redirect_to root_path, notice: 'Página não encontrada'
       end
-      format.json {render json: { tracks: @tracks, info: @music_info, video: video_id}}
+      format.json {render json: {info: @music_info, video: video_id}}
     end
   end
 end

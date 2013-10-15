@@ -6,10 +6,11 @@
     %title= @page_title
     %meta{content: @page_description, name: "description"}
     %meta{content: "letra, player online, discografia", name: "keywords"}
-    %meta{content: "website", property: "og:type"}
+    %meta{content: "music.playlist", property: "og:type"}
+
     %meta{content: "Alle Songs", property: "og:site_name"}
     %meta{content: @page_title, property: "og:title"}
-    %meta{content: artist_root_url(@artist['desc'].gsub("&", "e").gsub("/", "+").gsub(' ', '+')), property: "og:url"}
+    %meta{content: artist_custom_url(@artist["desc"]), property: "og:url"}
     %meta{content: "http://s2.vagalume.com#{@artist["pic_medium"]}" , property: "og:image"}
     %meta{content: @page_description, property: "og:description"}
     = favicon_link_tag "favicon.ico"
