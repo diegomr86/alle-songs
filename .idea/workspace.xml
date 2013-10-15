@@ -97,10 +97,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="0" selection-start="4587" selection-end="4587" vertical-scroll-proportion="0.9498328">
+            <state line="102" column="0" selection-start="4587" selection-end="4587" vertical-scroll-proportion="-35.5">
               <folding />
             </state>
           </provider>
@@ -109,7 +109,16 @@
       <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="35" selection-start="434" selection-end="434" vertical-scroll-proportion="0.8333333">
+            <state line="24" column="39" selection-start="1475" selection-end="1475" vertical-scroll-proportion="-13.541667">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.sass" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="157" column="0" selection-start="2959" selection-end="2959" vertical-scroll-proportion="0.35070574">
               <folding />
             </state>
           </provider>
@@ -145,7 +154,6 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home.sass" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
         <option value="$PROJECT_DIR$/app/views/layouts/_head.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/player_controller.rb" />
@@ -154,6 +162,7 @@
         <option value="$PROJECT_DIR$/app/views/home/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
       </list>
     </option>
   </component>
@@ -901,16 +910,6 @@
         <state line="132" column="28" selection-start="4409" selection-end="4409" vertical-scroll-proportion="1.5666667" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="12" selection-start="872" selection-end="872" vertical-scroll-proportion="0.35331905" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="1188" selection-end="1188" vertical-scroll-proportion="0.016286645" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/ajax.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -918,7 +917,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/home.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="0" selection-start="781" selection-end="1013" vertical-scroll-proportion="0.06852248" />
+        <state line="45" column="0" selection-start="781" selection-end="1013" vertical-scroll-proportion="0.06852248">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/artist_controller.rb">
@@ -971,16 +972,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="35" selection-start="434" selection-end="434" vertical-scroll-proportion="0.8333333">
+        <state line="102" column="0" selection-start="4587" selection-end="4587" vertical-scroll-proportion="-35.5">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="0" selection-start="4587" selection-end="4587" vertical-scroll-proportion="0.9498328">
+        <state line="22" column="12" selection-start="872" selection-end="872" vertical-scroll-proportion="0.35331905">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="39" selection-start="1475" selection-end="1475" vertical-scroll-proportion="-13.541667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="157" column="0" selection-start="2959" selection-end="2959" vertical-scroll-proportion="0.35070574">
           <folding />
         </state>
       </provider>
