@@ -1,7 +1,19 @@
 !!!
 %html
   %head
-    = render 'layouts/head'
+    - @page_title = "Alle Songs | Online Music Player"
+    - @page_description = "Ouça agora as discografias completas dos seus artistas preferidos, online e grátis!"
+    %title= @page_title
+    %meta{content: @page_description, name: "description"}
+    %meta{content: "letra, player online, discografia", name: "keywords"}
+    %meta{content: "website", property: "og:type"}
+    %meta{content: "Alle Songs", property: "og:site_name"}
+    %meta{content: @page_title, property: "og:title"}
+    %meta{content: root_url, property: "og:url"}
+    %meta{content: asset_url('logo.png') , property: "og:image"}
+    %meta{content: @page_description, property: "og:description"}
+    = favicon_link_tag "favicon.ico"
+
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", media: "all"
     = stylesheet_link_tag    "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css", media: "all"
     = stylesheet_link_tag    "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", media: "all"
