@@ -81,11 +81,6 @@
 
   %section#extra-info.col-xs-3
 
-    - if Rails.env.production?
-      %section#merchant
-        = render 'layouts/adsense'
-      %br
-
     - if @artist['related']
       %section#related_artists
         %h4
@@ -100,5 +95,10 @@
               = link_to artist_custom_path(artist['name']) do
                 = image_tag "http://s2.vagalume.com#{artist['url']}images/profilew60.jpg", title: artist['name'], alt: artist['name']
                 %span= artist['name']
+    - if Rails.env.production?
+      %section#merchant
+        = render 'layouts/adsense'
+      %br
 
-    .fb-like-box{"data-colorscheme" => "light", "data-header" => "true", "data-height" => "271", "data-href" => "http://www.facebook.com/FacebookDevelopers", "data-show-border" => "true", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "The pixel width of the plugin"}
+
+    .fb-like-box{"data-colorscheme" => "light", "data-header" => "true", "data-height" => "271", "data-href" => "https://www.facebook.com/AlleSongs", "data-show-border" => "false", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "300"}
