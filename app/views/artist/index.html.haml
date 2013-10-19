@@ -81,10 +81,10 @@
 
   %section#extra-info.col-xs-3
 
-    - if Rails.env.production?
-      %section#merchant
-        = render 'layouts/adsense'
-      %br
+    %section#merchant
+      %a{href: "http://www.greenpeace.org/brasil/pt/O-que-fazemos/Clima-e-Energia/libertem-nossos-ativistas/?ref=banners"}
+        %img{src: "http://greenpeace.org.br/p3/libertemos30/download/banner/banner250x250.jpg"}
+    %br
     - if @artist['related']
       %section#related_artists
         %h4
@@ -101,4 +101,4 @@
                 %span= artist['name']
 
     %br
-    .fb-like-box{"data-colorscheme" => "light", "data-header" => "true", "data-height" => "271", "data-href" => "https://www.facebook.com/AlleSongs", "data-show-border" => "false", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "300"}
+    .fb-like-box{"data-colorscheme" => "light", "data-header" => "true", "data-height" => "271", "data-href" => "https://www.facebook.com/AlleSongs", "data-show-border" => "false", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "250"}
