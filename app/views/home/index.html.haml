@@ -1,10 +1,16 @@
+- if params[:artist_import]
+  %h2 Artist import
+  = form_tag home_index_path, multipart: true do
+    = file_field_tag :file
+    = submit_tag "Import"
+
 %article.artists
   - @artists.in_groups_of(4, false) do |g|
     .row
       - g.each do |artist|
         .artist.col-md-3{itemscope: '', itemtype: "http://schema.org/MusicGroup"}
-          %meta{ itemprop: "name", content: artist['name'] }
-          %meta{ itemprop: "image", content: artist['pic_medium'] }
-          %meta{ itemprop: "url", content: artist_custom_url(artist['name']) }
-          = link_to artist_custom_path(artist['name']) do
-            = image_tag artist['pic_medium'], alt: artist['name'], title: artist['name']
+          %meta{ itemprop: "name", content: artist.name }
+          %meta{ itemprop: "image", content: "http://www.vagalume.com.br/#{artist.picture}" }
+          %meta{ itemprop: "url", content: artist_custom_url(artist.name) }
+          = link_to artist_custom_path(artist.name) do
+            = image_tag "http://www.vagalume.com.br/#{artist.picture}", alt: artist.name, title: artist.name

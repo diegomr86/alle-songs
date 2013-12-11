@@ -6,7 +6,7 @@
       .col-xs-9.info
         %h2{itemprop: "name"}
           = @artist["desc"]
-        -if @genres
+        - if @genres
           - @genres.each do |genre|
             %span.label.label-info= genre
 

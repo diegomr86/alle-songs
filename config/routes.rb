@@ -5,7 +5,7 @@ Music::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  resources :home, only: :index
+  resources :home, only: [:index, :create]
   resources :artist, only: [:index,:show]
   resources :player, only: :index
 

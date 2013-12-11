@@ -4,7 +4,6 @@ require 'open-uri'
 
 class ArtistController < ApplicationController
 
-
   def index
 
     @img_url = "http://s2.vagalume.com"
@@ -26,6 +25,9 @@ class ArtistController < ApplicationController
                                 }]
       end
       @genres = @artist['genre'].collect{|g| g['name']} if @artist['genre']
+
+      cookies.permanent[:latest_artist] = @artist['desc']
+
       respond_to do |format|
         format.html
         format.json {render json: [@discography, @artist]}
