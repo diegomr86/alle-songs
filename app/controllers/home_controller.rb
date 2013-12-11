@@ -13,8 +13,8 @@ class HomeController < ApplicationController
 
   def index
     @img_url = "http://s2.vagalume.com"
-    #@artists = JSON.parse(open("http://www.vagalume.com.br/api/rank.php?type=art&period=month&scope=translations&limit=80").read)['art']['month']['all']
-    @artists = Artist.order('created_at asc').limit(80)
+    @artists = JSON.parse(open("http://www.vagalume.com.br/api/rank.php?type=art&period=month&scope=translations&limit=80").read)['art']['month']['all']
+    #@artists = Artist.order('created_at asc').limit(80)
 
     respond_to do |format|
       format.html

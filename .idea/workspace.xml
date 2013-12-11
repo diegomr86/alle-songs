@@ -36,7 +36,16 @@
       <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="43" selection-start="524" selection-end="524" vertical-scroll-proportion="0.3993174" vertical-offset="0" max-vertical-offset="586">
+            <state line="16" column="0" selection-start="684" selection-end="684" vertical-scroll-proportion="0.49146757" vertical-offset="0" max-vertical-offset="586">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="0" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="684">
               <folding />
             </state>
           </provider>
@@ -541,6 +550,9 @@
       <RUBY_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
     <configuration default="true" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest">
       <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
       <module name="" />
@@ -787,13 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="5" selection-start="277" selection-end="277" vertical-scroll-proportion="0.3" vertical-offset="18" max-vertical-offset="684">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/home.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="0" selection-start="1271" selection-end="1271" vertical-scroll-proportion="0.7372014" vertical-offset="0" max-vertical-offset="1260">
@@ -808,9 +813,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="331" selection-end="331" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="684">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="43" selection-start="524" selection-end="524" vertical-scroll-proportion="0.3993174" vertical-offset="0" max-vertical-offset="586">
+        <state line="16" column="0" selection-start="684" selection-end="684" vertical-scroll-proportion="0.49146757" vertical-offset="0" max-vertical-offset="586">
           <folding />
         </state>
       </provider>
