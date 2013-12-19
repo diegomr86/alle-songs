@@ -33,10 +33,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_analytics.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_analytics.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/_analytics.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="25" selection-start="401" selection-end="401" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="234">
+            <state line="10" column="0" selection-start="546" selection-end="546" vertical-scroll-proportion="0.30716723" vertical-offset="0" max-vertical-offset="586">
               <folding />
             </state>
           </provider>
@@ -51,10 +51,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="9" selection-start="477" selection-end="477" vertical-scroll-proportion="0.43979058" vertical-offset="0" max-vertical-offset="1998">
+            <state line="14" column="9" selection-start="477" selection-end="477" vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="1998">
               <folding />
             </state>
           </provider>
@@ -99,10 +99,10 @@
         <option value="$PROJECT_DIR$/app/controllers/artist_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/home/index.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/layouts/_analytics.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
         <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/_analytics.html.haml" />
       </list>
     </option>
   </component>
@@ -956,13 +956,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_analytics.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="25" selection-start="401" selection-end="401" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="234">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state line="157" column="16" selection-start="2977" selection-end="2980" vertical-scroll-proportion="0.39794168" vertical-offset="2594" max-vertical-offset="3726">
@@ -986,7 +979,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="9" selection-start="477" selection-end="477" vertical-scroll-proportion="0.43979058" vertical-offset="0" max-vertical-offset="1998">
+        <state line="14" column="9" selection-start="477" selection-end="477" vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="1998">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_analytics.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="546" selection-end="546" vertical-scroll-proportion="0.30716723" vertical-offset="0" max-vertical-offset="586">
           <folding />
         </state>
       </provider>
