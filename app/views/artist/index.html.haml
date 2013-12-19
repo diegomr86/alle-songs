@@ -80,10 +80,6 @@
                 %i.icon-fast-forward
   %section#extra-info.col-xs-3
 
-    %section#merchant
-      %a{href: "http://www.greenpeace.com.br/cade/", target: "_blank"}
-        %img{src: "http://greenpeace.org.br/p3/transportes/banners/banner_net_cade_250x250_4.jpg"}
-    %br
     - if @artist['related']
       %section#related_artists
         %h4
@@ -98,8 +94,12 @@
               = link_to artist_custom_path(artist['name']) do
                 = image_tag "http://s2.vagalume.com#{artist['url']}images/profilew60.jpg", title: artist['name'], alt: artist['name']
                 %span= artist['name']
+    %br
+    .fb-like-box{"data-colorscheme" => "light", "data-header" => "true", "data-height" => "271", "data-href" => "https://www.facebook.com/AlleSongs", "data-show-border" => "false", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "300"}
+    %br
+    .fb-comments{ data: { colorscheme: :light, href: artist_custom_url(@artist["desc"]), numposts: 5, width: "300" } }
+    %br
+    %section#merchant
+      %a{href: "http://www.greenpeace.com.br/cade/", target: "_blank"}
+        %img{src: "http://greenpeace.org.br/p3/transportes/banners/banner_net_cade_250x250_4.jpg"}
 
-    %br
-    .fb-like-box{"data-colorscheme" => "light", "data-header" => "true", "data-height" => "271", "data-href" => "https://www.facebook.com/AlleSongs", "data-show-border" => "false", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "250"}
-    %br
-    .fb-comments{ data: { colorscheme: :light, href: artist_custom_url(@artist["desc"]), numposts: 5, width: "250" } }
