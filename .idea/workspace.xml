@@ -60,19 +60,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="17" selection-start="2549" selection-end="2549" vertical-scroll-proportion="-1.4814814" vertical-offset="986" max-vertical-offset="1998">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.sass" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="157" column="16" selection-start="2980" selection-end="2980" vertical-scroll-proportion="0.39794168" vertical-offset="2594" max-vertical-offset="3726">
+            <state line="91" column="22" selection-start="4182" selection-end="4182" vertical-scroll-proportion="0.84048027" vertical-offset="1148" max-vertical-offset="1998">
               <folding />
             </state>
           </provider>
@@ -119,8 +110,8 @@
         <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/home/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/_analytics.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
+        <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
       </list>
     </option>
   </component>
@@ -995,16 +986,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="17" selection-start="2549" selection-end="2549" vertical-scroll-proportion="-1.4814814" vertical-offset="986" max-vertical-offset="1998">
+        <state line="157" column="16" selection-start="2980" selection-end="2980" vertical-scroll-proportion="0.39794168" vertical-offset="2594" max-vertical-offset="3726">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.sass">
+    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="16" selection-start="2980" selection-end="2980" vertical-scroll-proportion="0.39794168" vertical-offset="2594" max-vertical-offset="3726">
+        <state line="91" column="22" selection-start="4182" selection-end="4182" vertical-scroll-proportion="0.84048027" vertical-offset="1148" max-vertical-offset="1998">
           <folding />
         </state>
       </provider>
