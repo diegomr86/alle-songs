@@ -78,8 +78,6 @@
                 %i.icon-play
               %a.btn.btn-default#forward
                 %i.icon-fast-forward
-        .row-fluid
-          .fb-comments{"data-colorscheme" => "light", "data-href" => artist_custom_url(@artist["desc"]), "data-numposts" => "5"}
   %section#extra-info.col-xs-3
 
     %section#merchant
@@ -103,3 +101,5 @@
 
     %br
     .fb-like-box{"data-colorscheme" => "light", "data-header" => "true", "data-height" => "271", "data-href" => "https://www.facebook.com/AlleSongs", "data-show-border" => "false", "data-show-faces" => "true", "data-stream" => "false", "data-width" => "250"}
+    %br
+    .fb-comments{ data: { colorscheme: :light, href: artist_custom_url(@artist["desc"]), numposts: 5, width: "250" } }
