@@ -8,8 +8,6 @@ class ArtistController < ApplicationController
 
     @img_url = "http://s2.vagalume.com"
 
-
-
     if params[:artist].present?
       a = params[:artist].gsub('.', ' ')
       puts a
