@@ -121,17 +121,25 @@ function displayVideoMeta(el, data) {
         $('title').text(title);
 
         lyric = ''
+        translation_text = ''
 
         if (data.info.mus && data.info.type == "exact") {
             lyric = data.info.mus[0].text;
             lyric += '<br/><br/><p><a style="font-size:10px;color:#000;text-decoration:none;font-weight:bold" target=_blank href="'+data.info.mus[0].url+'"><img src="http://www.vagalume.com.br/images/logo_small2.jpg" alt="Vagalume"><br/>Letras de Músicas</a></p>'
+
+            if (data.info.mus[0].translate) {
+                translation_text = data.info.mus[0].translate[0].text.replace('[', '<b>').replace(']', '</b>');
+            }
+
+
         } else {
-            lyric = "Lyrics not found";
+            lyric = "Letra não encontrada";
         }
 
         $('#song_info header h4').html("<i class='icon-youtube-play'></i> "+title);
         $('#lyrics header h4').html("<i class='icon-file-text'></i> Letra - "+subtitle);
         $('#lyric_text').html(lyric)
+        $('#translation_text').html(translation_text)
 
         ga('send', {
             'hitType': 'event',          // Required.

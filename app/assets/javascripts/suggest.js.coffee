@@ -26,7 +26,7 @@ $ ->
       false
 
     select: (event, ui) ->
-      location.href = '/'+ui.item.label.split("/").join("+")
+      location.href = '/'+ui.item.label.split("/").join("+").split(".").join("+")
       false
   ).data("ui-autocomplete")._renderItem = (ul, item) ->
-    $("<li>").append("<a href='/"+item.label.split("/").join("+")+"'><img src='http://s2.vagalume.com"+item.url+"images/profilew40.jpg' /><strong>" + item.label + "<strong></a>").appendTo ul
+    $("<li>").append("<a href='/"+item.label.split("/").join("+").split(".").join("+")+"'><img src='http://s2.vagalume.com"+item.url+"images/profilew40.jpg' /><strong>" + item.label + "<strong></a>").appendTo ul

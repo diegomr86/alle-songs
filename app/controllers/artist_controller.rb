@@ -9,7 +9,12 @@ class ArtistController < ApplicationController
     @img_url = "http://s2.vagalume.com"
 
 
-    s = JSON.parse(open("http://www.vagalume.com.br/api/search.php?art=#{URI::escape(params[:artist])}").read) if params[:artist].present?
+
+    if params[:artist].present?
+      a = params[:artist].gsub('.', ' ')
+      puts a
+      s = JSON.parse(open("http://www.vagalume.com.br/api/search.php?art=#{URI::escape(a)}").read)
+    end
 
     if s.present? && s["art"].present?
       @url = s["art"]["url"]
