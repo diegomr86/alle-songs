@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_analytics.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/_analytics.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" name="Default" comment="" />
     <ignored path="music.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,10 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_analytics.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_analytics.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/_analytics.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="7" selection-start="440" selection-end="440" vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="306">
+            <state line="11" column="7" selection-start="440" selection-end="440" vertical-scroll-proportion="0.4489796" vertical-offset="0" max-vertical-offset="441">
               <folding />
             </state>
           </provider>
@@ -77,10 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="functions.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="16" selection-start="4783" selection-end="4787" vertical-scroll-proportion="0.3317647" vertical-offset="2433" max-vertical-offset="5148">
+            <state line="143" column="8" selection-start="4779" selection-end="4779" vertical-scroll-proportion="-85.8" vertical-offset="0" max-vertical-offset="5148">
               <folding>
                 <marker date="1390950429059" expanded="false" signature="4040:4103" placeholder="..." />
               </folding>
@@ -784,10 +780,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="50" y="-4" width="1391" height="905" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32948717" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32948717" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33020833" sideWeight="0.49972603" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32692307" sideWeight="0.49972603" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.66979164" order="3" side_tool="false" content_ui="tabs" />
@@ -1090,13 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/_analytics.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="7" selection-start="440" selection-end="440" vertical-scroll-proportion="-7.3333335" vertical-offset="0" max-vertical-offset="306">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="53" column="23" selection-start="2519" selection-end="2519" vertical-scroll-proportion="-35.333332" vertical-offset="0" max-vertical-offset="2196">
@@ -1134,10 +1123,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="16" selection-start="4783" selection-end="4787" vertical-scroll-proportion="0.3317647" vertical-offset="2433" max-vertical-offset="5148">
+        <state line="143" column="8" selection-start="4779" selection-end="4779" vertical-scroll-proportion="-85.8" vertical-offset="0" max-vertical-offset="5148">
           <folding>
             <marker date="1390950429059" expanded="false" signature="4040:4103" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/_analytics.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="7" selection-start="440" selection-end="440" vertical-scroll-proportion="0.4489796" vertical-offset="0" max-vertical-offset="441">
+          <folding />
         </state>
       </provider>
     </entry>
