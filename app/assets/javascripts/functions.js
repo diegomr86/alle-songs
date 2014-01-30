@@ -141,11 +141,20 @@ function displayVideoMeta(el, data) {
         $('#lyric_text').html(lyric)
         $('#translation_text').html(translation_text)
 
-        ga('send', {
+        console.log({
             'hitType': 'event',          // Required.
             'eventCategory': 'play',   // Required.
             'eventAction': artist,      // Required.
             'eventLabel': subtitle
+        });
+
+        console.log(ga);
+        ga('send', 'event', 'play', 'it', 'sd');
+        ga('send', {
+            'hitType': 'event',          // Required.
+            'eventCategory': 'play',   // Required.
+            'eventAction': 'ti',      // Required.
+            'eventLabel': 'subtitle'
         });
     }
 }

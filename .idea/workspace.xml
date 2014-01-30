@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1d2ef3b4-1cda-4f69-b541-adf731bcc66e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_analytics.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/_analytics.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/functions.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="music.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -14,7 +16,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/music@Development__music.coverage" NAME="Development: music Coverage Results" MODIFIED="1390948675046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="music" />
+    <SUITE FILE_PATH="coverage/music@Development__music.coverage" NAME="Development: music Coverage Results" MODIFIED="1391107945851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="music" />
     <SUITE FILE_PATH="coverage/music@db_create__music.coverage" NAME="db:create: music Coverage Results" MODIFIED="1386099973246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="music" />
     <SUITE FILE_PATH="coverage/music@db_migrate__music.coverage" NAME="db:migrate: music Coverage Results" MODIFIED="1386445746484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="music" />
   </component>
@@ -33,7 +35,7 @@
       <file leaf-file-name="_analytics.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/_analytics.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="14" selection-start="45" selection-end="61" vertical-scroll-proportion="0.29439253" vertical-offset="0" max-vertical-offset="428">
+            <state line="7" column="25" selection-start="409" selection-end="409" vertical-scroll-proportion="0.27937916" vertical-offset="0" max-vertical-offset="451">
               <folding />
             </state>
           </provider>
@@ -69,7 +71,7 @@
       <file leaf-file-name="application.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="16" selection-start="724" selection-end="724" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="864">
+            <state line="17" column="16" selection-start="724" selection-end="724" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="864">
               <folding />
             </state>
           </provider>
@@ -78,9 +80,9 @@
       <file leaf-file-name="functions.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="8" selection-start="4779" selection-end="4779" vertical-scroll-proportion="-85.8" vertical-offset="0" max-vertical-offset="5148">
+            <state line="129" column="45" selection-start="4305" selection-end="4305" vertical-scroll-proportion="0.0" vertical-offset="2263" max-vertical-offset="5310">
               <folding>
-                <marker date="1390950429059" expanded="false" signature="4040:4103" placeholder="..." />
+                <marker date="1391108618817" expanded="false" signature="4040:4103" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -127,12 +129,12 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/suggest.js.coffee" />
         <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.sass" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
         <option value="$PROJECT_DIR$/app/views/artist/index.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/artist_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/home.html.haml" />
         <option value="$PROJECT_DIR$/chrome/manifest.json" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/functions.js" />
         <option value="$PROJECT_DIR$/app/views/layouts/_analytics.html.haml" />
       </list>
     </option>
@@ -176,6 +178,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -393,7 +396,6 @@
         </subPane>
       </pane>
       <pane id="RailsProjectView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -782,23 +784,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="50" y="-4" width="1391" height="905" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33020833" sideWeight="0.49972603" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32692307" sideWeight="0.49972603" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.66979164" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24986301" sideWeight="0.671875" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25390917" sideWeight="0.69166666" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26135516" sideWeight="0.69166666" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328125" sideWeight="0.50027394" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31666666" sideWeight="0.49972603" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32948717" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31666666" sideWeight="0.49972603" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32948717" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32692307" sideWeight="0.49972603" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871288" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24986301" sideWeight="0.671875" order="2" side_tool="false" content_ui="combo" />
@@ -833,9 +835,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="100" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="684">
-          <folding />
-        </state>
+        <state line="15" column="100" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="684" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_analytics.html.haml">
@@ -847,9 +847,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="100" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="684">
-          <folding />
-        </state>
+        <state line="15" column="100" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="684" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_analytics.html.haml">
@@ -1034,72 +1032,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_adsense.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="443">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="443" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chrome/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="26" selection-start="135" selection-end="135" vertical-scroll-proportion="0.1632653" vertical-offset="0" max-vertical-offset="441">
-          <folding />
-        </state>
+        <state line="4" column="26" selection-start="135" selection-end="135" vertical-scroll-proportion="0.1632653" vertical-offset="0" max-vertical-offset="441" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/home.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="8" selection-start="2107" selection-end="2107" vertical-scroll-proportion="0.33411214" vertical-offset="811" max-vertical-offset="1260">
-          <folding />
-        </state>
+        <state line="53" column="8" selection-start="2107" selection-end="2107" vertical-scroll-proportion="0.33411214" vertical-offset="811" max-vertical-offset="1260" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="103" selection-start="434" selection-end="434" vertical-scroll-proportion="0.47472528" vertical-offset="54" max-vertical-offset="684">
-          <folding />
-        </state>
+        <state line="15" column="103" selection-start="434" selection-end="434" vertical-scroll-proportion="0.47472528" vertical-offset="54" max-vertical-offset="684" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="150" selection-end="150" vertical-scroll-proportion="0.19313304" vertical-offset="0" max-vertical-offset="466">
-          <folding />
-        </state>
+        <state line="5" column="0" selection-start="150" selection-end="150" vertical-scroll-proportion="0.19313304" vertical-offset="0" max-vertical-offset="466" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="5" selection-start="339" selection-end="339" vertical-scroll-proportion="0.36511156" vertical-offset="0" max-vertical-offset="493">
-          <folding />
-        </state>
+        <state line="10" column="5" selection-start="339" selection-end="339" vertical-scroll-proportion="0.36511156" vertical-offset="0" max-vertical-offset="493" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/artist_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="141" selection-end="141" vertical-scroll-proportion="0.2555781" vertical-offset="54" max-vertical-offset="1008">
-          <folding />
-        </state>
+        <state line="10" column="0" selection-start="141" selection-end="141" vertical-scroll-proportion="0.2555781" vertical-offset="54" max-vertical-offset="1008" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="8" selection-start="2712" selection-end="2712" vertical-scroll-proportion="0.4437086" vertical-offset="843" max-vertical-offset="1296">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="23" selection-start="2519" selection-end="2519" vertical-scroll-proportion="-35.333332" vertical-offset="0" max-vertical-offset="2196">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ajax.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
-          <folding />
-        </state>
+        <state line="58" column="8" selection-start="2712" selection-end="2712" vertical-scroll-proportion="0.4437086" vertical-offset="843" max-vertical-offset="1296" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/suggest.js.coffee">
@@ -1123,18 +1091,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/artist/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="23" selection-start="2519" selection-end="2519" vertical-scroll-proportion="-35.333332" vertical-offset="0" max-vertical-offset="2196">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/ajax.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="8" selection-start="4779" selection-end="4779" vertical-scroll-proportion="-85.8" vertical-offset="0" max-vertical-offset="5148">
+        <state line="129" column="45" selection-start="4305" selection-end="4305" vertical-scroll-proportion="0.0" vertical-offset="2263" max-vertical-offset="5310">
           <folding>
-            <marker date="1390950429059" expanded="false" signature="4040:4103" placeholder="..." />
+            <marker date="1391108618817" expanded="false" signature="4040:4103" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_analytics.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="14" selection-start="45" selection-end="61" vertical-scroll-proportion="0.29439253" vertical-offset="0" max-vertical-offset="428">
+        <state line="7" column="25" selection-start="409" selection-end="409" vertical-scroll-proportion="0.27937916" vertical-offset="0" max-vertical-offset="451">
           <folding />
         </state>
       </provider>
