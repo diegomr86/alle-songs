@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  bookmark_type: MyString
+  user_id: 
+  value: MyString
+  cover: MyString
+
+two:
+  bookmark_type: MyString
+  user_id: 
+  value: MyString
+  cover: MyString

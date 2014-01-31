@@ -6,6 +6,7 @@ class ArtistController < ApplicationController
 
   def index
 
+    @bookmark = Bookmark.new
     @img_url = "http://s2.vagalume.com"
 
     if params[:artist].present?

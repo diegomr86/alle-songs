@@ -34,6 +34,7 @@
     = render 'layouts/facebook'
     = render 'layouts/twitter'
     #wrap
+
       %header#header
         %nav.navbar.navbar-default{role: "navigation"}
           .navbar-header
@@ -43,12 +44,14 @@
                   Alle Songs
                   %sup
                     %i.icon-youtube-play
+          = link_to 'Meus favoritos', bookmarks_path, 'data-target' => '#bookmarks_section', remote: true
           %form.navbar-form.navbar-right#suggest_form{role: "search", action: artist_index_path}
             .form-group
               %input#suggest_input.form-control{placeholder: "Buscar artistas", type: "text", name: "artist"}
             %button.btn.btn-default{type: "submit"}
               %i.icon-search
 
+      %section#bookmarks_section
       = yield
     %footer#footer
       .copy.pull-left
