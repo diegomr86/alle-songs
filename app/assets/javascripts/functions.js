@@ -141,7 +141,7 @@ function displayVideoMeta(el, data) {
         $('#lyric_text').html(lyric)
         $('#translation_text').html(translation_text)
 
-        ga('sendbefore_filter :authenticate_user!', {
+        ga('send', {
             'hitType': 'event',          // Required.
             'eventCategory': 'play',   // Required.
             'eventAction': artist,      // Required.
