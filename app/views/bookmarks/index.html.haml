@@ -1,9 +1,9 @@
-.page-header
-  %h3
-    Favoritos
-    %small Seus artistas preferidos
-
-    - @bookmarks.each do |bookmark|
-      = bookmark
-  = link_to 'New Bookmark', new_bookmark_path
-.hr
+%div
+  - @bookmarks.in_groups_of(4, false) do |g|
+    .row
+      - g.each do |bookmark|
+        .bookmark_artist.col-md-3
+          = link_to artist_custom_path(bookmark.value) do
+            = image_tag bookmark.cover, alt: bookmark.value, title: bookmark.value, width: '40'
+.clearfix
+%hr

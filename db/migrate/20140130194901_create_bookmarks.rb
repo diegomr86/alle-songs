@@ -1,5 +1,5 @@
 class CreateBookmarks < ActiveRecord::Migration
-  def change
+  def up
     create_table :bookmarks do |t|
       t.string :bookmark_type
       t.references :user, index: true
@@ -8,5 +8,9 @@ class CreateBookmarks < ActiveRecord::Migration
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :bookmarks
   end
 end

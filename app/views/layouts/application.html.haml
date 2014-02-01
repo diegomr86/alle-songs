@@ -33,26 +33,28 @@
     = render 'layouts/analytics'
     = render 'layouts/facebook'
     = render 'layouts/twitter'
-    #wrap
+    %header#header
+      %nav.navbar.navbar-default{role: "navigation"}
+        .navbar-header
+          .navbar-brand
+            = link_to root_path do
+              %h1
+                Alle Songs
+                %sup
+                  %i.icon-youtube-play
 
-      %header#header
-        %nav.navbar.navbar-default{role: "navigation"}
-          .navbar-header
-            .navbar-brand
-              = link_to root_path do
-                %h1
-                  Alle Songs
-                  %sup
-                    %i.icon-youtube-play
-          = link_to 'Meus favoritos', bookmarks_path, 'data-target' => '#bookmarks_section', remote: true
-          %form.navbar-form.navbar-right#suggest_form{role: "search", action: artist_index_path}
-            .form-group
-              %input#suggest_input.form-control{placeholder: "Buscar artistas", type: "text", name: "artist"}
-            %button.btn.btn-default{type: "submit"}
-              %i.icon-search
+        %form.navbar-right.navbar-form#suggest_form{role: "search", action: artist_index_path}
+          .form-group
+            %input#suggest_input.form-control{placeholder: "Buscar artistas", type: "text", name: "artist"}
+          %button.btn.btn-default{type: "submit"}
+            %i.icon-search
+        .navbar-text.navbar-right
+          = link_to bookmarks_path, 'data-target' => '#bookmarks_section', remote: true, class: 'navbar-link' do
+            %i.glyphicon.glyphicon-thumbs-up
+            sons que curto
 
-      %section#bookmarks_section
-      = yield
+    %section#bookmarks_section
+    = yield
     %footer#footer
       .copy.pull-left
         Alle Songs

@@ -10,17 +10,10 @@
           - @genres.each do |genre|
             %span.label.label-info= genre
         #bookmark_it
-          = form_for @bookmark, remote: true, data: { target: '#bookmark_it'} do |f|
-            - if @bookmark.errors.any?
-              #error_explanation
-                %h2= "#{pluralize(@bookmark.errors.count, "error")} prohibited this bookmark from being saved:"
-                %ul
-                  - @bookmark.errors.full_messages.each do |msg|
-                    %li= msg
-            = f.hidden_field :bookmark_type, value: 'artist'
-            = f.hidden_field :value, value: @artist["desc"]
-            = f.hidden_field :cover, value: "#{@img_url}#{@artist["pic_medium"]}"
-            = f.submit 'Adicionar aos favoritos'
+          - if @bookmark.persisted?
+            = render 'bookmarks/destroy'
+          - else
+            = render 'bookmarks/form'
 
 
       .clearfix
