@@ -9,6 +9,12 @@
         - if @genres
           - @genres.each do |genre|
             %span.label.label-info= genre
+        #bookmark_it
+          - if @bookmark.persisted?
+            = render 'bookmarks/destroy'
+          - else
+            = render 'bookmarks/form'
+
 
       .clearfix
     #accordion.panel-group.albums

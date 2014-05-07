@@ -31,6 +31,15 @@ class ArtistController < ApplicationController
 
       cookies.permanent[:latest_artist] = @artist['desc']
 
+      if user_signed_in?
+        @bookmark = current_user.bookmarks.where(value: @artist['desc']).first
+        if @bookmark.blank?
+          @bookmark = current_user.bookmarks.new(bookmark_type: :artist, value: @artist["desc"], cover: "#{@img_url}#{@artist["pic_medium"]}")
+        end
+      else
+        @bookmark = Bookmark.new(bookmark_type: :artist, value: @artist["desc"], cover: "#{@img_url}#{@artist["pic_medium"]}")
+      end
+
       respond_to do |format|
         format.html
         format.json {render json: [@discography, @artist]}

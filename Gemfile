@@ -45,3 +45,6 @@ gem 'rails_12factor', group: :production
 gem "rockstar", "~> 0.7.1"
 gem "soundcloud"
 
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'

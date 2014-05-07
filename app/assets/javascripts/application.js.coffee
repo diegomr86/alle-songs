@@ -17,9 +17,12 @@
 #= require jquery.jscrollpane.min
 #= require functions
 #= require suggest
+#= require facebook
+#= require ajax
 
 loadScrollPane = ->
 #  $('.scroll-pane').jScrollPane mouseWheelSpeed: 20, autoReinitialise: true if $('.ui-layout-center')
+
 
 $ ->
 
@@ -39,4 +42,3 @@ $ ->
     loadNext true
   $("#backward").click ->
     loadPrevious true
-
