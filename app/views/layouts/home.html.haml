@@ -1,13 +1,13 @@
 !!!
 %html
   %head
-    - @page_title = "Alle Songs | Discografias online"
+    - @page_title = "AlleSongs | Discografias online"
     - @page_description = "Ouça agora as discografias completas dos seus artistas preferidos, online e grátis!"
     %title= @page_title
     %meta{content: @page_description, name: "description"}
     %meta{content: "letra, player online, discografia", name: "keywords"}
     %meta{content: "website", property: "og:type"}
-    %meta{content: "Alle Songs", property: "og:site_name"}
+    %meta{content: "AlleSongs", property: "og:site_name"}
     %meta{content: @page_title, property: "og:title"}
     %meta{content: root_url, property: "og:url"}
     %meta{content: asset_url('logo.png') , property: "og:image"}
@@ -29,7 +29,7 @@
         .logo
 
         %h1
-          Alle Songs
+          AlleSongs
           %sup
             %i.icon-youtube-play
       %section#search
@@ -47,7 +47,7 @@
       = yield
     %footer#footer
       .copy.pull-left
-        Alle Songs
+        AlleSongs
         %sup
           %i.icon-youtube-play
         |

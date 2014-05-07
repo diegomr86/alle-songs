@@ -1,7 +1,7 @@
 !!!
 %html
   %head        
-    - @page_title = "#{@artist['desc']} | Discografia online no Alle Songs"
+    - @page_title = "#{@artist['desc']} | Discografia online no AlleSongs"
     - @page_description = "#{@artist['desc']} - Ouça essa e milhares de outras discografias completas dos seus artistas preferidos. Online e grátis!"
     %title= @page_title
     %meta{content: @page_description, name: "description"}
@@ -11,7 +11,7 @@
     %meta{content: "189790567873103", property: "fb:app_id"}
     %meta{content: "music.playlist", property: "og:type"}
 
-    %meta{content: "Alle Songs", property: "og:site_name"}
+    %meta{content: "AlleSongs", property: "og:site_name"}
     %meta{content: @page_title, property: "og:title"}
     %meta{content: artist_custom_url(@artist["desc"]), property: "og:url"}
     %meta{content: "http://s2.vagalume.com#{@artist["pic_medium"]}" , property: "og:image"}
@@ -40,7 +40,7 @@
             .navbar-brand
               = link_to root_path do
                 %h1
-                  Alle Songs
+                  AlleSongs
                   %sup
                     %i.icon-youtube-play
           %form.navbar-form.navbar-right#suggest_form{role: "search", action: artist_index_path}
@@ -52,7 +52,7 @@
       = yield
     %footer#footer
       .copy.pull-left
-        Alle Songs
+        AlleSongs
         %sup
           %i.icon-youtube-play
         |
