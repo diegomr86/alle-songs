@@ -93,6 +93,15 @@
                   #translation_text
 
   %section#extra-info.col-xs-3
+
+    %section#tracks
+    :javascript
+      $(function() {
+          // Blog is the app name
+          window.router = new Music.Routers.TracksRouter({tracks: #{@tracks.to_json.html_safe}});
+          Backbone.history.start();
+        });
+
     %section#merchant
       = render 'layouts/adsense'
       -#%a{href: "http://www.greenpeace.com.br/cade/", target: "_blank"}

@@ -19,6 +19,12 @@
 #= require suggest
 #= require facebook
 #= require ajax
+#= require underscore
+#= require backbone
+#= require backbone_rails_sync
+#= require backbone_datalink
+#= require backbone/music
+
 
 loadScrollPane = ->
 #  $('.scroll-pane').jScrollPane mouseWheelSpeed: 20, autoReinitialise: true if $('.ui-layout-center')

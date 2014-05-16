@@ -1,0 +1,13 @@
+.col-md-2
+  .stat-panel.track{itemscope: '', itemtype: "http://schema.org/MusicGroup"}
+    .stat-row
+      %meta{ itemprop: "name", content: track.name }
+      %meta{ itemprop: "image", content: track.image }
+      %meta{ itemprop: "url", content: artist_custom_url(track.artist) }
+      = link_to artist_custom_path(track.artist) do
+        .artist_picture
+          = image_tag track.images['extralarge'].present? ? track.images['extralarge'] : 'demo/avatars/1.jpg', alt: track.name, title: track.name, class: 'img-responsive'
+    .stat-row
+      .stat-cell.bg-dark-gray.padding-sm.text-xs.text-semibold.text-center
+        = link_to artist_custom_path(track.artist), title: track.artist do
+          = track.name

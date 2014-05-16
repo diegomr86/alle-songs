@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Track:
+  = @track.track
+%p
+  %b Artist:
+  = @track.artist
+%p
+  %b Session:
+  = @track.session_id
+
+= link_to 'Edit', edit_track_path(@track)
+\|
+= link_to 'Back', tracks_path

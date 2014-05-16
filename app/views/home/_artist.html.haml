@@ -1,0 +1,13 @@
+.col-md-2
+  .stat-panel.artist{itemscope: '', itemtype: "http://schema.org/MusicGroup"}
+    .stat-row
+      %meta{ itemprop: "name", content: artist.name.html_safe }
+      %meta{ itemprop: "image", content: artist.images['extralarge'].present? ? artist.images['extralarge'] : 'demo/avatars/1.jpg' }
+      %meta{ itemprop: "url", content: artist_custom_url(artist.name.html_safe) }
+      = link_to artist_custom_path(artist.name.html_safe) do
+        .artist_picture
+          = image_tag artist.images['extralarge'].present? ? artist.images['extralarge'] : 'demo/avatars/1.jpg', alt: artist.name.html_safe, title: artist.name.html_safe, class: 'img-responsive'
+    .stat-row
+      .stat-cell.bg-dark-gray.padding-sm.text-xs.text-semibold.text-center
+        = link_to artist_custom_path(artist.name.html_safe) do
+          = artist.name.html_safe

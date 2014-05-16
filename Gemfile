@@ -42,9 +42,10 @@ gem "dynamic_sitemaps"
 
 gem 'rails_12factor', group: :production
 
-gem "rockstar", "~> 0.7.1"
+gem 'rockstar', '~> 0.8.0'
 gem "soundcloud"
 
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
+gem 'rails-backbone', github: 'codebrew/backbone-rails', branch: 'master'

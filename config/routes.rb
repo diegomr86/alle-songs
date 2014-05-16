@@ -1,4 +1,6 @@
 Music::Application.routes.draw do
+  resources :tracks
+
   resources :bookmarks
 
   devise_for :users, :controllers => { omniauth_callbacks: "omniauth_callbacks" }
@@ -9,6 +11,7 @@ Music::Application.routes.draw do
   root 'home#index'
 
   resources :home, only: [:index, :create]
+  resources :search, only: :index
   resources :artist, only: [:index,:show]
   resources :player, only: :index
 
