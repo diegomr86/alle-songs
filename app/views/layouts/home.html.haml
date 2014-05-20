@@ -53,7 +53,8 @@
     = stylesheet_link_tag    "pixel-admin-scss/widgets/widgets"
     = stylesheet_link_tag    "pixel-admin-scss/rtl/rtl"
     = stylesheet_link_tag    "pixel-admin-scss/themes/themes"
-    = stylesheet_link_tag    "jquery.galereya"
+    = stylesheet_link_tag    "pixel-admin-scss/pages/pages"
+    = stylesheet_link_tag    "component"
     = stylesheet_link_tag    "home", media: "all"
 
     = csrf_meta_tags
@@ -76,7 +77,6 @@
   %body.theme-purple-hills.main-menu-animated
     :javascript
       var init = [];
-    %script{:src => "assets/demo/demo.js"}
     / / Demo script
     #main-wrapper
       /
@@ -187,10 +187,7 @@
                               %strong 92%
                           .notification-ago 12h ago
                           .notification-icon.fa.fa-hdd-o.bg-warning
-                        / / .notification
-                      / / .notifications-list
                       %a.notifications-link{:href => "#"} MORE NOTIFICATIONS
-                    / / .dropdown-menu
                   %li.nav-icon-btn.nav-icon-btn-success.dropdown
                     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#messages"}
                       %span.label 10
@@ -293,11 +290,7 @@
                             %a{:href => "#"} Robert Jang
                             \&nbsp;&nbsp;·&nbsp;&nbsp;
                             2h ago
-                        / / .message
-                      / / .messages-list
                       %a.messages-link{:href => "#"} MORE MESSAGES
-                    / / .dropdown-menu
-                  / /3. $END_NAVBAR_ICON_BUTTONS
                   %li
                     %form.navbar-form.pull-left
                       %input.form-control{:placeholder => "Search", :type => "text"}/
@@ -323,35 +316,6 @@
                         %a{:href => "pages-signin.html"}
                           %i.dropdown-icon.fa.fa-power-off>
                           \&nbsp;&nbsp;Log Out
-                / / .navbar-nav
-              / / .right
-          / / #main-navbar-collapse
-        / / .navbar-inner
-      / / #main-navbar
-      / /2. $END_MAIN_NAVIGATION
-      /
-        4. $MAIN_MENU =================================================================================
-
-        Main menu
-
-        Notes:
-        * to make the menu item active, add a class 'active' to the <li>
-        example: <li class="active">...</li>
-        * multilevel submenu example:
-        <li class="mm-dropdown">
-        <a href="#"><span class="mm-text">Submenu item text 1</span></a>
-        <ul>
-        <li>...</li>
-        <li class="mm-dropdown">
-        <a href="#"><span class="mm-text">Submenu item text 2</span></a>
-        <ul>
-        <li>...</li>
-        \...
-        </ul>
-        </li>
-        \...
-        </ul>
-        </li>
       #main-menu{:role => "navigation"}
         #main-menu-inner
           #menu-content-demo.menu-content.top
@@ -576,12 +540,10 @@
           / / .navigation
           .menu-content
             %a.btn.btn-primary.btn-block.btn-outline.dark{:href => "pages-invoice.html"} Create Invoice
-        / / #main-menu-inner
-      / / #main-menu
-      / /4. $MAIN_MENU
-      #content-wrapper
-        .page-header
-          .row
+        .row
+      .col-md-9.no-padding
+        #content-wrapper
+          .page-header
             / Page header, center on small screens
             %form#suggest_form{role: "search", action: artist_index_path}
               %h1.col-xs-12.text-center.text-left-sm
@@ -589,11 +551,120 @@
                   %span.input-group-addon
                     %i.fa.fa-search.page-header-icon.pull-left>
                   %input#suggest_input.form-control.no-padding-hr.pull-left{placeholder: "Buscar artista, album, música...", type: "text", name: "artist"}
-        / / .page-header
-        .row
           = yield
+        .row
+      #player-container.col-md-3.no-padding-hr
+        #content-wrapper.no-padding-hr
+          .panel.panel-dark.widget-profile.no-border
+            #playlist-header
+            .panel-heading.bg-dark-gray.border-dark-gray.no-border.padding-sm
+              .widget-profile-bg-icon
+                %i.fa.fa-music
+              %img.widget-profile-avatar{:alt => "", :src => "assets/demo/avatars/3.jpg"}/
+              .widget-profile-header
+                %span ConeCrewDiretoria
+                %br/
+                %a{:href => "https://twitter.com/test"} Meus Amigos Fazem Rima (8:55)
 
-
+            .widget-profile-text.no-padding
+              %iframe{allowfullscreen: "", frameborder: "0", height: "220", src: "//www.youtube.com/embed/gyVpN0YrDgE", width: "100%"}
+            .widget-profile-text.text-center.bg-dark-gray
+              %i.fa.fa-th-list
+              PLAYLIST
+            .clearfix
+            #tracks
+            #playlist.list-group.fill
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Djavan - Oceano
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Metallica - Master of Puppets
+              %a.list-group-item.active{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
+                %i.fa.fa-volume-up.list-group-icon>
+                Pantera - Walk
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Caetano Veloso - A bossa nova e foda
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Oriente - Desorientado
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Djavan - Oceano
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Metallica - Master of Puppets
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
+                %i.fa.fa-play-up.list-group-icon>
+                Pantera - Walk
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Caetano Veloso - A bossa nova e foda
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Oriente - Desorientado
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Djavan - Oceano
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Metallica - Master of Puppets
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
+                %i.fa.fa-play-up.list-group-icon>
+                Pantera - Walk
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Caetano Veloso - A bossa nova e foda
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Oriente - Desorientado
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Djavan - Oceano
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Metallica - Master of Puppets
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Pantera - Walk
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Caetano Veloso - A bossa nova e foda
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Oriente - Desorientado
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Djavan - Oceano
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Metallica - Master of Puppets
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Pantera - Walk
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Caetano Veloso - A bossa nova e foda
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Oriente - Desorientado
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Djavan - Oceano
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Metallica - Master of Puppets
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Pantera - Walk
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Caetano Veloso - A bossa nova e foda
+              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
+                %i.fa.fa-play.list-group-icon>
+                Oriente - Desorientado
+        .row
       #main-menu-bg
     / / #main-wrapper
     / Get jQuery from Google CDN
@@ -604,16 +675,26 @@
     /[if lte IE 9]
       <script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">'+"<"+"/script>"); </script>
     / Pixel Admin's javascripts
+
+    = javascript_include_tag "modernizr.custom"
     = javascript_include_tag "jquery"
     = javascript_include_tag "jquery_ujs"
     = javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
     = javascript_include_tag "bootstrap"
     = javascript_include_tag "pixel-admin"
+    = javascript_include_tag "toucheffects"
     = javascript_include_tag "home"
     = render 'layouts/analytics'
 
     :javascript
       init.push(function () {
-      	// Javascript code here
-      })
+
+      	$('#playlist').slimScroll({ height: 508, alwaysVisible: true, color: '#888',allowPageScroll: true });
+
+        $('.album-cover').mosaic({
+            animation	:	'slide'
+        });
+
+      } );
+
       window.PixelAdmin.start(init);

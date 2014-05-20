@@ -1,4 +1,6 @@
 class TracksController < ApplicationController
+
+  layout false
   before_action :set_track, only: [:show, :edit, :update, :destroy]
 
   # GET /tracks

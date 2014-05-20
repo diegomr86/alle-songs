@@ -1,18 +1,47 @@
 @import "http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700"
-.theme-purple-hills #main-navbar .navbar-header a
-  font-family: 'Cabin Sketch', cursive
-  font-style: italic
-  font-weight: bold
-  padding: 0
-  font-size: 23px
 
-#main-navbar .navbar-header
-  padding-left: 73px !important
+@mixin overflow-h()
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
 
-.artist_picture
-  height: 150px
-  img
-    min-height: 150px
+.theme-purple-hills
+  #main-navbar .navbar-header a
+    font-family: 'Cabin Sketch', cursive
+    font-style: italic
+    font-weight: bold
+    padding: 0
+    font-size: 23px
 
-.search-result
-  margin-left: 66px
+  #main-navbar .navbar-header
+    padding-left: 73px !important
+
+  .artist_picture
+    height: 120px
+    img
+      min-height: 120px
+
+  .search-result
+    margin-left: 66px
+
+  #player-container
+    margin-top: -18px
+    background-color: #ffffff
+    height: 100%
+
+  a.list-group-item, a.list-group-item:hover, a.list-group-item.active
+    background-color: #ffffff
+    background-position: right
+    background-repeat: no-repeat
+    background-size: 40px
+    padding-right: 40px
+    @include overflow-h()
+
+  a.list-group-item.active
+    background-color: #857198
+
+  .overflow-h
+    @include overflow-h()
+
+  .album-cover-caption
+    display: none

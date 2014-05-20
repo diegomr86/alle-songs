@@ -4,52 +4,19 @@ require 'open-uri'
 
 class ArtistController < ApplicationController
 
+  layout 'home'
+
+  before_action :rockstar_init
+
   def index
 
-    @img_url = "http://s2.vagalume.com"
+    @artist = Rockstar::Artist.new(params[:artist], :include_info => true)
 
-    if params[:artist].present?
-      a = params[:artist].gsub('.', ' ')
-      puts a
-      s = JSON.parse(open("http://www.vagalume.com.br/api/search.php?art=#{URI::escape(a)}").read)
+    respond_to do |format|
+      format.html
+      format.json {render json: [@discography, @artist]}
+      format.xml {render :xml => @artist}
     end
-
-    if s.present? && s["art"].present?
-      @url = s["art"]["url"]
-      @artist = JSON.parse(open("#{@url}/index.js").read)["artist"]
-      @discography = JSON.parse(open("#{@url}/discografia/index.js").read)["discography"]
-      if @discography['item'].blank?
-        @discography['item'] = [{
-                                    'desc' => @artist['desc'],
-                                    'cover' => @artist['pic_medium'],
-                                    'discs' => [
-                                        @artist['lyrics']['item']
-                                    ]
-                                }]
-      end
-      @genres = @artist['genre'].collect{|g| g['name']} if @artist['genre']
-
-      cookies.permanent[:latest_artist] = @artist['desc']
-
-      if user_signed_in?
-        @bookmark = current_user.bookmarks.where(value: @artist['desc']).first
-        if @bookmark.blank?
-          @bookmark = current_user.bookmarks.new(bookmark_type: :artist, value: @artist["desc"], cover: "#{@img_url}#{@artist["pic_medium"]}")
-        end
-      else
-        @bookmark = Bookmark.new(bookmark_type: :artist, value: @artist["desc"], cover: "#{@img_url}#{@artist["pic_medium"]}")
-      end
-
-      respond_to do |format|
-        format.html
-        format.json {render json: [@discography, @artist]}
-        format.xml {render :xml => @artist}
-      end
-
-    else
-      redirect_to root_path, notice: 'Nenhuma música encontrada para este artista'
-    end
-
 
   end
 
