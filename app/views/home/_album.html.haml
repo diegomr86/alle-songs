@@ -1,8 +1,19 @@
 %figure.album-cover
   = image_tag album.images['extralarge'].present? ? album.images['extralarge'] : 'demo/avatars/1.jpg', alt: album.name
   %figcaption.bg-dark-gray
-    %h5= album.name
-    %span album.artist
-    %a{href: "http://dribbble.com/shots/1116685-Settings"} Play
-.mosaic-block.album-cover{itemscope: '', itemtype: "http://schema.org/MusicGroup"}
-
+    %h5.overflow-h
+      = album.name
+    %span.overflow-h
+      = link_to album.artist, custom_artist_name(album.artist)
+    %br
+    %br
+    .text-center
+      .btn-group
+        %a.btn.btn-primary{ title: 'Show info' }
+          %i.fa.fa-search-plus
+        %a.btn.btn-primary{ title: 'Play' }
+          %i.fa.fa-play
+        %a.btn.btn-primary{ title: 'Add to playlist' }
+          %i.fa.fa-indent
+    .clearfix
+    %br

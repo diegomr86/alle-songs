@@ -11,6 +11,6 @@ $ ->
         $.get("/search",
           query: request.term
         ).done (data) ->
-          $('#artists').html data
+          $('#pages-container').html data
 
   )

@@ -326,11 +326,11 @@
             %div
               .text-bg
                 %span.text-slim Welcome,
-                %span.text-semibold John
+                %span.text-semibold Guest
               %img{:alt => "", :src => "assets/demo/avatars/1.jpg"}/
               .btn-group
                 %a.btn.btn-xs.btn-primary.btn-outline.dark{:href => "#"}
-                  %i.fa.fa-envelope
+                  %i.fa.fa-facebook
                 %a.btn.btn-xs.btn-primary.btn-outline.dark{:href => "#"}
                   %i.fa.fa-user
                 %a.btn.btn-xs.btn-primary.btn-outline.dark{:href => "#"}
@@ -551,7 +551,7 @@
                   %span.input-group-addon
                     %i.fa.fa-search.page-header-icon.pull-left>
                   %input#suggest_input.form-control.no-padding-hr.pull-left{placeholder: "Buscar artista, album, música...", type: "text", name: "artist"}
-          = yield
+          #pages-container= yield
         .row
       #player-container.col-md-3.no-padding-hr
         #content-wrapper.no-padding-hr
@@ -691,9 +691,6 @@
 
       	$('#playlist').slimScroll({ height: 508, alwaysVisible: true, color: '#888',allowPageScroll: true });
 
-        $('.album-cover').mosaic({
-            animation	:	'slide'
-        });
 
       } );
 

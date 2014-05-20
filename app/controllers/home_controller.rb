@@ -16,7 +16,8 @@ class HomeController < ApplicationController
 
   def index
 
-    @artists = Rockstar::Geo.new.topartists('brasil', 18)
+    @artists = Rockstar::Geo.new.topartists('brasil', 12)
+    @tracks = Rockstar::Geo.new.toptracks('brazil', 10)
 
     respond_to do |format|
       format.html
