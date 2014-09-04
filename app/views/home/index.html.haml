@@ -1,25 +1,25 @@
-.row-fluid
-  .icon-left.text-center
-    %i.fa.fa-user.text-xlg
-  .search-result
-    .col-md-12
-    .panel.widget-followers
-      .panel-heading
-        %span.panel-title
-          Top artists
-      .panel-body
-        %ul.grid.cs-style-3.row
-          - @artists.each do |artist|
-            %li.col-lg-3= render 'home/artist', artist: artist
-.row
-  .icon-left.text-center
-    %i.fa.fa-music.text-xlg
-  .search-result
-    .col-md-12
-    .panel.widget-followers
-      .panel-heading
-        %span.panel-title
-          Top tracks
-      .panel-body
-        - @tracks.each do |track|
-          = render 'home/track', track: track
+-#.row-fluid
+-#  .icon-left.text-center
+-#    %i.fa.fa-user.text-xlg
+-#  .search-result
+-#    .col-md-12
+-#    .panel.widget-followers
+-#      .panel-heading
+-#        %span.panel-title
+-#          Top artists
+-#      .panel-body
+-#        %ul.grid.cs-style-3.row
+-#          - @artists.each do |artist|
+-#            %li.col-lg-3= render 'home/artist', artist: artist
+-#.row
+-#  .icon-left.text-center
+-#    %i.fa.fa-music.text-xlg
+-#  .search-result
+-#    .col-md-12
+-#    .panel.widget-followers
+-#      .panel-heading
+-#        %span.panel-title
+-#          Top tracks
+-#      .panel-body
+-#        - @tracks.each do |track|
+-#          = render 'home/track', track: track

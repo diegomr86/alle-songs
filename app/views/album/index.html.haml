@@ -1,39 +1,36 @@
-.page-profile{ ng: { if: "artist != undefined" } }
+.page-profile
   .profile-full-name
-    %h1.text-semibold= '{{artist.name}}'
+    %h1.text-semibold= @album.name
   .profile-row
     .left-col
       .profile-block
         .panel.profile-photo
-          %img{ ng: { src: "{{artist.image[3]['#text']}}" }, alt: '{{artist.name}}' }
+          = image_tag @album.images['extralarge']
         %br/
-        %a.btn.btn-default{ title: 'Play', ng: { click: "addArtistToPlaylist(artist, true)"} }
+        %a.btn.btn-default{:href => "#"}
           %i.fa.fa-play
           play
-        %a.btn{ title: 'Add to playlist', ng: { click: "addArtistToPlaylist(artist, false)"} }
+        %a.btn{:href => "#"}
           %i.fa.fa-indent
           add to playlist
       .panel.panel-transparent
         .panel-heading
-          %span.panel-title About {{artist.name}}
+          %span.panel-title About #{@album.name}
         .panel-body
-          {{artist.summary}}
-          -#= @artist.summary.gsub('http://www.last.fm/music', '').gsub('<a href="/Nirvana">Read more about Nirvana on Last.fm</a>.', '').html_safe
+          summary
       .panel.panel-transparent
         .panel-heading
           %span.panel-title Statistics
         .list-group
           %a.list-group-item{:href => "#"}
-            %strong {{artist.stats.listenercount}}
             listeners
           %a.list-group-item{:href => "#"}
-            %strong {{artist.stats.playcount}}
             plays
       .panel.panel-transparent.profile-skills
         .panel-heading
           %span.panel-title Tags
         .panel-body
-          %span.label.label-primary{ ng: { repeat: 'tag in artist.tags.tag'} } {{tag.name}}
+          %span.label.label-primary asdfasdf
       .panel.panel-transparent
         .panel-heading
           %span.panel-title Social
@@ -52,23 +49,21 @@
       .profile-content
         %ul#profile-tabs.nav.nav-tabs
           %li.active
-            %a{"data-toggle" => "tab", :href => "#profile-tabs-top-albums", showtab: "" } Top albums
+            %a{"data-toggle" => "tab", :href => "#profile-tabs-top-albums"} Top albums
           %li
-            %a{"data-toggle" => "tab", :href => "#profile-tabs-top-tracks", showtab: "", ng: { click: "load_top_tracks()" } } Top Tracks
+            %a{"data-toggle" => "tab", :href => "#profile-tabs-top-tracks"} Top Tracks
           %li
-            %a{"data-toggle" => "tab", :href => "#profile-tabs-events", showtab: "", ng: { click: "load_events()" } } Events
+            %a{"data-toggle" => "tab", :href => "#profile-tabs-events"} Events
           %li
-            %a{"data-toggle" => "tab", :href => "#profile-tabs-similar", showtab: ""} Similar artists
+            %a{"data-toggle" => "tab", :href => "#profile-tabs-similar"} Similar artists
         .tab-content.tab-content-bordered.panel-padding
           #profile-tabs-top-albums.tab-pane.fade.in.active
-            = render 'home/album'
+            %ul.grid.cs-style-3.row
+
 
           #profile-tabs-top-tracks.tab-pane.fade.widget-followers
-            = render 'home/track'
 
           #profile-tabs-events.widget-article-comments.tab-pane.panel.no-padding.no-border.fade.in
-            = render 'home/event'
-
             .clearfix
           #profile-tabs-similar.widget-article-comments.tab-pane.panel.no-padding.no-border.fade.in
-            = render 'home/similar_artist'
+            %ul.grid.cs-style-3.row

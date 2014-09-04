@@ -1,19 +1,25 @@
-%figure.album-cover
-  = image_tag album.images['extralarge'].present? ? album.images['extralarge'] : 'demo/avatars/1.jpg', alt: album.name
-  %figcaption.bg-dark-gray
-    %h5.overflow-h
-      = album.name
-    %span.overflow-h
-      = link_to album.artist, custom_artist_name(album.artist)
-    %br
-    %br
-    .text-center
-      .btn-group
-        %a.btn.btn-primary{ title: 'Show info' }
-          %i.fa.fa-search-plus
-        %a.btn.btn-primary{ title: 'Play' }
-          %i.fa.fa-play
-        %a.btn.btn-primary{ title: 'Add to playlist' }
-          %i.fa.fa-indent
-    .clearfix
-    %br
+%ul.grid.cs-style-3.row
+  %li.col-lg-3{ ng: { repeat: 'album in top_albums'} }
+    %figure.album-cover
+      %img{ ng: { src: "{{album.image[3]['#text']}}" }, alt: '{{album.name}}' }
+      %figcaption.bg-dark-gray
+        %h5.overflow-h
+          %a{ ng: { click: "go('/'+album.artist.name+'/'+album.name)" } } {{album.name}}
+        %span.overflow-h
+          %a{ ng: { click: "go('/'+album.artist.name)" } } {{album.artist.name}}
+        %br
+        %br
+        .text-center
+          .btn-group
+            %a.btn.btn-primary{ title: 'Show info', ng: { click: "go('/'+album.artist.name+'/'+album.name)" } }
+              %i.fa.fa-search-plus
+            %a.btn.btn-primary{ title: 'Play', ng: { click: "addAlbumToPlaylist(album, true)"} }
+              %i.fa.fa-play
+            %a.btn.btn-primary{ title: 'Add to playlist', ng: { click: "addAlbumToPlaylist(album, fa)"} }
+              %i.fa.fa-indent
+        .clearfix
+        %br
+
+.text-center{ ng: { hide: "top_albums"} }
+  %i.fa.fa-cog.fa-spin
+  Loading albums...

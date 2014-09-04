@@ -1,0 +1,23 @@
+.widget-chat
+  .message.clearfix{ ng: { repeat: 'event in events'} }
+    %img{ ng: { src: "{{event.venue.image[3]['#text']}}" }, alt: '{{event.title}}', class: 'message-avatar' }
+    .message-body
+      .message-heading
+        %a{:href => "{{event.url}}", target: '_blank'}
+          %strong {{event.title}}
+          in {{event.venue.name}}
+
+
+        %span.pull-right date: {{event.startDate | date:'medium'}}
+      .message-text
+        .col-md-8
+          Location: {{event.venue.location.street}}, {{event.venue.location.city}}, {{event.venue.location.country}}, {{event.venue.location.postalcode}}
+          %span{ ng: { if: "event.desciption"} }
+            %br
+            %br
+            {{event.description}}
+        .col-md-4.text-right
+          %img{ ng: { src: "http://maps.googleapis.com/maps/api/staticmap?center={{event.venue.location['geo:point']['geo:lat']}},{{event.venue.location['geo:point']['geo:long']}}&zoom=16&size=150x120&sensor=false&markers=color:green%7Clabel:Here%7C{{event.venue.location['geo:point']['geo:lat']}},{{event.venue.location['geo:point']['geo:lat']}}" } }
+        .clearfix
+  .alert.text-center{ ng: { hide: "events"} } Sorry, no events found!
+

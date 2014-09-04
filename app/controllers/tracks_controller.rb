@@ -1,30 +1,42 @@
 class TracksController < ApplicationController
+  respond_to :json
 
-  layout false
   before_action :set_track, only: [:show, :edit, :update, :destroy]
 
-  # GET /tracks
-  # GET /tracks.json
+  YOUTUBE_CLIENT = YouTubeIt::Client.new(:dev_key => "AI39si6ht3fhDpGzdgYtBGP2UF0baH4o_6QRnQj-e4f2EkWjyrHfaYMphbKdmqEjjHJg7bLEnitHlO1PMHdw6xAlXMUUsTTgpQ")
+
+
   def index
     @tracks = Track.all
+    respond_with(@tracks)
   end
 
-  # GET /tracks/1
-  # GET /tracks/1.json
   def show
+    if @track = Track.find(params[:id])
+
+      @music_info = JSON.parse(open("http://www.vagalume.com.br/api/search.php?art=#{URI::escape(@track.artist)}&mus=#{URI::escape(@track.name)}&extra=alb,ytid").read)
+      query =  "#{@track.artist} - #{@track.name}"
+      videos = YOUTUBE_CLIENT.videos_by(:query => '"'+query+ '"', :categories => [:music], page: params[:page], :per_page => 4).videos
+      videos.each do |video|
+        puts video.title
+        video_id = video.unique_id if video.title == query
+        break
+      end
+      video_id = videos.first.unique_id if video_id.blank? && videos.first
+    end
+
+    respond_to do |format|
+      format.json {render json: {info: @music_info, video: video_id}}
+    end
   end
 
-  # GET /tracks/new
   def new
     @track = Track.new
   end
 
-  # GET /tracks/1/edit
   def edit
   end
 
-  # POST /tracks
-  # POST /tracks.json
   def create
     @track = Track.new(track_params)
 
@@ -39,8 +51,6 @@ class TracksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tracks/1
-  # PATCH/PUT /tracks/1.json
   def update
     respond_to do |format|
       if @track.update(track_params)
@@ -53,8 +63,6 @@ class TracksController < ApplicationController
     end
   end
 
-  # DELETE /tracks/1
-  # DELETE /tracks/1.json
   def destroy
     @track.destroy
     respond_to do |format|
@@ -64,13 +72,11 @@ class TracksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_track
       @track = Track.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def track_params
-      params.require(:track).permit(:track, :artist, :session_id)
+      params.require(:track).permit(:name, :artist, :picture, :duration, :session_id)
     end
 end

@@ -22,5 +22,11 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def track_thumb(track)
+    track.images['extralarge'].present? ? track.images['extralarge'] : image_url('demo/avatars/1.jpg')
+  end
 
+  def track_json(track)
+    {name: track.name, artist: track.artist, picture: track_thumb(track), duration: (Time.now.at_beginning_of_day + track.duration.seconds).strftime("%M:%S")}.to_json
+  end
 end

@@ -4,23 +4,23 @@ require 'open-uri'
 
 class ArtistController < ApplicationController
 
-  layout 'home'
+  layout false
 
   before_action :rockstar_init
 
   def index
-
-    @artist = Rockstar::Artist.new(params[:artist], :include_info => true)
+    puts params
+    puts params[:artist]
+    @artist = Rockstar::Artist.new(params[:artist], :include_info => true) if params[:angular].blank?
 
     respond_to do |format|
       format.html
-      format.json {render json: [@discography, @artist]}
-      format.xml {render :xml => @artist}
+      format.json {render json: @artist}
     end
 
   end
 
   def show
-
+    puts params[:id]
   end
 end

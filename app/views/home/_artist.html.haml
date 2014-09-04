@@ -1,14 +1,11 @@
 %figure.artist-cover{itemscope: '', itemtype: "http://schema.org/MusicGroup"}
-  %meta{ itemprop: "name", content: artist.name.html_safe }
-  %meta{ itemprop: "image", content: artist.images['extralarge'].present? ? artist.images['extralarge'] : 'demo/avatars/1.jpg' }
-  %meta{ itemprop: "url", content: artist_custom_url(artist.name.html_safe) }
-  = image_tag artist.images['extralarge'].present? ? artist.images['extralarge'] : 'demo/avatars/1.jpg', alt: artist.name
+  %img{ ng: { src: "{{artist.image[3]['#text']}}" }, alt: '{{album.name}}' }
   %figcaption.bg-dark-gray
     %h5.overflow-h.text-center
-      = artist.name
+      %a{ ng: { click: "go('/'+artist.name)" } } {{artist.name}}
     .text-center
       .btn-group
-        %a.btn.btn-primary{ title: 'Show info' }
+        %a.btn.btn-primary{ ng: { click: "go('/'+artist.name)" }, title: 'Show info' }
           %i.fa.fa-search-plus
         %a.btn.btn-primary{ title: 'Play' }
           %i.fa.fa-play

@@ -1,3 +1,12 @@
+#tracks
+
+:javascript
+  $(function() {
+    // Blog is the app name
+    window.router = new Music.Routers.TracksRouter({tracks: #{@tracks.to_json.html_safe}});
+    Backbone.history.start();
+  });
+
 %h1 Listing tracks
 
 %table
@@ -11,7 +20,7 @@
 
   - @tracks.each do |track|
     %tr
-      %td= track.track
+      %td= track.name
       %td= track.artist
       %td= track.session_id
       %td= link_to 'Show', track

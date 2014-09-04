@@ -37,6 +37,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
+    angularjs-rails (1.2.16)
     arel (4.0.1)
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
@@ -201,6 +202,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angularjs-rails (~> 1.2.16)
   coffee-rails (~> 4.0.0)
   devise
   dynamic_sitemaps

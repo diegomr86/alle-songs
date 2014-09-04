@@ -1,5 +1,9 @@
 Music::Application.routes.draw do
-  resources :tracks
+
+
+  scope :api do
+    resources :tracks, defaults: {format: :json}
+  end
 
   resources :bookmarks
 
@@ -17,6 +21,12 @@ Music::Application.routes.draw do
 
   scope ":artist", as: "artist" do
     root to: 'artist#index'
+
+    scope ":album", as: "album" do
+      root to: 'album#index'
+    end
+
+    resources :album, only: [:index, :show]
   end
 
 

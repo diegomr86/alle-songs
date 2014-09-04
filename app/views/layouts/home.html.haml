@@ -24,7 +24,7 @@
 /[if IE 8] <html class="ie8">
 /[if IE 9] <html class="ie9 gt-ie8">
 / [if gt IE 9]><!
-%html.gt-ie8.gt-ie9.not-ie
+%html.gt-ie8.gt-ie9.not-ie{ ng: {app: "allesongs" } }
   / <![endif]
   %head
     
@@ -55,6 +55,7 @@
     = stylesheet_link_tag    "pixel-admin-scss/themes/themes"
     = stylesheet_link_tag    "pixel-admin-scss/pages/pages"
     = stylesheet_link_tag    "component"
+    = stylesheet_link_tag    "ymusica"
     = stylesheet_link_tag    "home", media: "all"
 
     = csrf_meta_tags
@@ -74,10 +75,11 @@
     * 'main-navbar-fixed'  - Fixes the main navigation
     * 'main-menu-fixed'    - Fixes the main menu
     * 'main-menu-animated' - Animate main menu
-  %body.theme-purple-hills.main-menu-animated
+  %body.theme-purple-hills.main-menu-animated{"ng-controller" => "TracksCtrl"}
     :javascript
       var init = [];
     / / Demo script
+
     #main-wrapper
       /
         2. $MAIN_NAVIGATION ===========================================================================
@@ -102,9 +104,9 @@
             %div
               %ul.nav.navbar-nav
                 %li
-                  %a{:href => "#"} Home
+                  %a{ng: { click: "go('/metallica')" } } Home
                 %li.dropdown
-                  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"} Dropdown
+                  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", ng: { click: "go('/pantera')" } } Dropdown
                   %ul.dropdown-menu
                     %li
                       %a{:href => "#"} First item
@@ -541,7 +543,7 @@
           .menu-content
             %a.btn.btn-primary.btn-block.btn-outline.dark{:href => "pages-invoice.html"} Create Invoice
         .row
-      .col-md-9.no-padding
+      .col-md-8.no-padding
         #content-wrapper
           .page-header
             / Page header, center on small screens
@@ -550,121 +552,10 @@
                 .input-group.no-margin
                   %span.input-group-addon
                     %i.fa.fa-search.page-header-icon.pull-left>
-                  %input#suggest_input.form-control.no-padding-hr.pull-left{placeholder: "Buscar artista, album, música...", type: "text", name: "artist"}
-          #pages-container= yield
+                  %input#suggest_input.form-control.no-padding-hr.pull-left.typeahead{placeholder: "Buscar artista, album, música...", type: "text", name: "artist"}
+          #pages-container{ng: { view: '' } }= yield
         .row
-      #player-container.col-md-3.no-padding-hr
-        #content-wrapper.no-padding-hr
-          .panel.panel-dark.widget-profile.no-border
-            #playlist-header
-            .panel-heading.bg-dark-gray.border-dark-gray.no-border.padding-sm
-              .widget-profile-bg-icon
-                %i.fa.fa-music
-              %img.widget-profile-avatar{:alt => "", :src => "assets/demo/avatars/3.jpg"}/
-              .widget-profile-header
-                %span ConeCrewDiretoria
-                %br/
-                %a{:href => "https://twitter.com/test"} Meus Amigos Fazem Rima (8:55)
-
-            .widget-profile-text.no-padding
-              %iframe{allowfullscreen: "", frameborder: "0", height: "220", src: "//www.youtube.com/embed/gyVpN0YrDgE", width: "100%"}
-            .widget-profile-text.text-center.bg-dark-gray
-              %i.fa.fa-th-list
-              PLAYLIST
-            .clearfix
-            #tracks
-            #playlist.list-group.fill
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Djavan - Oceano
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Metallica - Master of Puppets
-              %a.list-group-item.active{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
-                %i.fa.fa-volume-up.list-group-icon>
-                Pantera - Walk
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Caetano Veloso - A bossa nova e foda
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Oriente - Desorientado
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Djavan - Oceano
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Metallica - Master of Puppets
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
-                %i.fa.fa-play-up.list-group-icon>
-                Pantera - Walk
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Caetano Veloso - A bossa nova e foda
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Oriente - Desorientado
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Djavan - Oceano
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Metallica - Master of Puppets
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
-                %i.fa.fa-play-up.list-group-icon>
-                Pantera - Walk
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Caetano Veloso - A bossa nova e foda
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Oriente - Desorientado
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Djavan - Oceano
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Metallica - Master of Puppets
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Pantera - Walk
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Caetano Veloso - A bossa nova e foda
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Oriente - Desorientado
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Djavan - Oceano
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Metallica - Master of Puppets
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Pantera - Walk
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Caetano Veloso - A bossa nova e foda
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Oriente - Desorientado
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/1.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Djavan - Oceano
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/2.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Metallica - Master of Puppets
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/3.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Pantera - Walk
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/4.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Caetano Veloso - A bossa nova e foda
-              %a.list-group-item{:href => "#", style: "background-image: url(#{image_url('demo/avatars/5.jpg')})"}
-                %i.fa.fa-play.list-group-icon>
-                Oriente - Desorientado
-        .row
+      = render 'layouts/player'
       #main-menu-bg
     / / #main-wrapper
     / Get jQuery from Google CDN
@@ -684,12 +575,13 @@
     = javascript_include_tag "pixel-admin"
     = javascript_include_tag "toucheffects"
     = javascript_include_tag "home"
+
     = render 'layouts/analytics'
 
     :javascript
       init.push(function () {
 
-      	$('#playlist').slimScroll({ height: 508, alwaysVisible: true, color: '#888',allowPageScroll: true });
+      	//$('#playlist').slimScroll({ height: 508, alwaysVisible: true, color: '#888',allowPageScroll: true });
 
 
       } );

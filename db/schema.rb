@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512231420) do
+ActiveRecord::Schema.define(version: 20140903121526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,11 +36,13 @@ ActiveRecord::Schema.define(version: 20140512231420) do
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
 
   create_table "tracks", force: true do |t|
-    t.string   "track"
+    t.string   "name"
     t.string   "artist"
     t.string   "session_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture"
+    t.string   "duration"
   end
 
   add_index "tracks", ["session_id"], name: "index_tracks_on_session_id", using: :btree

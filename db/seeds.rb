@@ -3,5 +3,12 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#   cities = City.create([{ track: 'Chicago' }, { track: 'Copenhagen' }])
+#   Mayor.create(track: 'Emanuel', city: cities.first)
+
+Track.create(artist: 'Djavan', track: 'Oceano')
+Track.create(artist: 'Metallica', track: 'Master of Puppets')
+Track.create(artist: 'Pantera', track: 'Walk')
+Track.create(artist: 'Caetano Veloso', track: 'A bossa nova e foda')
+Track.create(artist: 'Oriente', track: 'Desorientado')
+

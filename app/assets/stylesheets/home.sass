@@ -29,15 +29,22 @@
     background-color: #ffffff
     height: 100%
 
-  a.list-group-item, a.list-group-item:hover, a.list-group-item.active
+  .list-group-item, .list-group-item:hover, .list-group-item.active
     background-color: #ffffff
-    background-position: right
+    background-position: left
     background-repeat: no-repeat
     background-size: 40px
-    padding-right: 40px
+    padding-left: 50px
+    a
+      text-decoration: none
+      color: #555555
+      cursor: pointer
+    i
+      cursor: pointer
+
     @include overflow-h()
 
-  a.list-group-item.active
+  .list-group-item.active
     background-color: #857198
 
   .overflow-h
@@ -57,3 +64,18 @@
     padding-top: 7px
     padding-left: 15px
     float: left
+  #playlist
+    .list-group-item
+      .actions
+        display: none
+        float: right
+      &:hover
+        .actions
+          display: block
+      &.active
+        a
+          color: #fff
+        border-color: #e4e4e4
+  #playlist-header
+    .fa-youtube-play
+      margin-top: 4px

@@ -1,19 +1,24 @@
-.follower
-  = image_tag track.images['extralarge'].present? ? track.images['extralarge'] : 'demo/avatars/1.jpg', alt: track.name, class: 'follower-avatar'
+.follower{ ng: { repeat: 'track in top_tracks'} }
+  %img{ ng: { src: "{{track.image[3]['#text']}}" }, alt: '{{track.name}}', class: 'follower-avatar' }
   .body
     .follower-controls
-      - if track.playcount
-        %span.follower-username #{track.playcount} plays &nbsp;&nbsp;
+      %span.follower-username{ ng: { if: "track.playcount"}} {{track.playcount}} plays &nbsp;&nbsp;
       .btn-group
-        %a.btn.btn-primary{ title: 'Play' }
+        %a.btn.btn-primary{ ng: { click: "addToPlaylist(track, true)", show: "!playing && (current_track.name != track.name || current_track.artist != track.artist) || (current_track.name != track.name{{track.playcount}} || current_track.artist != track.artist)" }, title: 'Play'}
           %i.fa.fa-play
-        %a.btn.btn-primary{ title: 'Add to playlist' }
+        %a.btn.btn-primary{ ng: { click: "playVideo()", show: "!playing && (current_track.name == track.name && current_track.artist == track.artist)" }, title: 'Play'}
+          %i.fa.fa-play
+        %a.btn.btn-primary{ ng: { click: "pauseVideo()", show: "playing && (current_track.name == track.name && current_track.artist == track.artist)" }, title: 'Pause'}
+          %i.fa.fa-pause
+        %a.btn.btn-primary{ ng: { click: "addToPlaylist(track, false)" }, title: 'Add to playlist'}
           %i.fa.fa-indent
 
     %a.follower-name.text-bg
-      %strong #{track.name}
-      - if track.duration
-        [#{(Time.now.at_beginning_of_day + track.duration.seconds).strftime("%M:%S")}]
+      %strong {{track.name}}
+      {{track.duration}}
     %br/
-    %a.follower-username{:href => "#"}= track.artist
+    %a{ ng: { click: "go('/'+track.artist.name)" } } {{track.artist.name}}
 
+.text-center{ ng: { hide: "top_tracks"} }
+  %i.fa.fa-cog.fa-spin
+  Loading tracks...
