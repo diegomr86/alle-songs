@@ -2,7 +2,13 @@ Music::Application.routes.draw do
 
 
   scope :api do
+    resources :playitems, defaults: {format: :json}
+    resources :playlists, defaults: {format: :json} do
+      get :default, on: :collection
+    end
     resources :tracks, defaults: {format: :json}
+    resources :artists, defaults: {format: :json}
+    resources :albums, defaults: {format: :json}
   end
 
   resources :bookmarks
@@ -14,10 +20,17 @@ Music::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  resources :top, only: :index
+  resources :users, only: :index
   resources :home, only: [:index, :create]
   resources :search, only: :index
+  resources :tag, only: :show
   resources :artist, only: [:index,:show]
   resources :player, only: :index
+  resources :facebook, only: :index do
+    post :fetch, on: :collection
+  end
+
 
   scope ":artist", as: "artist" do
     root to: 'artist#index'

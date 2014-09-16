@@ -1,18 +1,28 @@
-#player-container.col-md-4.no-padding-hr
-  #content-wrapper.no-padding-hr
-    .panel.panel-dark.widget-profile.no-border
+#player-container.col-md-4.no-padding-hr.border-l.border-l.border-b{ ng: { drop: "true", "drop-success" => "onDropComplete($data,$event)"} }
+  #content-wrapper.no-padding-hr.no-padding-b
+    .panel.panel-dark.widget-profile.no-border.no-margin-b
       #playlist-header
         .panel-heading.bg-dark-gray.border-dark-gray.no-border.padding-sm
           .widget-profile-bg-icon
             %i.fa.fa-music
-          %div{ ng: { if: "current_track != undefined" } }
-            %img.widget-profile-avatar{:alt => "", ng: { :src => "{{current_track.picture}}" } }/
+          %div{ ng: { if: "current_playitem != undefined" } }
+            %img.widget-profile-avatar{:alt => "", ng: { :src => "{{current_playitem.picture}}" } }/
             .widget-profile-header
-              %span {{current_track.artist}}
-              %br/
-              %a {{current_track.name}} ({{current_track.duration}})
+              .col-lg-8
+                %span {{current_playitem.artist}}
+                %br/
+                %a {{current_playitem.name}} ({{current_playitem.duration | int_to_date | date:'mm:ss'}})
+              .col-lg-4.player_controls
+                %i.fa.fa-fast-backward{ ng: { click: "loadPrevious()" }, title: 'Next'}>
+                &nbsp;
+                &nbsp;
+                %i.fa.fa-play{ ng: { show: "!playing", click: "playVideo()"}}
+                %i.fa.fa-pause{ ng: { show: "playing", click: "pauseVideo()"}}
+                &nbsp;
+                &nbsp;
+                %i.fa.fa-fast-forward{ ng: { click: "loadNext()" }, title: 'Next'}>
 
-          %div{ ng: { show: "current_track == undefined", click: "play(tracks[0])"}}
+          %div{ ng: { show: "current_playitem == undefined", click: "play(playitems[0])"}}
             .widget-profile-avatar
               %i.fa.fa-youtube-play.icon.fa-3x
             .widget-profile-header
@@ -23,44 +33,52 @@
       .widget-profile-text.no-padding
         -#%iframe{allowfullscreen: "", frameborder: "0", height: "220", src: "//www.youtube.com/embed/ac_iEm4fpmQ", width: "100%"}
         #player_container
-      .widget-profile-text.bg-dark-gray
+      .widget-profile-text.bg-default
         .pull-left
           %i.fa.fa-th-list
-          PLAYLIST
+          %a{ onaftersave: "updatePlaylist($data)", editable: { text: "current_playlist.name" }, e: { form: "playlist_form" }, ng: { click: "playlist_form.$show()" }, title: "Click here to edit playlist name" }
+            {{current_playlist.name}}
 
         .pull-right
-          %a{ ng: { click: "clearPlaylist()" }, title: 'Clear playlist'}>
+          %a{ ng: { show: "playitems.length > 0", click: "clearPlaylist()" }, title: 'Clear playlist'}>
             %i.fa.fa-trash-o
+            clear
             &nbsp;
-            clear playlist
-          &nbsp;
-          &nbsp;
-          &nbsp;
-          &nbsp;
-          %i.fa.fa-fast-backward{ ng: { click: "loadPrevious()" }, title: 'Next'}>
-          &nbsp;
-          &nbsp;
-          %i.fa.fa-play{ ng: { show: "!playing", click: "playVideo()"}}
-          %i.fa.fa-pause{ ng: { show: "playing", click: "pauseVideo()"}}
-          &nbsp;
-          &nbsp;
-          %i.fa.fa-fast-forward{ ng: { click: "loadNext()" }, title: 'Next'}>
+          %a{ ng: { show: "playitems.length > 0 && current_playlist.name == 'Default playlist' && !playlist_form.$visible", click: "playlist_form.$show()" }, title: 'Save playlist'}>
+            %i.fa.fa-save
+            save
 
         .clearfix
       .clearfix
       #playlist.list-group.fill
-        .list-group-item{ ng: { repeat: "track in tracks", class: "{active: track == current_track}", style: "{'background-image':'url('+track.picture+')'}"}, id: "playlist_track_{{track.id}}"}
-          %a{ ng: { click: "play(track)" }, title: 'Click to play'}
-            %span.track_index {{($index + 1)}}.
-            %strong
-              {{track.artist}}
-            \-
-            {{track.name}}
-          .pull-right
-            %span.label {{track.duration | date:'mm:ss'}}
-          .actions
-            %i.fa.fa-play.list-group-icon{ ng: { show: "(!playing && current_track != track) || current_track != track", click: "play(track)" }, title: 'Play'}>
-            %i.fa.fa-play.list-group-icon{ ng: { show: "!playing && current_track == track", click: "playVideo()" }, title: 'Play'}>
-            %i.fa.fa-pause.list-group-icon{ ng: { show: "playing && current_track == track", click: "pauseVideo()"}, title: 'Pause'}
-            %i.fa.fa-trash-o.list-group-icon{ ng: { click: "removeFromPlaylist(track)" }, title: 'Remove from playlist'}>
+
+        %h4.text-center{ ng: { hide: "playitems.length > 0" } }
+          %br
+          %br
+          Hey, your playlist empty!
+          %br
+          %br
+          %br
+          %i.fa.fa-arrow-down.text-xlg
+          %br
+          %br
+          %br
+          Drop something here to play.
+        .list-group-item{ ng: { repeat: "playitem in playitems", class: "{active: playitem == current_playitem}", style: "{'background-image':'url('+playitem.picture+')'}"}, id: "playlist_playitem_{{playitem.id}}"}
+          .row
+            .col-md-10.overflow-h
+              %a{ ng: { click: "play(playitem)" }, title: 'Click to play'}
+                %span.track_index {{($index + 1)}}.
+                %strong
+                  {{playitem.name}}
+                \-
+                {{playitem.artist}}
+
+            .col-md-2.text-left
+              %span.actions
+                %i.fa.fa-play.list-group-icon{ ng: { show: "(!playing && current_playitem != playitem) || current_playitem != playitem", click: "play(playitem)" }, title: 'Play'}>
+                %i.fa.fa-play.list-group-icon{ ng: { show: "!playing && current_playitem == playitem", click: "playVideo()" }, title: 'Play'}>
+                %i.fa.fa-pause.list-group-icon{ ng: { show: "playing && current_playitem == playitem", click: "pauseVideo()"}, title: 'Pause'}
+                %i.fa.fa-trash-o.list-group-icon{ ng: { click: "removeFromPlaylist(playitem)" }, title: 'Remove from playlist'}>
+              %span.duration.label {{playitem.duration | int_to_date | date:'mm:ss'}}
   .row

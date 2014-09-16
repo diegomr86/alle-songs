@@ -16,17 +16,17 @@
       .panel.panel-transparent
         .panel-heading
           %span.panel-title About {{artist.name}}
-        .panel-body
-          {{artist.summary}}
+        .panel-body{ 'ng-bind-html' => 'artist.bio.summary | html_filter' }
+
           -#= @artist.summary.gsub('http://www.last.fm/music', '').gsub('<a href="/Nirvana">Read more about Nirvana on Last.fm</a>.', '').html_safe
       .panel.panel-transparent
         .panel-heading
           %span.panel-title Statistics
         .list-group
-          %a.list-group-item{:href => "#"}
-            %strong {{artist.stats.listenercount}}
+          %a.list-group-item
+            %strong {{artist.stats.listeners}}
             listeners
-          %a.list-group-item{:href => "#"}
+          %a.list-group-item
             %strong {{artist.stats.playcount}}
             plays
       .panel.panel-transparent.profile-skills
@@ -61,14 +61,22 @@
             %a{"data-toggle" => "tab", :href => "#profile-tabs-similar", showtab: ""} Similar artists
         .tab-content.tab-content-bordered.panel-padding
           #profile-tabs-top-albums.tab-pane.fade.in.active
-            = render 'home/album'
-
+            %ul.grid.cs-style-3.row
+              %li.col-lg-4{ ng: { repeat: 'album in artist.top_albums'} }
+                = render 'home/album'
+            .text-center{ ng: { hide: "artist.top_albums"} }
+              %i.fa.fa-cog.fa-spin
+              Loading albums...
           #profile-tabs-top-tracks.tab-pane.fade.widget-followers
-            = render 'home/track'
+            .follower{ ng: { repeat: 'track in artist.top_tracks'} }
+              = render 'home/track'
+            .text-center{ ng: { hide: "artist.top_tracks"} }
+              %i.fa.fa-cog.fa-spin
+              Loading tracks...
 
           #profile-tabs-events.widget-article-comments.tab-pane.panel.no-padding.no-border.fade.in
             = render 'home/event'
 
             .clearfix
           #profile-tabs-similar.widget-article-comments.tab-pane.panel.no-padding.no-border.fade.in
-            = render 'home/similar_artist'
+            = render 'home/similar_artists'

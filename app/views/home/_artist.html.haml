@@ -1,16 +1,15 @@
-%figure.artist-cover{itemscope: '', itemtype: "http://schema.org/MusicGroup"}
-  %img{ ng: { src: "{{artist.image[3]['#text']}}" }, alt: '{{album.name}}' }
+%figure.artist-cover
+  %img{ ng: { src: "{{artist.image[3]['#text'] || artist.picture}}" }, click: "go([artist.name])", alt: "{{artist.name}}" }
   %figcaption.bg-dark-gray
     %h5.overflow-h.text-center
-      %a{ ng: { click: "go('/'+artist.name)" } } {{artist.name}}
+      %a{ ng: { click: "go([artist.name])" } } {{artist.name}}
     .text-center
       .btn-group
-        %a.btn.btn-primary{ ng: { click: "go('/'+artist.name)" }, title: 'Show info' }
-          %i.fa.fa-search-plus
-        %a.btn.btn-primary{ title: 'Play' }
+        %a.btn.btn-primary{ title: 'Play', ng: { click: "addArtistToPlaylist(artist, true)"} }
           %i.fa.fa-play
-        %a.btn.btn-primary{ title: 'Add to playlist' }
+        %a.btn.btn-primary{ title: 'Add to playlist', ng: { click: "addArtistToPlaylist(artist, false)"} }
           %i.fa.fa-indent
+
     .clearfix
     %br
 

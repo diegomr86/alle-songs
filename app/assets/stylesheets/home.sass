@@ -1,4 +1,6 @@
 @import "http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700"
+@import "typeaheadjs"
+@import "xeditable"
 
 @mixin overflow-h()
   overflow: hidden
@@ -6,6 +8,12 @@
   white-space: nowrap
 
 .theme-purple-hills
+  .logo
+    i.fa-youtube-play
+      font-size: 118%
+
+  a
+    cursor: pointer
   #main-navbar .navbar-header a
     font-family: 'Cabin Sketch', cursive
     font-style: italic
@@ -27,14 +35,15 @@
   #player-container
     margin-top: -18px
     background-color: #ffffff
-    height: 100%
-
+    border-left: 1px solid #e2e2e2
+    border-bottom: 1px solid #e2e2e2
   .list-group-item, .list-group-item:hover, .list-group-item.active
     background-color: #ffffff
     background-position: left
     background-repeat: no-repeat
     background-size: 40px
     padding-left: 50px
+    border-left: 0
     a
       text-decoration: none
       color: #555555
@@ -65,13 +74,17 @@
     padding-left: 15px
     float: left
   #playlist
+    min-height: 2000px
     .list-group-item
       .actions
         display: none
-        float: right
+      .duration
+        display: inline
       &:hover
         .actions
-          display: block
+          display: inline
+        .duration
+          display: none
       &.active
         a
           color: #fff
@@ -79,3 +92,38 @@
   #playlist-header
     .fa-youtube-play
       margin-top: 4px
+    .player_controls
+      margin-top: 5px
+
+  .about
+    color: #a0a3b1
+
+  .artist-cover
+    figcaption
+      top: 21px
+
+  .playlist-menu
+    li
+      a
+        cursor: pointer
+      .actions
+        > i
+          display: none
+        > span
+          display: inline
+      &:hover
+        .actions
+          > i
+            display: inline
+          > span
+            display: none
+
+  .top-tags
+    strong
+      color: #a0a3b1
+    .label
+      margin-right: 4px
+      margin-bottom: 3px
+
+  iframe
+    margin-bottom: -4px

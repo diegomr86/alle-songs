@@ -54,6 +54,7 @@
     = stylesheet_link_tag    "pixel-admin-scss/rtl/rtl"
     = stylesheet_link_tag    "pixel-admin-scss/themes/themes"
     = stylesheet_link_tag    "pixel-admin-scss/pages/pages"
+    = stylesheet_link_tag    "pixel-admin-scss/pages/signin"
     = stylesheet_link_tag    "component"
     = stylesheet_link_tag    "ymusica"
     = stylesheet_link_tag    "home", media: "all"
@@ -75,12 +76,89 @@
     * 'main-navbar-fixed'  - Fixes the main navigation
     * 'main-menu-fixed'    - Fixes the main menu
     * 'main-menu-animated' - Animate main menu
-  %body.theme-purple-hills.main-menu-animated{"ng-controller" => "TracksCtrl"}
+  %body.theme-purple-hills.main-menu-animated{"ng-controller" => "MainCtrl"}
     :javascript
       var init = [];
     / / Demo script
-
+    #fb-root
     #main-wrapper
+      #signin_modal.modal.fade.page-signin{:role => "dialog", :style => "display: none;", :tabindex => "-1"}
+        .modal-dialog
+          .modal-content
+            .signin-container
+              / Left side
+              .signin-info
+                %a.logo{:href => "index.html"}
+                  %i.fa.fa-youtube-play.icon
+                  \&nbsp;
+                  AlleSongs
+                / / .logo
+                %br
+                %ul
+                  %li
+                    %i.fa.fa-search.signin-icon
+                    Discover
+                  %li
+                    %i.fa.fa-headphones.signin-icon
+                    Enjoy music you love
+                  %li
+                    %i.fa.fa-list.signin-icon
+                    Create your playlists
+                  %li
+                    %i.fa.fa-share.signin-icon
+                    Share it with your friends
+                  %li
+                  %li
+                  %li
+                    %i.fa.fa-pencil-square-o.signin-icon
+                    Create your account
+              .signin-form
+                / Facebook
+                %a.signin-with-btn{ "data-facebook" => '201018843405894', "data-ng-click" => "fetch()", :style => "background:#4f6faa;background:rgba(79, 111, 170, .8);"}
+                  Sign In with
+                  %span Facebook
+                / / "Sign In with" block
+                / Form
+                %br
+                %form#signin-form_id{:action => "index.html"}
+                  .signin-text
+                    %span or with your account
+                  / / .signin-text
+                  .form-group.w-icon
+                    %input#username_id.form-control.input-lg{:name => "signin_username", :placeholder => "Username or email", :type => "text"}/
+                    %span.fa.fa-user.signin-form-icon
+                  / / Username
+                  .form-group.w-icon
+                    %input#password_id.form-control.input-lg{:name => "signin_password", :placeholder => "Password", :type => "password"}/
+                    %span.fa.fa-lock.signin-form-icon
+                  / / Password
+                  .form-actions
+                    %input.signin-btn.bg-primary{:type => "submit", :value => "SIGN IN"}/
+                    %a#forgot-password-link.forgot-password{:href => "#"} Forgot your password?
+                  / / .form-actions
+                / / Form
+                / Password reset form
+                #password-reset-form.password-reset-form
+                  .header
+                    .signin-text
+                      %span Password reset
+                      .close &times;
+                    / / .signin-text
+                  / / .header
+                  / Form
+                  %form#password-reset-form_id{:action => "index.html"}
+                    .form-group.w-icon
+                      %input#p_email_id.form-control.input-lg{:name => "password_reset_email", :placeholder => "Enter your email", :type => "text"}/
+                      %span.fa.fa-envelope.signin-form-icon
+                    / / Email
+                    .form-actions
+                      %input.signin-btn.bg-primary{:type => "submit", :value => "SEND PASSWORD RESET LINK"}/
+                    / / .form-actions
+                  / / Form
+                / / Password reset form
+              / Right side
+            / / Container
+
       /
         2. $MAIN_NAVIGATION ===========================================================================
 
@@ -104,218 +182,20 @@
             %div
               %ul.nav.navbar-nav
                 %li
-                  %a{ng: { click: "go('/metallica')" } } Home
-                %li.dropdown
-                  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", ng: { click: "go('/pantera')" } } Dropdown
-                  %ul.dropdown-menu
-                    %li
-                      %a{:href => "#"} First item
-                    %li
-                      %a{:href => "#"} Second item
-                    %li.divider
-                    %li
-                      %a{:href => "#"} Third item
-              / / .navbar-nav
+                  %a{ng: { click: "go(['top'])" } } Home
               .right.clearfix
                 %ul.nav.navbar-nav.pull-right.right-navbar-nav
-                  /
-                    3. $NAVBAR_ICON_BUTTONS =======================================================================
-
-                    Navbar Icon Buttons
-
-                    NOTE: .nav-icon-btn triggers a dropdown menu on desktop screens only. On small screens .nav-icon-btn acts like a hyperlink.
-
-                    Classes:
-                    * 'nav-icon-btn-info'
-                    * 'nav-icon-btn-success'
-                    * 'nav-icon-btn-warning'
-                    * 'nav-icon-btn-danger'
-                  %li.nav-icon-btn.nav-icon-btn-danger.dropdown
-                    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#notifications"}
-                      %span.label 5
-                      %i.nav-icon.fa.fa-bullhorn
-                      %span.small-screen-text Notifications
-                    / NOTIFICATIONS
-                    / Javascript
-                    :javascript
-                      init.push(function () {
-                      	$('#main-navbar-notifications').slimScroll({ height: 250 });
-                      });
-                    .dropdown-menu.widget-notifications.no-padding{:style => "width: 300px"}
-                      #main-navbar-notifications.notifications-list
-                        .notification
-                          .notification-title.text-danger SYSTEM
-                          .notification-description
-                            %strong> Error 500
-                            \: Syntax error in index.php at line
-                            = succeed "." do
-                              %strong 461
-                          .notification-ago 12h ago
-                          .notification-icon.fa.fa-hdd-o.bg-danger
-                        / / .notification
-                        .notification
-                          .notification-title.text-info STORE
-                          .notification-description
-                            You have
-                            %strong 9
-                            new orders.
-                          .notification-ago 12h ago
-                          .notification-icon.fa.fa-truck.bg-info
-                        / / .notification
-                        .notification
-                          .notification-title.text-default CRON DAEMON
-                          .notification-description
-                            Job
-                            %strong "Clean DB"
-                            has been completed.
-                          .notification-ago 12h ago
-                          .notification-icon.fa.fa-clock-o.bg-default
-                        / / .notification
-                        .notification
-                          .notification-title.text-success SYSTEM
-                          .notification-description
-                            Server
-                            = succeed "." do
-                              %strong up
-                          .notification-ago 12h ago
-                          .notification-icon.fa.fa-hdd-o.bg-success
-                        / / .notification
-                        .notification
-                          .notification-title.text-warning SYSTEM
-                          .notification-description
-                            %strong> Warning
-                            \: Processor load
-                            = succeed "." do
-                              %strong 92%
-                          .notification-ago 12h ago
-                          .notification-icon.fa.fa-hdd-o.bg-warning
-                      %a.notifications-link{:href => "#"} MORE NOTIFICATIONS
-                  %li.nav-icon-btn.nav-icon-btn-success.dropdown
-                    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#messages"}
-                      %span.label 10
-                      %i.nav-icon.fa.fa-envelope
-                      %span.small-screen-text Income messages
-                    / MESSAGES
-                    / Javascript
-                    :javascript
-                      init.push(function () {
-                      	$('#main-navbar-messages').slimScroll({ height: 250 });
-                      });
-                    .dropdown-menu.widget-messages-alt.no-padding{:style => "width: 300px;"}
-                      #main-navbar-messages.messages-list
-                        .message
-                          %img.message-avatar{:alt => "", :src => "assets/demo/avatars/2.jpg"}/
-                          %a.message-subject{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                          .message-description
-                            from
-                            %a{:href => "#"} Robert Jang
-                            \&nbsp;&nbsp;·&nbsp;&nbsp;
-                            2h ago
-                        / / .message
-                        .message
-                          %img.message-avatar{:alt => "", :src => "assets/demo/avatars/3.jpg"}/
-                          %a.message-subject{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                          .message-description
-                            from
-                            %a{:href => "#"} Michelle Bortz
-                            \&nbsp;&nbsp;·&nbsp;&nbsp;
-                            2h ago
-                        / / .message
-                        .message
-                          %img.message-avatar{:alt => "", :src => "assets/demo/avatars/4.jpg"}/
-                          %a.message-subject{:href => "#"} Lorem ipsum dolor sit amet.
-                          .message-description
-                            from
-                            %a{:href => "#"} Timothy Owens
-                            \&nbsp;&nbsp;·&nbsp;&nbsp;
-                            2h ago
-                        / / .message
-                        .message
-                          %img.message-avatar{:alt => "", :src => "assets/demo/avatars/5.jpg"}/
-                          %a.message-subject{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                          .message-description
-                            from
-                            %a{:href => "#"} Denise Steiner
-                            \&nbsp;&nbsp;·&nbsp;&nbsp;
-                            2h ago
-                        / / .message
-                        .message
-                          %img.message-avatar{:alt => "", :src => "assets/demo/avatars/2.jpg"}/
-                          %a.message-subject{:href => "#"} Lorem ipsum dolor sit amet.
-                          .message-description
-                            from
-                            %a{:href => "#"} Robert Jang
-                            \&nbsp;&nbsp;·&nbsp;&nbsp;
-                            2h ago
-                        / / .message
-                        .message
-                          %img.message-avatar{:alt => "", :src => "assets/demo/avatars/2.jpg"}/
-                          %a.message-subject{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                          .message-description
-                            from
-                            %a{:href => "#"} Robert Jang
-                            \&nbsp;&nbsp;·&nbsp;&nbsp;
-                            2h ago
-                        / / .message
-                        .message
-                          %img.message-avatar{:alt => "", :src => "assets/demo/avatars/3.jpg"}/
-                          %a.message-subject{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                          .message-description
-                            from
-                            %a{:href => "#"} Michelle Bortz
-                            \&nbsp;&nbsp;·&nbsp;&nbsp;
-                            2h ago
-                        / / .message
-                        .message
-                          %img.message-avatar{:alt => "", :src => "assets/demo/avatars/4.jpg"}/
-                          %a.message-subject{:href => "#"} Lorem ipsum dolor sit amet.
-                          .message-description
-                            from
-                            %a{:href => "#"} Timothy Owens
-                            \&nbsp;&nbsp;·&nbsp;&nbsp;
-                            2h ago
-                        / / .message
-                        .message
-                          %img.message-avatar{:alt => "", :src => "assets/demo/avatars/5.jpg"}/
-                          %a.message-subject{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                          .message-description
-                            from
-                            %a{:href => "#"} Denise Steiner
-                            \&nbsp;&nbsp;·&nbsp;&nbsp;
-                            2h ago
-                        / / .message
-                        .message
-                          %img.message-avatar{:alt => "", :src => "assets/demo/avatars/2.jpg"}/
-                          %a.message-subject{:href => "#"} Lorem ipsum dolor sit amet.
-                          .message-description
-                            from
-                            %a{:href => "#"} Robert Jang
-                            \&nbsp;&nbsp;·&nbsp;&nbsp;
-                            2h ago
-                      %a.messages-link{:href => "#"} MORE MESSAGES
-                  %li
-                    %form.navbar-form.pull-left
-                      %input.form-control{:placeholder => "Search", :type => "text"}/
-                  %li.dropdown
+                  %li{ ng: { hide: "current_user" } }
+                    %a{ ng: { click: "showSignInModal()"} }
+                      %i.fa.fa-sign-in
+                      Sign in
+                  %li.dropdown{ ng: { show: "current_user" } }
                     %a.dropdown-toggle.user-menu{"data-toggle" => "dropdown", :href => "#"}
-                      %img{:alt => "", :src => "assets/demo/avatars/1.jpg"}/
-                      %span John Doe
+                      %img{ ng: { src: "{{current_user.picture}}", alt: "current_user.name" } }
+                      %span {{current_user.name}}
                     %ul.dropdown-menu
                       %li
-                        %a{:href => "#"}
-                          %span.label.label-warning.pull-right> New
-                          Profile
-                      %li
-                        %a{:href => "#"}
-                          %span.badge.badge-primary.pull-right> New
-                          Account
-                      %li
-                        %a{:href => "#"}
-                          %i.dropdown-icon.fa.fa-cog>
-                          \&nbsp;&nbsp;Settings
-                      %li.divider
-                      %li
-                        %a{:href => "pages-signin.html"}
+                        = link_to destroy_user_session_path, :method => :delete do
                           %i.dropdown-icon.fa.fa-power-off>
                           \&nbsp;&nbsp;Log Out
       #main-menu{:role => "navigation"}
@@ -327,221 +207,69 @@
               Javascript: html/assets/demo/demo.js
             %div
               .text-bg
-                %span.text-slim Welcome,
-                %span.text-semibold Guest
-              %img{:alt => "", :src => "assets/demo/avatars/1.jpg"}/
+                %span.text-slim Hello,
+                %span.text-semibold {{current_user.name.split(' ')[0] || 'Guest'}}
+              %img{ ng: { src: "{{current_user.picture || '/assets/demo/avatars/1.jpg'}}", alt: "current_user.name" } }
               .btn-group
-                %a.btn.btn-xs.btn-primary.btn-outline.dark{:href => "#"}
-                  %i.fa.fa-facebook
-                %a.btn.btn-xs.btn-primary.btn-outline.dark{:href => "#"}
-                  %i.fa.fa-user
-                %a.btn.btn-xs.btn-primary.btn-outline.dark{:href => "#"}
-                  %i.fa.fa-cog
-                %a.btn.btn-xs.btn-danger.btn-outline.dark{:href => "#"}
+                = link_to destroy_user_session_path, :method => :delete, class: 'btn btn-xs btn-danger btn-outline dark' do
                   %i.fa.fa-power-off
               %a.close{:href => "#"} &times;
           %ul.navigation
-            %li
-              %a{:href => "index.html"}
-                %i.menu-icon.fa.fa-dashboard
-                %span.mm-text Dashboard
-            %li.mm-dropdown
-              %a{:href => "#"}
-                %i.menu-icon.fa.fa-th
-                %span.mm-text Layouts
-                %span.label.label-warning Updated
+            %li.mm-dropdown.playlist-menu{ ng: { class: "current_playlist ? 'active open' : ''" } }
+              %a
+                %i.menu-icon.fa.fa-list
+                %span.mm-text My playlists
               %ul
-                %li
-                  %a{:href => "layouts-grid.html", :tabindex => "-1"}
-                    %span.mm-text Grid
-                %li
-                  %a{:href => "layouts-main-menu.html", :tabindex => "-1"}
-                    %i.menu-icon.fa.fa-th-list
-                    %span.mm-text Main menu
-                    %span.label.label-warning Updated
-            %li
-              %a{:href => "stat-panels.html"}
-                %i.menu-icon.fa.fa-tasks
-                %span.mm-text Stat panels
-            %li
-              %a{:href => "widgets.html"}
-                %i.menu-icon.fa.fa-flask
-                %span.mm-text Widgets
-            %li.mm-dropdown
-              %a{:href => "#"}
-                %i.menu-icon.fa.fa-desktop
-                %span.mm-text UI elements
-              %ul
-                %li
-                  %a{:href => "ui-buttons.html", :tabindex => "-1"}
-                    %span.mm-text Buttons
-                %li
-                  %a{:href => "ui-typography.html", :tabindex => "-1"}
-                    %span.mm-text Typography
-                %li
-                  %a{:href => "ui-tabs.html", :tabindex => "-1"}
-                    %span.mm-text Tabs &amp; Accordions
-                %li
-                  %a{:href => "ui-modals.html", :tabindex => "-1"}
-                    %span.mm-text Modals
-                %li
-                  %a{:href => "ui-alerts.html", :tabindex => "-1"}
-                    %span.mm-text Alerts &amp; Tooltips
-                %li
-                  %a{:href => "ui-components.html", :tabindex => "-1"}
-                    %span.mm-text Components
-                %li
-                  %a{:href => "ui-panels.html", :tabindex => "-1"}
-                    %span.mm-text Panels
-                %li
-                  %a{:href => "ui-jqueryui.html", :tabindex => "-1"}
-                    %span.mm-text jQuery UI
-                %li
-                  %a{:href => "ui-icons.html", :tabindex => "-1"}
-                    %span.mm-text Icons
-                %li
-                  %a{:href => "ui-utility-classes.html", :tabindex => "-1"}
-                    %span.mm-text Utility classes
-            %li.mm-dropdown
-              %a{:href => "#"}
-                %i.menu-icon.fa.fa-check-square
-                %span.mm-text Form components
-              %ul
-                %li
-                  %a{:href => "forms-layouts.html", :tabindex => "-1"}
-                    %span.mm-text Layouts
-                %li
-                  %a{:href => "forms-general.html", :tabindex => "-1"}
-                    %span.mm-text General
-                %li
-                  %a{:href => "forms-advanced.html", :tabindex => "-1"}
-                    %span.mm-text Advanced
-                %li
-                  %a{:href => "forms-pickers.html", :tabindex => "-1"}
-                    %span.mm-text Pickers
-                %li
-                  %a{:href => "forms-validation.html", :tabindex => "-1"}
-                    %span.mm-text Validation
-                %li
-                  %a{:href => "forms-editors.html", :tabindex => "-1"}
-                    %span.mm-text Editors
-            %li
-              %a{:href => "tables.html"}
-                %i.menu-icon.fa.fa-table
-                %span.mm-text Tables
-            %li
-              %a{:href => "charts.html"}
-                %i.menu-icon.fa.fa-bar-chart-o
-                %span.mm-text Charts
-            %li.mm-dropdown
-              %a{:href => "#"}
-                %i.menu-icon.fa.fa-files-o
-                %span.mm-text Pages
-                %span.label.label-success 16
-              %ul
-                %li
-                  %a{:href => "pages-search.html", :tabindex => "-1"}
-                    %span.mm-text Search results
-                %li
-                  %a{:href => "pages-pricing.html", :tabindex => "-1"}
-                    %span.mm-text Plans &amp; pricing
-                %li
-                  %a{:href => "pages-faq.html", :tabindex => "-1"}
-                    %span.mm-text FAQ
-                %li
-                  %a{:href => "pages-profile.html", :tabindex => "-1"}
-                    %span.mm-text Profile
-                %li
-                  %a{:href => "pages-timeline.html", :tabindex => "-1"}
-                    %span.mm-text Timeline
-                %li
-                  %a{:href => "pages-signin.html", :tabindex => "-1"}
-                    %span.mm-text Sign In
-                %li
-                  %a{:href => "pages-signup.html", :tabindex => "-1"}
-                    %span.mm-text Sign Up
-                %li
-                  %a{:href => "pages-signin-alt.html", :tabindex => "-1"}
-                    %span.mm-text Sign In Alt
-                %li
-                  %a{:href => "pages-signup-alt.html", :tabindex => "-1"}
-                    %span.mm-text Sign Up Alt
-                %li
-                  %a{:href => "pages-invoice.html", :tabindex => "-1"}
-                    %span.mm-text Invoice
-                %li
-                  %a{:href => "pages-404.html", :tabindex => "-1"}
-                    %span.mm-text Error 404
-                %li
-                  %a{:href => "pages-500.html", :tabindex => "-1"}
-                    %span.mm-text Error 500
-                %li.mm-dropdown
-                  %a{:href => "#"}
-                    %i.menu-icon.fa.fa-envelope
-                    %span.mm-text Messages
-                  %ul
-                    %li
-                      %a{:href => "pages-inbox.html", :tabindex => "-1"}
-                        %span.mm-text Inbox
-                    %li
-                      %a{:href => "pages-show-email.html", :tabindex => "-1"}
-                        %span.mm-text Show message
-                    %li
-                      %a{:href => "pages-new-email.html", :tabindex => "-1"}
-                        %span.mm-text New message
-                %li
-                  %a{:href => "pages-blank.html", :tabindex => "-1"}
-                    %span.mm-text Blank page
-            %li
-              %a{:href => "complete-ui.html"}
-                %i.menu-icon.fa.fa-briefcase
-                %span.mm-text Complete UI
-            %li
-              %a{:href => "color-builder.html"}
-                %i.menu-icon.fa.fa-tint
-                %span.mm-text Color Builder
-            %li.mm-dropdown
-              %a{:href => "#"}
-                %i.menu-icon.fa.fa-sitemap
-                %span.mm-text Menu levels
-                %span.badge.badge-primary 6
-              %ul
-                %li
-                  %a{:href => "#", :tabindex => "-1"}
-                    %span.mm-text Menu level 1.1
-                    %span.badge.badge-danger 12
-                    %span.label.label-info 21
-                %li
-                  %a{:href => "#", :tabindex => "-1"}
-                    %span.mm-text Menu level 1.2
-                %li.mm-dropdown
-                  %a{:href => "#", :tabindex => "-1"}
-                    %span.mm-text Menu level 1.3
-                    %span.label.label-warning 5
-                  %ul
-                    %li
-                      %a{:href => "#", :tabindex => "-1"}
-                        %span.mm-text Menu level 2.1
-                    %li.mm-dropdown
-                      %a{:href => "#", :tabindex => "-1"}
-                        %span.mm-text Menu level 2.2
-                      %ul
-                        %li.mm-dropdown
-                          %a{:href => "#", :tabindex => "-1"}
-                            %span.mm-text Menu level 3.1
-                          %ul
-                            %li
-                              %a{:href => "#", :tabindex => "-1"}
-                                %span.mm-text Menu level 4.1
-                        %li
-                          %a{:href => "#", :tabindex => "-1"}
-                            %span.mm-text Menu level 3.2
-                    %li
-                      %a{:href => "#", :tabindex => "-1"}
-                        %span.mm-text Menu level 2.2
-          / / .navigation
-          .menu-content
-            %a.btn.btn-primary.btn-block.btn-outline.dark{:href => "pages-invoice.html"} Create Invoice
+                %li{ ng: { show: "playlists.length == 0" } }
+                  %a
+                    %i.fa-emt
+                    playlists empty
+                %li{ ng: { repeat: "playlist in playlists", class: "current_playlist.id == playlist.id ? 'active' : ''" } }
+                  %a
+                    %span.mm-text{ ng: { click: "loadPlaylist(playlist)" } } {{playlist.name}}
+                    %span.pull-right
+                      %span.actions
+                        %i.fa.fa-play{ ng: { click: "loadPlaylist(playlist)" } , title: 'Play'}
+                        &nbsp;
+                        %i.fa.fa-trash-o{ ng: { click: "removePlaylist(playlist)", hide: "current_playlist.id == playlist.id || playlist.name == 'Default playlist'" } , title: 'Remove Playlist'}
+                        %span
+                          %span.badge.badge-primary {{playlist.playitems_count}}
+          .menu-content.top-tags{ ng: { show: "toptags.length > 0"}}
+            %strong Top tags:
+            %br
+            %br
+            %a.label.label-primary{ ng: { repeat: "tag in toptags | limitTo:50", click: "go(['tag', tag.name])" } }
+              {{tag.name}}
+
+          .menu-content.about
+            %strong A little message for you:
+            %br
+            %br
+            This project is developed and maintained by
+            = link_to 'MTX Web & Art', 'http://www.mtxwebart.com', target: '_blank'
+            with the goal of bringing the art closer to any people anywhere. All information here is taken from public sources such as
+            = link_to 'Last.fm,', 'http://www.lastfm.com.br', target: '_blank'
+            = link_to 'Vagalume', 'http://www.vagalume.com.br', target: '_blank'
+            and
+            = link_to 'Youtube.', 'http://www.youtube.com', target: '_blank'
+            This project uses amazing open tools of communities such as
+            = link_to 'Ruby on Rails', 'http://rubyonrails.org', target: '_blank'
+            and
+            = link_to 'AngularJS.', 'https://angularjs.org', target: '_blank'
+            %br
+            %br
+            To help us to keep this project alive, you can share it with your friends,
+            = link_to 'make a donation,', 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MHY2M4GWYDDU2', target: '_blank'
+            collaborate with any of the projects mentioned above or any other open source project. A simple
+            = mail_to 'mtxwebart@gmail.com', 'message'
+            would help a lot too!
+            %br
+            %br
+            %a.btn.btn-primary.btn-block.btn-outline.dark{:href => "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MHY2M4GWYDDU2", target: '_blank'} Make a Donation!
+
+            %br
+            %i.fa.fa-smile-o
+            All rights open for everyone
         .row
       .col-md-8.no-padding
         #content-wrapper
@@ -552,11 +280,12 @@
                 .input-group.no-margin
                   %span.input-group-addon
                     %i.fa.fa-search.page-header-icon.pull-left>
-                  %input#suggest_input.form-control.no-padding-hr.pull-left.typeahead{placeholder: "Buscar artista, album, música...", type: "text", name: "artist"}
-          #pages-container{ng: { view: '' } }= yield
+                  %input#suggest_input.form-control.no-padding-hr.pull-left{placeholder: "Search anything...", type: "text", name: "artist"}
+
+          #pages-container{ ng: { view: '' } }= yield
         .row
       = render 'layouts/player'
-      #main-menu-bg
+    #main-menu-bg
     / / #main-wrapper
     / Get jQuery from Google CDN
     / [if !IE]>

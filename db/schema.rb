@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903121526) do
+ActiveRecord::Schema.define(version: 20140911185520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "albums", force: true do |t|
+    t.string   "artist"
+    t.string   "name"
+    t.string   "code"
+    t.string   "picture"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "artists", force: true do |t|
     t.string   "name"
@@ -35,17 +44,35 @@ ActiveRecord::Schema.define(version: 20140903121526) do
 
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
 
+  create_table "playitems", force: true do |t|
+    t.string   "name"
+    t.string   "artist"
+    t.string   "picture"
+    t.string   "duration"
+    t.integer  "playlist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "playitems", ["playlist_id"], name: "index_playitems_on_playlist_id", using: :btree
+
+  create_table "playlists", force: true do |t|
+    t.string   "name"
+    t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "session_id"
+  end
+
   create_table "tracks", force: true do |t|
     t.string   "name"
     t.string   "artist"
-    t.string   "session_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "picture"
     t.string   "duration"
+    t.string   "code"
   end
-
-  add_index "tracks", ["session_id"], name: "index_tracks_on_session_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -63,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140903121526) do
     t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,25 +1,17 @@
-%ul.grid.cs-style-3.row
-  %li.col-lg-3{ ng: { repeat: 'album in top_albums'} }
-    %figure.album-cover
-      %img{ ng: { src: "{{album.image[3]['#text']}}" }, alt: '{{album.name}}' }
-      %figcaption.bg-dark-gray
-        %h5.overflow-h
-          %a{ ng: { click: "go('/'+album.artist.name+'/'+album.name)" } } {{album.name}}
-        %span.overflow-h
-          %a{ ng: { click: "go('/'+album.artist.name)" } } {{album.artist.name}}
-        %br
-        %br
-        .text-center
-          .btn-group
-            %a.btn.btn-primary{ title: 'Show info', ng: { click: "go('/'+album.artist.name+'/'+album.name)" } }
-              %i.fa.fa-search-plus
-            %a.btn.btn-primary{ title: 'Play', ng: { click: "addAlbumToPlaylist(album, true)"} }
-              %i.fa.fa-play
-            %a.btn.btn-primary{ title: 'Add to playlist', ng: { click: "addAlbumToPlaylist(album, fa)"} }
-              %i.fa.fa-indent
-        .clearfix
-        %br
-
-.text-center{ ng: { hide: "top_albums"} }
-  %i.fa.fa-cog.fa-spin
-  Loading albums...
+%figure.album-cover
+  %img{ ng: { src: "{{album.image[3]['#text'] || album.picture}}", click: "go([(album.artist.name || album.artist), album.name])" }, alt: '{{album.name}}' }
+  %figcaption.bg-dark-gray
+    %h5.overflow-h
+      %a{ ng: { click: "go([(album.artist.name || album.artist), album.name])" } } {{album.name}}
+    %span.overflow-h
+      %a{ ng: { click: "go([album.artist.name || album.artist])" } } {{(album.artist.name || album.artist)}}
+    %br
+    %br
+    .text-center
+      .btn-group
+        %a.btn.btn-primary{ title: 'Play', ng: { click: "addAlbumToPlaylist(album, true)"} }
+          %i.fa.fa-play
+        %a.btn.btn-primary{ title: 'Add to playlist', ng: { click: "addAlbumToPlaylist(album, fa)"} }
+          %i.fa.fa-indent
+    .clearfix
+    %br

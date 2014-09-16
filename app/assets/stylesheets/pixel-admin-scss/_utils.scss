@@ -332,7 +332,7 @@ body:not(.right-to-left) .no-border-l {
 //**   Background colors    **********************************************************************//
 
 .bg-default {
-  @include pixel-bg-color(#98a3a4);
+  @include pixel-bg-color($default-color);
 }
 .bg-success {
   @include pixel-bg-color($success-color);

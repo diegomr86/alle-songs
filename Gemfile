@@ -48,5 +48,8 @@ gem "soundcloud"
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
+gem 'fb_graph', '~> 2.7.16'
 gem 'rails-backbone', github: 'codebrew/backbone-rails', branch: 'master'
 gem 'angularjs-rails', '~> 1.2.16'
+
+gem 'will_paginate', '~> 3.0.7'

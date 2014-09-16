@@ -1,0 +1,46 @@
+.row-fluid
+  .icon-left.text-center
+    %i.fa.fa-user.text-xlg
+  .search-result
+    .col-md-12
+    .panel.widget-followers
+      .panel-heading
+        %span.panel-title
+          Top artists for
+          %strong.text-primary {{tag.name}}
+          tag
+      .panel-body
+        %ul.grid.cs-style-3.row
+          %li.col-lg-3{ ng: { repeat: 'artist in tag.top_artists'} }
+            = render 'home/artist'
+.row-fluid
+  .icon-left.text-center
+    %i.fa.fa-circle.text-xlg
+  .search-result
+    .col-md-12
+    .panel.widget-followers
+      .panel-heading
+        %span.panel-title
+          Top albums for
+          %strong.text-primary {{tag.name}}
+          tag
+      .panel-body
+        %ul.grid.cs-style-3.row
+          %li.col-lg-3{ ng: { repeat: 'album in tag.top_albums'} }
+            = render 'home/album'
+
+.row-fluid
+  .icon-left.text-center
+    %i.fa.fa-music.text-xlg
+  .search-result
+    .col-md-12
+    .panel.widget-followers
+      .panel-heading
+        %span.panel-title
+          Top tracks for
+          %strong.text-primary {{tag.name}}
+          tag
+      .panel-body
+        .widget-followers
+          .follower{ ng: { repeat: 'track in tag.top_tracks'} }
+            = render 'home/track'

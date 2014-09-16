@@ -17,7 +17,12 @@
 #= require angular
 #= require angular-resource
 #= require angular-route
+#= require angular-sanitize
+#= require angular-cookies
+#= require angular-will-paginate
+#= require xeditable
 #= require ui-bootstrap-tpls-0.11.0.min
+#= require ngDraggable
 #= require lastfm.api.js
 #= require lastfm.api.cache
 #= require lastfm.api.md5

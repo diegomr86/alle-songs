@@ -21,7 +21,7 @@
       width: 4px;
       position: absolute;
       right: auto;
-      background: darken($header-color, 5%);
+      background: #9577cd;
       display: none;
       left: 0;
     }
@@ -39,8 +39,9 @@
     background: darken($menu-color, 5%);
     color: #fff;
 
+
     & .menu-icon {
-      color: $header-color;
+      color: #A48AD9;
     }
 
     &:after {
@@ -54,7 +55,7 @@
     }
 
     & > a:after {
-      display: none;
+
     }
   }
 

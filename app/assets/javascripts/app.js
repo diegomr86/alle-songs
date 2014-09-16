@@ -1,68 +1,78 @@
-var app = angular.module('allesongs', ['ngResource', 'ngRoute','ui.bootstrap'])
+var app = angular.module('allesongs', ['ngResource', 'ngRoute', 'ngSanitize', 'ngCookies', 'ngDraggable', 'ui.bootstrap', 'willPaginate', 'xeditable'])
 
-app.controller('TracksCtrl', ['$scope', '$resource', '$location', function($scope, $resource, $location) {
+app.factory('Playlist', ['$resource', function($resource) {
+    return $resource('/api/playlists/:id', { id: '@id' },        {
+        'update': { method:'PUT' }
+    });
+}]);
 
-    $scope.go = function ( path ) {
-        $location.path( path );
+app.run(function(editableOptions) {
+    editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});
+
+
+app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Playlist', function($scope, $resource, $http, $cookieStore, Playlist) {
+
+    var Playitem = $resource('/api/playitems/:id');
+
+    $scope.go = function ( paths ) {
+        path = '/#'
+        angular.forEach(paths, function(p) {
+            path += "/"+ p.replace("&", "e").replace("/", " ").replace('.', ' ')
+        });
+
+        path = encodeURI(path)
+        console.log(path)
+        location.href =  path ;
     };
 
-    var Track = $resource('/api/tracks/:id');
-
-    $scope.tracks = Track.query();
-
-    $scope.$watch('current_track', function(current_track, old_track) {
-        if (current_track != undefined) {
-            $.getJSON(current_track.url, function (data) {
-                $scope.displayVideoMeta(current_track, data);
-                if (data.video) {
-                    if (typeof player == "undefined")
-                        player = $scope.renderPlayer(data.video);
-                    else
-                        player.loadVideoById(data.video);
-
-                    if ($scope.is_iPhone) {
-                        window.scrollTo(0, 0);
-                    }
-                } else {
-                    $scope.setError(current_track);
-                }
-            });
-        }
-    });
-
-    $scope.$watch('playing', function(current_track, old_track) {
-        console.log(current_track+' - '+old_track)
-    });
-
-    $scope.play = function(track) {
-        if (track != undefined)
-            $scope.current_track = track;
-        else if ($scope.tracks[0] != undefined)
-            $scope.current_track = $scope.tracks[0];
+    $scope.play = function(playitem) {
+        if (playitem != undefined)
+            $scope.current_playitem = playitem;
+        else if ($scope.playitems[0] != undefined)
+            $scope.current_playitem = $scope.playitems[0];
     }
 
-    $scope.addToPlaylist = function(t, play) {
+    $scope.loadPlaylist = function(playlist) {
+        $scope.current_playlist = playlist
+        Playitem.query({playlist_id: playlist.id}, function(playitems) {
+            $scope.playitems = playitems
+            $cookieStore.put("current_playlist", $scope.current_playlist);
+            if ($scope.playitems.length > 0) {
+                $scope.play($scope.playitems[0])
+            }
 
-        console.log(t)
-        var track = new Track({ name: t.name, artist: t.artist.name, picture: (t.image ? t.image[3]['#text'] : ''), duration: (t.duration) });
-        Track.save(track, function(t) {
+        });
+    };
+
+    $scope.updatePlaylist = function(data) {
+        Playlist.update({ name: data }, $scope.current_playlist);
+        $scope.loadPlaylists()
+    };
+
+    $scope.loadPlaylists = function() {
+        $scope.playlists = Playlist.query();
+    };
+
+    $scope.addToPlaylist = function(t, play) {
+        var playitem = new Playitem({ name: t.name, artist: (t.artist.name || t.artist), picture: (t.image ? t.image[3]['#text'] : t.picture), duration: (t.duration), playlist_id: $scope.current_playlist.id });
+        Playitem.save(playitem, function(t) {
             //$scope should be accessible here
-            $scope.tracks.push(t);
+            $scope.playitems.push(t);
             setTimeout(function() {
                 $("#playlist").slimScroll({ scrollTo: '10000px' });
             }, 100)
-            if (play) {
+            if (play || $scope.current_playitem == undefined) {
                 $scope.play(t)
             }
         })
     };
 
     $scope.addAlbumToPlaylist = function(a, play) {
-        console.log(a)
-        lastfm.album.getInfo({album: a.name, artist: a.artist.name}, { success: function(data){
+        lastfm.album.getInfo({album: a.name, artist: (a.artist.name || a.artist)}, { success: function(data){
             angular.forEach(data.album.tracks.track, function(track, key) {
                 track.image = a.image
-                console.log(track)
+                track.picture = a.picture
                 $scope.addToPlaylist(track, (key == 0 && play))
             });
 
@@ -71,10 +81,8 @@ app.controller('TracksCtrl', ['$scope', '$resource', '$location', function($scop
     };
 
     $scope.addArtistToPlaylist = function(a, play) {
-        console.log(a)
         lastfm.artist.getTopTracks({artist: a.name}, { success: function(data){
             angular.forEach(data.toptracks.track, function(track, key) {
-                console.log(track)
                 $scope.addToPlaylist(track, (key == 1 && play))
             });
 
@@ -83,54 +91,61 @@ app.controller('TracksCtrl', ['$scope', '$resource', '$location', function($scop
     };
 
     $scope.clearPlaylist = function() {
-        angular.forEach($scope.tracks, function(track, key) {
-            console.log(track)
-            $scope.removeFromPlaylist(track)
+        angular.forEach($scope.playitems, function(playitem, key) {
+            $scope.removeFromPlaylist(playitem)
         });
     };
 
-    $scope.removeFromPlaylist = function(track) {
-        $scope.tracks.splice($scope.tracks.indexOf(track), 1);
-        Track.delete(track)
+    $scope.removePlaylist = function(playlist) {
+        Playlist.delete({ id: playlist.id }, function() {
+            $scope.playlists.splice($scope.playlists.indexOf(playlist), 1);
+        });
+    };
+
+    $scope.removeFromPlaylist = function(playitem) {
+        Playitem.delete({ id: playitem.id }, function() {
+            $scope.playitems.splice($scope.playitems.indexOf(playitem), 1);
+        });
     };
 
 
 
-    $scope.setError = function (track) {
+    $scope.setError = function (playitem) {
         console.log('error...')
-        console.log(track)
+        console.log(playitem)
     }
 
     $scope.loadNext = function () {
-        if ($scope.tracks.length > 1) {
-            var next = $scope.tracks.indexOf($scope.current_track) + 1
-            if ($scope.tracks[next] != undefined) {
-                $scope.play($scope.tracks[next])
+        if ($scope.playitems.length > 1) {
+            var next = $scope.playitems.indexOf($scope.current_playitem) + 1
+            if ($scope.playitems[next] != undefined) {
+                $scope.play($scope.playitems[next])
             } else {
-                $scope.play($scope.tracks[0])
+                $scope.play($scope.playitems[0])
             }
 
         }
     }
 
     $scope.loadPrevious = function () {
-        if ($scope.tracks.length > 1) {
-            var previous = $scope.tracks.indexOf($scope.current_track) - 1
+        if ($scope.playitems.length > 1) {
+            var previous = $scope.playitems.indexOf($scope.current_playitem) - 1
+            console.log(previous)
             if (previous >= 0) {
-                $scope.play($scope.tracks[previous])
+                $scope.play($scope.playitems[previous])
             } else {
-                $scope.play($scope.tracks.length - 1)
+                $scope.play($scope.playitems[$scope.playitems.length - 1])
             }
 
         }
     }
 
-    $scope.displayVideoMeta = function (track, data) {
+    $scope.displayVideoMeta = function (playitem, data) {
 
         if (data != 'undefined') {
 
-            artist = track.artist;
-            subtitle = track.name;
+            artist = playitem.artist;
+            subtitle = playitem.name;
             title = artist + ' - ' + subtitle;
 
             $('title').text(title);
@@ -213,57 +228,259 @@ app.controller('TracksCtrl', ['$scope', '$resource', '$location', function($scop
     $scope.onPlayerError = function (event) {
         if (event.data == 150 || event.data == 101) {
             // can't play this video, skip to next.
-            $('.albums li.music_link.active').css('opacity','.5');
-            $('#player_container').after('<div id="errormsg">You cannot play that video, its probably restricted in your country. Skipping to the next video in the list...</div>');
             $scope.loadNext();
-
-            $('#errormsg').delay(2000).fadeOut('slow', function() {
-                $('#errormsg').remove();
-            });
         }
     }
 
+    $scope.loadTags = function () {
+        lastfm.tag.getTopTags({success: function(data){
+            $scope.toptags = data.toptags.tag
+            $scope.$digest()
+        }});
+    }
+
+    $scope.onDropComplete=function(data,evt){
+        console.log("drop success, data:", data);
+        if (data.artist == undefined) {
+            $scope.addArtistToPlaylist(data)
+        } else if (data.duration == undefined){
+            $scope.addAlbumToPlaylist(data)
+        } else {
+            $scope.addToPlaylist(data)
+        }
+    }
+
+    $scope.showSignInModal=function(){
+        $('#signin_modal').modal('show')
+    }
+
+    $scope.hideSignInModal=function(){
+        $('#signin_modal').modal('hide')
+    }
+
+    $scope.$watch('current_playitem', function(current_playitem, old_playitem) {
+        if (current_playitem != undefined) {
+            $.getJSON(current_playitem.url, function (data) {
+                $scope.displayVideoMeta(current_playitem, data);
+                if (data.video) {
+                    if (typeof player == "undefined")
+                        player = $scope.renderPlayer(data.video);
+                    else
+                        player.loadVideoById(data.video);
+
+                    if ($scope.is_iPhone) {
+                        window.scrollTo(0, 0);
+                    }
+                } else {
+                    $scope.setError(current_playitem);
+                }
+            });
+        }
+    });
+
+    $scope.$watch('playing', function(current_playitem, old_playitem) {
+        console.log('Now playing: '+current_playitem)
+    });
+
+    $scope.$watch('current_user', function(current_user, old_user) {
+        console.log('Current user changed to: '+current_user)
+        if (current_user != undefined) {
+            $scope.loadPlaylists()
+            $scope.hideSignInModal()
+        }
+    });
+
+    // RUN
+
+    $scope.loadPlaylists()
+    if ($cookieStore.get("current_playlist") != undefined) {
+        $scope.loadPlaylist($cookieStore.get("current_playlist"));
+    } else {
+        $http.get("/api/playlists/default.json").success(function (data) {
+            $scope.loadPlaylist(data);
+        }).error(function (data) {
+            console.log('error: ' + data);
+        });
+    }
+    $scope.loadTags()
+    $http.get("/users.json").success(function(data) {
+        $scope.$parent.fetch_status = data.status;
+        $scope.$parent.current_user = data;
+        $scope.hideSignInModal();
+    }).error(function(data) {
+        $scope.showSignInModal();
+        console.log('error: '+data);
+        $scope.$parent.fetch_status = data.status;
+    });
+
+
+
+    $('#suggest_input').bind('typeahead:selected', function(obj, datum, name) {
+        if (name == 'artists') {
+            $scope.go([datum.name])
+        } else if (name == 'albums') {
+            $scope.go([datum.artist, datum.name])
+        }  else if (name == 'tracks') {
+            $scope.addToPlaylist(datum,  true)
+        } else if (name == 'tags') {
+            $scope.go(["tag", datum.name])
+        }
+
+    });
+
+    $('#suggest_input').typeahead(null,
+        {
+            name: 'artists',
+            displayKey: 'name',
+            source: function(query, cb){
+                $.get('http://ws.audioscrobbler.com/2.0/?method=artist.search&limit=5&artist=' + query + '&api_key=99a3723ef564b7395271af5fd39dad6a&format=json', function(data) {
+                    cb(data.results.artistmatches.artist);
+                });
+            },
+            templates: {
+                header: '<h4 class="tt-header">Artistas</h4>',
+                suggestion: function(data){
+                    return '<p><a><img src="'+(data.image ? data.image[0]["#text"] : '')+'" /><strong>' + data.name + '</strong></a><p>';
+                }
+            }
+        },
+        {
+            name: 'albums',
+            displayKey: 'name',
+            source: function(query, cb){
+                $.get('http://ws.audioscrobbler.com/2.0/?method=album.search&limit=5&album=' + query + '&api_key=99a3723ef564b7395271af5fd39dad6a&format=json', function(data) {
+                    cb(data.results.albummatches.album);
+                });
+            },
+            templates: {
+                header: '<h4 class="tt-header">Albums</h4>',
+                suggestion: function(data){
+                    return '<p><a><img src="'+(data.image ? data.image[0]["#text"] : '')+'" /><strong>' + data.name + '</strong> - <span>' + data.artist + '</span></a><p>';
+                }
+            }
+        },
+        {
+            name: 'tracks',
+            displayKey: 'name',
+            source: function(query, cb){
+                $.get('http://ws.audioscrobbler.com/2.0/?method=track.search&limit=5&track=' + query + '&api_key=99a3723ef564b7395271af5fd39dad6a&format=json', function(data) {
+                    cb(data.results.trackmatches.track);
+                });
+            },
+            templates: {
+                header: '<h4 class="tt-header">Músicas</h4>',
+                suggestion: function(data){
+                    return '<p><a><img src="'+(data.image ? data.image[0]["#text"] : '')+'" /><strong>' + data.name + '</strong> - <span>' + data.artist + '</span></a> <p>';
+                }
+            }
+        },
+        {
+            name: 'tags',
+            displayKey: 'name',
+            source: function(query, cb){
+                $.get('http://ws.audioscrobbler.com/2.0/?method=tag.search&limit=5&tag=' + query + '&api_key=99a3723ef564b7395271af5fd39dad6a&format=json', function(data) {
+                    cb(data.results.tagmatches.tag);
+                });
+            },
+            templates: {
+                header: '<h4 class="tt-header">Tags</h4>',
+                suggestion: function(data){
+                    return '<p><a><strong>' + data.name + '</strong></a> <p>';
+                }
+            }
+        }
+
+    );
 }]);
 
 app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
-    lastfm.artist.getInfo({artist: $routeParams.artist_name}, {success: function(data){
-        $scope.artist = data.artist
-        console.log($scope.artist)
-        $scope.$digest()
-
-        lastfm.artist.getTopAlbums({artist: $scope.artist.name}, {success: function(data){
-            $scope.top_albums = data.topalbums.album
-            console.log($scope.top_albums)
+        lastfm.artist.getInfo({artist: $routeParams.artist_name}, {success: function(data){
+            $scope.artist = data.artist
             $scope.$digest()
+
+            lastfm.artist.getTopAlbums({artist: $scope.artist.name}, {success: function(data){
+                $scope.artist.top_albums = data.topalbums.album
+                $scope.$digest()
+            }});
         }});
-    }});
 
     $scope.load_top_tracks = function () {
-        if (!$scope.top_tracks) {
+        if (!$scope.artist.top_tracks) {
             lastfm.artist.getTopTracks({artist: $scope.artist.name}, {success: function (data) {
-                $scope.top_tracks = data.toptracks.track
-                console.log($scope.top_tracks)
+                $scope.artist.top_tracks = data.toptracks.track
                 $scope.$digest()
             }});
         }
     }
 
     $scope.load_events = function () {
-        if (!$scope.events) {
+        if (!$scope.artist.events) {
             lastfm.artist.getEvents({artist: $scope.artist.name}, {success: function(data){
-                $scope.events = data.events.event
-                console.log($scope.events)
+                $scope.artist.events = data.events.event
                 $scope.$digest()
             }});
         }
     }
+
+    if ($scope.playitems[0]) {
+        $scope.play($scope.playitems[0])
+    }
+
+
+
 }]);
 
 app.controller('AlbumCtrl', ['$scope', '$resource', function($scope, $resource) {
 
 }]);
 
+
+app.controller('TopCtrl', ['$scope', '$resource', function($scope, $resource) {
+
+    var Artist = $resource('/api/artists/:id');
+    var Album = $resource('/api/albums/:id');
+    var Track = $resource('/api/tracks/:id');
+
+    $scope.top_artists = Artist.query();
+    $scope.top_albums = Album.query();
+    $scope.top_tracks = Track.query();
+
+}]);
+
+app.controller('TagCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+
+    $scope.tag = { name: $routeParams.tag_name }
+
+    lastfm.tag.getTopArtists({ tag: $routeParams.tag_name, limit: 12 }, { success: function(data){
+        $scope.tag.top_artists = data.topartists.artist
+        $scope.$digest()
+    }});
+
+    lastfm.tag.getTopAlbums({ tag: $routeParams.tag_name, limit: 12 }, { success: function(data){
+        $scope.tag.top_albums = data.topalbums.album
+        $scope.$digest()
+    }});
+
+    lastfm.tag.getTopTracks({ tag: $routeParams.tag_name, limit: 12 }, { success: function(data){
+        $scope.tag.top_tracks = data.toptracks.track
+        $scope.$digest()
+    }});
+
+}]);
+
+
 app.config(function($routeProvider, $locationProvider) {
+
+    $routeProvider.when('/top', {
+        templateUrl: function(){ return '/top?angular=true'; },
+        controller: 'TopCtrl'
+    });
+
+    $routeProvider.when('/:tag/:tag_name', {
+        templateUrl: function(params){ return '/tag/' + params.tag_name + '?angular=true'; },
+        controller: 'TagCtrl'
+    });
+
     $routeProvider.when('/:artist_name', {
         templateUrl: function(params){ return '/' + params.artist_name + '?angular=true'; },
         controller: 'ArtistCtrl'
@@ -273,7 +490,8 @@ app.config(function($routeProvider, $locationProvider) {
         templateUrl: function(params){ return '/' + params.artist_name +'/' + params.album_name + '?angular=true'; },
         controller: 'AlbumCtrl'
     });
-//    $routeProvider.otherwise({ redirectTo: '/list' });
+
+    $routeProvider.otherwise({ redirectTo: '/top' });
 });
 
 app.directive('showtab', function () {
@@ -287,51 +505,91 @@ app.directive('showtab', function () {
     };
 });
 
-$('#suggest_input').typeahead(null,
-    {
-        name: 'artists',
-        displayKey: 'name',
-        source: function(query, cb){
-            $.get('http://ws.audioscrobbler.com/2.0/?method=artist.search&limit=5&artist=' + query + '&api_key=99a3723ef564b7395271af5fd39dad6a&format=json', function(data) {
-                cb(data.results.artistmatches.artist);
-            });
-        },
-        templates: {
-            header: '<h3 class="league-name">Artistas</h3>',
-            suggestion: function(data){
-                return '<a href="#/'+data.name+'"><img src="'+data.image[0]["#text"]+'" /><span>' + data.name + '</span></a>';
-            }
+app.filter('html_filter', function($sce) {
+    return function(val) {
+        return $sce.trustAsHtml(val.split('http://www.last.fm/music/').join('/#/').split('http://www.last.fm/tag/').join('/#/tag/').split('+').join(' ').split('Last.fm').join('AlleSongs.com'));
+    };
+});
+
+app.filter("int_to_date", function () {
+        return function (input) {
+
+            var hours = Math.floor(input / 3600);
+            var minutes = Math.floor((input - (hours * 3600))/60);
+            var seconds = input - (hours * 3600) - (minutes * 60);
+
+            while (minutes.length < 2) {minutes = '0' + minutes;}
+            while (seconds.length < 2) {seconds = '0' + minutes;}
+
+            return new Date(0, 0, 0, hours, minutes, seconds, 0)
         }
-    },
-    {
-        name: 'albums',
-        displayKey: 'name',
-        source: function(query, cb){
-            $.get('http://ws.audioscrobbler.com/2.0/?method=album.search&limit=5&album=' + query + '&api_key=99a3723ef564b7395271af5fd39dad6a&format=json', function(data) {
-                cb(data.results.albummatches.album);
-            });
-        },
-        templates: {
-            header: '<h3 class="league-name">Albums</h3>',
-            suggestion: function(data){
-                return '<a href="#/'+data.artist+'/'+data.name+'" remove><i mg src="'+data.image[0]["#text"]+'" /><span>' + data.name + '</span></a>';
+    });
+
+app.directive('facebook', function($http) {
+    return {
+        restrict: 'A',
+        scope: true,
+        controller: function($scope, $attrs) {
+            // Load the SDK Asynchronously
+            (function(d){
+                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement('script'); js.id = id; js.async = true;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                ref.parentNode.insertBefore(js, ref);
+            }(document));
+
+            function login() {
+                FB.login(function(response) {
+                        if (response.authResponse) {
+                            console.log('FB.login connected');
+                            fetch();
+                        } else {
+                            console.log('FB.login cancelled');
+                        }
+                    }, { scope: 'email,read_stream' }
+                );
+            };
+
+            function fetch() {
+                FB.getLoginStatus(function (response) {
+                    if (response.status === 'connected') {
+                        $scope.auth = response.authResponse;
+                        $http.get("/users/auth/facebook/callback?access_token=" + $scope.auth.accessToken, {  }).success(function (data) {
+                            $scope.$parent.fetch_status = data.status;
+                            $scope.$parent.current_user = data;
+                        }).error(function (data) {
+                            console.log('error: ' + data);
+                            $scope.$parent.fetch_status = data.status;
+                        });
+
+                    } else if (response.status === 'not_authorized') {
+                        console.log('not_authorized')
+                    } else {
+                        console.log('not_logged_in')
+                    }
+                });
             }
-        }
-    },
-    {
-        name: 'tracks',
-            displayKey: 'name',
-        source: function(query, cb){
-        $.get('http://ws.audioscrobbler.com/2.0/?method=track.search&limit=5&track=' + query + '&api_key=99a3723ef564b7395271af5fd39dad6a&format=json', function(data) {
-            cb(data.results.trackmatches.track);
-        });
-    },
-        templates: {
-            header: '<h3 class="league-name">Músicas</h3>',
-                suggestion: function(data){
-                    return '<a href="#/'+data.artist+'/'+data.name+'"><i mg src="'+data.image[0]["#text"]+'" /><span>' + data.name + '</span></a>';
+
+            $scope.fetch = function() {
+                if ($scope.login_status == 'connected') {
+                    fetch();
+                } else {
+                    login();
                 }
+            };
+        },
+        link: function(scope, element, attrs, controller) {
+            // Additional JS functions here
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : attrs.facebook, // App ID
+                    channelUrl : '//localhost:3000/channel.html', // Channel File
+                    status     : true, // check login status
+                    cookie     : true, // enable cookies to allow the server to access the session
+                    xfbml      : true  // parse XFBML
+                });
+            }; // end of fbAsyncInit
         }
     }
-
-);
+});

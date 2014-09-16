@@ -45,7 +45,9 @@ html body.page-signin {
 //
 
 .page-signin {
-  
+
+  margin-top: 89px;
+
   // Container
   .signin-container {
     border-radius: $border-radius-base;
@@ -345,7 +347,7 @@ html body.page-signin {
   
     .signin-container {
       display: table;
-      margin: 80px auto;
+      margin: 0 auto;
       width: 650px;
       table-layout: fixed;
     }
@@ -359,12 +361,12 @@ html body.page-signin {
       text-align: left;
       vertical-align: top;
       width: 40%;
+      color: #fff;
 
       // Features list
       //
 
       ul {
-        color: #fff;
         display: block;
         font-size: 13px;
         font-weight: 300;
