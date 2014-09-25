@@ -46,18 +46,7 @@
     = favicon_link_tag "favicon.ico"
 
     / Open Sans font from Google CDN
-    = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin"
-    / Pixel Admin's stylesheets
-    = stylesheet_link_tag    "bootstrap"
-    = stylesheet_link_tag    "pixel-admin"
-    = stylesheet_link_tag    "pixel-admin-scss/widgets/widgets"
-    = stylesheet_link_tag    "pixel-admin-scss/rtl/rtl"
-    = stylesheet_link_tag    "pixel-admin-scss/themes/themes"
-    = stylesheet_link_tag    "pixel-admin-scss/pages/pages"
-    -#= stylesheet_link_tag    "pixel-admin-scss/pages/signin"
-    = stylesheet_link_tag    "component"
-    = stylesheet_link_tag    "ymusica"
-    = stylesheet_link_tag    "home", media: "all"
+    = stylesheet_link_tag    "application", media: "all"
 
     = csrf_meta_tags
     
@@ -175,10 +164,6 @@
               %ul.nav.navbar-nav
                 %li
                   %a{ng: { click: "go(['top'])" } } Home
-                %li
-                  %a{ng: { click: "go(['top'])" } } About us
-                %li
-                  %a{ng: { click: "go(['top'])" } } Feedback
               .right.clearfix
                 %ul.nav.navbar-nav.pull-right.right-navbar-nav
                   %li{ ng: { hide: "current_user" } }
@@ -207,10 +192,10 @@
                 %span.text-semibold {{current_user.name.split(' ')[0] || 'Guest'}}
               %img{ ng: { src: "{{current_user.picture || '/assets/demo/avatars/1.jpg'}}", alt: "current_user.name" } }
               .btn-group
-                = link_to destroy_user_session_path, :method => :delete, class: 'btn btn-xs btn-primary btn-outline dark', 'ng-show' => "current_user" do
+                = link_to destroy_user_session_path, :method => :delete, class: 'btn btn-xs btn-danger btn-outline dark', 'ng-show' => "current_user" do
                   %i.fa.fa-power-off
                   sign out
-                %a.btn.btn-xs.btn-primary.btn-outline.dark{ ng: { click: "showSignInModal()", hide: "current_user" } }
+                %a.btn.btn-xs.btn-danger.btn-outline.dark{ ng: { click: "showSignInModal()", hide: "current_user" } }
                   %i.fa.fa-sign-in
                   sign in
               %a.close{:href => "#"} &times;
@@ -276,11 +261,11 @@
           .page-header
             / Page header, center on small screens
             %form#suggest_form{role: "search", action: artist_index_path}
-              %h1.col-xs-12.text-center.text-left-sm.no-padding
+              %h1.col-xs-12.text-center.text-left-sm
                 .input-group.no-margin
                   %span.input-group-addon
                     %i.fa.fa-search.page-header-icon.pull-left>
-                  %input#suggest_input.form-control.no-padding-hr.pull-left{placeholder: "Search for songs, albums, artists, tags...", type: "text", name: "artist", autofocus: "", :tabindex => "0"}
+                  %input#suggest_input.form-control.no-padding-hr.pull-left{placeholder: "Search anything...", type: "text", name: "artist", autofocus: "", :tabindex => "-1"}
 
           #pages-container{ ng: { view: '' } }= yield
         .row

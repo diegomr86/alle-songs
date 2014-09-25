@@ -1,231 +1,149 @@
-@import "nprogress"
-@import "layout-default"
-@import "jquery.jscrollpane"
 @import "http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700"
-$color1: #F05023
-$color2: #1E2213
-$color3: #5D3018
-$color4: #903B1C
-$color5: #B8441F
+@import "bootstrap"
+@import "pixel-admin"
+@import "pixel-admin-scss/widgets/widgets"
+@import "pixel-admin-scss/rtl/rtl"
+@import "pixel-admin-scss/themes/themes"
+@import "pixel-admin-scss/pages/pages"
+@import "component"
+@import "ymusica"
+
+@import "typeaheadjs"
+@import "xeditable"
+
+@mixin overflow-h()
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
 
 
+.theme-purple-hills
+  .logo
+    i.fa-youtube-play
+      font-size: 118%
 
-html, body
-  height: 100%
-#wrap
-  min-height: 100%
-  height: auto !important
-  height: 100%
-  margin: 0 auto -26px
-  padding: 0 0 26px
+  [ng-drag="true"]
+    cursor: move
+  a
+    cursor: pointer
+  #main-navbar .navbar-header a
+    font-family: 'Cabin Sketch', cursive
+    font-style: italic
+    font-weight: bold
+    padding: 0
+    font-size: 23px
 
-body
-  color: $color2
-*:focus
-  outline: none
+  #main-navbar .navbar-header
+    padding-left: 73px !important
 
-a, a:visited
-  color: #444
-  &:hover
-    color: $color2
-    text-decoration: none
+  .artist_picture
+    height: 120px
+    img
+      min-height: 120px
 
-h4
-  margin-top: 0
+  .search-result
+    margin-left: 66px
 
-
-.label-info
-  background: $color1
-#header
-  .navbar
-    border: 0
-    border-bottom: 1px solid #e7e7e7
-    background: $color2
-    color: #fff
-    -webkit-border-radius: 0
-    -moz-border-radius: 0
-    border-radius: 0
-    .navbar-brand
-      padding: 1px 15px
-      h1
-        font-family: 'Cabin Sketch', cursive
-        font-style: italic
-        margin: 0
-        font-size: 30px
-        float: left
-        line-height: 47px
-        color: #fff
-        font-weight: bold
-        i
-          font-size: 14px
-          color: $color1
-    #suggest_form
-      input
-        border: 1px solid $color2
-        width: 300px
-      button
-        border: 1px solid $color2
-
-#artist
-  .artist
-    margin-bottom: 10px
-    .cover
-      padding-left: 0
-      img
-        width: 100%
-    .info
-      padding-left: 0
-      h2
-        margin-top: 0
-
-  .albums
-    .panel.panel-default
-      border: none
-      border-top: 1px solid #e7e7e7
-      border-radius: 0
-      margin: 0
-      > .panel-heading
-        border: none
-        background: none
-      .panel-body
-        padding: 0
-        border-top: 0
-    .album
-      .cover
-        padding-right: 0
-        height: 40px
-        img
-          width: 100%
-      .info
-        overflow: hidden
-        h3
-          line-height: 40px
-          height: 40px
-          font-size: 80%
-          font-weight: bold
-      .actions
-        padding: 0
-        a
-          line-height: 60px
-      ol
-        padding-left: 0
-        margin-bottom: 0
-        li.music_link
-          line-height: 30px
-          font-size: 12px
-          list-style: none
-          a
-            cursor: pointer
-          .song
-            clear: both
-            .col-xs-2
-              padding-right: 0
-            .col-xs-10
-              border-bottom: 1px solid #e7e7e7
-              line-height: 30px
-              height: 30px
-              overflow: hidden
-          &.active
-            .icon-play
-              color: $color1
-          &:last-child .col-xs-10
-            border-bottom: 0
-          span
-            margin-left: 10px
-          .icon-youtube-play.action
-            display: none
-          &:not(.active):hover
-            .icon-youtube-play.action
-              display: inline
-    h3
-      font-size: 100%
-      margin: 0
-
-    .panel-heading
-      padding: 0
-    .panel-group .panel+.panel
-      margin: 0
-
-
-#now-playing
-  #player
-    margin: 0
-
-  #lyric_text, #translation_text
-    white-space: pre-line
-
-#related_artists
-  max-width: 300px
-  ul
-    padding-left: 0
-    li
-      list-style: none
-      overflow: hidden
-      height: 39px
-      border-bottom: 1px solid #e7e7e7
-      span
-        margin: 0
-        line-height: 26px
-        font-size: 130%
-        padding-left: 10px
-#social
-  .twitter
-    margin-right: 10px
-
-#footer
-  clear: both
-  line-height: 25px
-  padding: 0 10px
-  border-top: 1px solid #e7e7e7
-  .developed_by
+  #player-container
+    margin-top: -18px
+    background-color: #ffffff
+    border-left: 1px solid #e2e2e2
+    border-bottom: 1px solid #e2e2e2
+  .list-group-item, .list-group-item:hover, .list-group-item.active
+    background-color: #ffffff
+    background-position: left
+    background-repeat: no-repeat
+    background-size: 40px
+    padding-left: 50px
+    border-left: 0
     a
-      color: $color1
-  sup
-    color: $color1
-
-.ui-menu
-  .ui-menu-item
-    height: 40px
-    a
-      line-height: 40px
-    strong
-      margin-left: 10px
-
-
-.page-header
-  margin: 0px 0 20px
-
-.navbar-default .navbar-link
-  font-size: 17px
-  color: #f0f0f0
-  i
-    color: $color1
-.navbar-default .navbar-link:hover
-  color: #fff
-
-#bookmark_it
-  .btn
-    color: #444444
+      text-decoration: none
+      color: #555555
+      cursor: pointer
     i
-      color: $color1
+      cursor: pointer
 
-#bookmarks_section
-  &> div
+    @include overflow-h()
+
+  .list-group-item.active
+    background-color: #857198
+
+  .overflow-h
+    @include overflow-h()
+
+  .album-cover-caption
+    display: none
+
+  .page-profile
     margin-top: -20px
-    &> .row
-      width: 25%
-      float: left
-      margin: 0
-    .bookmark_artist
-      padding: 0
+    .profile-photo, .widget-followers .follower-avatar
+      border-radius: 0
       img
-        width: 100%
-  hr
-    margin-top: 1px
+        border-radius: 0
 
-@media (max-width: 768px)
-  .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12
-    padding-right: 10px
-    padding-left: 10px
+  .icon-left
+    padding-top: 7px
+    padding-left: 15px
+    float: left
+  #playlist
+    min-height: 2000px
+    .list-group-item
+      .actions
+        display: none
+      .duration
+        display: inline
+      &:hover
+        .actions
+          display: inline
+        .duration
+          display: none
+      &.active
+        a
+          color: #fff
+        border-color: #e4e4e4
+  #playlist-header
+    .fa-youtube-play
+      margin-top: 4px
+    .player_controls
+      margin-top: 5px
 
+  .about
+    color: #a0a3b1
 
+  .artist-cover
+    figcaption
+      top: 21px
+
+  .playlist-menu
+    .editable-input
+      width: 146px
+      margin-left: 4px
+    .editable-buttons
+      margin-left: 0
+    li
+      a
+        cursor: pointer
+      .actions
+        > i
+          display: none
+        > span
+          display: inline
+      &:hover
+        .actions
+          > i
+            display: inline
+          > span
+            display: none
+  .dz-default.dz-message
+    width: 330px
+  .playlist-empty
+    padding: 20px
+  .top-tags
+    strong
+      color: #a0a3b1
+    .label
+      margin-right: 4px
+      margin-bottom: 3px
+
+  iframe
+    margin-bottom: -4px

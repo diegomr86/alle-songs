@@ -1,1 +1,0 @@
-(function(){this.JST||(this.JST={}),this.JST["backbone/templates/tracks/show"]=function(obj){var __p=[];with(obj||{})__p.push("<p>\n  <b>Track:</b>\n  ",track,"\n</p>\n\n<p>\n  <b>Artist:</b>\n  ",artist,"\n</p>\n\n<p>\n  <b>Session:</b>\n  ",session_id,'\n</p>\n\n\n<a href="#/index">Back</a>\n');return __p.join("")}}).call(this);

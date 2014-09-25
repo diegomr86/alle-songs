@@ -1,1 +1,0 @@
-(function(){this.restauranteur.controller("PlaylistCtrl",["$scope",function(){}])}).call(this);

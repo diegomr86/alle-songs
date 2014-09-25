@@ -60,7 +60,8 @@ Music::Application.configure do
   # Precompile additional assets.
   # application.js, application.sass, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
-  config.assets.precompile += ['*']
+  # config.assets.precompile += ["*.js", "*.css"]
+
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -79,5 +80,5 @@ Music::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.assets.initialize_on_precompile = true
+  # config.assets.initialize_on_precompile = true
 end

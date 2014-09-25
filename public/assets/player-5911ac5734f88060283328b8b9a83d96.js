@@ -1,1 +1,0 @@
-(function(){$(function(){return $("li.music_link").removeClass("active"),$('li.music_link[data-code="'+$("#player_container").data("code")+'"]').addClass("active"),setInterval(function(){return NProgress.set(100*ytplayer.getCurrentTime()/ytplayer.getDuration()/100)},1e3)})}).call(this);
