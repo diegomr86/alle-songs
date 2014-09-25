@@ -16,6 +16,7 @@ app.run(function($rootScope, editableOptions) {
 app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Playlist', 'Auth', function($scope, $resource, $http, $cookieStore, Playlist, Auth) {
 
     var Playitem = $resource('/api/playitems/:id');
+    var Track = $resource('/api/tracks/:id');
 
     $scope.go = function ( paths ) {
         path = '/#'
@@ -102,6 +103,18 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         })
     };
 
+    $scope.addTracksToPlaylist = function(tracks, play) {
+        angular.forEach(tracks, function(track, key) {
+            $scope.addToPlaylist(track, (key == 0 && play))
+        });
+    };
+
+    $scope.addSampleTracksToPlaylist = function(play) {
+        Track.query({per_page: 100, order: "code asc"}, function(tracks) {
+            $scope.addTracksToPlaylist(tracks, play)
+        });
+    };
+
     $scope.addAlbumToPlaylist = function(a, play) {
         lastfm.album.getInfo({album: a.name, artist: (a.artist.name || a.artist)}, { success: function(data){
             angular.forEach(data.album.tracks.track, function(track, key) {
@@ -116,6 +129,16 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 
     $scope.addArtistToPlaylist = function(a, play) {
         lastfm.artist.getTopTracks({artist: a.name}, { success: function(data){
+            angular.forEach(data.toptracks.track, function(track, key) {
+                $scope.addToPlaylist(track, (key == 1 && play))
+            });
+
+            $scope.$digest()
+        }});
+    };
+
+    $scope.addTagToPlaylist = function(t, play) {
+        lastfm.tag.getTopTracks({tag: t.name}, { success: function(data){
             angular.forEach(data.toptracks.track, function(track, key) {
                 $scope.addToPlaylist(track, (key == 1 && play))
             });
@@ -273,11 +296,12 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         }});
     }
 
-    $scope.onDropComplete=function(data,evt){
+    $scope.dropOnCurrentPlaylist=function(index, data, evt){
         console.log("drop success, data:", data);
-        if (data.artist == undefined) {
+        console.log(index);
+        if (data.artist === undefined) {
             $scope.addArtistToPlaylist(data)
-        } else if (data.duration == undefined){
+        } else if (data.duration === undefined){
             $scope.addAlbumToPlaylist(data)
         } else {
             $scope.addToPlaylist(data)
@@ -288,10 +312,14 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         $('#signin_modal').modal('show')
     }
 
-    $scope.hideSignInModal=function(){
-        $('#signin_modal').modal('hide')
+    $scope.focusSearch=function(){
+        $("#suggest_input").focus();
     }
 
+    $scope.hideSignInModal=function(){
+        $('#signin_modal').modal('hide')
+        $scope.focusSearch()
+    }
 
     $scope.setCurrentUser = function(current_user) {
         $scope.current_user = current_user
@@ -429,14 +457,22 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 }]);
 
 app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+
     lastfm.artist.getInfo({artist: $routeParams.artist_name}, {success: function(data){
         $scope.artist = data.artist
         $scope.$digest()
-
-        lastfm.artist.getTopAlbums({artist: $scope.artist.name}, {success: function(data){
-            $scope.artist.top_albums = data.topalbums.album
-            $scope.$digest()
-        }});
+        console.log($scope.artist)
+        lastfm.artist.getTopAlbums({artist: $scope.artist.name}, {
+            success: function(data){
+                $scope.artist.top_albums = data.topalbums.album
+                if ($scope.artist.top_albums) {
+                    $scope.$digest()
+                } else {
+                    $('[href="#profile-tabs-top-albums"]').parent().hide()
+                    $('[href="#profile-tabs-top-tracks"]').click()
+                }
+            }
+        });
     }});
 
     $scope.load_top_tracks = function () {
@@ -534,7 +570,7 @@ app.controller('TagCtrl', ['$scope', '$routeParams', function($scope, $routePara
         $scope.$digest()
     }});
 
-    lastfm.tag.getTopTracks({ tag: $routeParams.tag_name, limit: 12 }, { success: function(data){
+    lastfm.tag.getTopTracks({ tag: $routeParams.tag_name, limit: 20 }, { success: function(data){
         $scope.tag.top_tracks = data.toptracks.track
         $scope.$digest()
     }});
@@ -545,13 +581,9 @@ app.controller('TagCtrl', ['$scope', '$routeParams', function($scope, $routePara
 app.config(function($routeProvider, $locationProvider) {
 
     init.push(function () {
-
-//        window.PixelAdmin.plugins.alerts.add('asdfasdf', {auto_close: 3});
-
-
     } );
-    window.PixelAdmin.start(init);
 
+    window.PixelAdmin.start(init);
 
 
     $routeProvider.when('/top', {
@@ -559,7 +591,7 @@ app.config(function($routeProvider, $locationProvider) {
         controller: 'TopCtrl'
     });
 
-    $routeProvider.when('/:tag/:tag_name', {
+    $routeProvider.when('/tag/:tag_name', {
         templateUrl: function(params){ return '/tag/' + params.tag_name + '?angular=true'; },
         controller: 'TagCtrl'
     });

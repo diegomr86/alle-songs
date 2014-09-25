@@ -1,5 +1,5 @@
 %div
-  %img{ ng: { src: "{{track.image[3]['#text'] || track.picture}}" }, alt: '{{track.name}}', class: 'follower-avatar' }
+  %img{ ng: { src: "{{(track.image[3]['#text'] || track.picture) || '/assets/demo/avatars/1.jpg'}}" }, alt: '{{track.name}}', class: 'follower-avatar' }
   .body
     .follower-controls
       %span.follower-username{ ng: { if: "track.playcount"}} {{track.playcount}} plays &nbsp;&nbsp;

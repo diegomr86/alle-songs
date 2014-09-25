@@ -28,31 +28,31 @@
 
 .dropzone-box {
   position: relative;
-  min-height: 284px;
+  min-height: 200px;
   border: 3px dashed #ddd;
   border-radius: 3px;
   vertical-align: middle;
   width: 100%;
   cursor: pointer;
-  padding: 0 15px 15px 0;
+  padding: 0;
   @include transition(all .2s);
 }
 
 .dz-default.dz-message {
   color: $text-color;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   display: block;
-  min-height: 70px;
+  min-height: 50px;
   width: 300px;
   position: absolute;
-  padding-left: 90px;
-  padding-top: 12px;
+  padding-left: 0;
+  padding-top: 0;
   line-height: 22px;
   top: 50%;
-  margin-top: -35px;
+  margin-top: -30px;
   left: 50%;
-  margin-left: -150px;
+  margin-left: -130px;
   @include transition(all .2s);
 }
 
@@ -61,15 +61,15 @@
   font-weight: 400;
 }
 
-.dropzone-box .fa.fa-cloud-upload {
+.dropzone-box .fa {
   display: block;
-  width: 70px;
-  height: 70px;
+  width: 45px;
+  height: 45px;
   position: absolute;
   left: 0;
   top: 0;
   text-align: center;
-  line-height: 70px;
+  line-height: 48px;
   font-size: 32px;
   background: #eee;
   color: #aaa;
@@ -77,7 +77,7 @@
   @include transition(all .2s);
 }
 
-.dropzone-box:hover .fa.fa-cloud-upload {
+.dropzone-box:hover .fa {
   color: #fff;
 }
 
@@ -85,7 +85,7 @@
   display: none;
 }
 
-.dz-started:hover .fa.fa-cloud-upload {
+.dz-started:hover .fa {
   background: #eee !important;
   color: #aaa !important;
 }

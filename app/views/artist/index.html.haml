@@ -36,17 +36,10 @@
           %span.label.label-primary{ ng: { repeat: 'tag in artist.tags.tag'} } {{tag.name}}
       .panel.panel-transparent
         .panel-heading
-          %span.panel-title Social
+          %span.panel-title More
         .list-group
-          %a.list-group-item{:href => "#"}
-            %i.profile-list-icon.fa.fa-twitter{:style => "color: #4ab6d5"}
-            @dsteiner
-          %a.list-group-item{:href => "#"}
-            %i.profile-list-icon.fa.fa-facebook-square{:style => "color: #1a7ab9"}
-            Denise Steiner
-          %a.list-group-item{:href => "#"}
-            %i.profile-list-icon.fa.fa-envelope{:style => "color: #888"}
-            dsteiner@example.com
+          %a.list-group-item{ href: "{{artist.url}}", target: '_blank' }
+            View more from {{artist.name}} on Last.fm
     .right-col
       %hr.profile-content-hr.no-grid-gutter-h/
       .profile-content
@@ -56,9 +49,13 @@
           %li
             %a{"data-toggle" => "tab", :href => "#profile-tabs-top-tracks", showtab: "", ng: { click: "load_top_tracks()" } } Top Tracks
           %li
-            %a{"data-toggle" => "tab", :href => "#profile-tabs-events", showtab: "", ng: { click: "load_events()" } } Events
+            %a{"data-toggle" => "tab", :href => "#profile-tabs-events", showtab: "", ng: { show: "artist.ontour == '1'", click: "load_events()" } } Events
           %li
             %a{"data-toggle" => "tab", :href => "#profile-tabs-similar", showtab: ""} Similar artists
+          %li.pull-right
+            %a{ ng: { show: 'artist.top_tracks', click: "addTracksToPlaylist(artist.top_tracks, true)", title: 'Play all' } }
+              %i.fa.fa-play
+              Play top tracks
         .tab-content.tab-content-bordered.panel-padding
           #profile-tabs-top-albums.tab-pane.fade.in.active
             %ul.grid.cs-style-3.row
@@ -68,11 +65,14 @@
               %i.fa.fa-cog.fa-spin
               Loading albums...
           #profile-tabs-top-tracks.tab-pane.fade.widget-followers
-            .follower{ ng: { repeat: 'track in artist.top_tracks'} }
-              = render 'home/track'
             .text-center{ ng: { hide: "artist.top_tracks"} }
+              %br
               %i.fa.fa-cog.fa-spin
               Loading tracks...
+              %br
+              %br
+            .follower{ ng: { repeat: 'track in artist.top_tracks', drag: "true", 'drag-data' => "track" } }
+              = render 'home/track'
 
           #profile-tabs-events.widget-article-comments.tab-pane.panel.no-padding.no-border.fade.in
             = render 'home/event'

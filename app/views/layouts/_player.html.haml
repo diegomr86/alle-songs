@@ -1,4 +1,4 @@
-#player-container.col-md-4.no-padding-hr.border-l.border-l.border-b{ ng: { drop: "true", "drop-success" => "onDropComplete($data,$event)"} }
+#player-container.col-md-4.no-padding-hr.border-l.border-l.border-b{ ng: { drop: "true", "drop-success" => "dropOnCurrentPlaylist($index, $data,$event)"} }
   #content-wrapper.no-padding-hr.no-padding-b
     .panel.panel-dark.widget-profile.no-border.no-margin-b
       #playlist-header
@@ -51,20 +51,46 @@
         .clearfix
       .clearfix
       #playlist.list-group.fill
+        .playlist-empty.text-center{ ng: { hide: "playitems.length > 0" } }
+          %br
+          %span
+            Hey, your playlist is empty!
+          %br
+          %br
+          %br
+          #dropzonejs-example.dropzone-box.dz-clickable{ ng: { click: "focusSearch()" } }
+            .dz-default.dz-message
+              %i.fa.fa-arrow-down
+              %span
+                Drop something in here
+              %br/
+              %span.dz-text-small track, album, artist, tag, etc.
 
-        %h4.text-center{ ng: { hide: "playitems.length > 0" } }
-          %br
-          %br
-          Hey, your playlist empty!
           %br
           %br
           %br
-          %i.fa.fa-arrow-down.text-xlg
+          We also can
+          %a{ ng: { click: "addSampleTracksToPlaylist(true)", title: 'Play a great playlist' } }
+            %strong play a great playlist
+          for you:
           %br
           %br
           %br
-          Drop something here to play.
-        .list-group-item{ ng: { repeat: "playitem in playitems", class: "{active: playitem == current_playitem}", style: "{'background-image':'url('+playitem.picture+')'}"}, id: "playlist_playitem_{{playitem.id}}"}
+          %a{ ng: { click: "addSampleTracksToPlaylist(true)", title: 'Play a great playlist' } }
+            = image_tag 'rollingstones_500_greatest_songs.jpg'
+          %br
+          %br
+          %hr
+          %br
+          .top-tags
+            or you can listen the best of your favorite style:
+            %br
+            %br
+            %br
+            %a.label.label-primary{ ng: { repeat: "tag in toptags", click: "addTagToPlaylist(tag, true)" } }
+              {{tag.name}}
+
+        .list-group-item{ ng: { repeat: "playitem in playitems", class: "{active: playitem == current_playitem}", style: "{'background-image':'url('+(playitem.picture || playitem.artist.picture || '/assets/demo/avatars/1.jpg')+')'}"}, id: "playlist_playitem_{{playitem.id}}"}
           .row
             .col-md-10.overflow-h
               %a{ ng: { click: "play(playitem)" }, title: 'Click to play'}

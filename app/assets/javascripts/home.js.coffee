@@ -51,3 +51,16 @@ $ ->
     loadNext true
   $("#backward").click ->
     loadPrevious true
+  $("#suggest_input").focus(->
+    $('.page-header').stop().animate
+      backgroundColor: "#f3f3f3"
+      borderColor: "#fff"
+    , 600, ->
+      $('.page-header').animate
+        backgroundColor: "#fff"
+        borderColor: "#ececec"
+      , 600
+      return
+
+  )
+  $("#suggest_input").focus();

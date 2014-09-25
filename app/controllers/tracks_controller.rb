@@ -7,7 +7,7 @@ class TracksController < ApplicationController
 
 
   def index
-    @tracks = Track.order("RANDOM()").paginate(:page => params[:page], :per_page => 12)
+    @tracks = Track.order(params[:order] || "RANDOM()").paginate(:page => params[:page], :per_page => params[:per_page] || 20)
     respond_with(@tracks)
   end
 

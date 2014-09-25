@@ -62,7 +62,6 @@ angular.module("ngDraggable", [])
                     var onpress = function(evt) {
                         if(! _dragEnabled)return;
 
-
                         if(_hasTouch){
                             cancelPress();
                             _pressTimer = setTimeout(function(){
@@ -92,7 +91,7 @@ angular.module("ngDraggable", [])
                         _my = (evt.pageY || evt.originalEvent.touches[0].pageY);
                         _tx=_mx-element.centerX-$window.scrollLeft()
                         _ty=_my -element.centerY-$window.scrollTop();
-                        moveElement(_tx, _ty);
+//                        moveElement(_tx, _ty);
                         $document.on(_moveEvents, onmove);
                         $document.on(_releaseEvents, onrelease);
                         $rootScope.$broadcast('draggable:start', {x:_mx, y:_my, tx:_tx, ty:_ty, element:element, data:_data});

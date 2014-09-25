@@ -6,7 +6,7 @@
     .panel.widget-followers
       .panel-heading
         %span.panel-title
-          Top artists for
+          Featured artists for
           %strong.text-primary {{tag.name}}
           tag
       .panel-body
@@ -21,7 +21,7 @@
     .panel.widget-followers
       .panel-heading
         %span.panel-title
-          Top albums for
+          Featured albums for
           %strong.text-primary {{tag.name}}
           tag
       .panel-body
@@ -37,9 +37,12 @@
     .panel.widget-followers
       .panel-heading
         %span.panel-title
-          Top tracks for
+          Featured tracks for
           %strong.text-primary {{tag.name}}
           tag
+        %button.btn.btn-xs.btn-primary.btn-outline.pull-right{ ng: { click: "addTracksToPlaylist(tag.top_tracks, true)", title: 'Play all' } }
+          %i.fa.fa-play
+          Play all
       .panel-body
         .widget-followers
           .follower{ ng: { repeat: 'track in tag.top_tracks'} }
