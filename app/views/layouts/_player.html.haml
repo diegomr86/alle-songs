@@ -36,15 +36,15 @@
       .widget-profile-text.bg-default
         .pull-left
           %i.fa.fa-th-list
-          %a{ onaftersave: "updatePlaylist($data)", editable: { text: "current_playlist.name" }, e: { form: "playlist_form" }, ng: { click: "playlist_form.$show()" }, title: "Click here to edit playlist name" }
-            {{current_playlist.name}}
+          %a{ onaftersave: "savePlaylist($data)", editable: { text: "current_playlist.name" }, e: { form: "playlist_form" }, ng: { click: "playlist_form.$show()" }, title: "Click here to edit playlist name" }
+            PLAYLIST
 
         .pull-right
           %a{ ng: { show: "playitems.length > 0", click: "clearPlaylist()" }, title: 'Clear playlist'}>
             %i.fa.fa-trash-o
             clear
             &nbsp;
-          %a{ ng: { show: "playitems.length > 0 && current_playlist.name == 'Default playlist' && !playlist_form.$visible", click: "playlist_form.$show()" }, title: 'Save playlist'}>
+          %a{ ng: { show: "playitems.length > 0 && !playlist_form.$visible", click: "playlist_form.$show()" }, title: 'Save playlist'}>
             %i.fa.fa-save
             save
 

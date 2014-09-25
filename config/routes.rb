@@ -1,3 +1,5 @@
+require 'api_constraints'
+
 Music::Application.routes.draw do
 
 
@@ -5,6 +7,7 @@ Music::Application.routes.draw do
     resources :playitems, defaults: {format: :json}
     resources :playlists, defaults: {format: :json} do
       get :default, on: :collection
+      get :load, on: :member
     end
     resources :tracks, defaults: {format: :json}
     resources :artists, defaults: {format: :json}
@@ -13,7 +16,7 @@ Music::Application.routes.draw do
 
   resources :bookmarks
 
-  devise_for :users, :controllers => { omniauth_callbacks: "omniauth_callbacks" }
+  devise_for :users, :controllers => { sessions: "sessions", omniauth_callbacks: "omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -42,5 +45,21 @@ Music::Application.routes.draw do
     resources :album, only: [:index, :show]
   end
 
+  namespace :api, defaults: {format: :json} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: :true) do
+
+      devise_scope :user do
+        match '/sessions' => 'sessions#create', :via => :post
+        match '/sessions' => 'sessions#destroy', :via => :delete
+      end
+
+      resources :record
+
+      resources :users, only: [:create]
+      match '/users' => 'users#show', :via => :get
+      match '/users' => 'users#update', :via => :put
+      match '/users' => 'users#destroy', :via => :delete
+    end
+  end
 
 end

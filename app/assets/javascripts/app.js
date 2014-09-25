@@ -1,4 +1,4 @@
-var app = angular.module('allesongs', ['ngResource', 'ngRoute', 'ngSanitize', 'ngCookies', 'ngDraggable', 'ui.bootstrap', 'willPaginate', 'xeditable'])
+var app = angular.module('allesongs', ['ngResource', 'ngRoute', 'ngSanitize', 'ngCookies', 'ngDraggable', 'ui.bootstrap', 'willPaginate', 'xeditable', 'Devise'])
 
 app.factory('Playlist', ['$resource', function($resource) {
     return $resource('/api/playlists/:id', { id: '@id' },        {
@@ -6,12 +6,14 @@ app.factory('Playlist', ['$resource', function($resource) {
     });
 }]);
 
-app.run(function(editableOptions) {
+app.run(function($rootScope, editableOptions) {
     editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+    $rootScope.alert = new Alert
+
 });
 
 
-app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Playlist', function($scope, $resource, $http, $cookieStore, Playlist) {
+app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Playlist', 'Auth', function($scope, $resource, $http, $cookieStore, Playlist, Auth) {
 
     var Playitem = $resource('/api/playitems/:id');
 
@@ -33,21 +35,53 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
             $scope.current_playitem = $scope.playitems[0];
     }
 
-    $scope.loadPlaylist = function(playlist) {
+    $scope.loadCurrentPlaylist = function(playlist) {
         $scope.current_playlist = playlist
         Playitem.query({playlist_id: playlist.id}, function(playitems) {
-            $scope.playitems = playitems
-            $cookieStore.put("current_playlist", $scope.current_playlist);
-            if ($scope.playitems.length > 0) {
-                $scope.play($scope.playitems[0])
-            }
-
+            $scope.setPlayitems(playitems)
         });
     };
 
+
+    $scope.loadPlaylist = function(playlist) {
+        $http.get("/api/playlists/"+playlist.id+"/load.json?current_playlist="+$scope.current_playlist.id).success(function (playitems) {
+            $scope.setPlayitems(playitems)
+        }).error(function (data) {
+            console.log('error: ' + data);
+        });
+    };
+
+    $scope.setPlayitems = function(playitems) {
+        $scope.playitems = playitems
+        $cookieStore.put("current_playlist", $scope.current_playlist);
+        if ($scope.playitems.length > 0) {
+            $scope.play($scope.playitems[0])
+        }
+    };
+
+    $scope.savePlaylist = function(data) {
+        var playlist = new Playitem({ name: data });
+        Playlist.save({ current_playlist: $scope.current_playlist.id }, playlist, function(t) {
+            $scope.playlists.push(t)
+        })
+        $scope.current_playlist.name = undefined
+
+    };
+
+    $scope.login_and = function(callback) {
+        if (Auth.isAuthenticated()) {
+//            callback();
+        } else {
+            $scope.showSignInModal();
+        }
+    };
+
     $scope.updatePlaylist = function(data) {
-        Playlist.update({ name: data }, $scope.current_playlist);
-        $scope.loadPlaylists()
+        Playlist.update({ name: data }, $scope.current_playlist, function(p){
+            $scope.loadPlaylists()
+            console.log(p)
+        });
+
     };
 
     $scope.loadPlaylists = function() {
@@ -153,18 +187,18 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
             lyric = ''
             translation_text = ''
 
-            if (data.info && data.info.mus && data.info.type == "exact") {
-                lyric = data.info.mus[0].text;
-                lyric += '<br/><br/><p><a style="font-size:10px;color:#000;text-decoration:none;font-weight:bold" target=_blank href="'+data.info.mus[0].url+'"><img src="http://www.vagalume.com.br/images/logo_small2.jpg" alt="Vagalume"><br/>Letras de Músicas</a></p>'
-
-                if (data.info.mus[0].translate) {
-                    translation_text = data.info.mus[0].translate[0].text.replace('[', '<b>').replace(']', '</b>');
-                }
-
-
-            } else {
-                lyric = "Letra não encontrada";
-            }
+//            if (data.info && data.info.mus && data.info.type == "exact") {
+//                lyric = data.info.mus[0].text;
+//                lyric += '<br/><br/><p><a style="font-size:10px;color:#000;text-decoration:none;font-weight:bold" target=_blank href="'+data.info.mus[0].url+'"><img src="http://www.vagalume.com.br/images/logo_small2.jpg" alt="Vagalume"><br/>Letras de Músicas</a></p>'
+//
+//                if (data.info.mus[0].translate) {
+//                    translation_text = data.info.mus[0].translate[0].text.replace('[', '<b>').replace(']', '</b>');
+//                }
+//
+//
+//            } else {
+//                lyric = "Letra não encontrada";
+//            }
 
         }
     }
@@ -258,6 +292,17 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         $('#signin_modal').modal('hide')
     }
 
+
+    $scope.setCurrentUser = function(current_user) {
+        $scope.current_user = current_user
+        console.log('Current user changed to: ')
+        console.log($scope.current_user)
+        if ($scope.current_user != undefined) {
+            $scope.loadPlaylists()
+            $scope.hideSignInModal()
+        }
+    };
+
     $scope.$watch('current_playitem', function(current_playitem, old_playitem) {
         if (current_playitem != undefined) {
             $.getJSON(current_playitem.url, function (data) {
@@ -282,36 +327,26 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         console.log('Now playing: '+current_playitem)
     });
 
-    $scope.$watch('current_user', function(current_user, old_user) {
-        console.log('Current user changed to: '+current_user)
-        if (current_user != undefined) {
-            $scope.loadPlaylists()
-            $scope.hideSignInModal()
-        }
-    });
 
     // RUN
+    Auth.currentUser().then(function(user) {
+        console.log(user);
+        $scope.setCurrentUser(user.data)
+    }, function(error) {
+        console.log("User not authenticated: "+error);
+        $scope.showSignInModal();
+    });
 
-    $scope.loadPlaylists()
     if ($cookieStore.get("current_playlist") != undefined) {
-        $scope.loadPlaylist($cookieStore.get("current_playlist"));
+        $scope.loadCurrentPlaylist($cookieStore.get("current_playlist"));
     } else {
         $http.get("/api/playlists/default.json").success(function (data) {
-            $scope.loadPlaylist(data);
+            $scope.loadCurrentPlaylist(data);
         }).error(function (data) {
             console.log('error: ' + data);
         });
     }
     $scope.loadTags()
-    $http.get("/users.json").success(function(data) {
-        $scope.$parent.fetch_status = data.status;
-        $scope.$parent.current_user = data;
-        $scope.hideSignInModal();
-    }).error(function(data) {
-        $scope.showSignInModal();
-        console.log('error: '+data);
-        $scope.$parent.fetch_status = data.status;
-    });
 
 
 
@@ -394,15 +429,15 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 }]);
 
 app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
-        lastfm.artist.getInfo({artist: $routeParams.artist_name}, {success: function(data){
-            $scope.artist = data.artist
-            $scope.$digest()
+    lastfm.artist.getInfo({artist: $routeParams.artist_name}, {success: function(data){
+        $scope.artist = data.artist
+        $scope.$digest()
 
-            lastfm.artist.getTopAlbums({artist: $scope.artist.name}, {success: function(data){
-                $scope.artist.top_albums = data.topalbums.album
-                $scope.$digest()
-            }});
+        lastfm.artist.getTopAlbums({artist: $scope.artist.name}, {success: function(data){
+            $scope.artist.top_albums = data.topalbums.album
+            $scope.$digest()
         }});
+    }});
 
     $scope.load_top_tracks = function () {
         if (!$scope.artist.top_tracks) {
@@ -434,6 +469,44 @@ app.controller('AlbumCtrl', ['$scope', '$resource', function($scope, $resource) 
 
 }]);
 
+app.controller('SignInCtrl', ['$scope', '$resource', 'Auth', function($scope, $resource, Auth) {
+    $scope.user = {};
+
+    $scope.signin = function(user) {
+        Auth.login(user).then(function(currentUser) {
+            $scope.setCurrentUser(currentUser);
+        }, function(error) {
+            angular.forEach(error.data.errors, function(error) {
+                $scope.alert.add(error, { container: "signin-errors", auto_close: 3 });
+            });
+            console.log("Authentication failed: ");
+            console.log(error);
+        });
+    };
+
+    $scope.signup = function(user) {
+        Auth.register(user).then(function(currentUser) {
+            $scope.setCurrentUser(currentUser);
+        }, function(error) {
+            angular.forEach(error.data.errors, function(error, key) {
+                $scope.alert.add(key+" "+error, { container: "signup-errors", auto_close: 3 });
+            });
+            console.log("Registration failed: ");
+            console.log(error);
+        });
+    };
+
+    $scope.$on('devise:login', function(event, currentUser) {
+        if (Auth.isAuthenticated()) {
+            $scope.setCurrentUser(currentUser);
+        }
+    });
+
+    $scope.$on('devise:new-registration', function(event, user) {
+
+    });
+
+}]);
 
 app.controller('TopCtrl', ['$scope', '$resource', function($scope, $resource) {
 
@@ -470,6 +543,16 @@ app.controller('TagCtrl', ['$scope', '$routeParams', function($scope, $routePara
 
 
 app.config(function($routeProvider, $locationProvider) {
+
+    init.push(function () {
+
+//        window.PixelAdmin.plugins.alerts.add('asdfasdf', {auto_close: 3});
+
+
+    } );
+    window.PixelAdmin.start(init);
+
+
 
     $routeProvider.when('/top', {
         templateUrl: function(){ return '/top?angular=true'; },
@@ -512,18 +595,18 @@ app.filter('html_filter', function($sce) {
 });
 
 app.filter("int_to_date", function () {
-        return function (input) {
+    return function (input) {
 
-            var hours = Math.floor(input / 3600);
-            var minutes = Math.floor((input - (hours * 3600))/60);
-            var seconds = input - (hours * 3600) - (minutes * 60);
+        var hours = Math.floor(input / 3600);
+        var minutes = Math.floor((input - (hours * 3600))/60);
+        var seconds = input - (hours * 3600) - (minutes * 60);
 
-            while (minutes.length < 2) {minutes = '0' + minutes;}
-            while (seconds.length < 2) {seconds = '0' + minutes;}
+        while (minutes.length < 2) {minutes = '0' + minutes;}
+        while (seconds.length < 2) {seconds = '0' + minutes;}
 
-            return new Date(0, 0, 0, hours, minutes, seconds, 0)
-        }
-    });
+        return new Date(0, 0, 0, hours, minutes, seconds, 0)
+    }
+});
 
 app.directive('facebook', function($http) {
     return {
@@ -552,15 +635,16 @@ app.directive('facebook', function($http) {
             };
 
             function fetch() {
+                console.log('1')
                 FB.getLoginStatus(function (response) {
+                    console.log('2')
                     if (response.status === 'connected') {
+                        console.log('3')
                         $scope.auth = response.authResponse;
                         $http.get("/users/auth/facebook/callback?access_token=" + $scope.auth.accessToken, {  }).success(function (data) {
-                            $scope.$parent.fetch_status = data.status;
-                            $scope.$parent.current_user = data;
+                            $scope.setCurrentUser(data);
                         }).error(function (data) {
                             console.log('error: ' + data);
-                            $scope.$parent.fetch_status = data.status;
                         });
 
                     } else if (response.status === 'not_authorized') {

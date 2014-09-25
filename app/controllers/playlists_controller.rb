@@ -1,15 +1,13 @@
 class PlaylistsController < ApplicationController
+
   respond_to :json
 
-  before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  before_action :set_playlist, only: [:show, :edit, :destroy]
+  before_action :authenticate_user!, only: [:index, :create, :new, :update, :destroy]
 
 
   def index
-    if user_signed_in?
-      @playlists = current_user.playlists.order("created_at desc").includes(:playitems)
-    else
-      @playlists = Playlist.where(session_id: request.session_options[:id])
-    end
+    @playlists = user_playlists
     respond_with(@playlists)
   end
 
@@ -22,29 +20,44 @@ class PlaylistsController < ApplicationController
   end
 
   def default
-    if user_signed_in?
-      @playlist = current_user.playlists.find_or_create_by(name: 'Default playlist')
-    else
-      @playlist = Playlist.find_or_create_by(session_id: request.session_options[:id], name: 'Default playlist')
-    end
+    @playlist = Playlist.find_or_create_by(session_id: request.session_options[:id])
 
     respond_to do |format|
       format.json {render json: @playlist }
     end
   end
 
+  def load
+    current_playlist = Playlist.find(params[:current_playlist])
+
+    current_playlist.playitems.destroy_all
+
+    Playlist.find(params[:id]).playitems.each do |playitem|
+      puts current_playlist.playitems.create(playitem.attributes.except('id', 'playlist_id'))
+    end
+
+    @playitems = current_playlist.playitems
+
+    respond_to do |format|
+      format.json { render action: :load }
+    end
+  end
+
   def new
-    @playlist = Playlist.new
+    @playlist = current_user.playlists.new
   end
 
   def edit
   end
 
   def create
-    @playlist = Playlist.new(playlist_params)
+    @playlist = current_user.playlists.new(playlist_params)
 
     respond_to do |format|
       if @playlist.save
+        Playlist.find(params[:current_playlist]).playitems.each do |playitem|
+          puts @playlist.playitems.create(playitem.attributes.except('id', 'playlist_id'))
+        end
         format.html { redirect_to @playlist, notice: 'Playlist was successfully created.' }
         format.json { render action: 'show', status: :created, location: @playlist }
       else
@@ -55,10 +68,13 @@ class PlaylistsController < ApplicationController
   end
 
   def update
+    @playlist = current_user.playlists.find(params[:id])
+
     respond_to do |format|
       if @playlist.update(playlist_params)
+        puts playlist_params
         format.html { redirect_to @playlist, notice: 'Playlist was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: user_playlists }
       else
         format.html { render action: 'edit' }
         format.json { render json: @playlist.errors, status: :unprocessable_entity }
@@ -67,7 +83,10 @@ class PlaylistsController < ApplicationController
   end
 
   def destroy
+    @playlist = current_user.playlists.find(params[:id])
+
     @playlist.destroy
+
     respond_to do |format|
       format.html { redirect_to playlists_url }
       format.json { head :no_content }
@@ -75,6 +94,10 @@ class PlaylistsController < ApplicationController
   end
 
   private
+    def user_playlists
+      current_user.playlists.order("created_at desc").includes(:playitems)
+    end
+
     def set_playlist
       @playlist = Playlist.find(params[:id])
     end

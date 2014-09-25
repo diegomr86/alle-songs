@@ -68,12 +68,12 @@
   }
 
   .btn {
-    width: 26px !important;
+//    width: 26px !important;
     height: 22px;
     line-height: 20px;
     text-align: center;
-    padding: 0;
-    display: inline-block !important;
+    padding: 0 6px;
+//    display: inline-block !important;
     opacity: .8;
     @include transition(all .1s);
 

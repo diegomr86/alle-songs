@@ -703,7 +703,7 @@
               				};
               				if ($this.hasClass('auto-close-alert'))
               					options['auto_close'] = 3; // seconds
-              				PixelAdmin.plugins.alerts.add($this.attr('data-text'), options);
+              				window.PixelAdmin.plugins.alerts.add($this.attr('data-text'), options);
               			}
               		}, 800);
               	});

@@ -1,0 +1,1 @@
+(function(){$(function(){return $("#suggest_form").submit(function(){return location.href="/"+$(this).find("#suggest_input").val().split("/").join("+"),!1})})}).call(this);

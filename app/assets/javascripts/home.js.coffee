@@ -21,6 +21,7 @@
 #= require angular-cookies
 #= require angular-will-paginate
 #= require xeditable
+#= require devise
 #= require ui-bootstrap-tpls-0.11.0.min
 #= require ngDraggable
 #= require lastfm.api.js
@@ -28,6 +29,7 @@
 #= require lastfm.api.md5
 #= require lastFM
 #= require typeahead
+#= require alert
 #= require app
 
 createPlayer = ->

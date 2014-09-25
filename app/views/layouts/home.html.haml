@@ -54,7 +54,7 @@
     = stylesheet_link_tag    "pixel-admin-scss/rtl/rtl"
     = stylesheet_link_tag    "pixel-admin-scss/themes/themes"
     = stylesheet_link_tag    "pixel-admin-scss/pages/pages"
-    = stylesheet_link_tag    "pixel-admin-scss/pages/signin"
+    -#= stylesheet_link_tag    "pixel-admin-scss/pages/signin"
     = stylesheet_link_tag    "component"
     = stylesheet_link_tag    "ymusica"
     = stylesheet_link_tag    "home", media: "all"
@@ -82,7 +82,7 @@
     / / Demo script
     #fb-root
     #main-wrapper
-      #signin_modal.modal.fade.page-signin{:role => "dialog", :style => "display: none;", :tabindex => "-1"}
+      #signin_modal.modal.fade.page-signin.page-signup{:role => "dialog", :style => "display: none;", :tabindex => "-1", ng: { controller: "SignInCtrl", init: "signtab = 0"} }
         .modal-dialog
           .modal-content
             .signin-container
@@ -110,59 +110,51 @@
                   %li
                   %li
                   %li
-                    %i.fa.fa-pencil-square-o.signin-icon
-                    Create your account
-              .signin-form
-                / Facebook
+                    :javascript
+                      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+                    .fb-like{"data-action" => "like", "data-href" => "http://www.allesongs.com/", "data-layout" => "button", "data-share" => "true", "data-show-faces" => "false"}
+                    %a.twitter-share-button{"data-count" => "none", "data-url" => "http://www.allesongs.com", :href => "https://twitter.com/share"} Tweet
+              #signin-form.signin-form{ ng: { show: "signtab == 0" } }
                 %a.signin-with-btn{ "data-facebook" => '201018843405894', "data-ng-click" => "fetch()", :style => "background:#4f6faa;background:rgba(79, 111, 170, .8);"}
                   Sign In with
                   %span Facebook
-                / / "Sign In with" block
-                / Form
                 %br
-                %form#signin-form_id{:action => "index.html"}
+                %form#signin-form_id
                   .signin-text
                     %span or with your account
-                  / / .signin-text
+                  #signin-errors
                   .form-group.w-icon
-                    %input#username_id.form-control.input-lg{:name => "signin_username", :placeholder => "Username or email", :type => "text"}/
+                    %input#username_id.form-control.input-lg{:name => "signin_username", :placeholder => "Username or email", :type => "text", ng: { model: "user.email" } }/
                     %span.fa.fa-user.signin-form-icon
-                  / / Username
                   .form-group.w-icon
-                    %input#password_id.form-control.input-lg{:name => "signin_password", :placeholder => "Password", :type => "password"}/
+                    %input#password_id.form-control.input-lg{:name => "signin_password", :placeholder => "Password", :type => "password", ng: { model: "user.password" } }/
                     %span.fa.fa-lock.signin-form-icon
-                  / / Password
                   .form-actions
-                    %input.signin-btn.bg-primary{:type => "submit", :value => "SIGN IN"}/
-                    %a#forgot-password-link.forgot-password{:href => "#"} Forgot your password?
-                  / / .form-actions
-                / / Form
-                / Password reset form
-                #password-reset-form.password-reset-form
-                  .header
-                    .signin-text
-                      %span Password reset
-                      .close &times;
-                    / / .signin-text
-                  / / .header
-                  / Form
-                  %form#password-reset-form_id{:action => "index.html"}
-                    .form-group.w-icon
-                      %input#p_email_id.form-control.input-lg{:name => "password_reset_email", :placeholder => "Enter your email", :type => "text"}/
-                      %span.fa.fa-envelope.signin-form-icon
-                    / / Email
-                    .form-actions
-                      %input.signin-btn.bg-primary{:type => "submit", :value => "SEND PASSWORD RESET LINK"}/
-                    / / .form-actions
-                  / / Form
-                / / Password reset form
-              / Right side
-            / / Container
+                    %input.signin-btn.bg-primary{:type => "submit", :value => "SIGN IN", ng: { click: "signin(user)" } }/
+                    %a#forgot-password-link.forgot-password{ ng: { click: "signtab = 1" } } Create your account
 
-      /
-        2. $MAIN_NAVIGATION ===========================================================================
+              #signup-form.signup-form{ ng: { show: "signtab == 1" } }
+                %a.signin-with-btn{ "data-facebook" => '201018843405894', "data-ng-click" => "fetch()", :style => "background:#4f6faa;background:rgba(79, 111, 170, .8);"}
+                  Sign In with
+                  %span Facebook
+                %br
+                %form#signup-form_id
+                  .signup-text
+                    %span Create an account
+                  #signup-errors
+                  .form-group.w-icon
+                    %input#name_id.form-control.input-lg{:name => "signup_name", :placeholder => "Full name", :type => "text", ng: { model: "new_user.name" } }/
+                    %span.fa.fa-info.signup-form-icon
+                  .form-group.w-icon
+                    %input#email_id.form-control.input-lg{:name => "signup_email", :placeholder => "E-mail", :type => "text", ng: { model: "new_user.email" } }/
+                    %span.fa.fa-envelope.signup-form-icon
+                  .form-group.w-icon
+                    %input#password_id.form-control.input-lg{:name => "signup_password", :placeholder => "Password", :type => "password", ng: { model: "new_user.password" } }/
+                    %span.fa.fa-lock.signup-form-icon
+                  .form-actions
+                    %input.signin-btn.bg-primary{:type => "submit", :value => "SIGN UP", ng: { click: "signup(new_user)" } }/
+                    %a#forgot-password-link.forgot-password{ ng: { click: "signtab = 0" } } Sign in
 
-        Main navigation
       #main-navbar.navbar.navbar-inverse{:role => "navigation"}
         / Main menu toggle
         %button#main-menu-toggle{:type => "button"}
@@ -188,10 +180,10 @@
                   %li{ ng: { hide: "current_user" } }
                     %a{ ng: { click: "showSignInModal()"} }
                       %i.fa.fa-sign-in
-                      Sign in
+                      sign in
                   %li.dropdown{ ng: { show: "current_user" } }
                     %a.dropdown-toggle.user-menu{"data-toggle" => "dropdown", :href => "#"}
-                      %img{ ng: { src: "{{current_user.picture}}", alt: "current_user.name" } }
+                      %img{ ng: { src: "{{current_user.picture || '/assets/demo/avatars/1.jpg'}}", alt: "current_user.name" } }
                       %span {{current_user.name}}
                     %ul.dropdown-menu
                       %li
@@ -211,8 +203,12 @@
                 %span.text-semibold {{current_user.name.split(' ')[0] || 'Guest'}}
               %img{ ng: { src: "{{current_user.picture || '/assets/demo/avatars/1.jpg'}}", alt: "current_user.name" } }
               .btn-group
-                = link_to destroy_user_session_path, :method => :delete, class: 'btn btn-xs btn-danger btn-outline dark' do
+                = link_to destroy_user_session_path, :method => :delete, class: 'btn btn-xs btn-danger btn-outline dark', 'ng-show' => "current_user" do
                   %i.fa.fa-power-off
+                  sign out
+                %a.btn.btn-xs.btn-danger.btn-outline.dark{ ng: { click: "showSignInModal()", hide: "current_user" } }
+                  %i.fa.fa-sign-in
+                  sign in
               %a.close{:href => "#"} &times;
           %ul.navigation
             %li.mm-dropdown.playlist-menu{ ng: { class: "current_playlist ? 'active open' : ''" } }
@@ -220,10 +216,6 @@
                 %i.menu-icon.fa.fa-list
                 %span.mm-text My playlists
               %ul
-                %li{ ng: { show: "playlists.length == 0" } }
-                  %a
-                    %i.fa-emt
-                    playlists empty
                 %li{ ng: { repeat: "playlist in playlists", class: "current_playlist.id == playlist.id ? 'active' : ''" } }
                   %a
                     %span.mm-text{ ng: { click: "loadPlaylist(playlist)" } } {{playlist.name}}
@@ -231,9 +223,13 @@
                       %span.actions
                         %i.fa.fa-play{ ng: { click: "loadPlaylist(playlist)" } , title: 'Play'}
                         &nbsp;
-                        %i.fa.fa-trash-o{ ng: { click: "removePlaylist(playlist)", hide: "current_playlist.id == playlist.id || playlist.name == 'Default playlist'" } , title: 'Remove Playlist'}
+                        %i.fa.fa-trash-o{ ng: { click: "removePlaylist(playlist)", hide: "current_playlist.id == playlist.id" } , title: 'Remove Playlist'}
                         %span
                           %span.badge.badge-primary {{playlist.playitems_count}}
+                %li{ ng: { click: "playlists.length == 0" } }
+                  %a{ onaftersave: "savePlaylist($data)", editable: { text: "current_playlist.name" }, e: { form: "add_playlist_form" }, ng: { click: "login_and(add_playlist_form.$show())" }, title: "Click here to save the current playlist" }
+                    %i.fa.fa-plus
+                    add playlist
           .menu-content.top-tags{ ng: { show: "toptags.length > 0"}}
             %strong Top tags:
             %br
@@ -302,17 +298,9 @@
     = javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
     = javascript_include_tag "bootstrap"
     = javascript_include_tag "pixel-admin"
+    = javascript_include_tag "alert"
     = javascript_include_tag "toucheffects"
     = javascript_include_tag "home"
 
     = render 'layouts/analytics'
 
-    :javascript
-      init.push(function () {
-
-      	//$('#playlist').slimScroll({ height: 508, alwaysVisible: true, color: '#888',allowPageScroll: true });
-
-
-      } );
-
-      window.PixelAdmin.start(init);
