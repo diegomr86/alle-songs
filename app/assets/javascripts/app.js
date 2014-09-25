@@ -62,8 +62,8 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 
     $scope.savePlaylist = function(data) {
         var playlist = new Playitem({ name: data });
-        Playlist.save({ current_playlist: $scope.current_playlist.id }, playlist, function(t) {
-            $scope.playlists.push(t)
+        Playlist.save({ current_playlist: $scope.current_playlist.id }, playlist, function(new_playlist) {
+            $scope.playlists.push(new_playlist)
         })
         $scope.current_playlist.name = undefined
 
@@ -89,16 +89,16 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         $scope.playlists = Playlist.query();
     };
 
-    $scope.addToPlaylist = function(t, play) {
-        var playitem = new Playitem({ name: t.name, artist: (t.artist.name || t.artist), picture: (t.image ? t.image[3]['#text'] : t.picture), duration: (t.duration), playlist_id: $scope.current_playlist.id });
-        Playitem.save(playitem, function(t) {
+    $scope.addToPlaylist = function(track, play) {
+        var playitem = new Playitem({ name: t.name, artist: (track.artist.name || track.artist), picture: (track.image ? track.image[3]['#text'] : track.picture), duration: (track.duration), playlist_id: $scope.current_playlist.id });
+        Playitem.save(playitem, function(new_playitem) {
             //$scope should be accessible here
-            $scope.playitems.push(t);
+            $scope.playitems.push(new_playitem);
             setTimeout(function() {
                 $("#playlist").slimScroll({ scrollTo: '10000px' });
             }, 100)
             if (play || $scope.current_playitem == undefined) {
-                $scope.play(t)
+                $scope.play(new_playitem)
             }
         })
     };
