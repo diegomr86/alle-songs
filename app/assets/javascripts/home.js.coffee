@@ -1,7 +1,6 @@
 #= require modernizr.custom
 #= require jquery
 #= require jquery_ujs
-#= require http://code.jquery.com/ui/1.10.3/jquery-ui.js
 #= require bootstrap
 #= require pixel-admin
 #= require alert
