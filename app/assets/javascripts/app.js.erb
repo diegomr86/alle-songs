@@ -362,7 +362,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         $scope.setCurrentUser(user.data)
     }, function(error) {
         console.log("User not authenticated: "+error);
-        $scope.showSignInModal();
+//        $scope.showSignInModal();
     });
 
     if ($cookieStore.get("current_playlist") != undefined) {
@@ -709,7 +709,7 @@ app.directive('facebook', ['$http', function($http) {
             // Additional JS functions here
             window.fbAsyncInit = function() {
                 FB.init({
-                    appId      : '1535623786667360',
+                    appId      : '189790567873103',
                     xfbml      : true,
                     version    : 'v2.1'
                 });
