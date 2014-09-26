@@ -27,6 +27,8 @@
 #= require alert
 #= require app
 
+
+
 createPlayer = ->
 
   # Load the IFrame Player API code asynchronously.

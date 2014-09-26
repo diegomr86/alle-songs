@@ -1,4 +1,4 @@
-// teste
+// teste sdf
 var app = angular.module('allesongs', ['ngResource', 'ngRoute', 'ngSanitize', 'ngCookies', 'ngDraggable', 'ui.bootstrap', 'willPaginate', 'xeditable', 'Devise'])
 
 app.factory('Playlist', ['$resource', function($resource) {
