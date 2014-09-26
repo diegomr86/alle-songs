@@ -640,7 +640,7 @@ app.filter("int_to_date", function () {
     }
 });
 
-app.directive('facebook', function($http) {
+app.directive('facebook', ['$http', function($http) {
     return {
         restrict: 'A',
         scope: true,
@@ -708,4 +708,4 @@ app.directive('facebook', function($http) {
             }; // end of fbAsyncInit
         }
     }
-});
+}]);
