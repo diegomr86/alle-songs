@@ -9,11 +9,11 @@
 #= require rx.time
 #= require rx.coincidence
 #= require suggest
-#= require angular/angular.min
-#= require angular/angular-resource.min
-#= require angular/angular-route.min
-#= require angular/angular-sanitize.min
-#= require angular/angular-cookies.min
+#= require angular
+#= require angular-resource
+#= require angular-route
+#= require angular-sanitize
+#= require angular-cookies
 #= require angular/angular-will-paginate
 #= require angular/xeditable
 #= require angular/devise
