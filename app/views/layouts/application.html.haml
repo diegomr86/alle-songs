@@ -28,8 +28,8 @@
   / <![endif]
   %head
     
-    - @page_title = "AlleSongs | Discografias online"
-    - @page_description = "Ouça agora as discografias completas dos seus artistas preferidos, online e grátis!"
+    - @page_title = "AlleSongs | Music for everyone!"
+    - @page_description = "Enjoy a nice music player experience online and free!"
     %title= @page_title
     %meta{charset: "utf-8"}
     %meta{content: "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
@@ -99,8 +99,6 @@
                   %li
                   %li
                   %li
-                    :javascript
-                      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
                     .fb-like{"data-action" => "like", "data-href" => "http://www.allesongs.com/", "data-layout" => "button", "data-share" => "true", "data-show-faces" => "false"}
                     %a.twitter-share-button{"data-count" => "none", "data-url" => "http://www.allesongs.com", :href => "https://twitter.com/share"} Tweet
               #signin-form.signin-form{ ng: { show: "signtab == 0" } }
@@ -163,7 +161,13 @@
             %div
               %ul.nav.navbar-nav
                 %li
-                  %a{ng: { click: "go(['top'])" } } Home
+                  %a{ng: { click: "go(['top'])" } } home
+                %li
+                  %a{ href: "http://www.mtxwebart.com", target: "_blank" } about us
+                %li
+                  %a{ href: "http://www.mtxwebart.com/#sec-contact", target: "_blank" } feedback
+                %li
+                  %a{:href => "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MHY2M4GWYDDU2", target: '_blank'} donate
               .right.clearfix
                 %ul.nav.navbar-nav.pull-right.right-navbar-nav
                   %li{ ng: { hide: "current_user" } }
@@ -252,6 +256,10 @@
             %br
             %br
             %a.btn.btn-primary.btn-block.btn-outline.dark{:href => "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MHY2M4GWYDDU2", target: '_blank'} Make a Donation!
+            %br
+            %br
+            %a.twitter-share-button{"data-count" => "none", "data-url" => "http://www.allesongs.com", :href => "https://twitter.com/share"} Tweet
+            .fb-like{"data-action" => "like", "data-href" => "http://www.allesongs.com/", "data-layout" => "button", "data-share" => "true", "data-show-faces" => "false"}
 
         .row
       .col-md-8.no-padding
@@ -263,7 +271,7 @@
                 .input-group.no-margin
                   %span.input-group-addon
                     %i.fa.fa-search.page-header-icon.pull-left>
-                  %input#suggest_input.form-control.no-padding-hr.pull-left{placeholder: "Search anything...", type: "text", name: "artist", autofocus: "", :tabindex => "-1"}
+                  %input#suggest_input.form-control.no-padding-hr.pull-left{placeholder: "Search for artist, album, music, tag...", type: "text", name: "artist", autofocus: "", :tabindex => "-1"}
 
           #pages-container{ ng: { view: '' } }= yield
         .row
@@ -281,6 +289,8 @@
 
     = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"
     = javascript_include_tag "application"
+    :javascript
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
     = render 'layouts/analytics'
 
