@@ -8,12 +8,12 @@ class AlbumController < ApplicationController
 
   def index
 
-    @album = Rockstar::Album.new(params[:artist], params[:album], :include_info => true)
-
-    respond_to do |format|
-      format.html
-      format.json {render json: @album}
-    end
+    # @album = Rockstar::Album.new(params[:artist], params[:album], :include_info => true)
+    #
+    # respond_to do |format|
+    #   format.html
+    #   format.json {render json: @album}
+    # end
 
   end
 

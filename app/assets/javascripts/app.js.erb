@@ -503,8 +503,13 @@ app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeP
 
 }]);
 
-app.controller('AlbumCtrl', ['$scope', '$resource', function($scope, $resource) {
-
+app.controller('AlbumCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+    console.log($routeParams)
+    lastfm.album.getInfo({artist: $routeParams.artist_name, album: $routeParams.album_name}, {success: function(data){
+        $scope.album = data.album
+        console.log($scope.album)
+        $scope.$digest()
+    }});
 }]);
 
 app.controller('SignInCtrl', ['$scope', '$resource', 'Auth', function($scope, $resource, Auth) {

@@ -1,69 +1,69 @@
-.page-profile
+.page-profile{ ng: { if: "album != undefined" } }
   .profile-full-name
-    %h1.text-semibold= @album.name
+    %h1.text-semibold
+      %a{ ng: { click: "go([album.artist])" } }
+        {{album.artist}}
+      \- {{album.name}}
   .profile-row
     .left-col
       .profile-block
         .panel.profile-photo
-          = image_tag @album.images['extralarge']
+          %img{ ng: { src: "{{album.image[3]['#text'] || '#{image_url('demo/avatars/1.jpg')}'}}" }, alt: '{{album.name}}' }
         %br/
-        %a.btn.btn-default{:href => "#"}
+        %a.btn.btn-default{ title: 'Play', ng: { click: "addAlbumToPlaylist(album, true)"} }
           %i.fa.fa-play
           play
-        %a.btn{:href => "#"}
+        %a.btn{ title: 'Add to playlist', ng: { click: "addAlbumToPlaylist(album, false)"} }
           %i.fa.fa-indent
           add to playlist
       .panel.panel-transparent
         .panel-heading
-          %span.panel-title About #{@album.name}
-        .panel-body
-          summary
+          %span.panel-title About {{album.name}}
+        .panel-body{ 'ng-bind-html' => 'album.wiki.summary | html_filter' }
+          -#= @album.summary.gsub('http://www.last.fm/music', '').gsub('<a href="/Nirvana">Read more about Nirvana on Last.fm</a>.', '').html_safe
       .panel.panel-transparent
         .panel-heading
           %span.panel-title Statistics
         .list-group
-          %a.list-group-item{:href => "#"}
+          %a.list-group-item
+            %strong {{album.listeners}}
             listeners
-          %a.list-group-item{:href => "#"}
+          %a.list-group-item
+            %strong {{album.playcount}}
             plays
       .panel.panel-transparent.profile-skills
         .panel-heading
           %span.panel-title Tags
         .panel-body
-          %span.label.label-primary asdfasdf
+          %span.label.label-primary{ ng: { repeat: 'tag in album.toptags.tag'} } {{tag.name}}
       .panel.panel-transparent
         .panel-heading
-          %span.panel-title Social
+          %span.panel-title More
         .list-group
-          %a.list-group-item{:href => "#"}
-            %i.profile-list-icon.fa.fa-twitter{:style => "color: #4ab6d5"}
-            @dsteiner
-          %a.list-group-item{:href => "#"}
-            %i.profile-list-icon.fa.fa-facebook-square{:style => "color: #1a7ab9"}
-            Denise Steiner
-          %a.list-group-item{:href => "#"}
-            %i.profile-list-icon.fa.fa-envelope{:style => "color: #888"}
-            dsteiner@example.com
+          %a.list-group-item{ href: "{{album.url}}", target: '_blank' }
+            View more from {{album.name}}
     .right-col
       %hr.profile-content-hr.no-grid-gutter-h/
       .profile-content
         %ul#profile-tabs.nav.nav-tabs
           %li.active
-            %a{"data-toggle" => "tab", :href => "#profile-tabs-top-albums"} Top albums
+            %a{"data-toggle" => "tab", :href => "#profile-tabs-top-tracks", showtab: "" } Tracks
           %li
-            %a{"data-toggle" => "tab", :href => "#profile-tabs-top-tracks"} Top Tracks
-          %li
-            %a{"data-toggle" => "tab", :href => "#profile-tabs-events"} Events
-          %li
-            %a{"data-toggle" => "tab", :href => "#profile-tabs-similar"} Similar artists
+            %a{"data-toggle" => "tab", :href => "#profile-tabs-info", showtab: ""} Info
+          %li.pull-right
+            %a{ ng: { show: 'album.tracks', click: "addAlbumToPlaylist(album, true)", title: 'Play all' } }
+              %i.fa.fa-play
+              Play this album
         .tab-content.tab-content-bordered.panel-padding
-          #profile-tabs-top-albums.tab-pane.fade.in.active
-            %ul.grid.cs-style-3.row
-
-
-          #profile-tabs-top-tracks.tab-pane.fade.widget-followers
-
-          #profile-tabs-events.widget-article-comments.tab-pane.panel.no-padding.no-border.fade.in
+          #profile-tabs-top-tracks.tab-pane.fade.in.active.widget-followers
+            .text-center{ ng: { hide: "album.tracks"} }
+              %br
+              %i.fa.fa-cog.fa-spin
+              Loading tracks...
+              %br
+              %br
+            .follower{ ng: { repeat: 'track in album.tracks.track', drag: "true", 'drag-data' => "track" } }
+              = render 'home/track'
             .clearfix
-          #profile-tabs-similar.widget-article-comments.tab-pane.panel.no-padding.no-border.fade.in
-            %ul.grid.cs-style-3.row
+          #profile-tabs-info.widget-article-comments.tab-pane.panel.no-padding.no-border.fade.in{ 'ng-bind-html' => 'album.wiki.content | html_filter' }
+
