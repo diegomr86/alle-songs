@@ -1,66 +1,288 @@
 !!!
-%html
-  %head        
-    - @page_title = "#{@artist['desc']} | Discografia online no AlleSongs"
-    - @page_description = "#{@artist['desc']} - Ouça essa e milhares de outras discografias completas dos seus artistas preferidos. Online e grátis!"
+/
+  TABLE OF CONTENTS.
+
+  Use search to find needed section.
+
+  \===================================================================
+
+  |  1. $BODY                        |  Body                        |
+  |  2. $MAIN_NAVIGATION             |  Main navigation             |
+  |  3. $NAVBAR_ICON_BUTTONS         |  Navbar Icon Buttons         |
+  |  4. $MAIN_MENU                   |  Main menu                   |
+  |  5. $UPLOADS_CHART               |  Uploads chart               |
+  |  6. $EASY_PIE_CHARTS             |  Easy Pie charts             |
+  |  7. $EARNED_TODAY_STAT_PANEL     |  Earned today stat panel     |
+  |  8. $RETWEETS_GRAPH_STAT_PANEL   |  Retweets graph stat panel   |
+  |  9. $UNIQUE_VISITORS_STAT_PANEL  |  Unique visitors stat panel  |
+  |  10. $SUPPORT_TICKETS            |  Support tickets             |
+  |  11. $RECENT_ACTIVITY            |  Recent activity             |
+  |  12. $NEW_USERS_TABLE            |  New users table             |
+  |  13. $RECENT_TASKS               |  Recent tasks                |
+
+  \===================================================================
+/[if IE 8] <html class="ie8">
+/[if IE 9] <html class="ie9 gt-ie8">
+/ [if gt IE 9]><!
+%html.gt-ie8.gt-ie9.not-ie{ ng: {app: "allesongs" } }
+  / <![endif]
+  %head
+    
+    - @page_title = "AlleSongs | Discografias online"
+    - @page_description = "Ouça agora as discografias completas dos seus artistas preferidos, online e grátis!"
     %title= @page_title
+    %meta{charset: "utf-8"}
+    %meta{content: "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
+    %meta{content: "width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0", name: "viewport"}
     %meta{content: @page_description, name: "description"}
     %meta{content: "letra, player online, discografia", name: "keywords"}
-
-
-    %meta{content: "189790567873103", property: "fb:app_id"}
-    %meta{content: "music.playlist", property: "og:type"}
-
+    %meta{content: "website", property: "og:type"}
     %meta{content: "AlleSongs", property: "og:site_name"}
     %meta{content: "► #{@page_title}", property: "og:title"}
-    %meta{content: artist_custom_url(@artist["desc"]), property: "og:url"}
-    %meta{content: "http://s2.vagalume.com#{@artist["pic_medium"]}" , property: "og:image"}
+    %meta{content: root_url, property: "og:url"}
+    %meta{content: asset_url('logo.png') , property: "og:image"}
     %meta{content: @page_description, property: "og:description"}
+
     = favicon_link_tag "favicon.ico"
-    = stylesheet_link_tag    "//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", media: "all"
-    = stylesheet_link_tag    "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css", media: "all"
-    = stylesheet_link_tag    "http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css", media: "all"
-    = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Molle:400italic", media: "all"
-    = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Molle:400italic", media: "all"
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "jquery"
-    = javascript_include_tag "jquery_ujs"
-    = javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.js"
-    = javascript_include_tag "//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"
-    = javascript_include_tag "application", "data-turbolinks-track" => true    
+
+    / Open Sans font from Google CDN
+    = stylesheet_link_tag    "application", media: "all"
+
     = csrf_meta_tags
-  %body
-    = render 'layouts/analytics'
-    = render 'layouts/facebook'
-    = render 'layouts/twitter'
-    #wrap
-      %header#header
-        %nav.navbar.navbar-default{role: "navigation"}
+    
+    /[if lt IE 9]
+      <script src="assets/javascripts/ie.min.js"></script>
+  /
+    1. $BODY ======================================================================================
+
+    Body
+
+    Classes:
+    * 'theme-{THEME NAME}'
+    * 'right-to-left'      - Sets text direction to right-to-left
+    * 'main-menu-right'    - Places the main menu on the right side
+    * 'no-main-menu'       - Hides the main menu
+    * 'main-navbar-fixed'  - Fixes the main navigation
+    * 'main-menu-fixed'    - Fixes the main menu
+    * 'main-menu-animated' - Animate main menu
+  %body.theme-purple-hills.main-menu-animated{"ng-controller" => "MainCtrl"}
+    :javascript
+      var init = [];
+    / / Demo script
+    #fb-root
+    #main-wrapper
+      #signin_modal.modal.fade.page-signin.page-signup{:role => "dialog", :style => "display: none;", ng: { controller: "SignInCtrl", init: "signtab = 0"} }
+        .modal-dialog
+          .modal-content
+            .signin-container
+              / Left side
+              .signin-info
+                %a.logo{:href => "/"}
+                  %i.fa.fa-youtube-play.icon
+                  \&nbsp;
+                  AlleSongs
+                / / .logo
+                %br
+                %ul
+                  %li
+                    %i.fa.fa-search.signin-icon
+                    Discover
+                  %li
+                    %i.fa.fa-headphones.signin-icon
+                    Enjoy music you love
+                  %li
+                    %i.fa.fa-list.signin-icon
+                    Create your playlists
+                  %li
+                    %i.fa.fa-share.signin-icon
+                    Share it with your friends
+                  %li
+                  %li
+                  %li
+                    :javascript
+                      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+                    .fb-like{"data-action" => "like", "data-href" => "http://www.allesongs.com/", "data-layout" => "button", "data-share" => "true", "data-show-faces" => "false"}
+                    %a.twitter-share-button{"data-count" => "none", "data-url" => "http://www.allesongs.com", :href => "https://twitter.com/share"} Tweet
+              #signin-form.signin-form{ ng: { show: "signtab == 0" } }
+                %a.signin-with-btn{ "data-facebook" => '201018843405894', "data-ng-click" => "fetch()", :style => "background:#4f6faa;background:rgba(79, 111, 170, .8);"}
+                  Sign In with
+                  %span Facebook
+                %br
+                %form#signin-form_id
+                  .signin-text
+                    %span or with your account
+                  #signin-errors
+                  .form-group.w-icon
+                    %input#username_id.form-control.input-lg{:name => "signin_username", :placeholder => "Username or email", :type => "text", ng: { model: "user.email" } }/
+                    %span.fa.fa-user.signin-form-icon
+                  .form-group.w-icon
+                    %input#password_id.form-control.input-lg{:name => "signin_password", :placeholder => "Password", :type => "password", ng: { model: "user.password" } }/
+                    %span.fa.fa-lock.signin-form-icon
+                  .form-actions
+                    %input.signin-btn.bg-primary{:type => "submit", :value => "SIGN IN", ng: { click: "signin(user)" } }/
+                    %a#forgot-password-link.forgot-password{ ng: { click: "signtab = 1" } } Create your account
+
+              #signup-form.signup-form{ ng: { show: "signtab == 1" } }
+                %a.signin-with-btn{ "data-facebook" => '201018843405894', "data-ng-click" => "fetch()", :style => "background:#4f6faa;background:rgba(79, 111, 170, .8);"}
+                  Sign In with
+                  %span Facebook
+                %br
+                %form#signup-form_id
+                  .signup-text
+                    %span Create an account
+                  #signup-errors
+                  .form-group.w-icon
+                    %input#name_id.form-control.input-lg{:name => "signup_name", :placeholder => "Full name", :type => "text", ng: { model: "new_user.name" } }/
+                    %span.fa.fa-info.signup-form-icon
+                  .form-group.w-icon
+                    %input#email_id.form-control.input-lg{:name => "signup_email", :placeholder => "E-mail", :type => "text", ng: { model: "new_user.email" } }/
+                    %span.fa.fa-envelope.signup-form-icon
+                  .form-group.w-icon
+                    %input#password_id.form-control.input-lg{:name => "signup_password", :placeholder => "Password", :type => "password", ng: { model: "new_user.password" } }/
+                    %span.fa.fa-lock.signup-form-icon
+                  .form-actions
+                    %input.signin-btn.bg-primary{:type => "submit", :value => "SIGN UP", ng: { click: "signup(new_user)" } }/
+                    %a#forgot-password-link.forgot-password{ ng: { click: "signtab = 0" } } Sign in
+
+      #main-navbar.navbar.navbar-inverse{:role => "navigation"}
+        / Main menu toggle
+        %button#main-menu-toggle{:type => "button"}
+          %i.fa.fa-youtube-play.icon.fa-2x
+          %span.hide-menu-text HIDE MENU
+        .navbar-inner
+          / Main navbar header
           .navbar-header
-            .navbar-brand
-              = link_to root_path do
-                %h1
-                  Alle Songs
-                  %sup
-                    %i.icon-search
-          %form.navbar-form.navbar-right#suggest_form{role: "search", action: artist_index_path}
-            .form-group
-              %input#suggest_input.form-control{placeholder: "Buscar artistas", type: "text", name: "artist"}
-            %button.btn.btn-default{type: "submit"}
-              %i.icon-search
+            / Logo
+            %a.navbar-brand{:href => "/"}
+              AlleSongs
+            / Main navbar toggle
+            %button.navbar-toggle.collapsed{"data-target" => "#main-navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+              %i.navbar-icon.fa.fa-bars
+          / / .navbar-header
+          #main-navbar-collapse.collapse.navbar-collapse.main-navbar-collapse
+            %div
+              %ul.nav.navbar-nav
+                %li
+                  %a{ng: { click: "go(['top'])" } } Home
+              .right.clearfix
+                %ul.nav.navbar-nav.pull-right.right-navbar-nav
+                  %li{ ng: { hide: "current_user" } }
+                    %a{ ng: { click: "showSignInModal()"} }
+                      %i.fa.fa-sign-in
+                      sign in
+                  %li.dropdown{ ng: { show: "current_user" } }
+                    %a.dropdown-toggle.user-menu{"data-toggle" => "dropdown", :href => "#"}
+                      %img{ ng: { src: "{{current_user.picture || '/assets/demo/avatars/1.jpg'}}", alt: "current_user.name" } }
+                      %span {{current_user.name}}
+                    %ul.dropdown-menu
+                      %li
+                        = link_to destroy_user_session_path, :method => :delete do
+                          %i.dropdown-icon.fa.fa-power-off>
+                          \&nbsp;&nbsp;Log Out
+      #main-menu{:role => "navigation"}
+        #main-menu-inner
+          #menu-content-demo.menu-content.top
+            /
+              Menu custom content demo
+              CSS:        styles/pixel-admin-less/demo.less or styles/pixel-admin-scss/_demo.scss
+              Javascript: html/assets/demo/demo.js
+            %div
+              .text-bg
+                %span.text-slim Hi,
+                %span.text-semibold {{current_user.name.split(' ')[0] || 'Guest'}}
+              %img{ ng: { src: "{{current_user.picture || '#{image_url('demo/avatars/1.jpg')}'}}", alt: "current_user.name" } }
+              .btn-group
+                = link_to destroy_user_session_path, :method => :delete, class: 'btn btn-xs btn-danger btn-outline dark', 'ng-show' => "current_user" do
+                  %i.fa.fa-power-off
+                  sign out
+                %a.btn.btn-xs.btn-danger.btn-outline.dark{ ng: { click: "showSignInModal()", hide: "current_user" } }
+                  %i.fa.fa-sign-in
+                  sign in
+              %a.close{:href => "#"} &times;
+          %ul.navigation
+            %li.mm-dropdown.playlist-menu{ ng: { class: "current_playlist ? 'active open' : ''" } }
+              %a
+                %i.menu-icon.fa.fa-list
+                %span.mm-text My playlists
+              %ul
+                %li{ ng: { repeat: "playlist in playlists", class: "current_playlist.id == playlist.id ? 'active' : ''" } }
+                  %a
+                    %span.mm-text{ ng: { click: "loadPlaylist(playlist)" } } {{playlist.name}}
+                    %span.pull-right
+                      %span.actions
+                        %i.fa.fa-play{ ng: { click: "loadPlaylist(playlist)" } , title: 'Play'}
+                        &nbsp;
+                        %i.fa.fa-trash-o{ ng: { click: "removePlaylist(playlist)", hide: "current_playlist.id == playlist.id" } , title: 'Remove Playlist'}
+                        %span
+                          %span.badge.badge-primary {{playlist.playitems_count}}
+                %li{ ng: { click: "playlists.length == 0" } }
+                  %a{ onaftersave: "savePlaylist($data)", editable: { text: "current_playlist.name" }, e: { form: "add_playlist_form" }, ng: { click: "login_and(add_playlist_form.$show())" }, title: "Click here to save the current playlist" }
+                    %i.fa.fa-plus
+                    add playlist
+          .menu-content.top-tags{ ng: { show: "toptags.length > 0"}}
+            %strong Featured tags:
+            %br
+            %br
+            %a.label.label-primary{ ng: { repeat: "tag in toptags | limitTo:50", click: "go(['tag', tag.name])" } }
+              {{tag.name}}
 
-      = yield
-    %footer#footer
-      .copy.pull-left
-        AlleSongs
-        %sup
-          %i.icon-youtube-play
-        |
-        Discografias online
-      .developed_by.pull-right
-        Desenvolvido por
-        = link_to "http://www.mtxwebart.com", target: "_blank" do
-          %strong MTX
+          .menu-content.about
+            %strong A little message for you:
+            %br
+            %br
+            This project is developed and maintained by
+            = link_to 'MTX Web & Art', 'http://www.mtxwebart.com', target: '_blank'
+            with the goal of bringing the art closer to any people anywhere. All information here is taken from public sources such as
+            = link_to 'Last.fm,', 'http://www.lastfm.com.br', target: '_blank'
+            = link_to 'Vagalume', 'http://www.vagalume.com.br', target: '_blank'
+            and
+            = link_to 'Youtube.', 'http://www.youtube.com', target: '_blank'
+            This project uses amazing open tools of communities such as
+            = link_to 'Ruby on Rails', 'http://rubyonrails.org', target: '_blank'
+            and
+            = link_to 'AngularJS.', 'https://angularjs.org', target: '_blank'
+            %br
+            %br
+            To help us to keep this project alive, you can share it with your friends,
+            = link_to 'make a donation,', 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MHY2M4GWYDDU2', target: '_blank'
+            collaborate with any of the projects mentioned above or any other open source project. A simple
+            = mail_to 'mtxwebart@gmail.com', 'message'
+            would help a lot too!
+            %br
+            %br
+            %a.btn.btn-primary.btn-block.btn-outline.dark{:href => "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MHY2M4GWYDDU2", target: '_blank'} Make a Donation!
 
-    = render 'layouts/plusone'
+            %br
+            %i.fa.fa-smile-o
+            All rights open for everyone
+        .row
+      .col-md-8.no-padding
+        #content-wrapper
+          .page-header
+            / Page header, center on small screens
+            %form#suggest_form{role: "search", action: artist_index_path}
+              %h1.col-xs-12.text-center.text-left-sm
+                .input-group.no-margin
+                  %span.input-group-addon
+                    %i.fa.fa-search.page-header-icon.pull-left>
+                  %input#suggest_input.form-control.no-padding-hr.pull-left{placeholder: "Search anything...", type: "text", name: "artist", autofocus: "", :tabindex => "-1"}
+
+          #pages-container{ ng: { view: '' } }= yield
+        .row
+      = render 'layouts/player'
+    #main-menu-bg
+    / / #main-wrapper
+    / Get jQuery from Google CDN
+    / [if !IE]>
+    :javascript
+      window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js">'+"<"+"/script>");
+    / <![endif]
+    /[if lte IE 9]
+      <script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">'+"<"+"/script>"); </script>
+    / Pixel Admin's javascripts
+
+    = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"
+    = javascript_include_tag "application"
+
+    = render 'layouts/analytics'
 

@@ -2,7 +2,7 @@ require 'open-uri'
 
 class HomeController < ApplicationController
 
-  layout 'home'
+  layout 'application'
 
   before_action do
 

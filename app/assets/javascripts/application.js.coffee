@@ -1,50 +1,63 @@
-# This is a manifest file that'll be compiled into application.js, which will include all the files
-# listed below.
-#
-# Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-# or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-#
-# It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-# the compiled file.
-#
-# WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
-# GO AFTER THE REQUIRES BELOW.
-#
-#= require swfobject/swfobject
-#= require jquery.layout
-#= require nprogress
-#= require jquery.mousewheel
-#= require jquery.jscrollpane.min
-#= require functions
+#= require modernizr.custom
+#= require jquery
+#= require jquery_ujs
+#= require bootstrap
+#= require pixel-admin
+#= require alert
+#= require toucheffects
+#= require rx
+#= require rx.time
+#= require rx.coincidence
 #= require suggest
-#= require facebook
-#= require ajax
-#= require underscore
-#= require backbone
-#= require backbone_rails_sync
-#= require backbone_datalink
-#= require backbone/music
+#= require angular
+#= require angular-resource
+#= require angular-route
+#= require angular-sanitize
+#= require angular-cookies
+#= require angular/angular-will-paginate
+#= require angular/xeditable
+#= require angular/devise
+#= require angular/ui-bootstrap-tpls-0.11.0.min
+#= require angular/ngDraggable
+#= require lastfm.api.js
+#= require lastfm.api.cache
+#= require lastfm.api.md5
+#= require lastFM
+#= require typeahead
+#= require alert
+#= require app
 
 
-loadScrollPane = ->
-#  $('.scroll-pane').jScrollPane mouseWheelSpeed: 20, autoReinitialise: true if $('.ui-layout-center')
 
+createPlayer = ->
+
+  # Load the IFrame Player API code asynchronously.
+  tag = document.createElement("script")
+  tag.src = "//www.youtube.com/iframe_api"
+  firstScriptTag = document.getElementsByTagName("script")[0]
+  firstScriptTag.parentNode.insertBefore tag, firstScriptTag
+  return
 
 $ ->
 
-#  $("body").layout applyDefaultStyles: false, closable: false, spacing_open: 0, west__size: .25, east__size: .25
-
-  setupList()
-
-  loadScrollPane()
-
-  NProgress.configure({ showSpinner: false, trickle: true });
+  $('[title]').tooltip()
 
   createPlayer()
-
-  setupAutojump()
 
   $("#forward").click ->
     loadNext true
   $("#backward").click ->
     loadPrevious true
+  $("#suggest_input").focus(->
+    $('.page-header').stop().animate
+      backgroundColor: "#f3f3f3"
+      borderColor: "#fff"
+    , 600, ->
+      $('.page-header').animate
+        backgroundColor: "#fff"
+        borderColor: "#ececec"
+      , 600
+      return
+
+  )
+  $("#suggest_input").focus();
