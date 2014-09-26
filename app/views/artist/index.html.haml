@@ -5,7 +5,7 @@
     .left-col
       .profile-block
         .panel.profile-photo
-          %img{ ng: { src: "{{artist.image[3]['#text']}}" }, alt: '{{artist.name}}' }
+          %img{ ng: { src: "{{artist.image[3]['#text'] || '#{image_url('demo/avatars/1.jpg')}'}}" }, alt: '{{artist.name}}' }
         %br/
         %a.btn.btn-default{ title: 'Play', ng: { click: "addArtistToPlaylist(artist, true)"} }
           %i.fa.fa-play

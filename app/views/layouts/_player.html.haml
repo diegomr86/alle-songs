@@ -90,7 +90,7 @@
             %a.label.label-primary{ ng: { repeat: "tag in toptags", click: "addTagToPlaylist(tag, true)" } }
               {{tag.name}}
 
-        .list-group-item{ ng: { repeat: "playitem in playitems", class: "{active: playitem == current_playitem}", style: "{'background-image':'url('+(playitem.picture || playitem.artist.picture || '/assets/demo/avatars/1.jpg')+')'}"}, id: "playlist_playitem_{{playitem.id}}"}
+        .list-group-item{ ng: { repeat: "playitem in playitems", class: "{active: playitem == current_playitem}", style: "{'background-image':'url('+(playitem.picture || playitem.artist.picture || '#{image_url('demo/avatars/1.jpg')}')+')'}"}, id: "playlist_playitem_{{playitem.id}}"}
           .row
             .col-md-10.overflow-h
               %a{ ng: { click: "play(playitem)" }, title: 'Click to play'}

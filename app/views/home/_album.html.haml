@@ -1,5 +1,5 @@
 %figure.album-cover{ ng: { drag: "true", 'drag-data' => "album" } }
-  %img{ ng: { src: "{{album.image[3]['#text'] || album.picture || '/assets/demo/avatars/1.jpg'}}", click: "go([(album.artist.name || album.artist), album.name])" }, alt: '{{album.name}}' }
+  %img{ ng: { src: "{{album.image[3]['#text'] || album.picture || '#{image_url('demo/avatars/1.jpg')}'}}", click: "go([(album.artist.name || album.artist), album.name])" }, alt: '{{album.name}}' }
   %figcaption.bg-dark-gray
     %h5.overflow-h
       %a{ ng: { click: "go([(album.artist.name || album.artist), album.name])" } } {{album.name}}

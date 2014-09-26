@@ -1,5 +1,5 @@
 %figure.artist-cover{ ng: { drag: "true", 'drag-data' => "artist" } }
-  %img{ ng: { src: "{{artist.image[3]['#text'] || artist.picture || '/assets/demo/avatars/1.jpg'}}" }, click: "go([artist.name])", alt: "{{artist.name}}" }
+  %img{ ng: { src: "{{artist.image[3]['#text'] || artist.picture || '#{image_url('demo/avatars/1.jpg')}'}}" }, click: "go([artist.name])", alt: "{{artist.name}}" }
   %figcaption.bg-dark-gray
     %h5.overflow-h.text-center
       %a{ ng: { click: "go([artist.name])" } } {{artist.name}}

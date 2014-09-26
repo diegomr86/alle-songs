@@ -190,7 +190,7 @@
               .text-bg
                 %span.text-slim Hi,
                 %span.text-semibold {{current_user.name.split(' ')[0] || 'Guest'}}
-              %img{ ng: { src: "{{current_user.picture || '/assets/demo/avatars/1.jpg'}}", alt: "current_user.name" } }
+              %img{ ng: { src: "{{current_user.picture || '#{image_url('demo/avatars/1.jpg')}'}}", alt: "current_user.name" } }
               .btn-group
                 = link_to destroy_user_session_path, :method => :delete, class: 'btn btn-xs btn-danger btn-outline dark', 'ng-show' => "current_user" do
                   %i.fa.fa-power-off

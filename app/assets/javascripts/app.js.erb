@@ -91,7 +91,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     };
 
     $scope.addToPlaylist = function(track, play) {
-        var playitem = new Playitem({ name: t.name, artist: (track.artist.name || track.artist), picture: (track.image ? track.image[3]['#text'] : track.picture), duration: (track.duration), playlist_id: $scope.current_playlist.id });
+        var playitem = new Playitem({ name: track.name, artist: (track.artist.name || track.artist), picture: (track.image ? track.image[3]['#text'] : track.picture), duration: (track.duration), playlist_id: $scope.current_playlist.id });
         Playitem.save(playitem, function(new_playitem) {
             //$scope should be accessible here
             $scope.playitems.push(new_playitem);
@@ -138,8 +138,8 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         }});
     };
 
-    $scope.addTagToPlaylist = function(t, play) {
-        lastfm.tag.getTopTracks({tag: t.name}, { success: function(data){
+    $scope.addTagToPlaylist = function(tag, play) {
+        lastfm.tag.getTopTracks({tag: tag.name}, { success: function(data){
             angular.forEach(data.toptracks.track, function(track, key) {
                 $scope.addToPlaylist(track, (key == 1 && play))
             });
@@ -404,7 +404,9 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
             templates: {
                 header: '<h4 class="tt-header">Artistas</h4>',
                 suggestion: function(data){
-                    return '<p><a><img src="'+(data.image ? data.image[0]["#text"] : '')+'" /><strong>' + data.name + '</strong></a><p>';
+                    x = '<p><a><img src="'+(data.image && data.image[0]["#text"] ? data.image[0]["#text"] : '<%= image_url("demo/avatars/1.jpg") %>')+'" /><strong>' + data.name + '</strong></a><p>';
+                    console.log( x)
+                    return x
                 }
             }
         },
@@ -419,7 +421,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
             templates: {
                 header: '<h4 class="tt-header">Albums</h4>',
                 suggestion: function(data){
-                    return '<p><a><img src="'+(data.image ? data.image[0]["#text"] : '')+'" /><strong>' + data.name + '</strong> - <span>' + data.artist + '</span></a><p>';
+                    return '<p><a><img src="'+(data.image && data.image[0]["#text"] ? data.image[0]["#text"] : '<%= image_url("demo/avatars/1.jpg") %>')+'" /><strong>' + data.name + '</strong> - <span>' + data.artist + '</span></a><p>';
                 }
             }
         },
@@ -434,7 +436,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
             templates: {
                 header: '<h4 class="tt-header">Músicas</h4>',
                 suggestion: function(data){
-                    return '<p><a><img src="'+(data.image ? data.image[0]["#text"] : '')+'" /><strong>' + data.name + '</strong> - <span>' + data.artist + '</span></a> <p>';
+                    return '<p><a><img src="'+(data.image && data.image[0]["#text"] ? data.image[0]["#text"] : '<%= image_url("demo/avatars/1.jpg") %>')+'" /><strong>' + data.name + '</strong> - <span>' + data.artist + '</span></a> <p>';
                 }
             }
         },
