@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   def set_view_path
     prepend_view_path "#{Rails.root}/app/views/bot/" if is_bot?
     puts "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-    puts view_path
+    puts view_paths
   end
 
   def set_layout
