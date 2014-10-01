@@ -331,6 +331,15 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         }
     };
 
+    $scope.ga = function(action, category, name) {
+        ga('send', {
+            'hitType': 'event',          // Required.
+            'eventCategory': category,   // Required.
+            'eventAction': action,      // Required.
+            'eventLabel': name
+        });
+    };
+
     $scope.$watch('current_playitem', function(current_playitem, old_playitem) {
         if (current_playitem != undefined) {
             $.getJSON(current_playitem.url, function (data) {
@@ -354,12 +363,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     $scope.$watch('playing', function(current_playitem, old_playitem) {
         console.log('Now playing: '+current_playitem)
         if (current_playitem) {
-            ga('send', {
-                'hitType': 'event',          // Required.
-                'eventCategory': current_playitem.artist,   // Required.
-                'eventAction': 'play',      // Required.
-                'eventLabel': current_playitem.name
-            });
+            $scope.ga('play', current_playitem.artist, current_playitem.name)
         }
     });
 
@@ -467,6 +471,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 }]);
 
 app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+    $scope.ga('pageview', 'artist', $routeParams.artist_name)
 
     lastfm.artist.getInfo({artist: $routeParams.artist_name}, {success: function(data){
         $scope.artist = data.artist
@@ -512,6 +517,7 @@ app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeP
 }]);
 
 app.controller('AlbumCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+    $scope.ga('pageview', 'album', $routeParams.artist_name+' - '+$routeParams.album_name)
     console.log($routeParams)
     lastfm.album.getInfo({artist: $routeParams.artist_name, album: $routeParams.album_name}, {success: function(data){
         $scope.album = data.album
@@ -560,6 +566,7 @@ app.controller('SignInCtrl', ['$scope', '$resource', 'Auth', function($scope, $r
 }]);
 
 app.controller('TopCtrl', ['$scope', '$resource', function($scope, $resource) {
+    $scope.ga('pageview', 'top', 'all')
 
     var Artist = $resource('/api/artists/:id');
     var Album = $resource('/api/albums/:id');
@@ -572,6 +579,8 @@ app.controller('TopCtrl', ['$scope', '$resource', function($scope, $resource) {
 }]);
 
 app.controller('TagCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
+
+    $scope.ga('pageview', 'tag', $routeParams.tag_name)
 
     $scope.tag = { name: $routeParams.tag_name }
 
@@ -637,7 +646,8 @@ app.directive('showtab', function () {
 
 app.filter('html_filter', function($sce) {
     return function(val) {
-        return $sce.trustAsHtml(val.split('http://www.last.fm/music/').join('/#/').split('http://www.last.fm/tag/').join('/#/tag/').split('+').join(' ').split('Last.fm').join('AlleSongs.com'));
+        if (val !== undefined)
+            return $sce.trustAsHtml(val.split('http://www.last.fm/music/').join('/#/').split('http://www.last.fm/tag/').join('/#/tag/').split('+').join(' ').split('Last.fm').join('AlleSongs.com'));
     };
 });
 
