@@ -508,7 +508,7 @@ app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeP
         }
     }
 
-    if ($scope.playitems[0]) {
+    if ($scope.playitems && $scope.playitems[0]) {
         $scope.play($scope.playitems[0])
     }
 
