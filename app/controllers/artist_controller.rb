@@ -13,8 +13,13 @@ class ArtistController < ApplicationController
         puts request.user_agent
         if is_bot?
           @artist = Rockstar::Artist.new(params[:artist], :include_info => true)
-          @page_title = "#{@artist.name} on AlleSongs"
-          @page_description = "#{@page_description}"
+
+          @head.merge!({
+              title: "#{@artist.name} | AlleSongs",
+              description: "Enjoy #{@artist.name}'s discography, playlists, events, biography and more online and free.",
+              url: artist_custom_url(@artist.name),
+              image: @artist.images['extralarge']
+          })
 
         elsif params[:angular].blank?
           redirect_to "/#/#{custom_artist_name(params[:artist])}"

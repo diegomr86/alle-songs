@@ -6,23 +6,24 @@
   / <![endif]
   %head
 
-    %title= @page_title
+    %title= @head[:title]
     %meta{charset: "utf-8"}
     %meta{content: "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
     %meta{content: "width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0", name: "viewport"}
-    %meta{content: @page_description, name: "description"}
+    %meta{content: @head[:description], name: "description"}
     %meta{content: "letra, player online, discografia", name: "keywords"}
     %meta{content: "website", property: "og:type"}
     %meta{content: "AlleSongs", property: "og:site_name"}
-    %meta{content: "► #{@page_title}", property: "og:title"}
-    %meta{content: root_url, property: "og:url"}
-    %meta{content: asset_url('logo.png') , property: "og:image"}
-    %meta{content: @page_description, property: "og:description"}
+    %meta{content: "► #{@head[:title]}", property: "og:title"}
+    %meta{content: @head[:url], property: "og:url"}
+    %meta{content: @head[:image] , property: "og:image"}
+    %meta{content: @head[:description], property: "og:description"}
+
     = favicon_link_tag "favicon.ico"
     = csrf_meta_tags
   %body
-    %h1= @page_title
-    %h2= @page_description
+    %h1= @head[:title]
+    %h2= @head[:description]
     %container= yield
     %section
       %strong A little message for you:

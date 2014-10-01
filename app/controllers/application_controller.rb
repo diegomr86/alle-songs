@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  include ApplicationHelper, RockstarHelper
+  include ApplicationHelper, RockstarHelper, ActionView::Helpers::AssetUrlHelper
 
   before_action :set_view_path, :set_bot_vars, :set_page_title, :rockstar_init
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -52,7 +52,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_page_title
-    @page_title = "AlleSongs | Music for everyone!"
-    @page_description = "Enjoy a nice music player experience online and free!"
+    @head = {
+        title: "AlleSongs | Music for everyone!",
+        description: "Enjoy a nice music player experience online and free!",
+        url: root_url,
+        image: asset_url('logo.png')
+    }
   end
 end
