@@ -29,7 +29,6 @@ class ApplicationController < ActionController::Base
 
   def set_view_path
     prepend_view_path "#{Rails.root}/app/views/bot/" if is_bot?
-    puts "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
     puts view_paths
   end
 
@@ -43,8 +42,6 @@ class ApplicationController < ActionController::Base
   end
 
   def is_bot?
-    puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    puts request.user_agent
     USER_AGENTS.include?(request.user_agent)
   end
 

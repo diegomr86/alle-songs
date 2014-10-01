@@ -8,8 +8,9 @@ class ArtistController < ApplicationController
 
     respond_to do |format|
       format.html do
-        puts "asaaaaaaaaaaaasaaaaaaaaaaaasaaaaaaaaaaaasaaaaaaaaaaaasaaaaaaaaaaaasaaaaaaaaaaaasaaaaaaaaaaaasaaaaaaaaaaaasaaaaaaaaaaaasaaaaaaaaaaaasaaaaaaaaaaaasaaaaaaaaaaaasaaaaaaaaaaa"
-        puts is_bot?
+        puts "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
+        puts is_bot?.to_s
+        puts request.user_agent
         if is_bot?
           @artist = Rockstar::Artist.new(params[:artist], :include_info => true)
           @page_title = "#{@artist.name} on AlleSongs"
