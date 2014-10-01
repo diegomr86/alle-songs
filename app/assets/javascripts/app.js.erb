@@ -331,7 +331,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         }
     };
 
-    $scope.ga = function(action, name) {
+    $scope.ga = function(action, category, name) {
         ga('send', {
             'hitType': 'event',          // Required.
             'eventCategory': action,   // Required.
