@@ -3,8 +3,6 @@
 require 'open-uri'
 class PlayerController < ApplicationController
 
-  layout 'ajax'
-
   YOUTUBE_CLIENT = YouTubeIt::Client.new(:dev_key => "AI39si6ht3fhDpGzdgYtBGP2UF0baH4o_6QRnQj-e4f2EkWjyrHfaYMphbKdmqEjjHJg7bLEnitHlO1PMHdw6xAlXMUUsTTgpQ")
   def index
     if params[:music]

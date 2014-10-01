@@ -2,15 +2,11 @@ require 'open-uri'
 
 class SearchController < ApplicationController
 
-  layout false
-
   include RockstarHelper
 
   def index
 
     @search_result = []
-
-
 
     @search_result = autocomplete(params[:autocomplete]) if params[:autocomplete].present?
     @search_result = search_artist(params[:artist]) if params[:artist].present?

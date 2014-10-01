@@ -7,7 +7,7 @@ module ApplicationHelper
     artist_root_url(custom_artist_name(artist_name))
   end
   def custom_artist_name(artist_name)
-    artist_name.gsub("&", "e").gsub("/", " ").gsub('.', ' ')
+    URI.escape(artist_name.gsub("&", "e").gsub("/", "+").gsub('.', ' '))
   end
 
   def resource_name

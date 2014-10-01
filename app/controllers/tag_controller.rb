@@ -1,7 +1,5 @@
 class TagController < ApplicationController
 
-  layout false
-
   def show
 
   end

@@ -4,16 +4,18 @@ require 'open-uri'
 
 class AlbumController < ApplicationController
 
-  before_action :rockstar_init
-
   def index
 
-    # @album = Rockstar::Album.new(params[:artist], params[:album], :include_info => true)
-    #
-    # respond_to do |format|
-    #   format.html
-    #   format.json {render json: @album}
-    # end
+    respond_to do |format|
+      format.html do
+        if is_bot?
+          @album = Rockstar::Album.new(params[:artist], params[:album], :include_info => true)
+        elsif params[:angular].blank?
+          redirect_to "/#/#{custom_artist_name(params[:artist])}/#{custom_artist_name(params[:album])}"
+        end
+
+      end
+    end
 
   end
 

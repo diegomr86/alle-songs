@@ -35,8 +35,7 @@ end
 
 gem "haml", "~> 4.0.3"
 gem "haml-rails", "~> 0.4"
-gem "nokogiri", "1.5.2"
-gem "youtube_it", "~> 2.3.2"
+gem "youtube_it"
 gem "httpclient", "~> 2.3.4.1"
 gem 'newrelic_rpm'
 gem "dynamic_sitemaps"
@@ -54,3 +53,4 @@ gem 'rails-backbone', github: 'codebrew/backbone-rails', branch: 'master'
 gem 'angularjs-rails', '~> 1.2.16'
 
 gem 'will_paginate', '~> 3.0.7'
+gem 'voight_kampff', '~> 0.2.1'

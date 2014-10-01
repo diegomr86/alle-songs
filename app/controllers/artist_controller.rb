@@ -4,17 +4,20 @@ require 'open-uri'
 
 class ArtistController < ApplicationController
 
-  layout false
-
-  before_action :rockstar_init
-
   def index
-    puts params
-    puts params[:artist]
-    @artist = Rockstar::Artist.new(params[:artist], :include_info => true) if params[:angular].blank?
 
     respond_to do |format|
-      format.html
+      format.html do
+        if is_bot?
+          @artist = Rockstar::Artist.new(params[:artist], :include_info => true)
+          @page_title = "#{@artist.name} on AlleSongs"
+          @page_description = "#{@page_description}"
+
+        elsif params[:angular].blank?
+          redirect_to "/#/#{custom_artist_name(params[:artist])}"
+        end
+
+      end
       format.json {render json: @artist}
     end
 

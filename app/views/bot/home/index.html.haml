@@ -1,0 +1,12 @@
+%section
+  %h3 Featured artists:
+  - Artist.find_each do |artist|
+    = link_to artist.name, artist_root_path(custom_artist_name(artist.name))
+%section
+  %h3 Featured albums:
+  - Album.find_each do |album|
+    = link_to album.name, artist_album_root_path(custom_artist_name(album.artist), custom_artist_name(album.name))
+%section
+  %h3 Featured tags:
+  - @top_tags.each do |tag|
+    = link_to tag.name, tag_path(custom_artist_name(tag.name))
