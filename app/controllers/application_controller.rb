@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_bot?
-    USER_AGENTS.include?(request.user_agent)
+    USER_AGENTS.include?(request.user_agent) || params[:bot].present?
   end
 
   def set_bot_vars
