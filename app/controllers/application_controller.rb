@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_bot?
-    !request.bot?
+    request.bot?
   end
 
   def set_bot_vars
