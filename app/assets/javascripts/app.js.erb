@@ -331,11 +331,11 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         }
     };
 
-    $scope.ga = function(action, category, name) {
+    $scope.ga = function(category, action, name) {
         ga('send', {
             'hitType': 'event',          // Required.
-            'eventCategory': category,   // Required.
-            'eventAction': action,      // Required.
+            'eventCategory': action,   // Required.
+            'eventAction': category,      // Required.
             'eventLabel': name
         });
     };
