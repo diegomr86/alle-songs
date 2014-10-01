@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
   def is_bot?
     puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     puts request.user_agent
-    puts USER_AGENTS.include?(request.user_agent)
+    USER_AGENTS.include?(request.user_agent)
   end
 
   def set_bot_vars
