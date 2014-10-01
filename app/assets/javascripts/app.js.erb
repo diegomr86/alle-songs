@@ -331,7 +331,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         }
     };
 
-    $scope.ga = function(category, action, name) {
+    $scope.ga = function(action, category, name) {
         ga('send', {
             'hitType': 'event',          // Required.
             'eventCategory': action,   // Required.
@@ -341,6 +341,9 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     };
 
     $scope.$watch('current_playitem', function(current_playitem, old_playitem) {
+        if (current_playitem) {
+            $scope.ga('play', current_playitem.artist, current_playitem.name)
+        }
         if (current_playitem != undefined) {
             $.getJSON(current_playitem.url, function (data) {
                 $scope.displayVideoMeta(current_playitem, data);
@@ -362,9 +365,6 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 
     $scope.$watch('playing', function(current_playitem, old_playitem) {
         console.log('Now playing: '+current_playitem)
-        if (current_playitem) {
-            $scope.ga('play', current_playitem.artist, current_playitem.name)
-        }
     });
 
 
