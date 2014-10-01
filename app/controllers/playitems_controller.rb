@@ -19,7 +19,6 @@ class PlayitemsController < ApplicationController
       query =  "#{@playitem.artist} - #{@playitem.name}"
       videos = YOUTUBE_CLIENT.videos_by(:query => '"'+query+ '"', :categories => [:music], page: params[:page], :per_page => 4).videos
       videos.each do |video|
-        puts video.title
         video_id = video.unique_id if video.title == query
         break
       end

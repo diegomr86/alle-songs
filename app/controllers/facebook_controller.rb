@@ -5,8 +5,6 @@ class FacebookController < ApplicationController
 
     begin
       @user = FbGraph::User.me(access_token).fetch
-      puts 'aaaaa'
-      puts @user
     rescue => the_error
       @error = the_error.message
       puts "Error #{the_error.message}"

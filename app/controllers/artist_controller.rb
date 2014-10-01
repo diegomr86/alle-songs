@@ -24,6 +24,5 @@ class ArtistController < ApplicationController
   end
 
   def show
-    puts params[:id]
   end
 end

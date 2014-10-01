@@ -33,7 +33,7 @@ class PlaylistsController < ApplicationController
     current_playlist.playitems.destroy_all
 
     Playlist.find(params[:id]).playitems.each do |playitem|
-      puts current_playlist.playitems.create(playitem.attributes.except('id', 'playlist_id'))
+      current_playlist.playitems.create(playitem.attributes.except('id', 'playlist_id'))
     end
 
     @playitems = current_playlist.playitems
@@ -56,7 +56,7 @@ class PlaylistsController < ApplicationController
     respond_to do |format|
       if @playlist.save
         Playlist.find(params[:current_playlist]).playitems.each do |playitem|
-          puts @playlist.playitems.create(playitem.attributes.except('id', 'playlist_id'))
+          @playlist.playitems.create(playitem.attributes.except('id', 'playlist_id'))
         end
         format.html { redirect_to @playlist, notice: 'Playlist was successfully created.' }
         format.json { render action: 'show', status: :created, location: @playlist }
@@ -72,7 +72,6 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       if @playlist.update(playlist_params)
-        puts playlist_params
         format.html { redirect_to @playlist, notice: 'Playlist was successfully updated.' }
         format.json { render json: user_playlists }
       else
