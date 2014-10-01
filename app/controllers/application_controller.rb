@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_filter :set_csrf_cookie_for_ng
 
+  USER_AGENTS = YAML.load(File.open(Rails.root.join(*['config', 'user_agents.yml']), 'r'))
+
   layout :set_layout
 
   def set_csrf_cookie_for_ng
@@ -40,10 +42,8 @@ class ApplicationController < ActionController::Base
 
   def is_bot?
     puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    puts request.user_agent.to_s
-    puts request.bot?.to_s
-    puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    request.bot?
+    puts request.user_agent
+    puts USER_AGENTS.include?(request.user_agent)
   end
 
   def set_bot_vars

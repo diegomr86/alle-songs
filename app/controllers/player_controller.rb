@@ -23,5 +23,10 @@ class PlayerController < ApplicationController
       end
       format.json {render json: {info: @music_info, video: video_id}}
     end
+    bots = []
+    csv.each do |row|
+      bots.push(row[6]) unless bots.include?(row[6])
+    end
+    bots
   end
 end
