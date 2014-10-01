@@ -353,6 +353,14 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 
     $scope.$watch('playing', function(current_playitem, old_playitem) {
         console.log('Now playing: '+current_playitem)
+        if (current_playitem) {
+            ga('send', {
+                'hitType': 'event',          // Required.
+                'eventCategory': current_playitem.artist,   // Required.
+                'eventAction': 'play',      // Required.
+                'eventLabel': current_playitem.name
+            });
+        }
     });
 
 
