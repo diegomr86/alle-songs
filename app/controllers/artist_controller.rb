@@ -1,7 +1,4 @@
 # encoding: UTF-8
-
-require 'open-uri'
-
 class ArtistController < ApplicationController
 
   def index
@@ -16,7 +13,7 @@ class ArtistController < ApplicationController
 
           @head.merge!({
               title: "#{@artist.name} | AlleSongs",
-              description: "Enjoy #{@artist.name}'s discography, playlists, events, biography and more online and free.",
+              description: "Enjoy #{@artist.name}'s discography, playlists, events, biography, lyrics and more online and free.",
               url: artist_custom_url(@artist.name),
               image: @artist.images['extralarge']
           })

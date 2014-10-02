@@ -6,4 +6,10 @@
 <sitemap>
 <loc>http://www.allesongs.com/sitemaps/artists.xml</loc>
 </sitemap>
+<sitemap>
+<loc>http://www.allesongs.com/sitemaps/albums.xml</loc>
+</sitemap>
+<sitemap>
+<loc>http://www.allesongs.com/sitemaps/tags.xml</loc>
+</sitemap>
 </sitemapindex>

@@ -12,12 +12,14 @@ sitemap :artists do
   end
 end
 
-def artist_custom_path(artist_name)
-  artist_root_path(custom_artist_name(artist_name))
+sitemap :albums do
+  Album.find_each do |album|
+    url artist_album_root_url(URI.escape(album.name.gsub("&", "e").gsub("/", "+").gsub('.', ' ')), URI.escape(album.artist.gsub("&", "e").gsub("/", "+").gsub('.', ' '))), last_mod: Time.now, change_freq: "daily", priority: 1.0
+  end
 end
-def artist_custom_url(artist_name)
-  artist_root_url(custom_artist_name(artist_name))
-end
-def custom_artist_name(artist_name)
-  URI.escape(artist_name.gsub("&", "e").gsub("/", "+").gsub('.', ' '))
+
+sitemap :tags do
+  Rockstar::Tag.top_tags.each do |tag|
+    url tag_url(URI.escape(tag.name.gsub("&", "e").gsub("/", "+").gsub('.', ' '))), last_mod: Time.now, change_freq: "daily", priority: 1.0
+  end
 end

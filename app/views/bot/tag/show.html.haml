@@ -1,0 +1,46 @@
+%section
+
+  %h3.text-semibold
+    %a{ href: artist_custom_url(@tag.name) } @tag.name
+
+  %section
+    %h4 Top artists
+    %ul
+      - @tag.top_artists.each do |artist|
+        %li{ itemscope: '', itemtype: "http://schema.org/MusicGroup" }
+          = link_to artist_custom_url(artist.name), itemprop: "url" do
+            %h3{ itemprop: "name" } #{artist.name}
+            = image_tag artist.images['extralarge'], alt: "#{artist.name}", itemprop: "image"
+
+  %section
+    %h4 Top albums
+    %ul
+      - @tag.top_albums.each do |album|
+        %li{ itemscope: '', itemtype: "http://schema.org/MusicAlbum" }
+          = link_to artist_album_root_url(custom_artist_name(album.artist), custom_artist_name(album.name)), itemprop: "url" do
+            %h3{ itemprop: "name" } #{album.name}
+            = image_tag album.images['extralarge'], alt: "#{album.artist} - #{album.name}", itemprop: "thumbnailUrl"
+          %div{itemprop: 'byArtist', itemscope: '', itemtype: "http://schema.org/MusicGroup"}
+            %h4{ itemprop: 'name' } #{album.artist}
+  %section
+    %h4 Related tags
+    %ul
+      - @tag.similar.each do |tag|
+        %li
+          = link_to tag, tag_path(tag)
+
+  %section
+    %h4 Top tracks
+    %ul
+      - @tag.top_tracks.each do |track|
+        %li{ itemscope: '', itemtype: "http://schema.org/MusicRecording" }
+          %a{ itemprop: 'url', href: artist_custom_url(track.artist) }
+            = image_tag track.thumbnail, alt: "#{track.artist} - #{track.name}", itemprop: "thumbnailUrl"
+            &nbsp;
+            %span{ itemprop: "name" } #{track.name}
+          \-
+          %span{ itemprop: 'duration' } #{ (Time.now.at_beginning_of_day + track.duration.to_i.seconds).strftime("PT%MM%SS") }
+          \-
+          %a{ itemprop: "inAlbum", href: artist_custom_url(track.artist) }= track.artist
+          %meta{ itemprop: "audio", content: artist_custom_url(track.artist) }
+

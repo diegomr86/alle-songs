@@ -13,8 +13,7 @@
         %a.btn{ title: 'Add to playlist', ng: { click: "addArtistToPlaylist(artist, false)"} }
           %i.fa.fa-indent
           add to playlist
-        .fb-like{"data-action" => "like", "data-href" => "http://www.allesongs.com/{{artist.name}}", "data-layout" => "button", "data-share" => "true", "data-show-faces" => "false"}
-
+        %br
       .panel.panel-transparent
         .panel-heading
           %span.panel-title About {{artist.name}}
@@ -35,7 +34,8 @@
         .panel-heading
           %span.panel-title Tags
         .panel-body
-          %span.label.label-primary{ ng: { repeat: 'tag in artist.tags.tag'} } {{tag.name}}
+          %a{ ng: { repeat: "tag in artist.tags.tag", click: "go(['tag', tag.name])" } }
+            %span.label.label-primary {{tag.name}}
       .panel.panel-transparent
         .panel-heading
           %span.panel-title More

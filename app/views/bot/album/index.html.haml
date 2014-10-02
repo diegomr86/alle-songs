@@ -1,0 +1,34 @@
+%section{itemscope: '', itemtype: "http://schema.org/MusicAlbum"}
+
+  %h3.text-semibold{ itemprop: "name" }
+    #{@album.name}
+  %div{itemprop: 'byArtist', itemscope: '', itemtype: "http://schema.org/MusicGroup"}
+    %h4{ itemprop: 'name' } #{@album.artist}
+  = image_tag @album.images['extralarge'], alt: @album.name, itemprop: 'thumbnailUrl'
+
+  %section
+    %h4 About #{@album.name}
+    %article{ itemprop: 'about' }= @album.content.gsub('http://www.last.fm/music', '').gsub(" on Last.fm", '').html_safe
+
+  %section
+    %h4 Statistics
+    %ul
+      %li #{@album.playcount} plays
+
+  %section
+    %h4 Top tracks
+    %ul
+      - @album.top_tracks.each do |track|
+        %li{itemprop: "tracks", itemscope: '', itemtype: "http://schema.org/MusicRecording" }
+          %a{ itemprop: 'url', href: artist_album_root_url(custom_artist_name(@album.artist), custom_artist_name(@album.name)) }
+            %span{ itemprop: 'name' }= track[:name]
+          \-
+          %span{ itemprop: 'duration' } #{ (Time.now.at_beginning_of_day + track[:duration].to_i.seconds).strftime("PT%MM%SS") }
+          %meta{ itemprop: "audio", content: artist_custom_url(track[:artist]) }
+
+  %section
+    %h4 Related tags
+    %ul
+      - @album.top_tags.each do |tag|
+        %li
+          = link_to tag.name, tag_url(custom_artist_name(tag.name))

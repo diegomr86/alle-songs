@@ -477,7 +477,6 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 }]);
 
 app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
-    $scope.ga('pageview', 'artist', $routeParams.artist_name)
 
     lastfm.artist.getInfo({artist: $routeParams.artist_name}, {success: function(data){
         $scope.artist = data.artist
@@ -513,6 +512,9 @@ app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeP
             }});
         }
     }
+
+    $scope.ga('pageview', 'artist', $routeParams.artist_name)
+
 
 }]);
 

@@ -1,14 +1,17 @@
 %section{itemscope: '', itemtype: "http://schema.org/MusicGroup"}
-  %meta{ itemprop: "name", content: @artist.name }
-  %meta{ itemprop: "image", content: @artist.images['extralarge'] }
-  %meta{ itemprop: "url", content: artist_custom_url(@artist.name) }
 
-  %h3.text-semibold= @artist.name
-  = image_tag @artist.images['extralarge'], alt: @artist.name
+  %h3.text-semibold{ itemprop: "name" }= @artist.name
+  %a{ itemprop: "url", href: artist_custom_path(@artist.name) }= image_tag @artist.images['extralarge'], alt: @artist.name, itemprop: "image"
 
   %section
-    %h4 About #{@artist.name}
-    %article= @artist.content.gsub('http://www.last.fm/music', '').gsub(" on Last.fm", '').html_safe
+    %h4
+      About #{@artist.name}
+    %article{ itemprop: "about" }= @artist.summary.gsub('http://www.last.fm/music', '').gsub(" on Last.fm", '').html_safe
+
+  %section
+    %h4
+      Biography
+    %article{ itemprop: "description" }= @artist.content.gsub('http://www.last.fm/music', '').gsub(" on Last.fm", '').html_safe
 
   %section
     %h4 Statistics
@@ -20,9 +23,9 @@
     %h4 Top albums
     %ul
       - @artist.top_albums.each do |album|
-        %li
-          = link_to artist_album_root_path(custom_artist_name(album.artist), custom_artist_name(album.name)) do
-            %h3 #{album.name}
+        %li{itemprop: 'album', itemscope: '', itemtype: "http://schema.org/MusicAlbum"}
+          = link_to artist_album_root_path(custom_artist_name(album.artist), custom_artist_name(album.name)), itemprop: "url" do
+            %h3{ itemprop: "name" } #{album.name}
             = image_tag album.images['extralarge'], alt: "#{album.artist} - #{album.name}"
 
   %section
@@ -37,9 +40,13 @@
     %ul
       - @artist.top_tracks.each do |track|
         %li{itemprop: "track", itemscope: '', itemtype: "http://schema.org/MusicRecording" }
-          = image_tag track.thumbnail, alt: "#{track.artist} - #{track.name}"
-          &nbsp;
-          %span{ itemprop: "name" } #{track.name}
-          %meta{ itemprop: "url", content: artist_custom_url(track.artist) }
+          %a{ itemprop: 'url', href: artist_custom_url(track.artist) }
+            = image_tag track.thumbnail, alt: "#{track.artist} - #{track.name}"
+            &nbsp;
+            %span{ itemprop: "name" } #{track.name}
+          \-
+          %span{ itemprop: 'duration' } #{ (Time.now.at_beginning_of_day + track.duration.to_i.seconds).strftime("PT%MM%SS") }
+          \-
+          %a{ itemprop: "inAlbum", href: artist_custom_url(track.artist) }= track.artist
           %meta{ itemprop: "audio", content: artist_custom_url(track.artist) }
-          %meta{ itemprop: "duration", content: (Time.now.at_beginning_of_day + track.duration.seconds).strftime("PT%MM%SS") }
+

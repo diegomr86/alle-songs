@@ -6,3 +6,34 @@ Rockstar::Artist.class_eval do
     }
   end
 end
+
+Rockstar::Album.class_eval do
+  def top_tracks(xml=nil)
+    unless xml
+      doc = self.class.fetch_and_parse("album.getInfo", {:artist => @artist, :album =>@name})
+      xml = (doc / :album).first
+    end
+
+    puts xml
+
+    return self if xml.nil?
+
+    tracks = []
+    (xml/'tracks/track').each {|track|
+      tracks.push({ name: track.at(:name).inner_html, artist: track.at('artist/name').inner_html, duration: track.at(:duration).inner_html, url: track.at(:url).inner_html })
+    }
+    tracks
+  end
+
+  def top_tags(force=false)
+    get_instance("album.getTopTags", :top_tags, :tag, {:album => @name, :artist => @artist}, force)
+  end
+
+
+end
+
+Rockstar::Tag.class_eval do
+  def similar(force=false)
+    get_instance("album.getSimilar", :similartags, :tag, {:tag => @name}, force)
+  end
+end
