@@ -23,18 +23,41 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         angular.forEach(paths, function(p) {
             path += "/"+ p.replace("&", "e").replace("/", " ").replace('.', ' ')
         });
-
         path = encodeURI(path)
-        console.log(path)
-        location.href =  path ;
+        location.href = path;
     };
 
     $scope.play = function(playitem) {
         if (playitem != undefined)
-            $scope.current_playitem = playitem;
+            $scope.loadCurrentPlayitem(playitem);
         else if ($scope.playitems[0] != undefined)
-            $scope.current_playitem = $scope.playitems[0];
+            $scope.loadCurrentPlayitem($scope.playitems[0]);
     }
+
+    $scope.loadCurrentPlayitem = function(current_playitem) {
+        $scope.current_playitem = current_playitem
+        if (current_playitem != undefined) {
+            $.getJSON(current_playitem.url, function (data) {
+                $scope.displayVideoMeta(current_playitem, data);
+                if (data.video) {
+                    if (typeof player == "undefined")
+                        player = $scope.renderPlayer(data.video);
+                    else
+                        player.loadVideoById(data.video);
+
+                    if ($scope.is_iPhone) {
+                        window.scrollTo(0, 0);
+                    }
+                } else {
+                    console.log('error loading current_playitem:')
+                    console.log(current_playitem)
+                    console.log(data)
+                    $scope.loadNext()
+                }
+            });
+        }
+    };
+
 
     $scope.loadCurrentPlaylist = function(playlist) {
         $scope.current_playlist = playlist
@@ -48,7 +71,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         $http.get("/api/playlists/"+playlist.id+"/load.json?current_playlist="+$scope.current_playlist.id).success(function (playitems) {
             $scope.setPlayitems(playitems)
         }).error(function (data) {
-            console.log('error: ' + data);
+            console.log('error loadPlaylist:' + data);
         });
     };
 
@@ -80,7 +103,6 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     $scope.updatePlaylist = function(data) {
         Playlist.update({ name: data }, $scope.current_playlist, function(p){
             $scope.loadPlaylists()
-            console.log(p)
         });
 
     };
@@ -165,21 +187,11 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         });
     };
 
-
-
-    $scope.setError = function (playitem) {
-        console.log('error...')
-        console.log(playitem)
-    }
-
     $scope.loadNext = function () {
+
         if ($scope.playitems.length > 1) {
             var next = $scope.playitems.indexOf($scope.current_playitem) + 1
-            if ($scope.playitems[next] != undefined) {
-                $scope.play($scope.playitems[next])
-            } else {
-                $scope.play($scope.playitems[0])
-            }
+            $scope.play($scope.playitems[next])
 
         }
     }
@@ -187,7 +199,6 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     $scope.loadPrevious = function () {
         if ($scope.playitems.length > 1) {
             var previous = $scope.playitems.indexOf($scope.current_playitem) - 1
-            console.log(previous)
             if (previous >= 0) {
                 $scope.play($scope.playitems[previous])
             } else {
@@ -297,8 +308,6 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     }
 
     $scope.dropOnCurrentPlaylist=function(index, data, evt){
-        console.log("drop success, data:", data);
-        console.log(index);
         if (data.artist === undefined) {
             $scope.addArtistToPlaylist(data)
         } else if (data.duration === undefined){
@@ -340,25 +349,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         });
     };
 
-    $scope.$watch('current_playitem', function(current_playitem, old_playitem) {
-        if (current_playitem != undefined) {
-            $.getJSON(current_playitem.url, function (data) {
-                $scope.displayVideoMeta(current_playitem, data);
-                if (data.video) {
-                    if (typeof player == "undefined")
-                        player = $scope.renderPlayer(data.video);
-                    else
-                        player.loadVideoById(data.video);
 
-                    if ($scope.is_iPhone) {
-                        window.scrollTo(0, 0);
-                    }
-                } else {
-                    $scope.setError(current_playitem);
-                }
-            });
-        }
-    });
 
     $scope.$watch('playing', function(current_playitem, old_playitem) {
         console.log('Now playing: '+current_playitem)
@@ -508,20 +499,12 @@ app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeP
         }
     }
 
-    if ($scope.playitems && $scope.playitems[0]) {
-        $scope.play($scope.playitems[0])
-    }
-
-
-
 }]);
 
 app.controller('AlbumCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
     $scope.ga('pageview', 'album', $routeParams.artist_name+' - '+$routeParams.album_name)
-    console.log($routeParams)
     lastfm.album.getInfo({artist: $routeParams.artist_name, album: $routeParams.album_name}, {success: function(data){
         $scope.album = data.album
-        console.log($scope.album)
         $scope.$digest()
     }});
 }]);
