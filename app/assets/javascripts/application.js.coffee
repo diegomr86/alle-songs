@@ -24,7 +24,6 @@
 #= require lastfm.api.md5
 #= require lastFM
 #= require typeahead
-#= require socialite.min
 #= require alert
 #= require app
 
