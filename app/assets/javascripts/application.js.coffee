@@ -41,8 +41,6 @@ createPlayer = ->
 
 $ ->
 
-  $('[title]').tooltip()
-
   createPlayer()
 
   $("#forward").click ->

@@ -119,6 +119,25 @@
                     %input.signin-btn.bg-primary{:type => "submit", :value => "SIGN UP", ng: { click: "signup(new_user)" } }/
                     %a#forgot-password-link.forgot-password{ ng: { click: "signtab = 0" } } Sign in
 
+      #lyrics_modal.modal.fade{ :role => "dialog", :style => "display: none;" }
+        .modal-dialog
+          .modal-content
+            .modal-header
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+              %h4#lyrics_header.modal-title
+                {{current_lyric.playitem.artist.name || current_lyric.playitem.artist}} - {{current_lyric.playitem.name}}
+                %span{ ng: { show: "current_lyric.lang" } }
+                  &nbsp;
+                  &nbsp;
+                  %a{ ng: { click: "loadTranslation(current_lyric.default)", class: "{'active' : current_lyric.lang == current_lyric.default.lang}" } }
+                    %img{ ng: { src: "/flag/{{current_lyric.default.lang}}.png" } }
+                  %a{ ng: { repeat: "translate in current_lyric.translations", click: "loadTranslation(translate)", class: "{'active' : current_lyric.lang == translate.lang }" } }
+                    %img{ ng: { src: "/flag/{{translate.lang}}.png" } }
+            .modal-body
+              %p#lyric_text {{current_lyric.text || current_lyric.message }}
+            .modal-footer
+              %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+
       #main-navbar.navbar.navbar-inverse{:role => "navigation"}
         / Main menu toggle
         %button#main-menu-toggle{:type => "button"}

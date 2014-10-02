@@ -11,13 +11,18 @@
               .col-lg-8
                 %span {{current_playitem.artist}}
                 %br/
-                %a {{current_playitem.name}} ({{current_playitem.duration | int_to_date | date:'mm:ss'}})
+                %a
+                  {{current_playitem.name}} ({{current_playitem.duration | int_to_date | date:'mm:ss'}})
+                %a
+                  &nbsp;
+                  &nbsp;
+                  %i.fa.fa-file-text{ ng: { click: "showLyrics(current_playitem)" }, title: 'Show lyrics'}>
               .col-lg-4.player_controls
                 %i.fa.fa-fast-backward{ ng: { click: "loadPrevious()" }, title: 'Next'}>
                 &nbsp;
                 &nbsp;
-                %i.fa.fa-play{ ng: { show: "!playing", click: "playVideo()"}}
-                %i.fa.fa-pause{ ng: { show: "playing", click: "pauseVideo()"}}
+                %i.fa.fa-play{ ng: { show: "!playing", click: "playVideo()", title: 'Play' } }
+                %i.fa.fa-pause{ ng: { show: "playing", click: "pauseVideo()", title: 'Pause' } }
                 &nbsp;
                 &nbsp;
                 %i.fa.fa-fast-forward{ ng: { click: "loadNext()" }, title: 'Next'}>
@@ -105,6 +110,9 @@
                 %i.fa.fa-play.list-group-icon{ ng: { show: "(!playing && current_playitem != playitem) || current_playitem != playitem", click: "play(playitem)" }, title: 'Play'}>
                 %i.fa.fa-play.list-group-icon{ ng: { show: "!playing && current_playitem == playitem", click: "playVideo()" }, title: 'Play'}>
                 %i.fa.fa-pause.list-group-icon{ ng: { show: "playing && current_playitem == playitem", click: "pauseVideo()"}, title: 'Pause'}
+                %i.fa.fa-file-text.list-group-icon{ ng: { click: "showLyrics(playitem)" }, title: 'Show lyrics'}>
                 %i.fa.fa-trash-o.list-group-icon{ ng: { click: "removeFromPlaylist(playitem)" }, title: 'Remove from playlist'}>
+
+
               %span.duration.label {{playitem.duration | int_to_date | date:'mm:ss'}}
   .row

@@ -218,23 +218,38 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 
             $('title').text(title);
 
-            lyric = ''
-            translation_text = ''
-
-//            if (data.info && data.info.mus && data.info.type == "exact") {
-//                lyric = data.info.mus[0].text;
-//                lyric += '<br/><br/><p><a style="font-size:10px;color:#000;text-decoration:none;font-weight:bold" target=_blank href="'+data.info.mus[0].url+'"><img src="http://www.vagalume.com.br/images/logo_small2.jpg" alt="Vagalume"><br/>Letras de Músicas</a></p>'
-//
-//                if (data.info.mus[0].translate) {
-//                    translation_text = data.info.mus[0].translate[0].text.replace('[', '<b>').replace(']', '</b>');
-//                }
-//
-//
-//            } else {
-//                lyric = "Letra não encontrada";
-//            }
-
         }
+    }
+
+    $scope.showLyrics = function (playitem) {
+        $('#lyrics_modal').modal('show')
+        $scope.current_lyric = { playitem: playitem, message: 'Loading lyric...' }
+        jQuery.getJSON(
+                        "http://api.vagalume.com.br/search.php"
+                        + "?art=" + encodeURI(playitem.artist.name || playitem.artist)
+                        + "&mus=" + encodeURI(playitem.name),
+                function (data) {
+                    console.log(data)
+                    if (data && data.mus && data.type == "exact") {
+                        $scope.current_lyric.text = data.mus[0].text;
+                        $scope.current_lyric.lang = data.mus[0].lang;
+                        $scope.current_lyric.default = data.mus[0];
+                        if (data.mus[0].translate) {
+                            $scope.current_lyric.translations = data.mus[0].translate;
+                        }
+                    } else {
+                        $scope.current_lyric.message = "Sorry, we coud't found this lyric!";
+                    }
+                    $scope.$digest()
+                    console.log($scope.current_lyric)
+
+                }
+        );
+    }
+
+    $scope.loadTranslation = function (translate) {
+        $scope.current_lyric.lang = translate.lang;
+        $scope.current_lyric.text = translate.text;
     }
 
     $scope.renderPlayer = function (vid) {
@@ -309,11 +324,11 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 
     $scope.dropOnCurrentPlaylist=function(index, data, evt){
         if (data.artist === undefined) {
-            $scope.addArtistToPlaylist(data)
+            $scope.addArtistToPlaylist(data, false)
         } else if (data.duration === undefined){
-            $scope.addAlbumToPlaylist(data)
+            $scope.addAlbumToPlaylist(data, false)
         } else {
-            $scope.addToPlaylist(data)
+            $scope.addToPlaylist(data, false)
         }
     }
 
@@ -588,6 +603,7 @@ app.controller('TagCtrl', ['$scope', '$routeParams', function($scope, $routePara
 app.config(function($routeProvider, $locationProvider) {
 
     init.push(function () {
+        $('[title]').tooltip()
     } );
 
     window.PixelAdmin.start(init);

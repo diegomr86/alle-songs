@@ -12,6 +12,8 @@
           %i.fa.fa-pause
         %a.btn.btn-primary{ ng: { click: "addToPlaylist(track, false)" }, title: 'Add to playlist'}
           %i.fa.fa-indent
+        %a.btn.btn-primary{ ng: { click: "showLyrics(track)" }, title: 'Show lyrics'}
+          %i.fa.fa-file-text
 
     %a.follower-name.text-bg
       %strong {{track.name}}
