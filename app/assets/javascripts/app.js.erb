@@ -121,6 +121,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     };
 
     $scope.addToPlaylist = function(track, play) {
+        console.log($scope.current_playlist)
         var playitem = new Playitem({ name: track.name, artist: (track.artist.name || track.artist), picture: (track.image ? track.image[3]['#text'] : track.picture), duration: (track.duration), playlist_id: $scope.current_playlist.id });
         Playitem.save(playitem, function(new_playitem) {
             //$scope should be accessible here
@@ -393,9 +394,13 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     });
 
     if ($cookieStore.get("current_playlist") != undefined) {
+        console.log("Current playlist cookie: ");
+        console.log($cookieStore.get("current_playlist"));
         $scope.loadCurrentPlaylist($cookieStore.get("current_playlist"));
     } else {
         $http.get("/api/playlists/default.json").success(function (data) {
+            console.log("Current playlist api: ");
+            console.log(data);
             $scope.loadCurrentPlaylist(data);
         }).error(function (data) {
             console.log('error: ' + data);
