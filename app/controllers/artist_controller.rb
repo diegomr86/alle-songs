@@ -18,8 +18,11 @@ class ArtistController < ApplicationController
               image: @artist.images['extralarge']
           })
 
+          @head[:title] = "#{params[:play]} - #{@head[:title]}"  if params[:play].present?
         elsif params[:angular].blank?
-          redirect_to "/#/#{custom_artist_name(params[:artist])}"
+          url = custom_artist_name(params[:artist])
+          url += "?play=#{params[:play]}" if params[:play].present?
+          redirect_to "/#/#{url}"
         end
 
       end

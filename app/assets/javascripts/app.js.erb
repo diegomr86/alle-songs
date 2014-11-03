@@ -23,7 +23,10 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         angular.forEach(paths, function(p) {
             path += "/"+ encodeURIComponent(p)
         });
-        path = encodeURI(path+params)
+        if (params) {
+            path += params
+        }
+        path = encodeURI(path)
         location.href = path;
     };
 
@@ -32,7 +35,10 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         angular.forEach(paths, function(p) {
             path += "/"+ encodeURIComponent(p)
         });
-        path = encodeURI(path+params)
+        if (params) {
+            path += params
+        }
+        path = encodeURI(path)
         return path
     };
 
@@ -510,6 +516,7 @@ app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeP
                 }
             }
         });
+
     }});
 
     $scope.load_top_tracks = function () {
@@ -530,17 +537,18 @@ app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeP
         }
     }
 
-    if ($routeParams.track_name) {
-        lastfm.track.getInfo({artist: $scope.artist.name}
+    console.log($routeParams)
+    if ($routeParams.play) {
+        lastfm.track.getInfo({artist: decodeURIComponent($routeParams.artist_name), track: decodeURIComponent($routeParams.play)}
                 , {success: function (data) {
-            $scope.artist.top_tracks = data.toptracks.track
-            $scope.$digest()
+                    console.log('asdfasd fasdf asdfasd fasdf asdfasdf')
+                    console.log(data)
+                    console.log('sssss')
+                    $scope.addToPlaylist(data.track, true)
         }});
 
-        alert($routeParams.track_name)
-
-
     }
+
     $scope.ga('pageview', 'artist', decodeURIComponent($routeParams.artist_name))
 
 
