@@ -18,14 +18,22 @@
                   &nbsp;
                   %i.fa.fa-file-text{ ng: { click: "showLyrics(current_playitem)" }, title: 'Show lyrics'}>
               .col-lg-4.player_controls
-                %i.fa.fa-fast-backward{ ng: { click: "loadPrevious()" }, title: 'Next'}>
-                &nbsp;
-                &nbsp;
-                %i.fa.fa-play{ ng: { show: "!playing", click: "playVideo()", title: 'Play' } }
-                %i.fa.fa-pause{ ng: { show: "playing", click: "pauseVideo()", title: 'Pause' } }
-                &nbsp;
-                &nbsp;
-                %i.fa.fa-fast-forward{ ng: { click: "loadNext()" }, title: 'Next'}>
+                %p
+                  %i.fa.fa-fast-backward{ ng: { click: "loadPrevious()" }, title: 'Next'}>
+                  &nbsp;
+                  &nbsp;
+                  %i.fa.fa-play{ ng: { show: "!playing", click: "playVideo()", title: 'Play' } }
+                  %i.fa.fa-pause{ ng: { show: "playing", click: "pauseVideo()", title: 'Pause' } }
+                  &nbsp;
+                  &nbsp;
+                  %i.fa.fa-fast-forward{ ng: { click: "loadNext()" }, title: 'Next'}>
+                %p
+                  %a{ ng: { href: "https://www.facebook.com/sharer/sharer.php?u={{url(['play', current_playitem.artist, current_playitem.name], '?play=true')}}&t={{current_playitem.artist}}" }, target: "_blank", title: "Share on Facebook" }
+                    %i.fa.fa-facebook-square
+                  %a{ ng: { href: "https://twitter.com/share?url={{url([current_playitem.artist])}}&text={{current_playitem.artist}} on AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
+                    %i.fa.fa-twitter-square
+                  %a{ ng: { href: "https://plus.google.com/share?url={{url([current_playitem.artist])}}&text={{current_playitem.artist}} on AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
+                    %i.fa.fa-google-plus-square
 
           %div{ ng: { show: "current_playitem == undefined", click: "play(playitems[0])"}}
             .widget-profile-avatar

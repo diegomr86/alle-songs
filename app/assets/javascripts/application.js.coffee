@@ -27,8 +27,6 @@
 #= require alert
 #= require app
 
-
-
 createPlayer = ->
 
   # tetst

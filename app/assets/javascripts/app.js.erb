@@ -18,13 +18,22 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     var Playitem = $resource('/api/playitems/:id');
     var Track = $resource('/api/tracks/:id');
 
-    $scope.go = function ( paths ) {
+    $scope.go = function ( paths, params ) {
         path = '/#'
         angular.forEach(paths, function(p) {
-            path += "/"+ p.replace("&", "e").replace("/", " ").replace('.', ' ')
+            path += "/"+ encodeURIComponent(p)
         });
-        path = encodeURI(path)
+        path = encodeURI(path+params)
         location.href = path;
+    };
+
+    $scope.url = function ( paths, params ) {
+        path = 'http://www.allesongs.com'
+        angular.forEach(paths, function(p) {
+            path += "/"+ encodeURIComponent(p)
+        });
+        path = encodeURI(path+params)
+        return path
     };
 
     $scope.play = function(playitem) {
@@ -478,12 +487,15 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 
 app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
 
-    lastfm.artist.getInfo({artist: $routeParams.artist_name}, {success: function(data){
+    lastfm.artist.getInfo({artist: decodeURIComponent($routeParams.artist_name)}, {success: function(data){
+
         $scope.artist = data.artist
         $scope.$digest()
         console.log($scope.artist)
+
         lastfm.artist.getTopAlbums({artist: $scope.artist.name}, {
             success: function(data){
+                console.log('asdfasdfasdfasdfas asdfasdfasd fasd fasdf asdf')
                 $scope.artist.top_albums = data.topalbums.album
                 if ($scope.artist.top_albums) {
                     $scope.$digest()
@@ -513,14 +525,25 @@ app.controller('ArtistCtrl', ['$scope', '$routeParams', function($scope, $routeP
         }
     }
 
-    $scope.ga('pageview', 'artist', $routeParams.artist_name)
+    if ($routeParams.track_name) {
+        lastfm.track.getInfo({artist: $scope.artist.name}
+                , {success: function (data) {
+            $scope.artist.top_tracks = data.toptracks.track
+            $scope.$digest()
+        }});
+
+        alert($routeParams.track_name)
+
+
+    }
+    $scope.ga('pageview', 'artist', decodeURIComponent($routeParams.artist_name))
 
 
 }]);
 
 app.controller('AlbumCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
-    $scope.ga('pageview', 'album', $routeParams.artist_name+' - '+$routeParams.album_name)
-    lastfm.album.getInfo({artist: $routeParams.artist_name, album: $routeParams.album_name}, {success: function(data){
+    $scope.ga('pageview', 'album', decodeURIComponent($routeParams.artist_name)+' - '+decodeURIComponent($routeParams.album_name))
+    lastfm.album.getInfo({artist: decodeURIComponent($routeParams.artist_name), album: decodeURIComponent($routeParams.album_name)}, {success: function(data){
         $scope.album = data.album
         $scope.$digest()
     }});
@@ -580,21 +603,21 @@ app.controller('TopCtrl', ['$scope', '$resource', function($scope, $resource) {
 
 app.controller('TagCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
 
-    $scope.ga('pageview', 'tag', $routeParams.tag_name)
+    $scope.ga('pageview', 'tag', decodeURIComponent($routeParams.tag_name))
 
-    $scope.tag = { name: $routeParams.tag_name }
+    $scope.tag = { name: decodeURIComponent($routeParams.tag_name) }
 
-    lastfm.tag.getTopArtists({ tag: $routeParams.tag_name, limit: 12 }, { success: function(data){
+    lastfm.tag.getTopArtists({ tag: decodeURIComponent($routeParams.tag_name), limit: 12 }, { success: function(data){
         $scope.tag.top_artists = data.topartists.artist
         $scope.$digest()
     }});
 
-    lastfm.tag.getTopAlbums({ tag: $routeParams.tag_name, limit: 12 }, { success: function(data){
+    lastfm.tag.getTopAlbums({ tag: decodeURIComponent($routeParams.tag_name), limit: 12 }, { success: function(data){
         $scope.tag.top_albums = data.topalbums.album
         $scope.$digest()
     }});
 
-    lastfm.tag.getTopTracks({ tag: $routeParams.tag_name, limit: 20 }, { success: function(data){
+    lastfm.tag.getTopTracks({ tag: decodeURIComponent($routeParams.tag_name), limit: 20 }, { success: function(data){
         $scope.tag.top_tracks = data.toptracks.track
         $scope.$digest()
     }});
@@ -619,6 +642,11 @@ app.config(function($routeProvider, $locationProvider) {
     $routeProvider.when('/tag/:tag_name', {
         templateUrl: function(params){ return '/tag/' + params.tag_name + '?angular=true'; },
         controller: 'TagCtrl'
+    });
+
+    $routeProvider.when('/play/:artist_name/:track_name', {
+        templateUrl: function(params){ return '/' + params.artist_name + '?angular=true&play=' + params.track_name; },
+        controller: 'ArtistCtrl'
     });
 
     $routeProvider.when('/:artist_name', {

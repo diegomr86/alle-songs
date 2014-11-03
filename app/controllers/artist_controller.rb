@@ -10,7 +10,7 @@ class ArtistController < ApplicationController
         puts request.user_agent
         if is_bot?
           @artist = Rockstar::Artist.new(params[:artist], :include_info => true)
-
+          puts @artist.to_json
           @head.merge!({
               title: "#{@artist.name} | AlleSongs",
               description: "Enjoy #{@artist.name}'s discography, playlists, events, biography, lyrics and more online and free.",
