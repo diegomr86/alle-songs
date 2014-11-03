@@ -28,11 +28,11 @@
                   &nbsp;
                   %i.fa.fa-fast-forward{ ng: { click: "loadNext()" }, title: 'Next'}>
                 %p
-                  %a{ ng: { href: "https://www.facebook.com/sharer/sharer.php?u={{url(['play', current_playitem.artist, current_playitem.name], '?play=true')}}&t={{current_playitem.artist}}" }, target: "_blank", title: "Share on Facebook" }
+                  %a{ ng: { href: "https://www.facebook.com/sharer/sharer.php?u={{url([current_playitem.artist], '?play='+current_playitem.name)}}&t={{current_playitem.artist}}" }, target: "_blank", title: "Share on Facebook" }
                     %i.fa.fa-facebook-square
-                  %a{ ng: { href: "https://twitter.com/share?url={{url([current_playitem.artist])}}&text={{current_playitem.artist}} on AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
+                  %a{ ng: { href: "https://twitter.com/share?url={{url([current_playitem.artist], '?play='+current_playitem.name)}}&text={{current_playitem.artist}} on AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
                     %i.fa.fa-twitter-square
-                  %a{ ng: { href: "https://plus.google.com/share?url={{url([current_playitem.artist])}}&text={{current_playitem.artist}} on AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
+                  %a{ ng: { href: "https://plus.google.com/share?url={{url([current_playitem.artist], '?play='+current_playitem.name)}}&text={{current_playitem.artist}} on AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
                     %i.fa.fa-google-plus-square
 
           %div{ ng: { show: "current_playitem == undefined", click: "play(playitems[0])"}}

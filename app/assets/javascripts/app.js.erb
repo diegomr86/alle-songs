@@ -390,7 +390,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         $scope.setCurrentUser(user.data)
     }, function(error) {
         console.log("User not authenticated: "+error);
-//        $scope.showSignInModal();
+        $scope.showSignInModal();
     });
 
     if ($cookieStore.get("current_playlist") != undefined) {
