@@ -7,7 +7,7 @@ module ApplicationHelper
     artist_root_url(custom_artist_name(artist_name))
   end
   def custom_artist_name(artist_name)
-    URI.escape(artist_name.gsub("/", " ").gsub('.', ' '))
+    URI.escape(artist_name.gsub("/", " ").gsub('.', ' ').gsub('&amp;', '&'))
   end
 
   def resource_name
@@ -28,5 +28,9 @@ module ApplicationHelper
 
   def track_json(track)
     {name: track.name, artist: track.artist, picture: track_thumb(track), duration: (Time.now.at_beginning_of_day + track.duration.seconds).strftime("%M:%S")}.to_json
+  end
+
+  def format_text(text)
+    text.gsub('http://www.last.fm/music', '').gsub('http://www.last.fm/place', '/tag').gsub('http://www.last.fm', '').gsub(' on Last.fm', '').gsub('+', ' ').html_safe
   end
 end

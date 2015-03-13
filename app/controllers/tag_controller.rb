@@ -7,9 +7,9 @@ class TagController < ApplicationController
           @tag = Rockstar::Tag.new(params[:id])
           @head.merge!({
                            title: "The best of #{@tag.name} | AlleSongs",
-                           description: "Enjoy the best of #{@tag.name} with artists, albums, playlists, events, biography, lyrics and more online and free.",
+                           description: "Listen the best of #{@tag.name} with artists, albums, playlists, events, biography, lyrics and more online and free.",
                            url: tag_url(custom_artist_name(@tag.name)),
-                           image: @tag.top_artists[0].images['extralarge']
+                           image: (@tag.top_artists.present? ? @tag.top_artists[0].images['extralarge'] : '')
                        })
 
         elsif params[:angular].blank?

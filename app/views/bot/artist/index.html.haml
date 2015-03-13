@@ -6,12 +6,12 @@
   %section
     %h4
       About #{@artist.name}
-    %article{ itemprop: "about" }= @artist.summary.gsub('http://www.last.fm/music', '').gsub(" on Last.fm", '').html_safe
+    %article{ itemprop: "about" }= format_text(@artist.summary)
 
   %section
     %h4
       Biography
-    %article{ itemprop: "description" }= @artist.content.gsub('http://www.last.fm/music', '').gsub(" on Last.fm", '').html_safe
+    %article{ itemprop: "description" }= format_text(@artist.content)
 
   %section
     %h4 Statistics

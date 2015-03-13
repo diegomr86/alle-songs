@@ -8,7 +8,7 @@
 
   %section
     %h4 About #{@album.name}
-    %article{ itemprop: 'about' }= (@album.content || @album.summary || "").gsub('http://www.last.fm/music', '').gsub(" on Last.fm", '').html_safe
+    %article{ itemprop: 'about' }= format_text(@album.content || @album.summary || "")
 
   %section
     %h4 Statistics

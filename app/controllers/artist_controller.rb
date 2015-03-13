@@ -13,9 +13,9 @@ class ArtistController < ApplicationController
           puts @artist.to_json
           @head.merge!({
               title: "#{@artist.name} | AlleSongs",
-              description: "Enjoy #{@artist.name}'s discography, playlists, events, biography, lyrics and more online and free.",
+              description: "Listen #{@artist.name}'s complete discography, playlists, events, biography, lyrics and more online and free.",
               url: artist_custom_url(@artist.name),
-              image: @artist.images['extralarge']
+              image: (@artist.images.present? ? @artist.images['extralarge'] : '')
           })
 
           @head[:title] = "#{params[:play]} - #{@head[:title]}"  if params[:play].present?
