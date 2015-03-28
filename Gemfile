@@ -54,3 +54,4 @@ gem 'angularjs-rails', '~> 1.2.16'
 
 gem 'will_paginate', '~> 3.0.7'
 gem 'voight_kampff', '~> 0.2.1'
+gem 'font-awesome-sass'

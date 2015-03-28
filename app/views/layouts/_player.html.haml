@@ -13,10 +13,6 @@
                 %br/
                 %a
                   {{current_playitem.name}} ({{current_playitem.duration | int_to_date | date:'mm:ss'}})
-                %a
-                  &nbsp;
-                  &nbsp;
-                  %i.fa.fa-file-text{ ng: { click: "showLyrics(current_playitem)" }, title: 'Show lyrics'}>
               .col-lg-4.player_controls
                 %p
                   %i.fa.fa-fast-backward{ ng: { click: "loadPrevious()" }, title: 'Next'}>
@@ -27,13 +23,6 @@
                   &nbsp;
                   &nbsp;
                   %i.fa.fa-fast-forward{ ng: { click: "loadNext()" }, title: 'Next'}>
-                %p
-                  %a{ ng: { href: "https://www.facebook.com/sharer/sharer.php?u={{url([current_playitem.artist], '?play='+current_playitem.name)}}&t={{current_playitem.artist}}" }, target: "_blank", title: "Share on Facebook" }
-                    %i.fa.fa-facebook-square
-                  %a{ ng: { href: "https://twitter.com/share?url={{url([current_playitem.artist], '?play='+current_playitem.name)}}&text={{current_playitem.artist}} on AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
-                    %i.fa.fa-twitter-square
-                  %a{ ng: { href: "https://plus.google.com/share?url={{url([current_playitem.artist], '?play='+current_playitem.name)}}&text={{current_playitem.artist}} on AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
-                    %i.fa.fa-google-plus-square
 
           %div{ ng: { show: "current_playitem == undefined", click: "play(playitems[0])"}}
             .widget-profile-avatar
@@ -46,6 +35,32 @@
       .widget-profile-text.no-padding
         -#%iframe{allowfullscreen: "", frameborder: "0", height: "220", src: "//www.youtube.com/embed/ac_iEm4fpmQ", width: "100%"}
         #player_container
+      .btn-group.btn-group-justified
+        %a.btn{ ng: { click: "showLyrics(current_playitem)" }, title: ''}
+          %i.fa.fa-file-text
+          Lyrics
+        %a.btn
+          %i.fa.fa-download
+          Download
+        .btn-group
+          %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
+            %i.fa.fa-share
+            Share 
+            %i.fa.fa-caret-down
+          %ul.dropdown-menu
+            %li
+              %a{ ng: { href: "https://www.facebook.com/sharer/sharer.php?u={{url([current_playitem.artist], '?play='+current_playitem.name)}}&t={{current_playitem.artist}}" }, target: "_blank", title: "Share on Facebook" }
+                %i.fa.fa-facebook-square
+                Facebook
+            %li
+              %a{ ng: { href: "https://twitter.com/share?url={{url([current_playitem.artist], '?play='+current_playitem.name)}}&text=Listen {{current_playitem.artist}} online on AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
+                %i.fa.fa-twitter-square
+                Twitter
+            %li
+              %a{ ng: { href: "https://plus.google.com/share?url={{url([current_playitem.artist], '?play='+current_playitem.name)}}&text={{current_playitem.artist}} on AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
+                %i.fa.fa-google-plus-square
+                Google +
+
       .widget-profile-text.bg-default
         .pull-left
           %i.fa.fa-th-list

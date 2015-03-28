@@ -441,7 +441,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
                 });
             },
             templates: {
-                header: '<h4 class="tt-header"><i class="fa fa-user"></i>Artistas</h4>',
+                header: '<h4 class="tt-header"><i class="fa fa-user"></i>&nbsp;&nbsp;Artistas</h4>',
                 suggestion: function(data){
                     x = '<p><a><img src="'+(data.image && data.image[0]["#text"] ? data.image[0]["#text"] : '<%= image_url("demo/avatars/1.jpg") %>')+'" /><strong>' + data.name + '</strong></a><p>';
                     console.log( x)
@@ -458,7 +458,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
                 });
             },
             templates: {
-                header: '<h4 class="tt-header">Albums</h4>',
+                header: '<h4 class="tt-header"><i class="fa fa-circle"></i>&nbsp;&nbsp;Albums</h4>',
                 suggestion: function(data){
                     return '<p><a><img src="'+(data.image && data.image[0]["#text"] ? data.image[0]["#text"] : '<%= image_url("demo/avatars/1.jpg") %>')+'" /><strong>' + data.name + '</strong> - <span>' + data.artist + '</span></a><p>';
                 }
@@ -473,7 +473,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
                 });
             },
             templates: {
-                header: '<h4 class="tt-header">Músicas</h4>',
+                header: '<h4 class="tt-header"><i class="fa fa-music"></i>&nbsp;&nbsp;Músicas</h4>',
                 suggestion: function(data){
                     return '<p><a><img src="'+(data.image && data.image[0]["#text"] ? data.image[0]["#text"] : '<%= image_url("demo/avatars/1.jpg") %>')+'" /><strong>' + data.name + '</strong> - <span>' + data.artist + '</span></a> <p>';
                 }
@@ -488,7 +488,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
                 });
             },
             templates: {
-                header: '<h4 class="tt-header">Tags</h4>',
+                header: '<h4 class="tt-header"><i class="fa fa-tag"></i>&nbsp;&nbsp;Tags</h4>',
                 suggestion: function(data){
                     return '<p><a><strong>' + data.name + '</strong></a> <p>';
                 }

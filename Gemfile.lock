@@ -66,6 +66,8 @@ GEM
       multi_json (>= 1.3)
       rack-oauth2 (>= 0.14.4)
       tzinfo
+    font-awesome-sass (4.3.2.1)
+      sass (~> 3.2)
     haml (4.0.5)
       tilt
     haml-rails (0.5.1)
@@ -601,6 +603,7 @@ DEPENDENCIES
   devise
   dynamic_sitemaps
   fb_graph (~> 2.7.16)
+  font-awesome-sass
   haml (~> 4.0.3)
   haml-rails (~> 0.4)
   httpclient (~> 2.3.4.1)

@@ -55,5 +55,3 @@ $ ->
 
   )
   $("#suggest_input").focus();
-
-  console.log('updated... . 2');
