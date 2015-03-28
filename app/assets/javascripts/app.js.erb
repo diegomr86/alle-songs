@@ -434,12 +434,14 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
             name: 'artists',
             displayKey: 'name',
             source: function(query, cb){
+                $('.page-header-icon').removeClass('fa-search').addClass('fa-spin fa-spinner')
                 $.get('http://ws.audioscrobbler.com/2.0/?method=artist.search&limit=5&artist=' + query + '&api_key=99a3723ef564b7395271af5fd39dad6a&format=json', function(data) {
                     cb(data.results.artistmatches.artist);
+                    $('.page-header-icon').addClass('fa-search').removeClass('fa-spin fa-spinner')
                 });
             },
             templates: {
-                header: '<h4 class="tt-header">Artistas</h4>',
+                header: '<h4 class="tt-header"><i class="fa fa-user"></i>Artistas</h4>',
                 suggestion: function(data){
                     x = '<p><a><img src="'+(data.image && data.image[0]["#text"] ? data.image[0]["#text"] : '<%= image_url("demo/avatars/1.jpg") %>')+'" /><strong>' + data.name + '</strong></a><p>';
                     console.log( x)
