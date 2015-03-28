@@ -23,6 +23,7 @@
 #= require alert
 #= require app
 
+# teste
 createPlayer = ->
 
   # tetst
