@@ -198,7 +198,7 @@
 
   Alert.Constructor = Alert;
 
-  PixelAdmin.addInitializer(function() {
-    return PixelAdmin.initPlugin('alerts', new Alert);
-  });
+//  PixelAdmin.addInitializer(function() {
+//    return PixelAdmin.initPlugin('alerts', new Alert);
+//  });
 

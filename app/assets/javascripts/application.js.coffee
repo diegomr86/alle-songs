@@ -2,12 +2,8 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap
-#= require pixel-admin
 #= require alert
 #= require toucheffects
-#= require rx
-#= require rx.time
-#= require rx.coincidence
 #= require suggest
 #= require angular
 #= require angular-resource
