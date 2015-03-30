@@ -23,10 +23,11 @@
 
     - if Rails.env.production?
       = stylesheet_link_tag    "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", media: "all"
+      = stylesheet_link_tag    "//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css", media: "all"
     - else
-      = stylesheet_link_tag    "font-awesome-sprockets", media: "all"
-      = stylesheet_link_tag    "font-awesome", media: "all"
-    = stylesheet_link_tag    "bootstrap", media: "all"
+      = stylesheet_link_tag    "font-awesome-loader", media: "all"
+      = stylesheet_link_tag    "bootstrap", media: "all"
+
     = stylesheet_link_tag    "application", media: "all"
 
     = csrf_meta_tags
