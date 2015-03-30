@@ -7,6 +7,7 @@ Music::Application.routes.draw do
     resources :playitems, defaults: {format: :json}
     resources :playlists, defaults: {format: :json} do
       get :default, on: :collection
+      get :clear_playlist, on: :member
       get :load, on: :member
     end
     resources :tracks, defaults: {format: :json}

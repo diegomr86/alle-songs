@@ -82,4 +82,6 @@ Music::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # config.assets.initialize_on_precompile = true
+
+  config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
 end

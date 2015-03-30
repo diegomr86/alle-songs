@@ -53,12 +53,13 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         $scope.current_playitem = current_playitem
         if (current_playitem != undefined) {
             $.getJSON(current_playitem.url, function (data) {
-                $scope.displayVideoMeta(current_playitem, data);
                 if (data.video) {
                     if (typeof player == "undefined")
                         player = $scope.renderPlayer(data.video);
                     else
                         player.loadVideoById(data.video);
+
+                    $scope.displayVideoMeta(current_playitem, data);
 
                     if ($scope.is_iPhone) {
                         window.scrollTo(0, 0);
@@ -154,6 +155,8 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     };
 
     $scope.addAlbumToPlaylist = function(a, play) {
+        if (play)
+            $scope.clearPlaylist()
         lastfm.album.getInfo({album: a.name, artist: (a.artist.name || a.artist)}, { success: function(data){
             angular.forEach(data.album.tracks.track, function(track, key) {
                 track.image = a.image
@@ -166,6 +169,8 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     };
 
     $scope.addArtistToPlaylist = function(a, play) {
+        if (play)
+            $scope.clearPlaylist()
         lastfm.artist.getTopTracks({artist: a.name}, { success: function(data){
             angular.forEach(data.toptracks.track, function(track, key) {
                 $scope.addToPlaylist(track, (key == 1 && play))
@@ -176,6 +181,8 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     };
 
     $scope.addTagToPlaylist = function(tag, play) {
+        if (play)
+            $scope.clearPlaylist()
         lastfm.tag.getTopTracks({tag: tag.name}, { success: function(data){
             angular.forEach(data.toptracks.track, function(track, key) {
                 $scope.addToPlaylist(track, (key == 1 && play))
@@ -186,9 +193,13 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     };
 
     $scope.clearPlaylist = function() {
-        angular.forEach($scope.playitems, function(playitem, key) {
-            $scope.removeFromPlaylist(playitem)
+
+        $http.get("/api/playlists/"+$scope.current_playlist.id+"/clear_playlist.json").success(function (data) {
+            $scope.loadCurrentPlaylist(data);
+        }).error(function (data) {
+            console.log('error: ' + data);
         });
+
     };
 
     $scope.removePlaylist = function(playlist) {
@@ -234,6 +245,7 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 
             $('title').text(title);
 
+            $('.playing-options-bar').show();
         }
     }
 

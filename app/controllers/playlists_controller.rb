@@ -2,7 +2,7 @@ class PlaylistsController < ApplicationController
 
   respond_to :json
 
-  before_action :set_playlist, only: [:show, :edit, :destroy]
+  before_action :set_playlist, only: [:show, :edit, :destroy, :clear_playlist]
   before_action :authenticate_user!, only: [:index, :create, :new, :update, :destroy]
 
 
@@ -89,6 +89,15 @@ class PlaylistsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to playlists_url }
       format.json { head :no_content }
+    end
+  end
+
+  def clear_playlist
+
+    @playlist.playitems.destroy_all
+
+    respond_to do |format|
+      format.json {render json: @playlist }
     end
   end
 
