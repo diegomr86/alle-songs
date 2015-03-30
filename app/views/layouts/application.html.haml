@@ -59,14 +59,16 @@
                   \&nbsp;
                   AlleSongs
                 / / .logo
+                .clearfix
+                %span{style: 'margin-left: 44px'} Music for everyone
                 %br
                 %ul
                   %li
                     %i.fa.fa-search.signin-icon
-                    Discover
+                    Discover music you love
                   %li
                     %i.fa.fa-headphones.signin-icon
-                    Enjoy music you love
+                    Listen online and free
                   %li
                     %i.fa.fa-list.signin-icon
                     Create your playlists
@@ -123,7 +125,6 @@
         .modal-dialog
           .modal-content
             .modal-header
-              %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
               %h4#lyrics_header.modal-title
                 {{current_lyric.playitem.artist.name || current_lyric.playitem.artist}} - {{current_lyric.playitem.name}}
                 %span{ ng: { show: "current_lyric.lang" } }
@@ -198,7 +199,6 @@
                 %a.btn.btn-xs.btn-danger.btn-outline.dark{ ng: { click: "showSignInModal()", hide: "current_user" } }
                   %i.fa.fa-sign-in
                   sign in
-              %a.close{:href => "#"} &times;
           %ul.navigation
             %li.mm-dropdown.playlist-menu{ ng: { class: "current_playlist ? 'active open' : ''" } }
               %a

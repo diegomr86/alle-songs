@@ -8,6 +8,7 @@
 @import "pixel-admin-scss/pages/pages"
 @import "component"
 @import "ymusica"
+@import "loading-bar.min"
 
 @import "typeaheadjs"
 @import "xeditable"
@@ -21,18 +22,18 @@
 .theme-purple-hills
   .logo
     i.fa-youtube-play
-      font-size: 118%
+      font-size: 117%
 
   [ng-drag="true"]
     cursor: move
   a
     cursor: pointer
   #main-navbar .navbar-header a
-    font-family: 'Cabin Sketch', cursive
-    font-style: italic
+    //font-family: 'Cabin Sketch', cursive
+    //font-style: italic
     font-weight: bold
     padding: 0
-    font-size: 23px
+    font-size: 20px
 
   #main-navbar .navbar-header
     padding-left: 73px !important
@@ -50,6 +51,9 @@
     background-color: #ffffff
     border-left: 1px solid #e2e2e2
     border-bottom: 1px solid #e2e2e2
+
+    .panel
+      background: #39393d
   .list-group-item, .list-group-item:hover, .list-group-item.active
     background-color: #ffffff
     background-position: left
@@ -88,6 +92,7 @@
     padding-left: 15px
     float: left
   #playlist
+    background: #fff
     min-height: 2000px
     .list-group-item
       .actions
@@ -103,6 +108,7 @@
         a
           color: #fff
         border-color: #e4e4e4
+
   #playlist-header
     .fa-youtube-play
       margin-top: 4px
@@ -140,12 +146,18 @@
     width: 330px
   .playlist-empty
     padding: 20px
+    .top-tags
+      width: 80%
+      margin: auto
+
   .top-tags
     strong
       color: #a0a3b1
     .label
       margin-right: 4px
       margin-bottom: 3px
+      font-weight: normal
+      font-size: 12px
 
   iframe
     margin-bottom: -4px
@@ -166,7 +178,18 @@
       list-style: none
       display: inline
   .btn-group-justified
+
     .btn
       color: #fff
       background: #39393d
       border-color: #39393d
+
+
+  .widget-profile
+    .widget-profile-header
+      span
+        font-size: 20px
+        font-weight: bold
+
+  .playing-options-bar
+    line-height: 1

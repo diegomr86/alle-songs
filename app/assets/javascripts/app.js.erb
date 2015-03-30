@@ -1,4 +1,4 @@
-var app = angular.module('allesongs', ['ngResource', 'ngRoute', 'ngSanitize', 'ngCookies', 'ngDraggable', 'ui.bootstrap', 'willPaginate', 'xeditable', 'Devise'])
+var app = angular.module('allesongs', ['ngResource', 'ngRoute', 'ngSanitize', 'ngCookies', 'ngDraggable', 'ui.bootstrap', 'willPaginate', 'xeditable', 'Devise', 'angular-loading-bar'])
 
 app.factory('Playlist', ['$resource', function($resource) {
     return $resource('/api/playlists/:id', { id: '@id' },        {
@@ -132,9 +132,9 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         Playitem.save(playitem, function(new_playitem) {
             //$scope should be accessible here
             $scope.playitems.push(new_playitem);
-            setTimeout(function() {
-                $("#playlist").slimScroll({ scrollTo: '10000px' });
-            }, 100)
+//            setTimeout(function() {
+//                $("#playlist").slimScroll({ scrollTo: '10000px' });
+//            }, 100)
             if (play || $scope.current_playitem == undefined) {
                 $scope.play(new_playitem)
             }
@@ -434,14 +434,14 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
             name: 'artists',
             displayKey: 'name',
             source: function(query, cb){
-                $('.page-header-icon').removeClass('fa-search').addClass('fa-spin fa-spinner')
+                $('.page-header-icon').removeClass('fa-search').addClass('fa-spin fa-circle-o-notch')
                 $.get('http://ws.audioscrobbler.com/2.0/?method=artist.search&limit=5&artist=' + query + '&api_key=99a3723ef564b7395271af5fd39dad6a&format=json', function(data) {
                     cb(data.results.artistmatches.artist);
-                    $('.page-header-icon').addClass('fa-search').removeClass('fa-spin fa-spinner')
+                    $('.page-header-icon').addClass('fa-search').removeClass('fa-spin fa-circle-o-notch')
                 });
             },
             templates: {
-                header: '<h4 class="tt-header"><i class="fa fa-user"></i>&nbsp;&nbsp;Artistas</h4>',
+                header: '<h4 class="tt-header"><i class="fa fa-users"></i>&nbsp;&nbsp;Artistas</h4>',
                 suggestion: function(data){
                     x = '<p><a><img src="'+(data.image && data.image[0]["#text"] ? data.image[0]["#text"] : '<%= image_url("demo/avatars/1.jpg") %>')+'" /><strong>' + data.name + '</strong></a><p>';
                     console.log( x)
@@ -639,6 +639,9 @@ app.controller('TagCtrl', ['$scope', '$routeParams', function($scope, $routePara
 
 }]);
 
+app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.latencyThreshold = 5;
+}])
 
 app.config(function($routeProvider, $locationProvider) {
 

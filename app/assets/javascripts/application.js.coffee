@@ -15,6 +15,7 @@
 #= require angular/devise
 #= require angular/ui-bootstrap-tpls-0.11.0.min
 #= require angular/ngDraggable
+#= require angular/loading-bar.min
 #= require lastfm.api.js
 #= require lastfm.api.cache
 #= require lastfm.api.md5
