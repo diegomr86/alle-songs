@@ -32,10 +32,7 @@
               %br/
               %a Music for everyone!
 
-      .widget-profile-text.no-padding
-        -#%iframe{allowfullscreen: "", frameborder: "0", height: "220", src: "//www.youtube.com/embed/ac_iEm4fpmQ", width: "100%"}
-        #player_container
-      .playing-options-bar
+      .playing-options-bar{ ng: { show: "current_playitem != undefined" } }
         .btn-group.btn-group-justified
           %a.btn{ ng: { click: "showLyrics(current_playitem)" }, title: ''}
             %i.fa.fa-file-text
@@ -61,8 +58,11 @@
                 %a{ ng: { href: "https://plus.google.com/share?url={{url([current_playitem.artist], '?play='+current_playitem.name)}}&text=► {{current_playitem.name}} - {{current_playitem.artist}} on AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
                   %i.fa.fa-google-plus-square
                   Google +
+      .widget-profile-text.no-padding
+        -#%iframe{allowfullscreen: "", frameborder: "0", height: "220", src: "//www.youtube.com/embed/ac_iEm4fpmQ", width: "100%"}
+        #player_container
 
-      .widget-profile-text.bg-default
+      .widget-profile-text.bg-default{ ng: { show: "current_playitem != undefined" } }
         .pull-left
           %i.fa.fa-th-list
           %a{ onaftersave: "savePlaylist($data)", editable: { text: "current_playlist.name" }, e: { form: "playlist_form" }, ng: { click: "playlist_form.$show()" }, title: "Click here to edit playlist name" }
