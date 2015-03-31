@@ -1,6 +1,22 @@
 .page-profile{ ng: { if: "artist != undefined" } }
   .profile-full-name
-    %h1.text-semibold= '{{artist.name}}'
+    %h1.text-semibold
+      = '{{artist.name}}'
+      %ul.social_header
+        %li
+          %a{ ng: { href: "https://www.facebook.com/sharer/sharer.php?u={{url([artist.name])}}&t=► {{artist.name}} discography online on www.AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
+            %i.fa.fa-facebook-square
+            Facebook
+        %li
+          %a{ ng: { href: "https://twitter.com/share?url={{url([artist.name])}}&text=► {{artist.name}} discography online on www.AlleSongs.com" }, target: "_blank", title: "Share on Twitter" }
+            %i.fa.fa-twitter-square
+            Twitter
+        %li
+          %a{ ng: { href: "https://plus.google.com/share?url={{url([artist.name])}}&text=► {{artist.name}} discography online on www.AlleSongs.com" }, target: "_blank", title: "Share on Google +" }
+            %i.fa.fa-google-plus-square
+            Google +
+      .clearfix
+
   .profile-row
     .left-col
       .profile-block

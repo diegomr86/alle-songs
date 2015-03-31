@@ -1,4 +1,4 @@
-var app = angular.module('allesongs', ['ngResource', 'ngRoute', 'ngSanitize', 'ngCookies', 'ngDraggable', 'ui.bootstrap', 'willPaginate', 'xeditable', 'Devise', 'angular-loading-bar'])
+var app = angular.module('allesongs', ['ngResource', 'ngRoute', 'ngSanitize', 'ngCookies', 'ngDraggable', 'ui.bootstrap', 'willPaginate', 'xeditable', 'Devise', 'angular-loading-bar', 'ngTextTruncate'])
 
 app.factory('Playlist', ['$resource', function($resource) {
     return $resource('/api/playlists/:id', { id: '@id' },        {
@@ -130,9 +130,10 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     $scope.addToPlaylist = function(track, play) {
         console.log($scope.current_playlist)
         var playitem = new Playitem({ name: track.name, artist: (track.artist.name || track.artist), picture: (track.image ? track.image[3]['#text'] : track.picture), duration: (track.duration), playlist_id: $scope.current_playlist.id });
+        $scope.playitems.push(playitem);
         Playitem.save(playitem, function(new_playitem) {
             //$scope should be accessible here
-            $scope.playitems.push(new_playitem);
+//            $scope.playitems.push(new_playitem);
 //            setTimeout(function() {
 //                $("#playlist").slimScroll({ scrollTo: '10000px' });
 //            }, 100)
@@ -194,8 +195,9 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
 
     $scope.clearPlaylist = function() {
 
+        $scope.setPlayitems([])
         $http.get("/api/playlists/"+$scope.current_playlist.id+"/clear_playlist.json").success(function (data) {
-            $scope.loadCurrentPlaylist(data);
+            console.log(data);
         }).error(function (data) {
             console.log('error: ' + data);
         });
@@ -209,8 +211,9 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
     };
 
     $scope.removeFromPlaylist = function(playitem) {
+        $scope.playitems.splice($scope.playitems.indexOf(playitem), 1);
         Playitem.delete({ id: playitem.id }, function() {
-            $scope.playitems.splice($scope.playitems.indexOf(playitem), 1);
+
         });
     };
 
@@ -408,7 +411,8 @@ app.controller('MainCtrl', ['$scope', '$resource', '$http', '$cookieStore', 'Pla
         $scope.setCurrentUser(user.data)
     }, function(error) {
         console.log("User not authenticated: "+error);
-        $scope.showSignInModal();
+        if ('<%= Rails.env.production? %>' == 'true')
+            $scope.showSignInModal();
     });
 
     if ($cookieStore.get("current_playlist") != undefined) {

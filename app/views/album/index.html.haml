@@ -1,9 +1,24 @@
 .page-profile{ ng: { if: "album != undefined" } }
   .profile-full-name
-    %h1.text-semibold
+    %h2.text-semibold
       %a{ ng: { click: "go([album.artist])" } }
         {{album.artist}}
       \- {{album.name}}
+      %ul.social_header
+        %li
+          %a{ ng: { href: "https://www.facebook.com/sharer/sharer.php?u={{url([album.artist, album.name])}}&t=► {{album.name}} - {{album.artist}} online on www.AlleSongs.com" }, target: "_blank", title: "Share on Facebook" }
+            %i.fa.fa-facebook-square
+            Facebook
+        %li
+          %a{ ng: { href: "https://twitter.com/share?url={{url([album.artist, album.name])}}&text=► {{album.name}} - {{album.artist}} online on www.AlleSongs.com" }, target: "_blank", title: "Share on Twitter" }
+            %i.fa.fa-twitter-square
+            Twitter
+        %li
+          %a{ ng: { href: "https://plus.google.com/share?url={{url([album.artist, album.name])}}&text=► {{album.name}} - {{album.artist}} online on www.AlleSongs.com" }, target: "_blank", title: "Share on Google +" }
+            %i.fa.fa-google-plus-square
+            Google +
+      .clearfix
+
   .profile-row
     .left-col
       .profile-block
@@ -45,17 +60,21 @@
     .right-col
       %hr.profile-content-hr.no-grid-gutter-h/
       .profile-content
+        %p
+          %span{ 'ng-text-truncate' => 'album.wiki.content', 'ng-tt-chars-threshold' => '400' }
+          %br
+          %br
+
         %ul#profile-tabs.nav.nav-tabs
           %li.active
-            %a{"data-toggle" => "tab", :href => "#profile-tabs-top-tracks", showtab: "" } Tracks
-          %li
-            %a{"data-toggle" => "tab", :href => "#profile-tabs-info", showtab: ""} Info
+            %a{"data-toggle" => "tab", :href => "#profile-tabs-top-tracks", showtab: "" } {{album.name}} Tracks
           %li.pull-right
             %a{ ng: { show: 'album.tracks', click: "addAlbumToPlaylist(album, true)", title: 'Play all' } }
               %i.fa.fa-play
               Play this album
         .tab-content.tab-content-bordered.panel-padding
           #profile-tabs-top-tracks.tab-pane.fade.in.active.widget-followers
+
             .text-center{ ng: { hide: "album.tracks"} }
               %br
               %i.fa.fa-cog.fa-spin
