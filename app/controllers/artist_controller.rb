@@ -22,7 +22,7 @@ class ArtistController < ApplicationController
           @head[:url] = "#{@head[:url]}?play=#{params[:play]}"  if params[:play].present?
         elsif params[:angular].blank?
           url = custom_artist_name(params[:artist])
-          url += "?play=#{params[:play]}" if params[:play].present?
+          url += "?play=#{URI::escape(params[:play])}" if params[:play].present?
           redirect_to "/#/#{url}"
         end
 
