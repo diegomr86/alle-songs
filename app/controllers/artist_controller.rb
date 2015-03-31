@@ -19,6 +19,7 @@ class ArtistController < ApplicationController
           })
 
           @head[:title] = "#{params[:play]} - #{@head[:title]}"  if params[:play].present?
+          @head[:url] = "#{@head[:url]}?#{params[:play]}"  if params[:play].present?
         elsif params[:angular].blank?
           url = custom_artist_name(params[:artist])
           url += "?play=#{params[:play]}" if params[:play].present?
