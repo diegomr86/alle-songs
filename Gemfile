@@ -35,7 +35,7 @@ end
 
 gem "haml", "~> 4.0.3"
 gem "haml-rails", "~> 0.4"
-gem "youtube_it"
+gem 'yt', '~> 0.24.7'
 gem "httpclient", "~> 2.3.4.1"
 gem 'newrelic_rpm'
 gem "dynamic_sitemaps"

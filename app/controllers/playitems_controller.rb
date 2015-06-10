@@ -3,8 +3,11 @@ class PlayitemsController < ApplicationController
 
   before_action :set_playitem, only: [:show, :edit, :update, :destroy]
 
-  YOUTUBE_CLIENT = YouTubeIt::Client.new(:dev_key => "AI39si6ht3fhDpGzdgYtBGP2UF0baH4o_6QRnQj-e4f2EkWjyrHfaYMphbKdmqEjjHJg7bLEnitHlO1PMHdw6xAlXMUUsTTgpQ")
-
+  before_action do
+    Yt.configure do |config|
+      config.api_key = 'AIzaSyCQvtuIjzIRPUgB09R_geCTvqLMTvFItUQ'
+    end
+  end
 
   def index
     @playitems = Playitem.where(playlist_id: params[:playlist_id]).order("created_at asc")
@@ -12,17 +15,20 @@ class PlayitemsController < ApplicationController
   end
 
   def show
+
+    yt =
+
     if @playitem = Playitem.find(params[:id])
       p @playitem.to_json
 
       @music_info = JSON.parse(open("http://www.vagalume.com.br/api/search.php?art=#{URI::escape(@playitem.artist)}&mus=#{URI::escape(@playitem.name)}&extra=alb,ytid").read)
       query =  "#{@playitem.artist} - #{@playitem.name}"
-      videos = YOUTUBE_CLIENT.videos_by(:query => '"'+query+ '"', :categories => [:music], page: params[:page], :per_page => 4).videos
+      videos = Yt::Collections::Videos.new.where(:q=> '"'+query+ '"', page: params[:page], :per_page => 4, video_category_id: 10)
       videos.each do |video|
-        video_id = video.unique_id if video.title == query
+        video_id = video.id if video.title == query
         break
       end
-      video_id = videos.first.unique_id if video_id.blank? && videos.first
+      video_id = videos.first.id if video_id.blank? && videos.first
     end
 
     respond_to do |format|
