@@ -3,9 +3,6 @@ class ArtistsController < ApplicationController
 
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
-  # YOUTUBE_CLIENT = YouTubeIt::Client.new(:dev_key => "AI39si6ht3fhDpGzdgYtBGP2UF0baH4o_6QRnQj-e4f2EkWjyrHfaYMphbKdmqEjjHJg7bLEnitHlO1PMHdw6xAlXMUUsTTgpQ")
-
-
   def index
     @artists = Artist.order("RANDOM()").paginate(:page => params[:page], :per_page => 12)
     respond_with(@artists)
