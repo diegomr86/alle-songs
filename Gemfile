@@ -58,3 +58,13 @@ gem 'font-awesome-sass'
 
 gem "fog", "~>1.20", require: "fog/aws/storage"
 gem 'asset_sync'
+
+group :development do
+    gem 'capistrano',         require: false
+    gem 'capistrano-rvm',     require: false
+    gem 'capistrano-rails',   require: false
+    gem 'capistrano-bundler', require: false
+    gem 'capistrano3-puma',   require: false
+end
+
+gem 'puma'
