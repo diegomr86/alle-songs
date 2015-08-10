@@ -29,7 +29,7 @@ module Music
         puts key.class
         puts key.to_s
         puts value
-        ENV[key.to_s] = value
+        ENV[key.to_s] = value.to_s
       end if File.exists?(env_file)
     end
 
