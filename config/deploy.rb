@@ -49,11 +49,12 @@ end
 namespace :deploy do
   desc "Link shared files"
   task :symlink_config_files do
-    symlinks = {
-      "#{shared_path}/config/database.yml" => "#{release_path}/config/database.yml",
-      "#{shared_path}/config/local_env.yml" => "#{release_path}/config/local_env.yml"
-    }
-    run symlinks.map{|from, to| "ln -nfs #{from} #{to}"}.join(" && ")
+    on roles(:app) do
+      symlinks = {
+        "#{shared_path}/config/local_env.yml" => "#{release_path}/config/local_env.yml"
+      }
+      run symlinks.map{|from, to| "ln -nfs #{from} #{to}"}.join(" && ")
+    end
   end
 
   desc "Make sure local git is in sync with remote."
