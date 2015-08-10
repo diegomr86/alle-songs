@@ -85,3 +85,4 @@ Music::Application.configure do
 
   config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
 end
+

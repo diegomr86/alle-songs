@@ -1,5 +1,5 @@
 # Change these
-server '104.236.64.205', port: 3000, roles: [:web, :app, :db], primary: true
+server '104.236.64.205', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@bitbucket.org:diegomr86/alle-songs.git'
 set :application,     'alle-songs'
@@ -47,6 +47,15 @@ namespace :puma do
 end
 
 namespace :deploy do
+  desc "Link shared files"
+  task :symlink_config_files do
+    symlinks = {
+      "#{shared_path}/config/database.yml" => "#{release_path}/config/database.yml",
+      "#{shared_path}/config/local_env.yml" => "#{release_path}/config/local_env.yml"
+    }
+    run symlinks.map{|from, to| "ln -nfs #{from} #{to}"}.join(" && ")
+  end
+
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
@@ -73,6 +82,7 @@ namespace :deploy do
     end
   end
 
+  before 'deploy:assets:precompile', :symlink_config_files
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
