@@ -53,7 +53,7 @@ namespace :deploy do
       symlinks = {
         "#{shared_path}/config/local_env.yml" => "#{release_path}/config/local_env.yml"
       }
-      run symlinks.map{|from, to| "ln -nfs #{from} #{to}"}.join(" && ")
+      execute symlinks.map{|from, to| "ln -nfs #{from} #{to}"}.join(" && ")
     end
   end
 
