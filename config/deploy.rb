@@ -3,7 +3,7 @@ server '104.236.64.205', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@bitbucket.org:diegomr86/alle-songs.git'
 set :application,     'alle-songs'
-set :user,            'rails_user'
+set :user,            'root'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
