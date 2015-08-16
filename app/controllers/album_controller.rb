@@ -21,6 +21,7 @@ class AlbumController < ApplicationController
           redirect_to "/#/#{custom_artist_name(params[:artist])}/#{custom_artist_name(params[:album])}"
         end
 
+
       end
     end
 
