@@ -16,8 +16,6 @@ class PlayitemsController < ApplicationController
 
   def show
 
-    yt =
-
     if @playitem = Playitem.find(params[:id])
       p @playitem.to_json
 
